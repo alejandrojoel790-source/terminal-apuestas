@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 from scipy.stats import poisson
 
-st.set_page_config(page_title="Terminal de Inteligencia Predictiva", layout="wide")
+st.set_page_config(page_title="Prototio de Apuestas", layout="wide")
 
 class MotorAnalisis:
     @staticmethod
@@ -35,14 +35,13 @@ class MotorAnalisis:
         
         return win, draw, loss, over25
 
-st.title("SISTEMA DE ANÁLISIS PREDICTIVO V3.1")
+st.sidebar.header("CONFIGURACIÓN")
 liga = st.sidebar.selectbox("División", ["Bundesliga", "Championship"])
 archivo = f"Data/BL1_2026.csv" if liga == "Bundesliga" else "Data/ELC_2026.csv"
 
 try:
     df = pd.read_csv(archivo)
     
-    # Identificación dinámica de columnas para evitar KeyError
     c_home = "Home" if "Home" in df.columns else "HomeTeam"
     c_away = "Away" if "Away" in df.columns else "AwayTeam"
     c_hg = "HG" if "HG" in df.columns else "FTHG"
@@ -55,11 +54,11 @@ try:
     p_goles_away = df[c_ag].mean()
 
     equipos = sorted(df[c_home].unique())
-    col_l, col_v = st.columns(2)
-    local = col_l.selectbox("Equipo Local", equipos)
-    visitante = col_v.selectbox("Equipo Visitante", equipos, index=1)
+    
+    local = st.sidebar.selectbox("Equipo Local", equipos)
+    visitante = st.sidebar.selectbox("Equipo Visitante", equipos, index=1)
+    m_local = st.sidebar.number_input(f"Momio Americano {local}", value=100)
 
-    # Lógica de Fuerza Relativa
     f_ataque_local = df[df[c_home] == local][c_hg].mean() / p_goles_home
     f_defensa_visitante = df[df[c_away] == visitante][c_hg].mean() / p_goles_home
     esp_goles_local = f_ataque_local * f_defensa_visitante * p_goles_home
@@ -70,27 +69,27 @@ try:
 
     p_w, p_d, p_l, p_o25 = MotorAnalisis.calcular_probabilidades(esp_goles_local, esp_goles_visitante)
 
-    st.markdown("### Probabilidades de Victoria")
+    st.title("SISTEMA DE ANÁLISIS")
+    st.markdown("### RESULTADOS DEL ANÁLISIS")
+    
     c1, c2, c3, c4 = st.columns(4)
     c1.metric(local.upper(), f"{p_w:.2%}")
     c2.metric("EMPATE", f"{p_d:.2%}")
     c3.metric(visitante.upper(), f"{p_l:.2%}")
     c4.metric("OVER 2.5", f"{p_o25:.2%}")
 
-    st.markdown("### Comparativa contra Mercado")
-    m_local = st.number_input(f"Momio Americano {local}", value=100)
+    st.markdown("---")
     
     decimal_mercado = MotorAnalisis.momio_a_decimal(m_local)
     prob_mercado = 1 / decimal_mercado
     ventaja = p_w - prob_mercado
 
     if ventaja > 0:
-        st.success(f"Ventaja detectada: {ventaja:.2%}")
-        # Aplicación de Kelly al 25 por ciento
+        st.success(f"VENTAJA DETECTADA: {ventaja:.2%}")
         kelly = ((decimal_mercado * p_w - 1) / (decimal_mercado - 1)) * 0.25
-        st.info(f"Inversión sugerida: {max(0, kelly):.2%} del capital")
+        st.info(f"INVERSIÓN SUGERIDA: {max(0, kelly):.2%} DEL CAPITAL TOTAL")
     else:
-        st.error("Sin valor matemático detectado")
+        st.error("SIN VALOR MATEMÁTICO DETECTADO")
 
 except Exception as e:
-    st.error(f"Fallo en la ejecución: {e}")
+    st.error(f"FALLO EN LA EJECUCIÓN: {e}")
