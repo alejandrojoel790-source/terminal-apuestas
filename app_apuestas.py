@@ -94,7 +94,12 @@ class MotorAnalisis:
         loss = np.sum(np.triu(matriz, 1))
         over25 = 1 - np.sum(matriz[:2, :2]) - matriz[0, 2] - matriz[2, 0]
         
-        return win, draw, loss, over25
+        p_home_0 = np.sum(matriz[0, :])
+        p_away_0 = np.sum(matriz[:, 0])
+        p_0_0 = matriz[0, 0]
+        btts_yes = 1 - (p_home_0 + p_away_0 - p_0_0)
+        
+        return win, draw, loss, over25, btts_yes
 
 st.sidebar.header("CONFIGURACIÓN")
 liga = st.sidebar.selectbox("Liga", ["Bundesliga", "Championship"])
@@ -134,13 +139,14 @@ try:
     m_empate = st.sidebar.number_input("Momio Empate", value=None, step=1)
     m_visita = st.sidebar.number_input(f"Momio {label_visitante}", value=None, step=1)
     m_over = st.sidebar.number_input("Momio Over 2.5", value=None, step=1)
+    m_btts = st.sidebar.number_input("Momio Ambos Anotan", value=None, step=1)
 
     ejecutar = st.sidebar.button("ANALIZAR PARTIDO")
 
     st.title("Prototipo de Apuestas")
 
     if ejecutar:
-        entradas = [capital_total, m_local, m_empate, m_visita, m_over]
+        entradas = [capital_total, m_local, m_empate, m_visita, m_over, m_btts]
         if any(v is None for v in entradas):
             st.warning("Por favor rellena todos los campos de capital y momios antes de analizar")
         else:
@@ -159,14 +165,15 @@ try:
             def_h = get_rating(local, c_home, c_ag) / p_goles_a
             esp_v = att_v * def_h * p_goles_a
 
-            p_w, p_d, p_l, p_o25 = MotorAnalisis.calcular_probabilidades(esp_h, esp_v)
+            p_w, p_d, p_l, p_o25, p_btts = MotorAnalisis.calcular_probabilidades(esp_h, esp_v)
 
             st.markdown("### RESULTADOS DEL ANÁLISIS")
-            c1, c2, c3, c4 = st.columns(4)
+            c1, c2, c3, c4, c5 = st.columns(5)
             c1.metric(label_local.upper(), f"{p_w:.2%}")
             c2.metric("EMPATE", f"{p_d:.2%}")
             c3.metric(label_visitante.upper(), f"{p_l:.2%}")
             c4.metric("OVER 2.5", f"{p_o25:.2%}")
+            c5.metric("AMBOS ANOTAN", f"{p_btts:.2%}")
 
             st.markdown("---")
             st.markdown("### HISTORIAL DIRECTO")
@@ -200,6 +207,7 @@ try:
             procesar(p_d, m_empate, "Empate")
             procesar(p_l, m_visita, label_visitante)
             procesar(p_o25, m_over, "Over 2.5")
+            procesar(p_btts, m_btts, "Ambos Anotan")
     else:
         st.info("Configura los datos en el panel izquierdo y presiona ANALIZAR PARTIDO")
 
