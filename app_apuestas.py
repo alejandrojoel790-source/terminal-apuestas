@@ -3,8 +3,7 @@ import pandas as pd
 import numpy as np
 from scipy.stats import poisson
 
-# Configuración de interfaz profesional
-st.set_page_config(page_title="Prototipo de Apuestas 2026", layout="wide")
+st.set_page_config(page_title="Terminal de Inteligencia Predictiva", layout="wide")
 
 class MotorAnalisis:
     @staticmethod
@@ -36,49 +35,49 @@ class MotorAnalisis:
         
         return win, draw, loss, over25
 
-# Carga de datos
-st.title("SISTEMA DE ANÁLISIS PREDICTIVO")
+st.title("SISTEMA DE ANÁLISIS PREDICTIVO V3.1")
 liga = st.sidebar.selectbox("División", ["Bundesliga", "Championship"])
 archivo = f"Data/BL1_2026.csv" if liga == "Bundesliga" else "Data/ELC_2026.csv"
 
 try:
     df = pd.read_csv(archivo)
-    df["Home"] = df["Home"].apply(MotorAnalisis.limpiar_texto)
-    df["Away"] = df["Away"].apply(MotorAnalisis.limpiar_texto)
+    
+    # Identificación dinámica de columnas para evitar KeyError
+    c_home = "Home" if "Home" in df.columns else "HomeTeam"
+    c_away = "Away" if "Away" in df.columns else "AwayTeam"
+    c_hg = "HG" if "HG" in df.columns else "FTHG"
+    c_ag = "AG" if "AG" in df.columns else "FTAG"
 
-    # Estadísticas Globales de la Liga
-    promedio_goles_home = df["HG"].mean()
-    promedio_goles_away = df["AG"].mean()
+    df[c_home] = df[c_home].apply(MotorAnalisis.limpiar_texto)
+    df[c_away] = df[c_away].apply(MotorAnalisis.limpiar_texto)
 
-    # Selección de Equipos
-    equipos = sorted(df["Home"].unique())
+    p_goles_home = df[c_hg].mean()
+    p_goles_away = df[c_ag].mean()
+
+    equipos = sorted(df[c_home].unique())
     col_l, col_v = st.columns(2)
     local = col_l.selectbox("Equipo Local", equipos)
     visitante = col_v.selectbox("Equipo Visitante", equipos, index=1)
 
-    # Cálculo de Fuerza Relativa
-    # Local: Capacidad de ataque contra promedio liga
-    fuerza_ataque_local = df[df["Home"] == local]["HG"].mean() / promedio_goles_home
-    fuerza_defensa_visitante = df[df["Away"] == visitante]["HG"].mean() / promedio_goles_home
-    esperanza_goles_local = fuerza_ataque_local * fuerza_defensa_visitante * promedio_goles_home
+    # Lógica de Fuerza Relativa
+    f_ataque_local = df[df[c_home] == local][c_hg].mean() / p_goles_home
+    f_defensa_visitante = df[df[c_away] == visitante][c_hg].mean() / p_goles_home
+    esp_goles_local = f_ataque_local * f_defensa_visitante * p_goles_home
 
-    # Visitante: Capacidad de ataque contra promedio liga
-    fuerza_ataque_visitante = df[df["Away"] == visitante]["AG"].mean() / promedio_goles_away
-    fuerza_defensa_local = df[df["Home"] == local]["AG"].mean() / promedio_goles_away
-    esperanza_goles_visitante = fuerza_ataque_visitante * fuerza_defensa_local * promedio_goles_away
+    f_ataque_visitante = df[df[c_away] == visitante][c_ag].mean() / p_goles_away
+    f_defensa_local = df[df[c_home] == local][c_ag].mean() / p_goles_away
+    esp_goles_visitante = f_ataque_visitante * f_defensa_local * p_goles_away
 
-    p_w, p_d, p_l, p_o25 = MotorAnalisis.calcular_probabilidades(esperanza_goles_local, esperanza_goles_visitante)
+    p_w, p_d, p_l, p_o25 = MotorAnalisis.calcular_probabilidades(esp_goles_local, esp_goles_visitante)
 
-    # Dashboard de Métricas
-    st.markdown("Probabilidades de Victoria")
+    st.markdown("### Probabilidades de Victoria")
     c1, c2, c3, c4 = st.columns(4)
     c1.metric(local.upper(), f"{p_w:.2%}")
     c2.metric("EMPATE", f"{p_d:.2%}")
     c3.metric(visitante.upper(), f"{p_l:.2%}")
     c4.metric("OVER 2.5", f"{p_o25:.2%}")
 
-    # Análisis de Valor
-    st.markdown("Comparativa contra Mercado")
+    st.markdown("### Comparativa contra Mercado")
     m_local = st.number_input(f"Momio Americano {local}", value=100)
     
     decimal_mercado = MotorAnalisis.momio_a_decimal(m_local)
@@ -86,12 +85,12 @@ try:
     ventaja = p_w - prob_mercado
 
     if ventaja > 0:
-        st.success(f"Ventaja detectada: {ventaja:.2%}. El momio tiene valor matemático.")
-        # Criterio de Kelly fraccionado al 25 por ciento para gestión de riesgo
+        st.success(f"Ventaja detectada: {ventaja:.2%}")
+        # Aplicación de Kelly al 25 por ciento
         kelly = ((decimal_mercado * p_w - 1) / (decimal_mercado - 1)) * 0.25
-        st.info(f"Sugerencia de inversión: {max(0, kelly):.2%} del capital total.")
+        st.info(f"Inversión sugerida: {max(0, kelly):.2%} del capital")
     else:
-        st.error("Sin valor. La probabilidad del mercado es mayor a la calculada.")
+        st.error("Sin valor matemático detectado")
 
 except Exception as e:
     st.error(f"Fallo en la ejecución: {e}")
