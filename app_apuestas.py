@@ -44,7 +44,7 @@ class MotorAnalisis:
         return win, draw, loss, over25
 
 st.sidebar.header("CONFIGURACIÓN")
-liga = st.sidebar.selectbox("División", ["Bundesliga", "Championship"])
+liga = st.sidebar.selectbox("Liga", ["Bundesliga", "Championship"])
 archivo = f"Data/BL1_2026.csv" if liga == "Bundesliga" else "Data/ELC_2026.csv"
 
 try:
