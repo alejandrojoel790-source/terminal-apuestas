@@ -97,7 +97,7 @@ class MotorAnalisis:
         return win, draw, loss, over25
 
 st.sidebar.header("CONFIGURACIÓN")
-liga = st.sidebar.selectbox("División", ["Bundesliga", "Championship"])
+liga = st.sidebar.selectbox("Liga", ["Bundesliga", "Championship"])
 archivo = f"Data/BL1_2026.csv" if liga == "Bundesliga" else "Data/ELC_2026.csv"
 
 try:
@@ -126,21 +126,20 @@ try:
     
     st.sidebar.markdown("---")
     st.sidebar.subheader("GESTIÓN DE CAPITAL")
-    capital_total = st.sidebar.number_input("Capital Total", value=None)
+    capital_total = st.sidebar.number_input("Capital Total", value=None, step=1)
     
     st.sidebar.markdown("---")
     st.sidebar.subheader("MOMIOS")
-    m_local = st.sidebar.number_input(f"Momio {label_local}", value=None)
-    m_empate = st.sidebar.number_input("Momio Empate", value=None)
-    m_visita = st.sidebar.number_input(f"Momio {label_visitante}", value=None)
-    m_over = st.sidebar.number_input("Momio Over 2.5", value=None)
+    m_local = st.sidebar.number_input(f"Momio {label_local}", value=None, step=1)
+    m_empate = st.sidebar.number_input("Momio Empate", value=None, step=1)
+    m_visita = st.sidebar.number_input(f"Momio {label_visitante}", value=None, step=1)
+    m_over = st.sidebar.number_input("Momio Over 2.5", value=None, step=1)
 
     ejecutar = st.sidebar.button("ANALIZAR PARTIDO")
 
     st.title("Prototipo de Apuestas")
 
     if ejecutar:
-        # Validacion de entradas vacias
         entradas = [capital_total, m_local, m_empate, m_visita, m_over]
         if any(v is None for v in entradas):
             st.warning("Por favor rellena todos los campos de capital y momios antes de analizar")
@@ -202,7 +201,7 @@ try:
             procesar(p_l, m_visita, label_visitante)
             procesar(p_o25, m_over, "Over 2.5")
     else:
-        st.info("Configura los parámetros en el panel izquierdo y presiona ANALIZAR PARTIDO")
+        st.info("Configura los datos en el panel izquierdo y presiona ANALIZAR PARTIDO")
 
 except Exception as e:
     st.error(f"Fallo en la ejecución: {e}")
