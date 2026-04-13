@@ -1,0 +1,6 @@
+[theme]
+primaryColor = "#29b5e8" # Un azul suave estándar
+backgroundColor = "#111111" # Un negro suave, no tan agresivo
+secondaryBackgroundColor = "#222222" # Gris oscuro para tarjetas
+textColor = "#fafafa" # Blanco para el texto
+font = "sans serif" # Fuente limpia
