@@ -15,6 +15,61 @@ class MotorAnalisis:
         return t.replace("ü", "u").replace("ö", "o").replace("ä", "a")
 
     @staticmethod
+    def formatear_nombre(nombre):
+        mapeo = {
+            # BUNDESLIGA
+            "bayern munchen": "Bayern München",
+            "borussia dortmund": "Borussia Dortmund",
+            "bayer leverkusen": "Bayer Leverkusen",
+            "borussia monchengladbach": "Borussia Mönchengladbach",
+            "stuttgart": "VfB Stuttgart",
+            "leipzig": "RB Leipzig",
+            "eintracht frankfurt": "Eintracht Frankfurt",
+            "freiburg": "SC Freiburg",
+            "hoffenheim": "TSG Hoffenheim",
+            "heidenheim": "FC Heidenheim",
+            "werder bremen": "Werder Bremen",
+            "augsburg": "FC Augsburg",
+            "wolfsburg": "VfL Wolfsburg",
+            "mainz 05": "1. FSV Mainz 05",
+            "union berlin": "1. FC Union Berlin",
+            "bochum 1848": "VfL Bochum 1848",
+            "darmstadt 98": "SV Darmstadt 98",
+            "koln": "1. FC Köln",
+            # CHAMPIONSHIP
+            "leeds": "Leeds United",
+            "leicester": "Leicester City",
+            "southampton": "Southampton FC",
+            "ipswich": "Ipswich Town",
+            "west brom": "West Bromwich Albion",
+            "norwich": "Norwich City",
+            "hull": "Hull City",
+            "middlesbrough": "Middlesbrough FC",
+            "coventry": "Coventry City",
+            "preston": "Preston North End",
+            "bristol city": "Bristol City",
+            "cardiff": "Cardiff City",
+            "swansea": "Swansea City",
+            "watford": "Watford FC",
+            "sunderland": "Sunderland AFC",
+            "millwall": "Millwall FC",
+            "blackburn": "Blackburn Rovers",
+            "plymouth": "Plymouth Argyle",
+            "qpr": "Queens Park Rangers",
+            "stoke": "Stoke City",
+            "birmingham": "Birmingham City",
+            "huddersfield": "Huddersfield Town",
+            "sheffield wed": "Sheffield Wednesday",
+            "sheffield utd": "Sheffield United",
+            "burnley": "Burnley FC",
+            "luton": "Luton Town",
+            "portsmouth": "Portsmouth FC",
+            "derby": "Derby County",
+            "oxford utd": "Oxford United"
+        }
+        return mapeo.get(nombre, nombre.title())
+
+    @staticmethod
     def momio_a_decimal(momio):
         if momio == 0: return 1.0
         return momio / 100 + 1 if momio > 0 else 100 / abs(momio) + 1
@@ -44,7 +99,7 @@ class MotorAnalisis:
         return win, draw, loss, over25
 
 st.sidebar.header("CONFIGURACIÓN")
-liga = st.sidebar.selectbox("Liga", ["Bundesliga", "Championship"])
+liga = st.sidebar.selectbox("División", ["Bundesliga", "Championship"])
 archivo = f"Data/BL1_2026.csv" if liga == "Bundesliga" else "Data/ELC_2026.csv"
 
 try:
@@ -66,19 +121,24 @@ try:
     else:
         df["weight"] = 1.0
 
-    equipos = sorted(df[c_home].unique())
-    local = st.sidebar.selectbox("Equipo Local", equipos)
-    visitante = st.sidebar.selectbox("Equipo Visitante", equipos, index=1)
+    equipos_raw = sorted(df[c_home].unique())
+    equipos_display = {MotorAnalisis.formatear_nombre(e): e for e in equipos_raw}
+    
+    label_local = st.sidebar.selectbox("Equipo Local", list(equipos_display.keys()))
+    local = equipos_display[label_local]
+    
+    label_visitante = st.sidebar.selectbox("Equipo Visitante", list(equipos_display.keys()), index=1)
+    visitante = equipos_display[label_visitante]
     
     st.sidebar.markdown("---")
     st.sidebar.subheader("GESTIÓN DE CAPITAL")
     capital_total = st.sidebar.number_input("Capital Total", value=1000, step=100)
     
     st.sidebar.markdown("---")
-    st.sidebar.subheader("MOMIOS")
-    m_local = st.sidebar.number_input(f"Momio {local}", value=100)
+    st.sidebar.subheader("MOMIOS AMERICANOS")
+    m_local = st.sidebar.number_input(f"Momio {label_local}", value=100)
     m_empate = st.sidebar.number_input("Momio Empate", value=100)
-    m_visita = st.sidebar.number_input(f"Momio {visitante}", value=100)
+    m_visita = st.sidebar.number_input(f"Momio {label_visitante}", value=100)
     m_over = st.sidebar.number_input("Momio Over 2.5", value=100)
 
     ejecutar = st.sidebar.button("ANALIZAR PARTIDO")
@@ -105,19 +165,21 @@ try:
 
         st.markdown("### RESULTADOS DEL ANÁLISIS")
         c1, c2, c3, c4 = st.columns(4)
-        c1.metric(local.upper(), f"{p_w:.2%}")
+        c1.metric(label_local.upper(), f"{p_w:.2%}")
         c2.metric("EMPATE", f"{p_d:.2%}")
-        c3.metric(visitante.upper(), f"{p_l:.2%}")
+        c3.metric(label_visitante.upper(), f"{p_l:.2%}")
         c4.metric("OVER 2.5", f"{p_o25:.2%}")
 
         st.markdown("---")
-        st.markdown("### HISTORIAL DIRECTO")
+        st.markdown("### HISTORIAL DIRECTO H2H")
         h2h = df[((df[c_home] == local) & (df[c_away] == visitante)) | 
                  ((df[c_home] == visitante) & (df[c_away] == local))].copy()
         
         if not h2h.empty:
             h2h = h2h.sort_values(by=c_date, ascending=False).head(5)
-            h2h_display = h2h[[c_date, c_home, c_hg, c_ag, c_away]]
+            h2h_display = h2h[[c_date, c_home, c_hg, c_ag, c_away]].copy()
+            h2h_display[c_home] = h2h_display[c_home].apply(MotorAnalisis.formatear_nombre)
+            h2h_display[c_away] = h2h_display[c_away].apply(MotorAnalisis.formatear_nombre)
             h2h_display.columns = ["FECHA", "LOCAL", "GL", "GV", "VISITANTE"]
             st.table(h2h_display)
         else:
@@ -138,9 +200,9 @@ try:
                 else:
                     st.write("Sin valor matemático")
 
-        procesar(p_w, m_local, local)
+        procesar(p_w, m_local, label_local)
         procesar(p_d, m_empate, "Empate")
-        procesar(p_l, m_visita, visitante)
+        procesar(p_l, m_visita, label_visitante)
         procesar(p_o25, m_over, "Over 2.5")
     else:
         st.info("Configura los parámetros en el panel izquierdo y presiona ANALIZAR PARTIDO")
