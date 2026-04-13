@@ -135,7 +135,7 @@ try:
     capital_total = st.sidebar.number_input("Capital Total", value=1000, step=100)
     
     st.sidebar.markdown("---")
-    st.sidebar.subheader("MOMIOS AMERICANOS")
+    st.sidebar.subheader("MOMIOS")
     m_local = st.sidebar.number_input(f"Momio {label_local}", value=100)
     m_empate = st.sidebar.number_input("Momio Empate", value=100)
     m_visita = st.sidebar.number_input(f"Momio {label_visitante}", value=100)
@@ -171,7 +171,7 @@ try:
         c4.metric("OVER 2.5", f"{p_o25:.2%}")
 
         st.markdown("---")
-        st.markdown("### HISTORIAL DIRECTO H2H")
+        st.markdown("### HISTORIAL DIRECTO")
         h2h = df[((df[c_home] == local) & (df[c_away] == visitante)) | 
                  ((df[c_home] == visitante) & (df[c_away] == local))].copy()
         
