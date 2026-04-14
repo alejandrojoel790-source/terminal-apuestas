@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 from scipy.stats import poisson
 
-st.set_page_config(page_title="Sistema de Apuestas", layout="wide")
+st.set_page_config(page_title="Prototipo de Apuestas", layout="wide")
 
 class MotorAnalisis:
     @staticmethod
