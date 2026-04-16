@@ -16,9 +16,7 @@ class MotorAnalisis:
 
     @staticmethod
     def formatear_nombre(nombre):
-        # Mapeo exhaustivo estilo casino para ambas ligas
         mapeo = {
-            # BUNDESLIGA
             "bayern munchen": "Bayern Munich",
             "borussia dortmund": "Borussia Dortmund",
             "bayer leverkusen": "Bayer Leverkusen",
@@ -37,9 +35,6 @@ class MotorAnalisis:
             "bochum 1848": "Bochum",
             "darmstadt 98": "Darmstadt",
             "koln": "Colonia",
-            "st pauli": "St. Pauli",
-            "holstein kiel": "Holstein Kiel",
-            # CHAMPIONSHIP
             "leeds": "Leeds United",
             "leicester": "Leicester",
             "southampton": "Southampton",
@@ -68,8 +63,7 @@ class MotorAnalisis:
             "luton": "Luton",
             "portsmouth": "Portsmouth",
             "derby": "Derby County",
-            "oxford utd": "Oxford United",
-            "sheffield weds": "Sheffield Wednesday"
+            "oxford utd": "Oxford United"
         }
         return mapeo.get(nombre, nombre.title())
 
@@ -99,10 +93,10 @@ class MotorAnalisis:
         draw = np.sum(np.diag(matriz))
         loss = np.sum(np.triu(matriz, 1))
         over25 = 1 - np.sum(matriz[:2, :2]) - matriz[0, 2] - matriz[2, 0]
+        btts = np.sum(matriz[1:, 1:])
         
-        return win, draw, loss, over25
+        return win, draw, loss, over25, btts
 
-# --- BARRA LATERAL ---
 st.sidebar.header("CONFIGURACIÓN")
 liga = st.sidebar.selectbox("División", ["Bundesliga", "Championship"])
 archivo = f"Data/BL1_2026.csv" if liga == "Bundesliga" else "Data/ELC_2026.csv"
@@ -141,18 +135,17 @@ try:
     m_empate = st.sidebar.number_input("Momio Empate", value=None, step=1)
     m_visita = st.sidebar.number_input(f"Momio {label_visitante}", value=None, step=1)
     m_over = st.sidebar.number_input("Momio Over 2.5", value=None, step=1)
+    m_btts = st.sidebar.number_input("Momio Ambos Anotan", value=None, step=1)
 
     ejecutar = st.sidebar.button("ANALIZAR PARTIDO")
 
-    # --- CONTENIDO PRINCIPAL ---
     st.title("Prototipo de Apuestas")
 
     if ejecutar:
-        entradas = [capital_total, m_local, m_empate, m_visita, m_over]
+        entradas = [capital_total, m_local, m_empate, m_visita, m_over, m_btts]
         if any(v is None for v in entradas):
-            st.warning("Rellena todos los campos de capital y momios antes de analizar")
+            st.warning("Por favor rellena todos los campos de capital y momios antes de analizar")
         else:
-            # Cálculos de Promedios Ponderados por Tiempo
             p_goles_h = (df[c_hg] * df["weight"]).sum() / df["weight"].sum()
             p_goles_a = (df[c_ag] * df["weight"]).sum() / df["weight"].sum()
 
@@ -168,29 +161,15 @@ try:
             def_h = get_rating(local, c_home, c_ag) / p_goles_a
             esp_v = att_v * def_h * p_goles_a
 
-            p_w, p_d, p_l, p_o25 = MotorAnalisis.calcular_probabilidades(esp_h, esp_v)
+            p_w, p_d, p_l, p_o25, p_btts = MotorAnalisis.calcular_probabilidades(esp_h, esp_v)
 
             st.markdown("### RESULTADOS DEL ANÁLISIS")
-            c1, c2, c3, c4 = st.columns(4)
+            c1, c2, c3, c4, c5 = st.columns(5)
             c1.metric(label_local.upper(), f"{p_w:.2%}")
             c2.metric("EMPATE", f"{p_d:.2%}")
             c3.metric(label_visitante.upper(), f"{p_l:.2%}")
             c4.metric("OVER 2.5", f"{p_o25:.2%}")
-
-            st.markdown("---")
-            st.markdown("### HISTORIAL DIRECTO H2H")
-            h2h = df[((df[c_home] == local) & (df[c_away] == visitante)) | 
-                     ((df[c_home] == visitante) & (df[c_away] == local))].copy()
-            
-            if not h2h.empty:
-                h2h = h2h.sort_values(by=c_date, ascending=False).head(5)
-                h2h_display = h2h[[c_date, c_home, c_hg, c_ag, c_away]].copy()
-                h2h_display[c_home] = h2h_display[c_home].apply(MotorAnalisis.formatear_nombre)
-                h2h_display[c_away] = h2h_display[c_away].apply(MotorAnalisis.formatear_nombre)
-                h2h_display.columns = ["FECHA", "LOCAL", "GL", "GV", "VISITANTE"]
-                st.table(h2h_display)
-            else:
-                st.write("No se registran enfrentamientos previos")
+            c5.metric("AMBOS ANOTAN", f"{p_btts:.2%}")
 
             st.markdown("---")
             st.markdown("### RECOMENDACIONES DE INVERSIÓN")
@@ -202,7 +181,6 @@ try:
                 with col_a: st.write(f"**{mercado.upper()}**")
                 with col_b:
                     if ventaja > 0:
-                        # Kelly fraccionado al 25 por ciento
                         f_kelly = (dec * prob - 1) / (dec - 1) * 0.25
                         st.success(f"VENTAJA: {ventaja:.2%} | APUESTA SUGERIDA: ${capital_total * f_kelly:.2f}")
                     else:
@@ -212,6 +190,7 @@ try:
             procesar(p_d, m_empate, "Empate")
             procesar(p_l, m_visita, label_visitante)
             procesar(p_o25, m_over, "Over 2.5")
+            procesar(p_btts, m_btts, "Ambos Anotan")
     else:
         st.info("Configura los parámetros en el panel izquierdo y presiona ANALIZAR PARTIDO")
 
