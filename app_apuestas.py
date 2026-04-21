@@ -21,24 +21,17 @@ st.markdown("""
 class AnalysisEngine:
     @staticmethod
     def calcular_stats_completas(media_h, media_v):
-        """Calcula probabilidades del mercado usando Distribucion de Poisson"""
         prob_h, prob_e, prob_v = 0, 0, 0
         over25 = 0
         btts = 0
         
-        # Matriz de goles (0 a 8)
         for g_h in range(9):
             for g_v in range(9):
                 p = poisson.pmf(g_h, media_h) * poisson.pmf(g_v, media_v)
-                
-                # Resultado 1X2
                 if g_h > g_v: prob_h += p
                 elif g_h == g_v: prob_e += p
                 else: prob_v += p
-                
-                # Mas de 2.5 goles
                 if (g_h + g_v) > 2.5: over25 += p
-                # Ambos Anotan
                 if g_h > 0 and g_v > 0: btts += p
                     
         return {
@@ -48,11 +41,12 @@ class AnalysisEngine:
 
     @staticmethod
     def kelly_criterion(prob, cuota, bankroll):
-        """Calcula la apuesta optima basada en el criterio de Kelly fraccional al 50%"""
         if cuota <= 1: return 0
+        # Formula de Kelly: f = (bp - q) / b
         b = cuota - 1
         q = 1 - prob
         f = (b * prob - q) / b
+        # Kelly fraccional al 50% para gestion conservadora
         apuesta = max(0, f * bankroll * 0.5)
         return apuesta
 
@@ -81,17 +75,24 @@ df = cargar_datos(archivo_liga)
 
 if df is not None:
     equipos = sorted(df['Home'].unique())
-    col1, col2 = st.columns(2)
-    with col1: e_h = st.selectbox("Equipo Local", equipos)
-    with col2: e_v = st.selectbox("Equipo Visitante", equipos, index=1)
+    col_sel1, col_sel2 = st.columns(2)
+    with col_sel1: e_h = st.selectbox("Equipo Local", equipos)
+    with col_sel2: e_v = st.selectbox("Equipo Visitante", equipos, index=1)
 
-    # Filtrado de enfrentamientos directos historicos
+    # --- NUEVA SECCION: ENTRADA DE MOMIOS ---
+    st.markdown("---")
+    st.subheader("Ingreso de Momios Actuales")
+    c_m1, c_m2, c_m3, c_m4, c_m5 = st.columns(5)
+    with c_m1: m_local = st.number_input(f"Momio {e_h}", min_value=1.0, value=2.0, step=0.1)
+    with c_m2: m_empate = st.number_input("Momio Empate", min_value=1.0, value=3.4, step=0.1)
+    with c_m3: m_visita = st.number_input(f"Momio {e_v}", min_value=1.0, value=3.0, step=0.1)
+    with c_m4: m_over25 = st.number_input("Momio +2.5 Goles", min_value=1.0, value=1.8, step=0.1)
+    with c_m5: m_btts = st.number_input("Momio Ambos Anotan", min_value=1.0, value=1.7, step=0.1)
+
+    # Filtrado y Calculos
     enfrentamientos = df[((df['Home'] == e_h) & (df['Away'] == e_v)) | ((df['Home'] == e_v) & (df['Away'] == e_h))].sort_values('Date', ascending=False)
-    
-    # Calculo de promedios ofensivos y defensivos
     m_h = df[df['Home'] == e_h]['HG'].mean()
     m_v = df[df['Away'] == e_v]['AG'].mean()
-    
     stats = AnalysisEngine.calcular_stats_completas(m_h, m_v)
 
     # --- 5. ANALISIS HISTORICO ---
@@ -99,57 +100,57 @@ if df is not None:
     if not enfrentamientos.empty:
         st.dataframe(enfrentamientos[['Date', 'Home', 'HG', 'AG', 'Away']].head(5), use_container_width=True)
     else:
-        st.info("No se registran enfrentamientos previos en la base de datos.")
+        st.info("No se registran enfrentamientos previos.")
 
-    # --- 6. SISTEMA DE RECOMENDACIONES ---
+    # --- 6. RESULTADOS DEL ANALISIS ---
     st.markdown("---")
     st.subheader("Analisis de Probabilidades y Apuesta")
 
-    c1, c2 = st.columns(2)
+    res1, res2 = st.columns(2)
 
     # Opcion Segura
-    with c1:
+    with res1:
         st.markdown('<div class="bet-card safe-bet">', unsafe_allow_html=True)
         st.markdown("### Opcion Segura")
-        if stats['Win_H'] > 0.50:
-            pick, prob = f"Victoria {e_h}", stats['Win_H']
-        elif stats['BTTS'] > 0.60:
-            pick, prob = "Ambos Anotan", stats['BTTS']
+        # Logica: Elegir entre victoria local o ambos anotan segun probabilidad
+        if stats['Win_H'] > stats['BTTS']:
+            pick, prob, cuota_usada = f"Victoria {e_h}", stats['Win_H'], m_local
         else:
-            pick, prob = f"Doble Oportunidad {e_h}", (stats['Win_H'] + stats['Draw'])
+            pick, prob, cuota_usada = "Ambos Anotan", stats['BTTS'], m_btts
         
         st.write(f"**Pronostico:** {pick}")
         st.write(f"**Probabilidad:** {prob*100:.1f}%")
-        # Cuota estimada para mercado seguro: 1.50
-        monto = AnalysisEngine.kelly_criterion(prob, 1.50, capital)
+        monto = AnalysisEngine.kelly_criterion(prob, cuota_usada, capital)
         st.success(f"**Importe Sugerido:** ${monto:.2f}")
         st.markdown('</div>', unsafe_allow_html=True)
 
     # Opcion Arriesgada
-    with c2:
+    with res2:
         st.markdown('<div class="bet-card risky-bet">', unsafe_allow_html=True)
         st.markdown("### Opcion Arriesgada")
-        # Combinada: Gana Local + Over 2.5
+        # Combinada: Gana Local y +2.5 goles
         prob_comb = stats['Win_H'] * stats['Over25']
+        cuota_comb = m_local * m_over25 * 0.8 # Ajuste estimado de cuota combinada
         st.write(f"**Pronostico:** {e_h} y Mas de 2.5 goles")
         st.write(f"**Probabilidad:** {prob_comb*100:.1f}%")
-        # Cuota estimada para combinada: 3.50
-        monto_r = AnalysisEngine.kelly_criterion(prob_comb, 3.50, capital)
+        monto_r = AnalysisEngine.kelly_criterion(prob_comb, cuota_comb, capital)
         st.warning(f"**Importe Sugerido:** ${monto_r:.2f}")
         st.markdown('</div>', unsafe_allow_html=True)
 
-    # Seleccion Optima General
+    # Seleccion Optima
     st.markdown('<div class="bet-card" style="border-top: 5px solid #3b82f6;">', unsafe_allow_html=True)
     st.write("### Seleccion Optima")
     
-    if stats['Over25'] > 0.65:
+    # Calculo de valor esperado (EV) para decidir la mejor opcion
+    ev_local = (stats['Win_H'] * m_local) - 1
+    ev_over = (stats['Over25'] * m_over25) - 1
+    
+    if ev_over > ev_local:
         mejor_pick, mejor_prob = "Mas de 2.5 goles", stats['Over25']
-    elif stats['Win_H'] > 0.60:
-        mejor_pick, mejor_prob = f"Victoria: {e_h}", stats['Win_H']
     else:
-        mejor_pick, mejor_prob = "Ambos Anotan", stats['BTTS']
+        mejor_pick, mejor_prob = f"Victoria: {e_h}", stats['Win_H']
 
-    st.info(f"Tras analizar {len(df)} registros, la opcion con mejor balance riesgo/beneficio es {mejor_pick} con una probabilidad del {mejor_prob*100:.1f}%.")
+    st.info(f"Tras analizar los momios ingresados, la opcion con mayor valor esperado es {mejor_pick} con una probabilidad del {mejor_prob*100:.1f}%.")
     st.markdown('</div>', unsafe_allow_html=True)
 
 else:
