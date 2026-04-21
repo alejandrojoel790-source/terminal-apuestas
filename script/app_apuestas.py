@@ -93,7 +93,7 @@ if df is not None:
     with c_m4: m_over25 = st.number_input("Momio +2.5 Goles", min_value=1.0, value=None, format="%g", placeholder="0")
     with c_m5: m_btts = st.number_input("Momio Ambos Anotan", min_value=1.0, value=None, format="%g", placeholder="0")
 
-    # ORDEN DESCENDENTE FORZADO (2026 arriba)
+    # ORDEN DESCENDENTE (2026 arriba)
     enfrentamientos = df[((df['Home'] == e_h) & (df['Away'] == e_v)) | 
                          ((df['Home'] == e_v) & (df['Away'] == e_h))].sort_values('Date', ascending=False)
     
@@ -107,14 +107,14 @@ if df is not None:
     else:
         st.info("No se registran enfrentamientos previos.")
 
-    # --- 5. NUEVA SECCION: TODAS LAS PROBABILIDADES ---
+    # --- 5. SECCION SOLICITADA: TODAS LAS PROBABILIDADES ---
     st.markdown("---")
-    st.subheader("Probabilidades Calculadas")
+    st.subheader("Probabilidades de Mercado")
     p1, p2, p3, p4, p5 = st.columns(5)
-    p1.metric("Local (1)", f"{stats['Win_H']*100:.1f}%")
-    p2.metric("Empate (X)", f"{stats['Draw']*100:.1f}%")
-    p3.metric("Visitante (2)", f"{stats['Win_V']*100:.1f}%")
-    p4.metric("+2.5 Goles", f"{stats['Over25']*100:.1f}%")
+    p1.metric(f"Gana {e_h}", f"{stats['Win_H']*100:.1f}%")
+    p2.metric("Empate", f"{stats['Draw']*100:.1f}%")
+    p3.metric(f"Gana {e_v}", f"{stats['Win_V']*100:.1f}%")
+    p4.metric("Mas de 2.5", f"{stats['Over25']*100:.1f}%")
     p5.metric("Ambos Anotan", f"{stats['BTTS']*100:.1f}%")
 
     st.markdown("---")
@@ -137,7 +137,7 @@ if df is not None:
                     </div>
                     <h3>Opcion Segura</h3>
                     <p><b>Pronostico:</b> {pick}</p>
-                    <p><b>Confianza:</b> {prob*100:.1f}%</p>
+                    <p><b>Probabilidad:</b> {prob*100:.1f}%</p>
                     <div style="background-color: #064e3b; padding: 10px; border-radius: 8px; color: #10b981; font-weight: bold;">
                         Importe Sugerido: ${int(round(AnalysisEngine.kelly_criterion(prob, cuota_usada, capital)))}
                     </div>
@@ -156,7 +156,7 @@ if df is not None:
                     </div>
                     <h3>Opcion Arriesgada</h3>
                     <p><b>Pronostico:</b> {e_h} y Mas de 2.5 goles</p>
-                    <p><b>Confianza:</b> {prob_comb*100:.1f}%</p>
+                    <p><b>Probabilidad:</b> {prob_comb*100:.1f}%</p>
                     <div style="background-color: #78350f; padding: 10px; border-radius: 8px; color: #f59e0b; font-weight: bold;">
                         Importe Sugerido: ${int(round(AnalysisEngine.kelly_criterion(prob_comb, cuota_comb, capital)))}
                     </div>
@@ -175,7 +175,7 @@ if df is not None:
                     <div class="custom-progress-fill" style="width: {mejor_prob*100}%; background-color: #3b82f6;"></div>
                 </div>
                 <h3>Seleccion Optima</h3>
-                <p style="color: #93c5fd;">Analisis completado: la mejor ventaja matematica es <b>{mejor_pick}</b>.</p>
+                <p style="color: #93c5fd;">Analisis completado: la opcion con mejor ventaja matematica es <b>{mejor_pick}</b> con una probabilidad del {mejor_prob*100:.1f}%.</p>
                 <div style="background-color: #1e3a8a; padding: 10px; border-radius: 8px; color: #93c5fd; font-weight: bold;">
                     Importe Sugerido: ${int(round(monto_optimo))}
                 </div>
