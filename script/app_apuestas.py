@@ -93,7 +93,7 @@ if df is not None:
     with c_m4: m_over25 = st.number_input("Momio +2.5 Goles", min_value=1.0, value=None, format="%g", placeholder="0")
     with c_m5: m_btts = st.number_input("Momio Ambos Anotan", min_value=1.0, value=None, format="%g", placeholder="0")
 
-    # LINEA CLAVE: ascending=False para orden DESCENDENTE (Más nuevo arriba)
+    # ORDEN DESCENDENTE FORZADO (ascending=False)
     enfrentamientos = df[((df['Home'] == e_h) & (df['Away'] == e_v)) | ((df['Home'] == e_v) & (df['Away'] == e_h))].sort_values('Date', ascending=False)
     
     m_h = df[df['Home'] == e_h]['HG'].mean()
@@ -102,6 +102,7 @@ if df is not None:
 
     st.subheader("Enfrentamientos Directos")
     if not enfrentamientos.empty:
+        # Mostramos la tabla completa ordenada de mas nuevo a mas viejo
         st.dataframe(enfrentamientos[['Date', 'Home', 'HG', 'AG', 'Away']], use_container_width=True, hide_index=True)
     else:
         st.info("No se registran enfrentamientos previos.")
@@ -112,6 +113,7 @@ if df is not None:
         st.subheader("Analisis de Probabilidades y Apuesta")
         res1, res2 = st.columns(2)
 
+        # Opcion Segura
         with res1:
             if stats['Win_H'] > stats['BTTS']:
                 pick, prob, cuota_usada = f"Victoria {e_h}", stats['Win_H'], m_local
@@ -132,6 +134,7 @@ if df is not None:
                 </div>
             """, unsafe_allow_html=True)
 
+        # Opcion Arriesgada
         with res2:
             prob_comb = stats['Win_H'] * stats['Over25']
             cuota_comb = m_local * m_over25 * 0.85 
@@ -150,6 +153,7 @@ if df is not None:
                 </div>
             """, unsafe_allow_html=True)
 
+        # Seleccion Optima
         ev_local = (stats['Win_H'] * m_local) - 1
         ev_over = (stats['Over25'] * m_over25) - 1
         mejor_pick, mejor_prob, mejor_cuota = ("Mas de 2.5 goles", stats['Over25'], m_over25) if ev_over > ev_local else (f"Victoria: {e_h}", stats['Win_H'], m_local)
