@@ -5,7 +5,7 @@ from scipy.stats import poisson
 import os
 
 # --- 1. CONFIGURACION DE LA INTERFAZ ---
-st.set_page_config(page_title="Prototipo de Apuestas", layout="wide")
+st.set_page_config(page_title="Sistema de Apuestas", layout="wide")
 
 st.markdown("""
     <style>
