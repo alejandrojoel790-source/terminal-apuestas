@@ -5,7 +5,7 @@ from scipy.stats import poisson
 import os
 
 # --- 1. CONFIGURACION DE LA INTERFAZ ---
-st.set_page_config(page_title="Prototipo de Apuestas 2026", layout="wide")
+st.set_page_config(page_title="Prototipo de Apuestas", layout="wide")
 
 st.markdown("""
     <style>
@@ -93,7 +93,7 @@ if df is not None:
     with c_m4: m_over25 = st.number_input("Momio +2.5 Goles", min_value=1.0, value=None, format="%g", placeholder="0")
     with c_m5: m_btts = st.number_input("Momio Ambos Anotan", min_value=1.0, value=None, format="%g", placeholder="0")
 
-    # ORDEN DESCENDENTE: Los datos más nuevos (2026) aparecerán arriba
+    # AJUSTE: ascending=False para que el 2026 quede arriba
     enfrentamientos = df[((df['Home'] == e_h) & (df['Away'] == e_v)) | ((df['Home'] == e_v) & (df['Away'] == e_h))].sort_values('Date', ascending=False)
     
     m_h = df[df['Home'] == e_h]['HG'].mean()
@@ -155,12 +155,7 @@ if df is not None:
         # Seleccion Optima
         ev_local = (stats['Win_H'] * m_local) - 1
         ev_over = (stats['Over25'] * m_over25) - 1
-        
-        if ev_over > ev_local:
-            mejor_pick, mejor_prob, mejor_cuota = "Mas de 2.5 goles", stats['Over25'], m_over25
-        else:
-            mejor_pick, mejor_prob, mejor_cuota = f"Victoria: {e_h}", stats['Win_H'], m_local
-
+        mejor_pick, mejor_prob, mejor_cuota = ("Mas de 2.5 goles", stats['Over25'], m_over25) if ev_over > ev_local else (f"Victoria: {e_h}", stats['Win_H'], m_local)
         monto_optimo = AnalysisEngine.kelly_criterion(mejor_prob, mejor_cuota, capital)
 
         st.markdown(f"""
