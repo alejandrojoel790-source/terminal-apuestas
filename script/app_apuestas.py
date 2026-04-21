@@ -5,7 +5,7 @@ from scipy.stats import poisson
 import os
 
 # --- 1. CONFIGURACION DE LA INTERFAZ ---
-st.set_page_config(page_title="Sistemade Apuestas", layout="wide")
+st.set_page_config(page_title="Prototipo de Apuestas", layout="wide")
 
 st.markdown("""
     <style>
@@ -107,6 +107,21 @@ if df is not None:
     with col_sel2: 
         e_v = st.selectbox("Equipo Visitante", lista_equipos, index=1)
 
+    # --- CALCULO INICIAL DE STATS ---
+    m_h = df[df['Home'] == e_h]['HG'].mean() if not df[df['Home'] == e_h].empty else 0
+    m_v = df[df['Away'] == e_v]['AG'].mean() if not df[df['Away'] == e_v].empty else 0
+    stats = AnalysisEngine.calcular_stats_completas(m_h, m_v)
+
+    # --- PROBABILIDADES ARRIBA ---
+    st.markdown("---")
+    st.subheader("Probabilidades del Modelo")
+    p_col1, p_col2, p_col3, p_col4, p_col5 = st.columns(5)
+    with p_col1: st.metric(f"Victoria {e_h}", f"{stats['Win_H']*100:.1f}%")
+    with p_col2: st.metric("Empate", f"{stats['Draw']*100:.1f}%")
+    with p_col3: st.metric(f"Victoria {e_v}", f"{stats['Win_V']*100:.1f}%")
+    with p_col4: st.metric("Over 2.5 Goles", f"{stats['Over25']*100:.1f}%")
+    with p_col5: st.metric("Ambos Anotan", f"{stats['BTTS']*100:.1f}%")
+
     st.markdown("---")
     st.subheader("Ingreso de Momios Actuales")
     c_m1, c_m2, c_m3, c_m4, c_m5 = st.columns(5)
@@ -116,30 +131,16 @@ if df is not None:
     with c_m4: m_over25 = st.number_input("Momio +2.5 Goles", min_value=1.0, value=None, format="%g", placeholder="0")
     with c_m5: m_btts = st.number_input("Momio Ambos Anotan", min_value=1.0, value=None, format="%g", placeholder="0")
 
+    st.markdown("---")
+    st.subheader("Enfrentamientos Directos")
     enfrentamientos = df[((df['Home'] == e_h) & (df['Away'] == e_v)) | 
                          ((df['Home'] == e_v) & (df['Away'] == e_h))]
-    
     enfrentamientos = enfrentamientos.sort_values(by='Date', ascending=False)
-    
-    m_h = df[df['Home'] == e_h]['HG'].mean() if not df[df['Home'] == e_h].empty else 0
-    m_v = df[df['Away'] == e_v]['AG'].mean() if not df[df['Away'] == e_v].empty else 0
-    stats = AnalysisEngine.calcular_stats_completas(m_h, m_v)
 
-    st.subheader("Enfrentamientos Directos")
     if not enfrentamientos.empty:
         st.dataframe(enfrentamientos[['Date', 'Home', 'HG', 'AG', 'Away']], use_container_width=True, hide_index=True)
     else:
         st.info(f"No se registran enfrentamientos previos entre {e_h} y {e_v}.")
-
-    # --- NUEVA SECCION DE PROBABILIDADES ---
-    st.markdown("---")
-    st.subheader("Probabilidades del Modelo")
-    p_col1, p_col2, p_col3, p_col4, p_col5 = st.columns(5)
-    with p_col1: st.metric(f"Victoria {e_h}", f"{stats['Win_H']*100:.1f}%")
-    with p_col2: st.metric("Empate", f"{stats['Draw']*100:.1f}%")
-    with p_col3: st.metric(f"Victoria {e_v}", f"{stats['Win_V']*100:.1f}%")
-    with p_col4: st.metric("Over 2.5 Goles", f"{stats['Over25']*100:.1f}%")
-    with p_col5: st.metric("Ambos Anotan", f"{stats['BTTS']*100:.1f}%")
 
     st.markdown("---")
     
