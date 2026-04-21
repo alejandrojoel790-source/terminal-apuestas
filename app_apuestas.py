@@ -14,6 +14,8 @@ st.markdown("""
     .bet-card { background-color: #262730; padding: 20px; border-radius: 15px; border: 1px solid #4b5563; margin-bottom: 20px; }
     .safe-bet { border-left: 8px solid #10b981; }
     .risky-bet { border-left: 8px solid #f59e0b; }
+    /* Ajuste para que las barras de progreso se vean mas integradas */
+    .stProgress > div > div > div > div { background-color: #3b82f6; }
     </style>
     """, unsafe_allow_html=True)
 
@@ -63,7 +65,6 @@ st.title("Prototipo de Apuestas")
 
 with st.sidebar:
     st.header("Configuracion")
-    # Capital tambien como entero para consistencia
     capital = st.number_input("Capital Total", min_value=0.0, value=1000.0, format="%g")
     
     liga_opciones = {"Bundesliga": "BL1_2026", "Championship": "ELC_2026"}
@@ -107,35 +108,35 @@ if df is not None:
 
         # Opcion Segura
         with res1:
-            st.markdown('<div class="bet-card safe-bet">', unsafe_allow_html=True)
-            st.markdown("### Opcion Segura")
             if stats['Win_H'] > stats['BTTS']:
                 pick, prob, cuota_usada = f"Victoria {e_h}", stats['Win_H'], m_local
             else:
                 pick, prob, cuota_usada = "Ambos Anotan", stats['BTTS'], m_btts
             
+            st.markdown('<div class="bet-card safe-bet">', unsafe_allow_html=True)
+            st.progress(prob) # Barra de progreso funcional
+            st.markdown("### Opcion Segura")
             st.write(f"**Pronostico:** {pick}")
             st.write(f"**Probabilidad:** {prob*100:.1f}%")
             monto = AnalysisEngine.kelly_criterion(prob, cuota_usada, capital)
-            # Redondeo a entero para el importe sugerido
             st.success(f"**Importe Sugerido:** ${int(round(monto))}")
             st.markdown('</div>', unsafe_allow_html=True)
 
         # Opcion Arriesgada
         with res2:
-            st.markdown('<div class="bet-card risky-bet">', unsafe_allow_html=True)
-            st.markdown("### Opcion Arriesgada")
             prob_comb = stats['Win_H'] * stats['Over25']
             cuota_comb = m_local * m_over25 * 0.85 
+            
+            st.markdown('<div class="bet-card risky-bet">', unsafe_allow_html=True)
+            st.progress(prob_comb) # Barra de progreso funcional
+            st.markdown("### Opcion Arriesgada")
             st.write(f"**Pronostico:** {e_h} y Mas de 2.5 goles")
             st.write(f"**Probabilidad:** {prob_comb*100:.1f}%")
             monto_r = AnalysisEngine.kelly_criterion(prob_comb, cuota_comb, capital)
-            # Redondeo a entero para el importe sugerido
             st.warning(f"**Importe Sugerido:** ${int(round(monto_r))}")
             st.markdown('</div>', unsafe_allow_html=True)
 
-        st.markdown('<div class="bet-card" style="border-top: 5px solid #3b82f6;">', unsafe_allow_html=True)
-        st.write("### Seleccion Optima")
+        # Seleccion Optima
         ev_local = (stats['Win_H'] * m_local) - 1
         ev_over = (stats['Over25'] * m_over25) - 1
         
@@ -144,6 +145,9 @@ if df is not None:
         else:
             mejor_pick, mejor_prob = f"Victoria: {e_h}", stats['Win_H']
 
+        st.markdown('<div class="bet-card" style="border-top: 5px solid #3b82f6;">', unsafe_allow_html=True)
+        st.progress(mejor_prob) # Barra funcional para la mejor opcion
+        st.write("### Seleccion Optima")
         st.info(f"Analisis completado: la opcion con mejor balance riesgo/beneficio es {mejor_pick} con una probabilidad del {mejor_prob*100:.1f}%.")
         st.markdown('</div>', unsafe_allow_html=True)
     else:
