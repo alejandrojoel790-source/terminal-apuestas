@@ -79,11 +79,27 @@ with st.sidebar:
 df = cargar_datos(archivo_liga)
 
 if df is not None:
+    # --- SELECCION DE EQUIPOS ---
     equipos = sorted(df['Home'].unique())
     col_sel1, col_sel2 = st.columns(2)
     with col_sel1: e_h = st.selectbox("Equipo Local", equipos)
     with col_sel2: e_v = st.selectbox("Equipo Visitante", equipos, index=1)
 
+    # --- CALCULO DE PROBABILIDADES (UBICACION SOLICITADA) ---
+    m_h = df[df['Home'] == e_h]['HG'].mean()
+    m_v = df[df['Away'] == e_v]['AG'].mean()
+    stats = AnalysisEngine.calcular_stats_completas(m_h, m_v)
+
+    st.markdown("---")
+    st.subheader("Probabilidades Calculadas")
+    p1, p2, p3, p4, p5 = st.columns(5)
+    p1.metric(f"Gana {e_h}", f"{stats['Win_H']*100:.1f}%")
+    p2.metric("Empate", f"{stats['Draw']*100:.1f}%")
+    p3.metric(f"Gana {e_v}", f"{stats['Win_V']*100:.1f}%")
+    p4.metric("Mas de 2.5", f"{stats['Over25']*100:.1f}%")
+    p5.metric("Ambos Anotan", f"{stats['BTTS']*100:.1f}%")
+
+    # --- INGRESO DE MOMIOS ---
     st.markdown("---")
     st.subheader("Ingreso de Momios Actuales")
     c_m1, c_m2, c_m3, c_m4, c_m5 = st.columns(5)
@@ -93,30 +109,17 @@ if df is not None:
     with c_m4: m_over25 = st.number_input("Momio +2.5 Goles", min_value=1.0, value=None, format="%g", placeholder="0")
     with c_m5: m_btts = st.number_input("Momio Ambos Anotan", min_value=1.0, value=None, format="%g", placeholder="0")
 
-    # ORDEN DESCENDENTE (2026 arriba)
+    # --- ENFRENTAMIENTOS DIRECTOS (ORDENADO DESCENDENTE) ---
     enfrentamientos = df[((df['Home'] == e_h) & (df['Away'] == e_v)) | 
                          ((df['Home'] == e_v) & (df['Away'] == e_h))].sort_values('Date', ascending=False)
     
-    m_h = df[df['Home'] == e_h]['HG'].mean()
-    m_v = df[df['Away'] == e_v]['AG'].mean()
-    stats = AnalysisEngine.calcular_stats_completas(m_h, m_v)
-
     st.subheader("Enfrentamientos Directos")
     if not enfrentamientos.empty:
         st.dataframe(enfrentamientos[['Date', 'Home', 'HG', 'AG', 'Away']], use_container_width=True, hide_index=True)
     else:
         st.info("No se registran enfrentamientos previos.")
 
-    # --- 5. SECCION SOLICITADA: TODAS LAS PROBABILIDADES ---
-    st.markdown("---")
-    st.subheader("Probabilidades de Mercado")
-    p1, p2, p3, p4, p5 = st.columns(5)
-    p1.metric(f"Gana {e_h}", f"{stats['Win_H']*100:.1f}%")
-    p2.metric("Empate", f"{stats['Draw']*100:.1f}%")
-    p3.metric(f"Gana {e_v}", f"{stats['Win_V']*100:.1f}%")
-    p4.metric("Mas de 2.5", f"{stats['Over25']*100:.1f}%")
-    p5.metric("Ambos Anotan", f"{stats['BTTS']*100:.1f}%")
-
+    # --- ANALISIS FINAL DE APUESTA ---
     st.markdown("---")
     
     if all([m_local, m_empate, m_visita, m_over25, m_btts]):
@@ -175,7 +178,7 @@ if df is not None:
                     <div class="custom-progress-fill" style="width: {mejor_prob*100}%; background-color: #3b82f6;"></div>
                 </div>
                 <h3>Seleccion Optima</h3>
-                <p style="color: #93c5fd;">Analisis completado: la opcion con mejor ventaja matematica es <b>{mejor_pick}</b> con una probabilidad del {mejor_prob*100:.1f}%.</p>
+                <p style="color: #93c5fd;">Analisis completado: la mejor ventaja matematica es <b>{mejor_pick}</b> con una probabilidad del {mejor_prob*100:.1f}%.</p>
                 <div style="background-color: #1e3a8a; padding: 10px; border-radius: 8px; color: #93c5fd; font-weight: bold;">
                     Importe Sugerido: ${int(round(monto_optimo))}
                 </div>
