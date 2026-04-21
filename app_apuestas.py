@@ -63,6 +63,7 @@ st.title("Prototipo de Apuestas")
 
 with st.sidebar:
     st.header("Configuracion")
+    # Capital tambien como entero para consistencia
     capital = st.number_input("Capital Total", min_value=0.0, value=1000.0, format="%g")
     
     liga_opciones = {"Bundesliga": "BL1_2026", "Championship": "ELC_2026"}
@@ -77,11 +78,9 @@ if df is not None:
     with col_sel1: e_h = st.selectbox("Equipo Local", equipos)
     with col_sel2: e_v = st.selectbox("Equipo Visitante", equipos, index=1)
 
-    # --- SECCION DE MOMIOS LIMPIOS ---
     st.markdown("---")
     st.subheader("Ingreso de Momios Actuales")
     c_m1, c_m2, c_m3, c_m4, c_m5 = st.columns(5)
-    # El parametro format="%g" quita los decimales innecesarios (.00)
     with c_m1: m_local = st.number_input(f"Momio {e_h}", min_value=1.0, value=None, format="%g", placeholder="0")
     with c_m2: m_empate = st.number_input("Momio Empate", min_value=1.0, value=None, format="%g", placeholder="0")
     with c_m3: m_visita = st.number_input(f"Momio {e_v}", min_value=1.0, value=None, format="%g", placeholder="0")
@@ -118,7 +117,8 @@ if df is not None:
             st.write(f"**Pronostico:** {pick}")
             st.write(f"**Probabilidad:** {prob*100:.1f}%")
             monto = AnalysisEngine.kelly_criterion(prob, cuota_usada, capital)
-            st.success(f"**Importe Sugerido:** ${monto:g}")
+            # Redondeo a entero para el importe sugerido
+            st.success(f"**Importe Sugerido:** ${int(round(monto))}")
             st.markdown('</div>', unsafe_allow_html=True)
 
         # Opcion Arriesgada
@@ -130,7 +130,8 @@ if df is not None:
             st.write(f"**Pronostico:** {e_h} y Mas de 2.5 goles")
             st.write(f"**Probabilidad:** {prob_comb*100:.1f}%")
             monto_r = AnalysisEngine.kelly_criterion(prob_comb, cuota_comb, capital)
-            st.warning(f"**Importe Sugerido:** ${monto_r:g}")
+            # Redondeo a entero para el importe sugerido
+            st.warning(f"**Importe Sugerido:** ${int(round(monto_r))}")
             st.markdown('</div>', unsafe_allow_html=True)
 
         st.markdown('<div class="bet-card" style="border-top: 5px solid #3b82f6;">', unsafe_allow_html=True)
