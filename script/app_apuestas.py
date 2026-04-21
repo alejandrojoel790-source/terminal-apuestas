@@ -31,7 +31,25 @@ st.markdown("""
     </style>
     """, unsafe_allow_html=True)
 
-# --- 2. MOTOR DE CALCULO ANALITICO ---
+# --- 2. LISTAS OFICIALES DE EQUIPOS ---
+EQUIPOS_POR_LIGA = {
+    "Bundesliga": [
+        "1. FC Heidenheim 1846", "1. FC Köln", "1. FC Union Berlin", "1. FSV Mainz 05",
+        "Bayer 04 Leverkusen", "Borussia Dortmund", "Borussia Mönchengladbach",
+        "Eintracht Frankfurt", "FC Augsburg", "FC Bayern München", "FC St. Pauli",
+        "Hamburger SV", "RB Leipzig", "SC Freiburg", "SV Werder Bremen",
+        "TSG 1899 Hoffenheim", "VfB Stuttgart", "VfL Wolfsburg"
+    ],
+    "Championship": [
+        "Blackburn Rovers", "Bristol City", "Burnley FC", "Cardiff City", "Coventry City",
+        "Derby County", "Hull City", "Leeds United", "Luton Town", "Middlesbrough",
+        "Millwall FC", "Norwich City", "Oxford United", "Plymouth Argyle", "Portsmouth FC",
+        "Preston North End", "Queens Park Rangers", "Sheffield United", "Sheffield Wednesday",
+        "Stoke City", "Sunderland AFC", "Swansea City", "Watford FC", "West Bromwich Albion"
+    ]
+}
+
+# --- 3. MOTOR DE CALCULO ANALITICO ---
 class AnalysisEngine:
     @staticmethod
     def calcular_stats_completas(media_h, media_v):
@@ -56,18 +74,17 @@ class AnalysisEngine:
         f = (b * prob - q) / b
         return max(0, f * bankroll * 0.5)
 
-# --- 3. GESTION DE DATOS ---
+# --- 4. GESTION DE DATOS ---
 @st.cache_data
 def cargar_datos(liga_file):
     ruta = f"Data/{liga_file}.csv"
     if os.path.exists(ruta):
         df = pd.read_csv(ruta)
-        # Convertimos a fecha inmediatamente después de cargar
         df['Date'] = pd.to_datetime(df['Date'])
         return df
     return None
 
-# --- 4. PANEL DE CONTROL ---
+# --- 5. PANEL DE CONTROL ---
 st.title("Prototipo de Apuestas")
 
 with st.sidebar:
@@ -80,10 +97,13 @@ with st.sidebar:
 df = cargar_datos(archivo_liga)
 
 if df is not None:
-    equipos = sorted(df['Home'].unique())
+    lista_equipos = EQUIPOS_POR_LIGA[seleccion_liga]
+    
     col_sel1, col_sel2 = st.columns(2)
-    with col_sel1: e_h = st.selectbox("Equipo Local", equipos)
-    with col_sel2: e_v = st.selectbox("Equipo Visitante", equipos, index=1)
+    with col_sel1: 
+        e_h = st.selectbox("Equipo Local", lista_equipos)
+    with col_sel2: 
+        e_v = st.selectbox("Equipo Visitante", lista_equipos, index=1)
 
     st.markdown("---")
     st.subheader("Ingreso de Momios Actuales")
@@ -94,23 +114,20 @@ if df is not None:
     with c_m4: m_over25 = st.number_input("Momio +2.5 Goles", min_value=1.0, value=None, format="%g", placeholder="0")
     with c_m5: m_btts = st.number_input("Momio Ambos Anotan", min_value=1.0, value=None, format="%g", placeholder="0")
 
-    # --- FILTRADO Y ORDENAMIENTO (NUEVO ARRIBA) ---
     enfrentamientos = df[((df['Home'] == e_h) & (df['Away'] == e_v)) | 
                          ((df['Home'] == e_v) & (df['Away'] == e_h))]
     
-    # Ordenamos por fecha de forma descendente (False) para que 2026 sea el primero
     enfrentamientos = enfrentamientos.sort_values(by='Date', ascending=False)
     
-    m_h = df[df['Home'] == e_h]['HG'].mean()
-    m_v = df[df['Away'] == e_v]['AG'].mean()
+    m_h = df[df['Home'] == e_h]['HG'].mean() if not df[df['Home'] == e_h].empty else 0
+    m_v = df[df['Away'] == e_v]['AG'].mean() if not df[df['Away'] == e_v].empty else 0
     stats = AnalysisEngine.calcular_stats_completas(m_h, m_v)
 
     st.subheader("Enfrentamientos Directos")
     if not enfrentamientos.empty:
-        # hide_index=True elimina la columna de números de la base de datos
         st.dataframe(enfrentamientos[['Date', 'Home', 'HG', 'AG', 'Away']], use_container_width=True, hide_index=True)
     else:
-        st.info("No se registran enfrentamientos previos.")
+        st.info(f"No se registran enfrentamientos previos entre {e_h} y {e_v}.")
 
     st.markdown("---")
     
@@ -118,7 +135,6 @@ if df is not None:
         st.subheader("Analisis de Probabilidades y Apuesta")
         res1, res2 = st.columns(2)
 
-        # Opcion Segura
         with res1:
             if stats['Win_H'] > stats['BTTS']:
                 pick, prob, cuota_usada = f"Victoria {e_h}", stats['Win_H'], m_local
@@ -139,7 +155,6 @@ if df is not None:
                 </div>
             """, unsafe_allow_html=True)
 
-        # Opcion Arriesgada
         with res2:
             prob_comb = stats['Win_H'] * stats['Over25']
             cuota_comb = m_local * m_over25 * 0.85 
@@ -158,7 +173,6 @@ if df is not None:
                 </div>
             """, unsafe_allow_html=True)
 
-        # Seleccion Optima
         ev_local = (stats['Win_H'] * m_local) - 1
         ev_over = (stats['Over25'] * m_over25) - 1
         
@@ -184,4 +198,4 @@ if df is not None:
     else:
         st.info("Ingresa los momios actuales para generar las recomendaciones.")
 else:
-    st.error("Error: Los archivos de datos no estan disponibles.")
+    st.error(f"Error: No se encontro el archivo 'Data/{archivo_liga}.csv'.")
