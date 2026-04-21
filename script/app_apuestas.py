@@ -14,6 +14,7 @@ st.markdown("""
     .bet-card { background-color: #262730; padding: 20px; border-radius: 15px; border: 1px solid #4b5563; margin-bottom: 20px; }
     .safe-bet { border-left: 8px solid #10b981; }
     .risky-bet { border-left: 8px solid #f59e0b; }
+    .draw-bet { border-left: 8px solid #6366f1; }
     
     .custom-progress-bg {
         background-color: #374151;
@@ -56,8 +57,8 @@ class AnalysisEngine:
         prob_h, prob_e, prob_v = 0, 0, 0
         over25 = 0
         btts = 0
-        for g_h in range(9):
-            for g_v in range(9):
+        for g_h in range(12):
+            for g_v in range(12):
                 p = poisson.pmf(g_h, media_h) * poisson.pmf(g_v, media_v)
                 if g_h > g_v: prob_h += p
                 elif g_h == g_v: prob_e += p
@@ -133,8 +134,9 @@ if df is not None:
     
     if all([m_local, m_empate, m_visita, m_over25, m_btts]):
         st.subheader("Analisis de Probabilidades y Apuesta")
-        res1, res2 = st.columns(2)
+        res1, res2, res3 = st.columns(3)
 
+        # Opcion Local / BTTS
         with res1:
             if stats['Win_H'] > stats['BTTS']:
                 pick, prob, cuota_usada = f"Victoria {e_h}", stats['Win_H'], m_local
@@ -146,7 +148,7 @@ if df is not None:
                     <div class="custom-progress-bg">
                         <div class="custom-progress-fill" style="width: {prob*100}%; background-color: #10b981;"></div>
                     </div>
-                    <h3>Opcion Segura</h3>
+                    <h3>Opcion Principal</h3>
                     <p><b>Pronostico:</b> {pick}</p>
                     <p><b>Probabilidad:</b> {prob*100:.1f}%</p>
                     <div style="background-color: #064e3b; padding: 10px; border-radius: 8px; color: #10b981; font-weight: bold;">
@@ -155,7 +157,25 @@ if df is not None:
                 </div>
             """, unsafe_allow_html=True)
 
+        # Opcion Empate (Nueva)
         with res2:
+            prob_e = stats['Draw']
+            st.markdown(f"""
+                <div class="bet-card draw-bet">
+                    <div class="custom-progress-bg">
+                        <div class="custom-progress-fill" style="width: {prob_e*100}%; background-color: #6366f1;"></div>
+                    </div>
+                    <h3>Opcion Empate</h3>
+                    <p><b>Pronostico:</b> Empate</p>
+                    <p><b>Probabilidad:</b> {prob_e*100:.1f}%</p>
+                    <div style="background-color: #1e1b4b; padding: 10px; border-radius: 8px; color: #a5b4fc; font-weight: bold;">
+                        Importe Sugerido: ${int(round(AnalysisEngine.kelly_criterion(prob_e, m_empate, capital)))}
+                    </div>
+                </div>
+            """, unsafe_allow_html=True)
+
+        # Opcion Arriesgada
+        with res3:
             prob_comb = stats['Win_H'] * stats['Over25']
             cuota_comb = m_local * m_over25 * 0.85 
             
@@ -173,13 +193,20 @@ if df is not None:
                 </div>
             """, unsafe_allow_html=True)
 
+        # Seleccion Optima (Cálculo comparativo de EV)
         ev_local = (stats['Win_H'] * m_local) - 1
+        ev_empate = (stats['Draw'] * m_empate) - 1
         ev_over = (stats['Over25'] * m_over25) - 1
         
-        if ev_over > ev_local:
-            mejor_pick, mejor_prob, mejor_cuota = "Mas de 2.5 goles", stats['Over25'], m_over25
-        else:
-            mejor_pick, mejor_prob, mejor_cuota = f"Victoria: {e_h}", stats['Win_H'], m_local
+        # Diccionario para encontrar el EV mas alto
+        opciones_ev = {
+            f"Victoria: {e_h}": (ev_local, stats['Win_H'], m_local),
+            "Empate": (ev_empate, stats['Draw'], m_empate),
+            "Mas de 2.5 goles": (ev_over, stats['Over25'], m_over25)
+        }
+        
+        mejor_pick = max(opciones_ev, key=lambda k: opciones_ev[k][0])
+        mejor_ev, mejor_prob, mejor_cuota = opciones_ev[mejor_pick]
 
         monto_optimo = AnalysisEngine.kelly_criterion(mejor_prob, mejor_cuota, capital)
 
