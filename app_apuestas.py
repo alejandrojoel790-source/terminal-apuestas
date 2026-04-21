@@ -15,7 +15,6 @@ st.markdown("""
     .safe-bet { border-left: 8px solid #10b981; }
     .risky-bet { border-left: 8px solid #f59e0b; }
     
-    /* Contenedor de la barra personalizada */
     .custom-progress-bg {
         background-color: #374151;
         border-radius: 10px;
@@ -24,7 +23,6 @@ st.markdown("""
         margin-bottom: 15px;
         overflow: hidden;
     }
-    /* Relleno de la barra */
     .custom-progress-fill {
         height: 100%;
         border-radius: 10px;
@@ -95,14 +93,14 @@ if df is not None:
     with c_m4: m_over25 = st.number_input("Momio +2.5 Goles", min_value=1.0, value=None, format="%g", placeholder="0")
     with c_m5: m_btts = st.number_input("Momio Ambos Anotan", min_value=1.0, value=None, format="%g", placeholder="0")
 
-    enfrentamientos = df[((df['Home'] == e_h) & (df['Away'] == e_v)) | ((df['Home'] == e_v) & (df['Away'] == e_h))].sort_values('Date', ascending=False)
+    enfrentamientos = df[((df['Home'] == e_h) & (df['Away'] == e_v)) | ((df['Home'] == e_v) & (df['Away'] == e_h))].sort_values('Date', ascending=True)
     m_h = df[df['Home'] == e_h]['HG'].mean()
     m_v = df[df['Away'] == e_v]['AG'].mean()
     stats = AnalysisEngine.calcular_stats_completas(m_h, m_v)
 
     st.subheader("Enfrentamientos Directos")
     if not enfrentamientos.empty:
-        st.dataframe(enfrentamientos[['Date', 'Home', 'HG', 'AG', 'Away']].head(5), use_container_width=True)
+        st.dataframe(enfrentamientos[['Date', 'Home', 'HG', 'AG', 'Away']], use_container_width=True, hide_index=True)
     else:
         st.info("No se registran enfrentamientos previos.")
 
@@ -152,10 +150,16 @@ if df is not None:
                 </div>
             """, unsafe_allow_html=True)
 
-        # Seleccion Optima
+        # SELECCION OPTIMA CON IMPORTE
         ev_local = (stats['Win_H'] * m_local) - 1
         ev_over = (stats['Over25'] * m_over25) - 1
-        mejor_pick, mejor_prob = ("Mas de 2.5 goles", stats['Over25']) if ev_over > ev_local else (f"Victoria: {e_h}", stats['Win_H'])
+        
+        if ev_over > ev_local:
+            mejor_pick, mejor_prob, mejor_cuota = "Mas de 2.5 goles", stats['Over25'], m_over25
+        else:
+            mejor_pick, mejor_prob, mejor_cuota = f"Victoria: {e_h}", stats['Win_H'], m_local
+
+        monto_optimo = AnalysisEngine.kelly_criterion(mejor_prob, mejor_cuota, capital)
 
         st.markdown(f"""
             <div class="bet-card" style="border-top: 5px solid #3b82f6;">
@@ -164,6 +168,9 @@ if df is not None:
                 </div>
                 <h3>Seleccion Optima</h3>
                 <p style="color: #93c5fd;">Analisis completado: la opcion con mejor balance riesgo/beneficio es <b>{mejor_pick}</b> con una probabilidad del {mejor_prob*100:.1f}%.</p>
+                <div style="background-color: #1e3a8a; padding: 10px; border-radius: 8px; color: #93c5fd; font-weight: bold;">
+                    Importe Sugerido: ${int(round(monto_optimo))}
+                </div>
             </div>
         """, unsafe_allow_html=True)
     else:
