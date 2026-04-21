@@ -14,8 +14,22 @@ st.markdown("""
     .bet-card { background-color: #262730; padding: 20px; border-radius: 15px; border: 1px solid #4b5563; margin-bottom: 20px; }
     .safe-bet { border-left: 8px solid #10b981; }
     .risky-bet { border-left: 8px solid #f59e0b; }
-    /* Ajuste para que las barras de progreso se vean mas integradas */
-    .stProgress > div > div > div > div { background-color: #3b82f6; }
+    
+    /* Contenedor de la barra personalizada */
+    .custom-progress-bg {
+        background-color: #374151;
+        border-radius: 10px;
+        height: 12px;
+        width: 100%;
+        margin-bottom: 15px;
+        overflow: hidden;
+    }
+    /* Relleno de la barra */
+    .custom-progress-fill {
+        height: 100%;
+        border-radius: 10px;
+        transition: width 0.5s ease-in-out;
+    }
     </style>
     """, unsafe_allow_html=True)
 
@@ -26,7 +40,6 @@ class AnalysisEngine:
         prob_h, prob_e, prob_v = 0, 0, 0
         over25 = 0
         btts = 0
-        
         for g_h in range(9):
             for g_v in range(9):
                 p = poisson.pmf(g_h, media_h) * poisson.pmf(g_v, media_v)
@@ -35,11 +48,7 @@ class AnalysisEngine:
                 else: prob_v += p
                 if (g_h + g_v) > 2.5: over25 += p
                 if g_h > 0 and g_v > 0: btts += p
-                    
-        return {
-            "Win_H": prob_h, "Draw": prob_e, "Win_V": prob_v,
-            "Over25": over25, "BTTS": btts
-        }
+        return {"Win_H": prob_h, "Draw": prob_e, "Win_V": prob_v, "Over25": over25, "BTTS": btts}
 
     @staticmethod
     def kelly_criterion(prob, cuota, bankroll):
@@ -47,8 +56,7 @@ class AnalysisEngine:
         b = cuota - 1
         q = 1 - prob
         f = (b * prob - q) / b
-        apuesta = max(0, f * bankroll * 0.5)
-        return apuesta
+        return max(0, f * bankroll * 0.5)
 
 # --- 3. GESTION DE DATOS ---
 @st.cache_data
@@ -66,7 +74,6 @@ st.title("Prototipo de Apuestas")
 with st.sidebar:
     st.header("Configuracion")
     capital = st.number_input("Capital Total", min_value=0.0, value=1000.0, format="%g")
-    
     liga_opciones = {"Bundesliga": "BL1_2026", "Championship": "ELC_2026"}
     seleccion_liga = st.selectbox("Competicion:", list(liga_opciones.keys()))
     archivo_liga = liga_opciones[seleccion_liga]
@@ -88,7 +95,6 @@ if df is not None:
     with c_m4: m_over25 = st.number_input("Momio +2.5 Goles", min_value=1.0, value=None, format="%g", placeholder="0")
     with c_m5: m_btts = st.number_input("Momio Ambos Anotan", min_value=1.0, value=None, format="%g", placeholder="0")
 
-    # Filtrado y Calculos
     enfrentamientos = df[((df['Home'] == e_h) & (df['Away'] == e_v)) | ((df['Home'] == e_v) & (df['Away'] == e_h))].sort_values('Date', ascending=False)
     m_h = df[df['Home'] == e_h]['HG'].mean()
     m_v = df[df['Away'] == e_v]['AG'].mean()
@@ -113,45 +119,54 @@ if df is not None:
             else:
                 pick, prob, cuota_usada = "Ambos Anotan", stats['BTTS'], m_btts
             
-            st.markdown('<div class="bet-card safe-bet">', unsafe_allow_html=True)
-            st.progress(prob) # Barra de progreso funcional
-            st.markdown("### Opcion Segura")
-            st.write(f"**Pronostico:** {pick}")
-            st.write(f"**Probabilidad:** {prob*100:.1f}%")
-            monto = AnalysisEngine.kelly_criterion(prob, cuota_usada, capital)
-            st.success(f"**Importe Sugerido:** ${int(round(monto))}")
-            st.markdown('</div>', unsafe_allow_html=True)
+            st.markdown(f"""
+                <div class="bet-card safe-bet">
+                    <div class="custom-progress-bg">
+                        <div class="custom-progress-fill" style="width: {prob*100}%; background-color: #10b981;"></div>
+                    </div>
+                    <h3>Opcion Segura</h3>
+                    <p><b>Pronostico:</b> {pick}</p>
+                    <p><b>Probabilidad:</b> {prob*100:.1f}%</p>
+                    <div style="background-color: #064e3b; padding: 10px; border-radius: 8px; color: #10b981; font-weight: bold;">
+                        Importe Sugerido: ${int(round(AnalysisEngine.kelly_criterion(prob, cuota_usada, capital)))}
+                    </div>
+                </div>
+            """, unsafe_allow_html=True)
 
         # Opcion Arriesgada
         with res2:
             prob_comb = stats['Win_H'] * stats['Over25']
             cuota_comb = m_local * m_over25 * 0.85 
             
-            st.markdown('<div class="bet-card risky-bet">', unsafe_allow_html=True)
-            st.progress(prob_comb) # Barra de progreso funcional
-            st.markdown("### Opcion Arriesgada")
-            st.write(f"**Pronostico:** {e_h} y Mas de 2.5 goles")
-            st.write(f"**Probabilidad:** {prob_comb*100:.1f}%")
-            monto_r = AnalysisEngine.kelly_criterion(prob_comb, cuota_comb, capital)
-            st.warning(f"**Importe Sugerido:** ${int(round(monto_r))}")
-            st.markdown('</div>', unsafe_allow_html=True)
+            st.markdown(f"""
+                <div class="bet-card risky-bet">
+                    <div class="custom-progress-bg">
+                        <div class="custom-progress-fill" style="width: {prob_comb*100}%; background-color: #f59e0b;"></div>
+                    </div>
+                    <h3>Opcion Arriesgada</h3>
+                    <p><b>Pronostico:</b> {e_h} y Mas de 2.5 goles</p>
+                    <p><b>Probabilidad:</b> {prob_comb*100:.1f}%</p>
+                    <div style="background-color: #78350f; padding: 10px; border-radius: 8px; color: #f59e0b; font-weight: bold;">
+                        Importe Sugerido: ${int(round(AnalysisEngine.kelly_criterion(prob_comb, cuota_comb, capital)))}
+                    </div>
+                </div>
+            """, unsafe_allow_html=True)
 
         # Seleccion Optima
         ev_local = (stats['Win_H'] * m_local) - 1
         ev_over = (stats['Over25'] * m_over25) - 1
-        
-        if ev_over > ev_local:
-            mejor_pick, mejor_prob = "Mas de 2.5 goles", stats['Over25']
-        else:
-            mejor_pick, mejor_prob = f"Victoria: {e_h}", stats['Win_H']
+        mejor_pick, mejor_prob = ("Mas de 2.5 goles", stats['Over25']) if ev_over > ev_local else (f"Victoria: {e_h}", stats['Win_H'])
 
-        st.markdown('<div class="bet-card" style="border-top: 5px solid #3b82f6;">', unsafe_allow_html=True)
-        st.progress(mejor_prob) # Barra funcional para la mejor opcion
-        st.write("### Seleccion Optima")
-        st.info(f"Analisis completado: la opcion con mejor balance riesgo/beneficio es {mejor_pick} con una probabilidad del {mejor_prob*100:.1f}%.")
-        st.markdown('</div>', unsafe_allow_html=True)
+        st.markdown(f"""
+            <div class="bet-card" style="border-top: 5px solid #3b82f6;">
+                <div class="custom-progress-bg">
+                    <div class="custom-progress-fill" style="width: {mejor_prob*100}%; background-color: #3b82f6;"></div>
+                </div>
+                <h3>Seleccion Optima</h3>
+                <p style="color: #93c5fd;">Analisis completado: la opcion con mejor balance riesgo/beneficio es <b>{mejor_pick}</b> con una probabilidad del {mejor_prob*100:.1f}%.</p>
+            </div>
+        """, unsafe_allow_html=True)
     else:
         st.info("Ingresa los momios actuales para generar las recomendaciones.")
-
 else:
     st.error("Error: Los archivos de datos no estan disponibles.")
