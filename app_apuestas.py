@@ -63,7 +63,7 @@ st.title("Prototipo de Apuestas")
 
 with st.sidebar:
     st.header("Configuracion")
-    capital = st.number_input("Capital Total (Opcional)", min_value=0.0, value=1000.0, step=100.0)
+    capital = st.number_input("Capital Total", min_value=0.0, value=1000.0, format="%g")
     
     liga_opciones = {"Bundesliga": "BL1_2026", "Championship": "ELC_2026"}
     seleccion_liga = st.selectbox("Competicion:", list(liga_opciones.keys()))
@@ -77,33 +77,31 @@ if df is not None:
     with col_sel1: e_h = st.selectbox("Equipo Local", equipos)
     with col_sel2: e_v = st.selectbox("Equipo Visitante", equipos, index=1)
 
-    # --- SECCION DE MOMIOS (VACIOS POR DEFECTO) ---
+    # --- SECCION DE MOMIOS LIMPIOS ---
     st.markdown("---")
     st.subheader("Ingreso de Momios Actuales")
     c_m1, c_m2, c_m3, c_m4, c_m5 = st.columns(5)
-    with c_m1: m_local = st.number_input(f"Momio {e_h}", min_value=1.0, value=None, step=0.01, placeholder="0.00")
-    with c_m2: m_empate = st.number_input("Momio Empate", min_value=1.0, value=None, step=0.01, placeholder="0.00")
-    with c_m3: m_visita = st.number_input(f"Momio {e_v}", min_value=1.0, value=None, step=0.01, placeholder="0.00")
-    with c_m4: m_over25 = st.number_input("Momio +2.5 Goles", min_value=1.0, value=None, step=0.01, placeholder="0.00")
-    with c_m5: m_btts = st.number_input("Momio Ambos Anotan", min_value=1.0, value=None, step=0.01, placeholder="0.00")
+    # El parametro format="%g" quita los decimales innecesarios (.00)
+    with c_m1: m_local = st.number_input(f"Momio {e_h}", min_value=1.0, value=None, format="%g", placeholder="0")
+    with c_m2: m_empate = st.number_input("Momio Empate", min_value=1.0, value=None, format="%g", placeholder="0")
+    with c_m3: m_visita = st.number_input(f"Momio {e_v}", min_value=1.0, value=None, format="%g", placeholder="0")
+    with c_m4: m_over25 = st.number_input("Momio +2.5 Goles", min_value=1.0, value=None, format="%g", placeholder="0")
+    with c_m5: m_btts = st.number_input("Momio Ambos Anotan", min_value=1.0, value=None, format="%g", placeholder="0")
 
-    # Filtrado y Calculos de base
+    # Filtrado y Calculos
     enfrentamientos = df[((df['Home'] == e_h) & (df['Away'] == e_v)) | ((df['Home'] == e_v) & (df['Away'] == e_h))].sort_values('Date', ascending=False)
     m_h = df[df['Home'] == e_h]['HG'].mean()
     m_v = df[df['Away'] == e_v]['AG'].mean()
     stats = AnalysisEngine.calcular_stats_completas(m_h, m_v)
 
-    # --- 5. ANALISIS HISTORICO ---
     st.subheader("Enfrentamientos Directos")
     if not enfrentamientos.empty:
         st.dataframe(enfrentamientos[['Date', 'Home', 'HG', 'AG', 'Away']].head(5), use_container_width=True)
     else:
         st.info("No se registran enfrentamientos previos.")
 
-    # --- 6. RESULTADOS DEL ANALISIS (SOLO SI HAY MOMIOS) ---
     st.markdown("---")
     
-    # Verificamos que se hayan ingresado los momios necesarios para mostrar recomendaciones
     if all([m_local, m_empate, m_visita, m_over25, m_btts]):
         st.subheader("Analisis de Probabilidades y Apuesta")
         res1, res2 = st.columns(2)
@@ -120,7 +118,7 @@ if df is not None:
             st.write(f"**Pronostico:** {pick}")
             st.write(f"**Probabilidad:** {prob*100:.1f}%")
             monto = AnalysisEngine.kelly_criterion(prob, cuota_usada, capital)
-            st.success(f"**Importe Sugerido:** ${monto:.2f}")
+            st.success(f"**Importe Sugerido:** ${monto:g}")
             st.markdown('</div>', unsafe_allow_html=True)
 
         # Opcion Arriesgada
@@ -128,15 +126,13 @@ if df is not None:
             st.markdown('<div class="bet-card risky-bet">', unsafe_allow_html=True)
             st.markdown("### Opcion Arriesgada")
             prob_comb = stats['Win_H'] * stats['Over25']
-            # Estimacion de cuota combinada (Parlay manual)
             cuota_comb = m_local * m_over25 * 0.85 
             st.write(f"**Pronostico:** {e_h} y Mas de 2.5 goles")
             st.write(f"**Probabilidad:** {prob_comb*100:.1f}%")
             monto_r = AnalysisEngine.kelly_criterion(prob_comb, cuota_comb, capital)
-            st.warning(f"**Importe Sugerido:** ${monto_r:.2f}")
+            st.warning(f"**Importe Sugerido:** ${monto_r:g}")
             st.markdown('</div>', unsafe_allow_html=True)
 
-        # Seleccion Optima
         st.markdown('<div class="bet-card" style="border-top: 5px solid #3b82f6;">', unsafe_allow_html=True)
         st.write("### Seleccion Optima")
         ev_local = (stats['Win_H'] * m_local) - 1
@@ -147,10 +143,10 @@ if df is not None:
         else:
             mejor_pick, mejor_prob = f"Victoria: {e_h}", stats['Win_H']
 
-        st.info(f"Analisis completado: la opcion con mayor valor esperado es {mejor_pick} con una probabilidad del {mejor_prob*100:.1f}%.")
+        st.info(f"Analisis completado: la opcion con mejor balance riesgo/beneficio es {mejor_pick} con una probabilidad del {mejor_prob*100:.1f}%.")
         st.markdown('</div>', unsafe_allow_html=True)
     else:
-        st.info("Ingresa los momios actuales para generar las recomendaciones de apuesta.")
+        st.info("Ingresa los momios actuales para generar las recomendaciones.")
 
 else:
     st.error("Error: Los archivos de datos no estan disponibles.")
