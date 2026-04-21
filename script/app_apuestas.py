@@ -62,6 +62,7 @@ def cargar_datos(liga_file):
     ruta = f"Data/{liga_file}.csv"
     if os.path.exists(ruta):
         df = pd.read_csv(ruta)
+        # Convertimos a fecha inmediatamente después de cargar
         df['Date'] = pd.to_datetime(df['Date'])
         return df
     return None
@@ -93,8 +94,12 @@ if df is not None:
     with c_m4: m_over25 = st.number_input("Momio +2.5 Goles", min_value=1.0, value=None, format="%g", placeholder="0")
     with c_m5: m_btts = st.number_input("Momio Ambos Anotan", min_value=1.0, value=None, format="%g", placeholder="0")
 
-    # ORDEN DESCENDENTE FORZADO (ascending=False)
-    enfrentamientos = df[((df['Home'] == e_h) & (df['Away'] == e_v)) | ((df['Home'] == e_v) & (df['Away'] == e_h))].sort_values('Date', ascending=False)
+    # --- FILTRADO Y ORDENAMIENTO (NUEVO ARRIBA) ---
+    enfrentamientos = df[((df['Home'] == e_h) & (df['Away'] == e_v)) | 
+                         ((df['Home'] == e_v) & (df['Away'] == e_h))]
+    
+    # Ordenamos por fecha de forma descendente (False) para que 2026 sea el primero
+    enfrentamientos = enfrentamientos.sort_values(by='Date', ascending=False)
     
     m_h = df[df['Home'] == e_h]['HG'].mean()
     m_v = df[df['Away'] == e_v]['AG'].mean()
@@ -102,7 +107,7 @@ if df is not None:
 
     st.subheader("Enfrentamientos Directos")
     if not enfrentamientos.empty:
-        # Mostramos la tabla completa ordenada de mas nuevo a mas viejo
+        # hide_index=True elimina la columna de números de la base de datos
         st.dataframe(enfrentamientos[['Date', 'Home', 'HG', 'AG', 'Away']], use_container_width=True, hide_index=True)
     else:
         st.info("No se registran enfrentamientos previos.")
@@ -156,7 +161,12 @@ if df is not None:
         # Seleccion Optima
         ev_local = (stats['Win_H'] * m_local) - 1
         ev_over = (stats['Over25'] * m_over25) - 1
-        mejor_pick, mejor_prob, mejor_cuota = ("Mas de 2.5 goles", stats['Over25'], m_over25) if ev_over > ev_local else (f"Victoria: {e_h}", stats['Win_H'], m_local)
+        
+        if ev_over > ev_local:
+            mejor_pick, mejor_prob, mejor_cuota = "Mas de 2.5 goles", stats['Over25'], m_over25
+        else:
+            mejor_pick, mejor_prob, mejor_cuota = f"Victoria: {e_h}", stats['Win_H'], m_local
+
         monto_optimo = AnalysisEngine.kelly_criterion(mejor_prob, mejor_cuota, capital)
 
         st.markdown(f"""
