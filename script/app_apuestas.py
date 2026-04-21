@@ -93,7 +93,9 @@ if df is not None:
     with c_m4: m_over25 = st.number_input("Momio +2.5 Goles", min_value=1.0, value=None, format="%g", placeholder="0")
     with c_m5: m_btts = st.number_input("Momio Ambos Anotan", min_value=1.0, value=None, format="%g", placeholder="0")
 
-    enfrentamientos = df[((df['Home'] == e_h) & (df['Away'] == e_v)) | ((df['Home'] == e_v) & (df['Away'] == e_h))].sort_values('Date', ascending=True)
+    # ORDEN DESCENDENTE: Los datos más nuevos (2026) aparecerán arriba
+    enfrentamientos = df[((df['Home'] == e_h) & (df['Away'] == e_v)) | ((df['Home'] == e_v) & (df['Away'] == e_h))].sort_values('Date', ascending=False)
+    
     m_h = df[df['Home'] == e_h]['HG'].mean()
     m_v = df[df['Away'] == e_v]['AG'].mean()
     stats = AnalysisEngine.calcular_stats_completas(m_h, m_v)
@@ -150,7 +152,7 @@ if df is not None:
                 </div>
             """, unsafe_allow_html=True)
 
-        # SELECCION OPTIMA CON IMPORTE
+        # Seleccion Optima
         ev_local = (stats['Win_H'] * m_local) - 1
         ev_over = (stats['Over25'] * m_over25) - 1
         
