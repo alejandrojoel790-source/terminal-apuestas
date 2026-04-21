@@ -31,13 +31,34 @@ st.markdown("""
     </style>
     """, unsafe_allow_html=True)
 
-# --- 2. MOTOR DE CALCULO ANALITICO ---
+# --- 2. BASE DE DATOS DE EQUIPOS (NOMBRES OFICIALES) ---
+EQUIPOS_BUNDESLIGA = [
+    "Bayer 04 Leverkusen", "VfB Stuttgart", "FC Bayern München", "RB Leipzig", 
+    "Borussia Dortmund", "Eintracht Frankfurt", "TSG 1899 Hoffenheim", 
+    "1. FC Heidenheim 1846", "SV Werder Bremen", "SC Freiburg", "FC Augsburg", 
+    "VfL Wolfsburg", "1. FSV Mainz 05", "Borussia Mönchengladbach", 
+    "1. FC Union Berlin", "VfL Bochum 1848", "FC St. Pauli", "Holstein Kiel"
+]
+
+EQUIPOS_CHAMPIONSHIP = [
+    "Burnley FC", "Luton Town", "Sheffield United", "Leeds United", 
+    "West Bromwich Albion", "Norwich City", "Hull City", "Middlesbrough FC", 
+    "Coventry City", "Preston North End", "Bristol City", "Cardiff City", 
+    "Swansea City", "Watford FC", "Sunderland AFC", "Stoke City", 
+    "Queens Park Rangers", "Blackburn Rovers", "Sheffield Wednesday", 
+    "Plymouth Argyle", "Portsmouth FC", "Derby County", "Oxford United", "Millwall FC"
+]
+
+# --- 3. MOTOR DE CALCULO ANALITICO ---
 class AnalysisEngine:
     @staticmethod
     def calcular_stats_completas(media_h, media_v):
-        prob_h, prob_e, prob_v = 0, 0, 0
-        over25 = 0
-        btts = 0
+        """Calculo mediante Distribucion de Poisson"""
+        # Evitar division por cero o valores nulos
+        media_h = 0.001 if pd.isna(media_h) or media_h <= 0 else media_h
+        media_v = 0.001 if pd.isna(media_v) or media_v <= 0 else media_v
+        
+        prob_h, prob_e, prob_v, over25, btts = 0, 0, 0, 0, 0
         for g_h in range(9):
             for g_v in range(9):
                 p = poisson.pmf(g_h, media_h) * poisson.pmf(g_v, media_v)
@@ -50,13 +71,14 @@ class AnalysisEngine:
 
     @staticmethod
     def kelly_criterion(prob, cuota, bankroll):
+        """Calculo de Stake mediante Criterio de Kelly al 50%"""
         if cuota is None or cuota <= 1: return 0
         b = cuota - 1
         q = 1 - prob
         f = (b * prob - q) / b
         return max(0, f * bankroll * 0.5)
 
-# --- 3. GESTION DE DATOS ---
+# --- 4. GESTION DE DATOS ---
 @st.cache_data
 def cargar_datos(liga_file):
     ruta = f"Data/{liga_file}.csv"
@@ -66,7 +88,7 @@ def cargar_datos(liga_file):
         return df
     return None
 
-# --- 4. PANEL DE CONTROL ---
+# --- 5. PANEL DE CONTROL ---
 st.title("Prototipo de Apuestas")
 
 with st.sidebar:
@@ -79,17 +101,19 @@ with st.sidebar:
 df = cargar_datos(archivo_liga)
 
 if df is not None:
-    # --- SELECCION DE EQUIPOS ---
-    equipos = sorted(df['Home'].unique())
+    # Seleccion de lista segun la liga
+    lista_equipos = EQUIPOS_BUNDESLIGA if seleccion_liga == "Bundesliga" else EQUIPOS_CHAMPIONSHIP
+    
     col_sel1, col_sel2 = st.columns(2)
-    with col_sel1: e_h = st.selectbox("Equipo Local", equipos)
-    with col_sel2: e_v = st.selectbox("Equipo Visitante", equipos, index=1)
+    with col_sel1: e_h = st.selectbox("Equipo Local", lista_equipos)
+    with col_sel2: e_v = st.selectbox("Equipo Visitante", lista_equipos, index=1)
 
-    # --- CALCULO DE PROBABILIDADES (UBICACION SOLICITADA) ---
+    # --- CALCULO DE PROBABILIDADES ---
     m_h = df[df['Home'] == e_h]['HG'].mean()
     m_v = df[df['Away'] == e_v]['AG'].mean()
     stats = AnalysisEngine.calcular_stats_completas(m_h, m_v)
 
+    # --- SECCION: PROBABILIDADES CALCULADAS ---
     st.markdown("---")
     st.subheader("Probabilidades Calculadas")
     p1, p2, p3, p4, p5 = st.columns(5)
@@ -109,82 +133,63 @@ if df is not None:
     with c_m4: m_over25 = st.number_input("Momio +2.5 Goles", min_value=1.0, value=None, format="%g", placeholder="0")
     with c_m5: m_btts = st.number_input("Momio Ambos Anotan", min_value=1.0, value=None, format="%g", placeholder="0")
 
-    # --- ENFRENTAMIENTOS DIRECTOS (ORDENADO DESCENDENTE) ---
+    # --- ENFRENTAMIENTOS DIRECTOS (ORDEN DESCENDENTE) ---
     enfrentamientos = df[((df['Home'] == e_h) & (df['Away'] == e_v)) | 
-                         ((df['Home'] == e_v) & (df['Away'] == e_h))].sort_values('Date', ascending=False)
+                         ((df['Home'] == e_v) & (df['Away'] == e_h))].sort_values(by='Date', ascending=False)
     
     st.subheader("Enfrentamientos Directos")
     if not enfrentamientos.empty:
         st.dataframe(enfrentamientos[['Date', 'Home', 'HG', 'AG', 'Away']], use_container_width=True, hide_index=True)
     else:
-        st.info("No se registran enfrentamientos previos.")
+        st.info("No se registran enfrentamientos previos en la base de datos.")
 
     # --- ANALISIS FINAL DE APUESTA ---
     st.markdown("---")
-    
     if all([m_local, m_empate, m_visita, m_over25, m_btts]):
         st.subheader("Analisis de Pronostico y Apuesta")
         res1, res2 = st.columns(2)
 
-        # Opcion Segura
         with res1:
-            if stats['Win_H'] > stats['BTTS']:
-                pick, prob, cuota_usada = f"Victoria {e_h}", stats['Win_H'], m_local
-            else:
-                pick, prob, cuota_usada = "Ambos Anotan", stats['BTTS'], m_btts
-            
+            pick, prob, cuota = (f"Victoria {e_h}", stats['Win_H'], m_local) if stats['Win_H'] > stats['BTTS'] else ("Ambos Anotan", stats['BTTS'], m_btts)
             st.markdown(f"""
                 <div class="bet-card safe-bet">
-                    <div class="custom-progress-bg">
-                        <div class="custom-progress-fill" style="width: {prob*100}%; background-color: #10b981;"></div>
-                    </div>
+                    <div class="custom-progress-bg"><div class="custom-progress-fill" style="width: {prob*100}%; background-color: #10b981;"></div></div>
                     <h3>Opcion Segura</h3>
                     <p><b>Pronostico:</b> {pick}</p>
                     <p><b>Probabilidad:</b> {prob*100:.1f}%</p>
                     <div style="background-color: #064e3b; padding: 10px; border-radius: 8px; color: #10b981; font-weight: bold;">
-                        Importe Sugerido: ${int(round(AnalysisEngine.kelly_criterion(prob, cuota_usada, capital)))}
+                        Importe Sugerido: ${int(round(AnalysisEngine.kelly_criterion(prob, cuota, capital)))}
                     </div>
                 </div>
             """, unsafe_allow_html=True)
 
-        # Opcion Arriesgada
         with res2:
-            prob_comb = stats['Win_H'] * stats['Over25']
-            cuota_comb = m_local * m_over25 * 0.85 
-            
+            prob_c, cuota_c = stats['Win_H'] * stats['Over25'], m_local * m_over25 * 0.85 
             st.markdown(f"""
                 <div class="bet-card risky-bet">
-                    <div class="custom-progress-bg">
-                        <div class="custom-progress-fill" style="width: {prob_comb*100}%; background-color: #f59e0b;"></div>
-                    </div>
+                    <div class="custom-progress-bg"><div class="custom-progress-fill" style="width: {prob_c*100}%; background-color: #f59e0b;"></div></div>
                     <h3>Opcion Arriesgada</h3>
                     <p><b>Pronostico:</b> {e_h} y Mas de 2.5 goles</p>
-                    <p><b>Probabilidad:</b> {prob_comb*100:.1f}%</p>
+                    <p><b>Probabilidad:</b> {prob_c*100:.1f}%</p>
                     <div style="background-color: #78350f; padding: 10px; border-radius: 8px; color: #f59e0b; font-weight: bold;">
-                        Importe Sugerido: ${int(round(AnalysisEngine.kelly_criterion(prob_comb, cuota_comb, capital)))}
+                        Importe Sugerido: ${int(round(AnalysisEngine.kelly_criterion(prob_c, cuota_c, capital)))}
                     </div>
                 </div>
             """, unsafe_allow_html=True)
 
-        # Seleccion Optima
-        ev_local = (stats['Win_H'] * m_local) - 1
-        ev_over = (stats['Over25'] * m_over25) - 1
-        mejor_pick, mejor_prob, mejor_cuota = ("Mas de 2.5 goles", stats['Over25'], m_over25) if ev_over > ev_local else (f"Victoria: {e_h}", stats['Win_H'], m_local)
-        monto_optimo = AnalysisEngine.kelly_criterion(mejor_prob, mejor_cuota, capital)
-
+        ev_l, ev_o = (stats['Win_H'] * m_local) - 1, (stats['Over25'] * m_over25) - 1
+        m_pick, m_prob, m_cuota = ("Mas de 2.5 goles", stats['Over25'], m_over25) if ev_o > ev_l else (f"Victoria: {e_h}", stats['Win_H'], m_local)
         st.markdown(f"""
             <div class="bet-card" style="border-top: 5px solid #3b82f6;">
-                <div class="custom-progress-bg">
-                    <div class="custom-progress-fill" style="width: {mejor_prob*100}%; background-color: #3b82f6;"></div>
-                </div>
+                <div class="custom-progress-bg"><div class="custom-progress-fill" style="width: {m_prob*100}%; background-color: #3b82f6;"></div></div>
                 <h3>Seleccion Optima</h3>
-                <p style="color: #93c5fd;">Analisis completado: la mejor ventaja matematica es <b>{mejor_pick}</b> con una probabilidad del {mejor_prob*100:.1f}%.</p>
+                <p style="color: #93c5fd;">Mejor ventaja matematica: <b>{m_pick}</b> con {m_prob*100:.1f}%.</p>
                 <div style="background-color: #1e3a8a; padding: 10px; border-radius: 8px; color: #93c5fd; font-weight: bold;">
-                    Importe Sugerido: ${int(round(monto_optimo))}
+                    Importe Sugerido: ${int(round(AnalysisEngine.kelly_criterion(m_prob, m_cuota, capital)))}
                 </div>
             </div>
         """, unsafe_allow_html=True)
     else:
         st.info("Ingresa los momios actuales para generar las recomendaciones.")
 else:
-    st.error("Error: Los archivos de datos no estan disponibles.")
+    st.error("Error: Archivos de datos no detectados.")
