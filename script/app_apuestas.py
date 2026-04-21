@@ -42,11 +42,12 @@ EQUIPOS_POR_LIGA = {
         "TSG 1899 Hoffenheim", "VfB Stuttgart", "VfL Wolfsburg"
     ],
     "Championship": [
-        "Blackburn Rovers", "Bristol City", "Burnley FC", "Cardiff City", "Coventry City",
-        "Derby County", "Hull City", "Leeds United", "Luton Town", "Middlesbrough",
-        "Millwall FC", "Norwich City", "Oxford United", "Plymouth Argyle", "Portsmouth FC",
-        "Preston North End", "Queens Park Rangers", "Sheffield United", "Sheffield Wednesday",
-        "Stoke City", "Sunderland AFC", "Swansea City", "Watford FC", "West Bromwich Albion"
+        "Birmingham City FC", "Blackburn Rovers FC", "Bristol City", "Burnley FC", "Cardiff City", 
+        "Coventry City", "Derby County", "Hull City", "Leeds United", "Luton Town", 
+        "Middlesbrough", "Millwall FC", "Norwich City", "Oxford United", "Plymouth Argyle", 
+        "Portsmouth FC", "Preston North End", "Queens Park Rangers", "Sheffield United", 
+        "Sheffield Wednesday", "Stoke City", "Sunderland AFC", "Swansea City", "Watford FC", 
+        "West Bromwich Albion"
     ]
 }
 
@@ -130,13 +131,22 @@ if df is not None:
     else:
         st.info(f"No se registran enfrentamientos previos entre {e_h} y {e_v}.")
 
+    # --- NUEVA SECCION DE PROBABILIDADES ---
+    st.markdown("---")
+    st.subheader("Probabilidades del Modelo")
+    p_col1, p_col2, p_col3, p_col4, p_col5 = st.columns(5)
+    with p_col1: st.metric(f"Victoria {e_h}", f"{stats['Win_H']*100:.1f}%")
+    with p_col2: st.metric("Empate", f"{stats['Draw']*100:.1f}%")
+    with p_col3: st.metric(f"Victoria {e_v}", f"{stats['Win_V']*100:.1f}%")
+    with p_col4: st.metric("Over 2.5 Goles", f"{stats['Over25']*100:.1f}%")
+    with p_col5: st.metric("Ambos Anotan", f"{stats['BTTS']*100:.1f}%")
+
     st.markdown("---")
     
     if all([m_local, m_empate, m_visita, m_over25, m_btts]):
         st.subheader("Analisis de Probabilidades y Apuesta")
         res1, res2, res3 = st.columns(3)
 
-        # Opcion Local / BTTS
         with res1:
             if stats['Win_H'] > stats['BTTS']:
                 pick, prob, cuota_usada = f"Victoria {e_h}", stats['Win_H'], m_local
@@ -157,7 +167,6 @@ if df is not None:
                 </div>
             """, unsafe_allow_html=True)
 
-        # Opcion Empate (Nueva)
         with res2:
             prob_e = stats['Draw']
             st.markdown(f"""
@@ -174,7 +183,6 @@ if df is not None:
                 </div>
             """, unsafe_allow_html=True)
 
-        # Opcion Arriesgada
         with res3:
             prob_comb = stats['Win_H'] * stats['Over25']
             cuota_comb = m_local * m_over25 * 0.85 
@@ -193,12 +201,10 @@ if df is not None:
                 </div>
             """, unsafe_allow_html=True)
 
-        # Seleccion Optima (Cálculo comparativo de EV)
         ev_local = (stats['Win_H'] * m_local) - 1
         ev_empate = (stats['Draw'] * m_empate) - 1
         ev_over = (stats['Over25'] * m_over25) - 1
         
-        # Diccionario para encontrar el EV mas alto
         opciones_ev = {
             f"Victoria: {e_h}": (ev_local, stats['Win_H'], m_local),
             "Empate": (ev_empate, stats['Draw'], m_empate),
