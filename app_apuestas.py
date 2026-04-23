@@ -68,7 +68,7 @@ def load_data(file):
         except: return "EMPTY"
     return None
 
-# --- 4. PANEL DE CONTROL (MODO DE SISTEMA) ---
+# --- 4. PANEL DE CONTROL ---
 st.title("Sistema de Apuestas")
 
 with st.sidebar:
@@ -77,29 +77,27 @@ with st.sidebar:
     
     st.markdown("---")
     st.subheader("Modo de Analisis")
-    # Cambiamos sliders por un selector mas visual
     modo = st.radio(
-        "Selecciona precision:",
-        ["Sistema Normal", "Sistema Medio", "Sistema Muy Preciso"],
-        help="Normal: Mas apuestas. Preciso: Solo las mejores."
+        "Nivel de Precision:",
+        ["Sistema Normal", "Sistema Medio", "Sistema Muy Preciso"]
     )
 
-    # Logica de configuracion automatica
     if modo == "Sistema Normal":
-        fraccion_val = 0.5  # 1/2 Kelly (Agresivo)
-        min_edge = 0.05    # 5% de ventaja minima (Mas volumen)
+        fraccion_val, min_edge = 0.5, 0.05
     elif modo == "Sistema Medio":
-        fraccion_val = 0.25 # 1/4 Kelly (Moderado)
-        min_edge = 0.10    # 10% de ventaja minima (Equilibrado)
-    else: # Sistema Muy Preciso
-        fraccion_val = 0.125 # 1/8 Kelly (Conservador)
-        min_edge = 0.18      # 18% de ventaja minima (Solo lo mejor)
+        fraccion_val, min_edge = 0.25, 0.10
+    else:
+        fraccion_val, min_edge = 0.125, 0.18
+
+    with st.expander("📚 Glosario Tecnico"):
+        st.write("**Riesgo (Kelly):** Fraccion del capital a usar.")
+        st.write("**Edge (Ventaja):** Tu ventaja matematica sobre el casino.")
 
     st.markdown(f"""
-        <div style="background-color: #1e1e1e; padding: 10px; border-radius: 5px; border-left: 3px solid #3b82f6;">
-        <small>Configuracion Actual:</small><br>
+        <div style="background-color: #1e1e1e; padding: 10px; border-radius: 5px; border-left: 3px solid #3b82f6; margin-top: 10px;">
+        <small>Configuracion Activa:</small><br>
         <b>Riesgo:</b> {int(1/fraccion_val)}x Kelly<br>
-        <b>Edge Min:</b> {int(min_edge*100)}%
+        <b>Filtro Edge:</b> {int(min_edge*100)}%
         </div>
     """, unsafe_allow_html=True)
     
@@ -124,7 +122,7 @@ if isinstance(df, pd.DataFrame):
     m_v = JarvisEngine.calcular_stats_ponderadas(df[df['Away'] == e_v], False)
     stats = JarvisEngine.poisson_probability(m_h, m_v)
 
-    # Probabilidades
+    # UI: Probabilidades
     st.markdown("---")
     p_col = st.columns(5)
     p_col[0].metric(f"Gana {e_h}", f"{stats['Win_H']*100:.1f}%")
@@ -133,7 +131,7 @@ if isinstance(df, pd.DataFrame):
     p_col[3].metric("+2.5 Goles", f"{stats['Over25']*100:.1f}%")
     p_col[4].metric("Ambos Anotan", f"{stats['AmbosAn']*100:.1f}%")
 
-    # Momios
+    # UI: Momios
     st.markdown("---")
     st.subheader("Ingreso de Momios Actuales (+/-)")
     m_col = st.columns(5)
@@ -149,7 +147,7 @@ if isinstance(df, pd.DataFrame):
     m_o = JarvisEngine.american_to_decimal(m_o_raw)
     m_b = JarvisEngine.american_to_decimal(m_b_raw)
 
-    # --- RECOMENDACIONES SEGUN MODO ---
+    # --- ESTRATEGIA SUGERIDA ---
     if m_l and m_e and m_vi and m_o and m_b:
         st.markdown("---")
         st.subheader(f"Estrategia sugerida - {modo}")
@@ -162,9 +160,7 @@ if isinstance(df, pd.DataFrame):
             {"name": "Ambos Anotan", "prob": stats['AmbosAn'], "odd": m_b}
         ]
         
-        # Filtramos por el Edge configurado en el modo
         validos = [m for m in mercados if (m['prob'] * m['odd']) - 1 >= min_edge]
-        
         rec1, rec2, rec3 = st.columns(3)
 
         with rec1:
@@ -173,10 +169,10 @@ if isinstance(df, pd.DataFrame):
                 edge_opt = (optima['prob'] * optima['odd']) - 1
                 imp = JarvisEngine.kelly_fraccional(optima['prob'], optima['odd'], capital, fraccion_val)
                 st.markdown(f"""<div class="bet-card optima-card"><h3>🌟 Mas Optima</h3><p><b>{optima['name']}</b></p>
-                <p>Edge Detectado: {edge_opt*100:+.1f}%</p>
-                <div style="background-color: #1e3a8a; padding: 10px; border-radius: 8px; color: #93c5fd; font-weight: bold;">Sugerido: ${int(round(imp))}</div></div>""", unsafe_allow_html=True)
+                <p>Edge: {edge_opt*100:+.1f}%</p>
+                <div style="background-color: #1e3a8a; padding: 10px; border-radius: 8px; color: #93c5fd; font-weight: bold;">Monto sugerido: ${int(round(imp))}</div></div>""", unsafe_allow_html=True)
             else:
-                st.markdown('<div class="bet-card no-value"><h3>🌟 Mas Optima</h3><p>Sin valor bajo el umbral de este modo.</p></div>', unsafe_allow_html=True)
+                st.markdown('<div class="bet-card no-value"><h3>🌟 Mas Optima</h3><p>Sin apuestas de alto valor detectadas.</p></div>', unsafe_allow_html=True)
 
         with rec2:
             if validos:
@@ -185,9 +181,9 @@ if isinstance(df, pd.DataFrame):
                 imp = JarvisEngine.kelly_fraccional(oportunidad['prob'], oportunidad['odd'], capital, fraccion_val)
                 st.markdown(f"""<div class="bet-card oportunidad-card"><h3>✅ Oportunidad</h3><p><b>{oportunidad['name']}</b></p>
                 <p>Confianza: {oportunidad['prob']*100:.1f}%</p>
-                <div style="background-color: #064e3b; padding: 10px; border-radius: 8px; color: #10b981; font-weight: bold;">Sugerido: ${int(round(imp))}</div></div>""", unsafe_allow_html=True)
+                <div style="background-color: #064e3b; padding: 10px; border-radius: 8px; color: #10b981; font-weight: bold;">Monto sugerido: ${int(round(imp))}</div></div>""", unsafe_allow_html=True)
             else:
-                st.markdown('<div class="bet-card no-value"><h3>✅ Oportunidad</h3><p>Modo muy restrictivo para los datos actuales.</p></div>', unsafe_allow_html=True)
+                st.markdown('<div class="bet-card no-value"><h3>✅ Oportunidad</h3><p>Ninguna opcion cumple el Edge minimo.</p></div>', unsafe_allow_html=True)
 
         with rec3:
             prob_comb = stats['Win_H'] * stats['Over25']
@@ -196,10 +192,10 @@ if isinstance(df, pd.DataFrame):
             if edge_arr >= min_edge:
                 imp = JarvisEngine.kelly_fraccional(prob_comb, cuota_comb, capital, fraccion_val)
                 st.markdown(f"""<div class="bet-card arriesgada-card"><h3>🔥 Arriesgada</h3><p><b>{e_h} y +2.5 Goles</b></p>
-                <p>Cuota Est.: {cuota_comb:.2f}</p>
-                <div style="background-color: #78350f; padding: 10px; border-radius: 8px; color: #f59e0b; font-weight: bold;">Sugerido: ${int(round(imp))}</div></div>""", unsafe_allow_html=True)
+                <p>Edge Arr.: {edge_arr*100:+.1f}%</p>
+                <div style="background-color: #78350f; padding: 10px; border-radius: 8px; color: #f59e0b; font-weight: bold;">Monto sugerido: ${int(round(imp))}</div></div>""", unsafe_allow_html=True)
             else:
-                st.markdown(f"""<div class="bet-card no-value"><h3>🔥 Arriesgada</h3><p>No alcanza el Edge minimo ({int(min_edge*100)}%)</p></div>""", unsafe_allow_html=True)
+                st.markdown(f"""<div class="bet-card no-value"><h3>🔥 Arriesgada</h3><p>Combinacion no rentable en este modo.</p></div>""", unsafe_allow_html=True)
 
     # Historial
     st.markdown("---")
