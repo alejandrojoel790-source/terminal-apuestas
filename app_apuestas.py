@@ -4,8 +4,8 @@ import numpy as np
 from scipy.stats import poisson
 import os
 
-# --- 1. CONFIGURACION DE LA INTERFAZ ---
-st.set_page_config(page_title="Prototipo de Apuestas", layout="wide")
+# --- 1. CONFIGURACION ---
+st.set_page_config(page_title="Sistema de Apuestas", layout="wide")
 
 st.markdown("""
     <style>
@@ -13,39 +13,28 @@ st.markdown("""
     .stMetric { background-color: #1f2937; padding: 15px; border-radius: 10px; border-left: 5px solid #3b82f6; }
     .bet-card { background-color: #262730; padding: 20px; border-radius: 15px; border: 1px solid #4b5563; margin-bottom: 20px; }
     .safe-bet { border-left: 8px solid #10b981; }
-    .risky-bet { border-left: 8px solid #f59e0b; }
-    
-    .custom-progress-bg {
-        background-color: #374151;
-        border-radius: 10px;
-        height: 12px;
-        width: 100%;
-        margin-bottom: 15px;
-        overflow: hidden;
-    }
-    .custom-progress-fill {
-        height: 100%;
-        border-radius: 10px;
-        transition: width 0.5s ease-in-out;
-    }
+    .no-value { border-left: 8px solid #6b7280; opacity: 0.6; }
     </style>
     """, unsafe_allow_html=True)
 
-# --- 2. MOTOR DE CALCULO Y CONVERSOR ---
-class AnalysisEngine:
+# --- 2. MOTOR ANALITICO ---
+class JarvisEngine:
     @staticmethod
     def american_to_decimal(momio):
-        """Convierte momio americano a decimal para calculos matematicos"""
         if momio is None or momio == 0: return None
-        if momio > 0:
-            return (momio / 100) + 1
-        else:
-            return (100 / abs(momio)) + 1
+        return (momio/100)+1 if momio > 0 else (100/abs(momio))+1
 
     @staticmethod
-    def calcular_stats_completas(media_h, media_v):
-        media_h = 0.001 if pd.isna(media_h) or media_h <= 0 else media_h
-        media_v = 0.001 if pd.isna(media_v) or media_v <= 0 else media_v
+    def calcular_stats_ponderadas(df_equipo, es_local):
+        if df_equipo.empty: return 0.001
+        col_goles = 'HG' if es_local else 'AG'
+        # Ponderacion temporal: 2026 tiene mas peso
+        df_equipo['weight'] = df_equipo['Date'].dt.year.map({2026: 3, 2025: 2, 2024: 1}).fillna(1)
+        promedio = (df_equipo[col_goles] * df_equipo['weight']).sum() / df_equipo['weight'].sum()
+        return max(0.001, promedio)
+
+    @staticmethod
+    def poisson_probability(media_h, media_v):
         prob_h, prob_e, prob_v, over25, btts = 0, 0, 0, 0, 0
         for g_h in range(9):
             for g_v in range(9):
@@ -58,115 +47,112 @@ class AnalysisEngine:
         return {"Win_H": prob_h, "Draw": prob_e, "Win_V": prob_v, "Over25": over25, "BTTS": btts}
 
     @staticmethod
-    def kelly_criterion(prob, cuota_decimal, bankroll):
-        if cuota_decimal is None or cuota_decimal <= 1: return 0
-        b, q = cuota_decimal - 1, 1 - prob
-        f = (b * prob - q) / b
-        return max(0, f * bankroll * 0.5)
+    def kelly_fraccional(prob, cuota, bankroll, fraccion):
+        if not cuota or cuota <= 1: return 0
+        edge = (prob * cuota) - 1
+        if edge <= 0: return 0
+        return (edge / (cuota - 1)) * bankroll * fraccion
 
-# --- 3. LISTAS OFICIALES DE EQUIPOS ---
-EQUIPOS_BUNDESLIGA = [
-    "1. FC Heidenheim 1846", "1. FC Union Berlin", "1. FSV Mainz 05", "Bayer 04 Leverkusen",
-    "Borussia Dortmund", "Borussia Mönchengladbach", "Eintracht Frankfurt", "FC Augsburg",
-    "FC Bayern München", "FC St. Pauli", "Holstein Kiel", "RB Leipzig", "SC Freiburg",
-    "SV Werder Bremen", "TSG 1899 Hoffenheim", "VfB Stuttgart", "VfL Bochum 1848", "VfL Wolfsburg"
-]
-
-EQUIPOS_CHAMPIONSHIP = [
-    "Blackburn Rovers", "Bristol City", "Burnley FC", "Cardiff City", "Coventry City",
-    "Derby County", "Hull City", "Leeds United", "Luton Town", "Middlesbrough FC",
-    "Millwall FC", "Norwich City", "Oxford United", "Plymouth Argyle", "Portsmouth FC",
-    "Preston North End", "Queens Park Rangers", "Sheffield United", "Sheffield Wednesday",
-    "Stoke City", "Sunderland AFC", "Swansea City", "Watford FC", "West Bromwich Albion"
-]
-
-# --- 4. GESTION DE DATOS ---
+# --- 3. GESTION DE DATOS ---
 @st.cache_data
 def cargar_datos(liga_file):
     ruta = f"Data/{liga_file}.csv"
     if os.path.exists(ruta):
         df = pd.read_csv(ruta)
         df['Date'] = pd.to_datetime(df['Date'])
+        # Limpieza: quitamos espacios extra por si acaso
+        df['Home'] = df['Home'].str.strip()
+        df['Away'] = df['Away'].str.strip()
         return df
     return None
 
-# --- 5. INTERFAZ DE USUARIO ---
-st.title("Prototipo de Apuestas")
+# --- 4. PANEL DE CONTROL ---
+st.title("Sistema de Apuestas")
 
 with st.sidebar:
     st.header("Configuracion")
     capital = st.number_input("Capital Total", min_value=0.0, value=1000.0, format="%g")
-    liga_opciones = {"Bundesliga": "BL1_2026", "Championship": "ELC_2026"}
-    seleccion_liga = st.selectbox("Competicion:", list(liga_opciones.keys()))
-    archivo_liga = liga_opciones[seleccion_liga]
+    
+    riesgo_map = {"Agresivo (1/2 Kelly)": 0.5, "Moderado (1/4 Kelly)": 0.25, "Conservador (1/8 Kelly)": 0.125}
+    fraccion_sel = st.select_slider("Perfil de Riesgo", options=list(riesgo_map.keys()), value="Moderado (1/4 Kelly)")
+    fraccion_val = riesgo_map[fraccion_sel]
+    
+    min_edge = st.slider("Umbral de Valor (Edge %)", 0, 15, 5) / 100
+    
+    # Añadi tambien la LMX por si quieres usar el archivo que vi en tu GitHub
+    ligas = {"Bundesliga": "BL1_2026", "Championship": "ELC_2026", "Liga MX": "LMX_2026"}
+    liga_sel = st.selectbox("Competicion", list(ligas.keys()))
 
-df = cargar_datos(archivo_liga)
+df = cargar_datos(ligas[liga_sel])
 
 if df is not None:
-    # Seleccion de equipos basada en la liga elegida
-    lista_activa = EQUIPOS_BUNDESLIGA if seleccion_liga == "Bundesliga" else EQUIPOS_CHAMPIONSHIP
+    # --- AUTOMATIZACION DE EQUIPOS ---
+    # Extraemos los nombres reales que vienen en TU archivo CSV
+    equipos_reales = sorted(df['Home'].unique())
     
-    col_sel1, col_sel2 = st.columns(2)
-    with col_sel1: e_h = st.selectbox("Equipo Local", lista_activa)
-    with col_sel2: e_v = st.selectbox("Equipo Visitante", lista_activa, index=1)
-
-    # --- CALCULOS DE PROBABILIDAD ---
-    m_h = df[df['Home'] == e_h]['HG'].mean()
-    m_v = df[df['Away'] == e_v]['AG'].mean()
-    stats = AnalysisEngine.calcular_stats_completas(m_h, m_v)
-
-    st.markdown("---")
-    st.subheader("Probabilidades Calculadas")
-    p1, p2, p3, p4, p5 = st.columns(5)
-    p1.metric(f"Gana {e_h}", f"{stats['Win_H']*100:.1f}%")
-    p2.metric("Empate", f"{stats['Draw']*100:.1f}%")
-    p3.metric(f"Gana {e_v}", f"{stats['Win_V']*100:.1f}%")
-    p4.metric("+2.5 Goles", f"{stats['Over25']*100:.1f}%")
-    p5.metric("Ambos Anotan", f"{stats['BTTS']*100:.1f}%")
-
-    st.markdown("---")
-    st.subheader("Ingreso de Momios Actuales (+/-)")
-    c_m1, c_m2, c_m3, c_m4, c_m5 = st.columns(5)
-    with c_m1: m_h_raw = st.number_input(f"Momio {e_h}", value=None, format="%g", placeholder="-110 o +150")
-    with c_m2: m_d_raw = st.number_input("Momio Empate", value=None, format="%g", placeholder="+300")
-    with c_m3: m_v_raw = st.number_input(f"Momio {e_v}", value=None, format="%g", placeholder="-110")
-    with c_m4: m_o_raw = st.number_input("Momio +2.5 Goles", value=None, format="%g", placeholder="-150")
-    with c_m5: m_b_raw = st.number_input("Momio Ambos Anotan", value=None, format="%g", placeholder="-120")
-
-    # Conversiones a decimal para el motor
-    m_l, m_e, m_vi = AnalysisEngine.american_to_decimal(m_h_raw), AnalysisEngine.american_to_decimal(m_d_raw), AnalysisEngine.american_to_decimal(m_v_raw)
-    m_o, m_ba = AnalysisEngine.american_to_decimal(m_o_raw), AnalysisEngine.american_to_decimal(m_b_raw)
-
-    # --- ENFRENTAMIENTOS DIRECTOS (ORDENADO DESCENDENTE 2026 ARRIBA) ---
-    enfrentamientos = df[((df['Home'] == e_h) & (df['Away'] == e_v)) | 
-                         ((df['Home'] == e_v) & (df['Away'] == e_h))].sort_values(by='Date', ascending=False)
+    c1, c2 = st.columns(2)
+    with c1: e_h = st.selectbox("Equipo Local", equipos_reales)
+    with c2: e_v = st.selectbox("Equipo Visitante", equipos_reales, index=1)
     
-    st.subheader("Enfrentamientos Directos")
-    st.dataframe(enfrentamientos[['Date', 'Home', 'HG', 'AG', 'Away']], use_container_width=True, hide_index=True)
+    # Calculos
+    media_h = JarvisEngine.calcular_stats_ponderadas(df[df['Home'] == e_h], True)
+    media_v = JarvisEngine.calcular_stats_ponderadas(df[df['Away'] == e_v], False)
+    stats = JarvisEngine.poisson_probability(media_h, media_v)
 
-    # --- ANALISIS FINAL ---
-    if all([m_l, m_e, m_vi, m_o, m_ba]):
+    # UI Probabilidades
+    st.markdown("---")
+    st.subheader(f"Probabilidades: {e_h} vs {e_v}")
+    p_col = st.columns(5)
+    p_col[0].metric("Gana Local", f"{stats['Win_H']*100:.1f}%")
+    p_col[1].metric("Empate", f"{stats['Draw']*100:.1f}%")
+    p_col[2].metric("Gana Visita", f"{stats['Win_V']*100:.1f}%")
+    p_col[3].metric("+2.5 Goles", f"{stats['Over25']*100:.1f}%")
+    p_col[4].metric("Ambos Anotan", f"{stats['BTTS']*100:.1f}%")
+
+    # Entrada de Momios
+    st.markdown("---")
+    st.subheader("Entrada de Momios (+/-)")
+    m_col = st.columns(5)
+    with m_col[0]: m_h_raw = st.number_input(f"Momio {e_h}", value=None, step=1)
+    with m_col[1]: m_d_raw = st.number_input("Momio Empate", value=None, step=1)
+    with m_col[2]: m_v_raw = st.number_input(f"Momio {e_v}", value=None, step=1)
+    with m_col[3]: m_o_raw = st.number_input("Momio +2.5", value=None, step=1)
+    with m_col[4]: m_b_raw = st.number_input("Momio BTTS", value=None, step=1)
+
+    # Conversiones
+    m_l = JarvisEngine.american_to_decimal(m_h_raw)
+    m_o = JarvisEngine.american_to_decimal(m_o_raw)
+
+    # Analisis de Valor
+    if m_l and m_o:
         st.markdown("---")
-        st.subheader("Analisis de Pronostico y Apuesta")
+        st.subheader("Analisis de Valor")
         res1, res2 = st.columns(2)
+        
+        edge_local = (stats['Win_H'] * m_l) - 1
+        edge_over = (stats['Over25'] * m_o) - 1
 
         with res1:
-            pick, prob, cuota = (f"Victoria {e_h}", stats['Win_H'], m_l) if stats['Win_H'] > stats['BTTS'] else ("Ambos Anotan", stats['BTTS'], m_ba)
-            st.markdown(f"""<div class="bet-card safe-bet"><div class="custom-progress-bg"><div class="custom-progress-fill" style="width: {prob*100}%; background-color: #10b981;"></div></div>
-            <h3>Opcion Segura</h3><p><b>Pronostico:</b> {pick}</p><p><b>Probabilidad:</b> {prob*100:.1f}%</p>
-            <div style="background-color: #064e3b; padding: 10px; border-radius: 8px; color: #10b981; font-weight: bold;">Importe Sugerido: ${int(round(AnalysisEngine.kelly_criterion(prob, cuota, capital)))}</div></div>""", unsafe_allow_html=True)
+            if edge_local > min_edge:
+                imp = JarvisEngine.kelly_fraccional(stats['Win_H'], m_l, capital, fraccion_val)
+                st.markdown(f'<div class="bet-card safe-bet"><h3>Victoria Local</h3><p>Edge: {edge_local*100:+.1f}%</p><p><b>Sugerido: ${int(round(imp))}</b></p></div>', unsafe_allow_html=True)
+            else:
+                st.markdown('<div class="bet-card no-value"><h3>Victoria Local</h3><p>Sin valor.</p></div>', unsafe_allow_html=True)
 
         with res2:
-            prob_c, cuota_c = stats['Win_H'] * stats['Over25'], m_l * m_o * 0.85 
-            st.markdown(f"""<div class="bet-card risky-bet"><div class="custom-progress-bg"><div class="custom-progress-fill" style="width: {prob_c*100}%; background-color: #f59e0b;"></div></div>
-            <h3>Opcion Arriesgada</h3><p><b>Pronostico:</b> {e_h} y +2.5 Goles</p><p><b>Probabilidad:</b> {prob_c*100:.1f}%</p>
-            <div style="background-color: #78350f; padding: 10px; border-radius: 8px; color: #f59e0b; font-weight: bold;">Importe Sugerido: ${int(round(AnalysisEngine.kelly_criterion(prob_c, cuota_c, capital)))}</div></div>""", unsafe_allow_html=True)
+            if edge_over > min_edge:
+                imp_o = JarvisEngine.kelly_fraccional(stats['Over25'], m_o, capital, fraccion_val)
+                st.markdown(f'<div class="bet-card safe-bet"><h3>Mas de 2.5</h3><p>Edge: {edge_over*100:+.1f}%</p><p><b>Sugerido: ${int(round(imp_o))}</b></p></div>', unsafe_allow_html=True)
+            else:
+                st.markdown('<div class="bet-card no-value"><h3>Mas de 2.5</h3><p>Sin valor.</p></div>', unsafe_allow_html=True)
 
-        # Seleccion Optima por Valor Esperado
-        ev_l, ev_o = (stats['Win_H'] * m_l) - 1, (stats['Over25'] * m_o) - 1
-        m_pick, m_prob, m_cuota = ("+2.5 Goles", stats['Over25'], m_o) if ev_o > ev_l else (f"Victoria: {e_h}", stats['Win_H'], m_l)
-        st.markdown(f"""<div class="bet-card" style="border-top: 5px solid #3b82f6;"><div class="custom-progress-bg"><div class="custom-progress-fill" style="width: {m_prob*100}%; background-color: #3b82f6;"></div></div>
-        <h3>Seleccion Optima</h3><p style="color: #93c5fd;">Ventaja Detectada: <b>{m_pick}</b> con un {m_prob*100:.1f}%.</p>
-        <div style="background-color: #1e3a8a; padding: 10px; border-radius: 8px; color: #93c5fd; font-weight: bold;">Importe Sugerido: ${int(round(AnalysisEngine.kelly_criterion(m_prob, m_cuota, capital)))}</div></div>""", unsafe_allow_html=True)
+    # Historial
+    st.markdown("---")
+    enfrentamientos = df[((df['Home'] == e_h) & (df['Away'] == e_v)) | ((df['Home'] == e_v) & (df['Away'] == e_h))].sort_values(by='Date', ascending=False)
+    st.subheader("Historial Directo")
+    if not enfrentamientos.empty:
+        st.dataframe(enfrentamientos[['Date', 'Home', 'HG', 'AG', 'Away']], use_container_width=True, hide_index=True)
+    else:
+        st.warning(f"No se encontraron enfrentamientos previos entre {e_h} y {e_v} en este archivo.")
 else:
-    st.error("Error: Archivos de datos no detectados.")
+    st.error("Archivo no encontrado.")
