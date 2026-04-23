@@ -5,7 +5,7 @@ from scipy.stats import poisson
 import os
 
 # --- 1. CONFIGURACION DE LA INTERFAZ ---
-st.set_page_config(page_title="Prototipo de Apuestas", layout="wide")
+st.set_page_config(page_title="Sistema de Apuestas", layout="wide")
 
 st.markdown("""
     <style>
@@ -14,20 +14,8 @@ st.markdown("""
     .bet-card { background-color: #262730; padding: 20px; border-radius: 15px; border: 1px solid #4b5563; margin-bottom: 20px; }
     .safe-bet { border-left: 8px solid #10b981; }
     .risky-bet { border-left: 8px solid #f59e0b; }
-    
-    .custom-progress-bg {
-        background-color: #374151;
-        border-radius: 10px;
-        height: 12px;
-        width: 100%;
-        margin-bottom: 15px;
-        overflow: hidden;
-    }
-    .custom-progress-fill {
-        height: 100%;
-        border-radius: 10px;
-        transition: width 0.5s ease-in-out;
-    }
+    .custom-progress-bg { background-color: #374151; border-radius: 10px; height: 12px; width: 100%; margin-bottom: 15px; overflow: hidden; }
+    .custom-progress-fill { height: 100%; border-radius: 10px; transition: width 0.5s ease-in-out; }
     </style>
     """, unsafe_allow_html=True)
 
@@ -35,12 +23,9 @@ st.markdown("""
 class AnalysisEngine:
     @staticmethod
     def american_to_decimal(momio):
-        """Convierte momio americano a decimal para calculos matematicos"""
         if momio is None or momio == 0: return None
-        if momio > 0:
-            return (momio / 100) + 1
-        else:
-            return (100 / abs(momio)) + 1
+        if momio > 0: return (momio / 100) + 1
+        return (100 / abs(momio)) + 1
 
     @staticmethod
     def calcular_stats_completas(media_h, media_v):
@@ -64,7 +49,7 @@ class AnalysisEngine:
         f = (b * prob - q) / b
         return max(0, f * bankroll * 0.5)
 
-# --- 3. LISTAS OFICIALES DE EQUIPOS ---
+# --- 3. LISTAS OFICIALES DE EQUIPOS (TEMPORADA 25/26) ---
 EQUIPOS_BUNDESLIGA = [
     "1. FC Heidenheim 1846", "1. FC Union Berlin", "1. FSV Mainz 05", "Bayer 04 Leverkusen",
     "Borussia Dortmund", "Borussia Mönchengladbach", "Eintracht Frankfurt", "FC Augsburg",
@@ -91,7 +76,7 @@ def cargar_datos(liga_file):
     return None
 
 # --- 5. INTERFAZ DE USUARIO ---
-st.title("Prototipo de Apuestas")
+st.title("Sistema de Apuestas")
 
 with st.sidebar:
     st.header("Configuracion")
@@ -103,14 +88,12 @@ with st.sidebar:
 df = cargar_datos(archivo_liga)
 
 if df is not None:
-    # Seleccion de equipos basada en la liga elegida
     lista_activa = EQUIPOS_BUNDESLIGA if seleccion_liga == "Bundesliga" else EQUIPOS_CHAMPIONSHIP
     
     col_sel1, col_sel2 = st.columns(2)
     with col_sel1: e_h = st.selectbox("Equipo Local", lista_activa)
     with col_sel2: e_v = st.selectbox("Equipo Visitante", lista_activa, index=1)
 
-    # --- CALCULOS DE PROBABILIDAD ---
     m_h = df[df['Home'] == e_h]['HG'].mean()
     m_v = df[df['Away'] == e_v]['AG'].mean()
     stats = AnalysisEngine.calcular_stats_completas(m_h, m_v)
@@ -127,24 +110,23 @@ if df is not None:
     st.markdown("---")
     st.subheader("Ingreso de Momios Actuales (+/-)")
     c_m1, c_m2, c_m3, c_m4, c_m5 = st.columns(5)
-    with c_m1: m_h_raw = st.number_input(f"Momio {e_h}", value=None, format="%g", placeholder="-110 o +150")
-    with c_m2: m_d_raw = st.number_input("Momio Empate", value=None, format="%g", placeholder="+300")
-    with c_m3: m_v_raw = st.number_input(f"Momio {e_v}", value=None, format="%g", placeholder="-110")
-    with c_m4: m_o_raw = st.number_input("Momio +2.5 Goles", value=None, format="%g", placeholder="-150")
-    with c_m5: m_b_raw = st.number_input("Momio Ambos Anotan", value=None, format="%g", placeholder="-120")
+    
+    # step=1 asegura que solo se ingresen números enteros
+    with c_m1: m_h_raw = st.number_input(f"Momio {e_h}", value=None, step=1, placeholder="-110")
+    with c_m2: m_d_raw = st.number_input("Momio Empate", value=None, step=1, placeholder="+300")
+    with c_m3: m_v_raw = st.number_input(f"Momio {e_v}", value=None, step=1, placeholder="-110")
+    with c_m4: m_o_raw = st.number_input("Momio +2.5 Goles", value=None, step=1, placeholder="-150")
+    with c_m5: m_b_raw = st.number_input("Momio Ambos Anotan", value=None, step=1, placeholder="-120")
 
-    # Conversiones a decimal para el motor
     m_l, m_e, m_vi = AnalysisEngine.american_to_decimal(m_h_raw), AnalysisEngine.american_to_decimal(m_d_raw), AnalysisEngine.american_to_decimal(m_v_raw)
     m_o, m_ba = AnalysisEngine.american_to_decimal(m_o_raw), AnalysisEngine.american_to_decimal(m_b_raw)
 
-    # --- ENFRENTAMIENTOS DIRECTOS (ORDENADO DESCENDENTE 2026 ARRIBA) ---
     enfrentamientos = df[((df['Home'] == e_h) & (df['Away'] == e_v)) | 
                          ((df['Home'] == e_v) & (df['Away'] == e_h))].sort_values(by='Date', ascending=False)
     
     st.subheader("Enfrentamientos Directos")
     st.dataframe(enfrentamientos[['Date', 'Home', 'HG', 'AG', 'Away']], use_container_width=True, hide_index=True)
 
-    # --- ANALISIS FINAL ---
     if all([m_l, m_e, m_vi, m_o, m_ba]):
         st.markdown("---")
         st.subheader("Analisis de Pronostico y Apuesta")
@@ -162,7 +144,6 @@ if df is not None:
             <h3>Opcion Arriesgada</h3><p><b>Pronostico:</b> {e_h} y +2.5 Goles</p><p><b>Probabilidad:</b> {prob_c*100:.1f}%</p>
             <div style="background-color: #78350f; padding: 10px; border-radius: 8px; color: #f59e0b; font-weight: bold;">Importe Sugerido: ${int(round(AnalysisEngine.kelly_criterion(prob_c, cuota_c, capital)))}</div></div>""", unsafe_allow_html=True)
 
-        # Seleccion Optima por Valor Esperado
         ev_l, ev_o = (stats['Win_H'] * m_l) - 1, (stats['Over25'] * m_o) - 1
         m_pick, m_prob, m_cuota = ("+2.5 Goles", stats['Over25'], m_o) if ev_o > ev_l else (f"Victoria: {e_h}", stats['Win_H'], m_l)
         st.markdown(f"""<div class="bet-card" style="border-top: 5px solid #3b82f6;"><div class="custom-progress-bg"><div class="custom-progress-fill" style="width: {m_prob*100}%; background-color: #3b82f6;"></div></div>
