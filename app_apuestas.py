@@ -68,14 +68,24 @@ def load_data(file):
         except: return "EMPTY"
     return None
 
-# --- 4. PANEL DE CONTROL ---
+# --- 4. PANEL DE CONTROL (ORDENADO) ---
 st.title("Sistema de Apuestas")
 
 with st.sidebar:
     st.header("Configuracion")
+    
+    # 1. Ligas hasta arriba
+    ligas = {"Bundesliga": "BL1_2026", "Championship": "ELC_2026", "Liga MX": "LMX_2026"}
+    liga_sel = st.selectbox("Ligas", list(ligas.keys()))
+    
+    st.markdown("---")
+    
+    # 2. Capital debajo de ligas
     capital = st.number_input("Capital Total", min_value=0.0, value=1000.0, format="%g")
     
     st.markdown("---")
+    
+    # 3. Modo de análisis y lo demás
     st.subheader("Modo de Analisis")
     modo = st.radio(
         "Nivel de Precision:",
@@ -90,8 +100,8 @@ with st.sidebar:
         fraccion_val, min_edge = 0.125, 0.18
 
     with st.expander("📚 Glosario Tecnico"):
-        st.write("**Riesgo (Kelly):** Fraccion del capital a usar.")
-        st.write("**Edge (Ventaja):** Tu ventaja matematica sobre el casino.")
+        st.write("**Riesgo (Kelly):** Define la seguridad de tu bankroll.")
+        st.write("**Edge (Ventaja):** Diferencia estadística a tu favor.")
 
     st.markdown(f"""
         <div style="background-color: #1e1e1e; padding: 10px; border-radius: 5px; border-left: 3px solid #3b82f6; margin-top: 10px;">
@@ -100,11 +110,8 @@ with st.sidebar:
         <b>Filtro Edge:</b> {int(min_edge*100)}%
         </div>
     """, unsafe_allow_html=True)
-    
-    st.markdown("---")
-    ligas = {"Bundesliga": "BL1_2026", "Championship": "ELC_2026", "Liga MX": "LMX_2026"}
-    liga_sel = st.selectbox("Competicion", list(ligas.keys()))
 
+# --- LOGICA DE EJECUCION ---
 if liga_sel == "Liga MX":
     st.info("🚧 Estamos en proceso de añadir esta nueva liga. Los datos históricos estarán disponibles pronto.")
     st.stop()
@@ -147,7 +154,6 @@ if isinstance(df, pd.DataFrame):
     m_o = JarvisEngine.american_to_decimal(m_o_raw)
     m_b = JarvisEngine.american_to_decimal(m_b_raw)
 
-    # --- ESTRATEGIA SUGERIDA ---
     if m_l and m_e and m_vi and m_o and m_b:
         st.markdown("---")
         st.subheader(f"Estrategia sugerida - {modo}")
@@ -172,7 +178,7 @@ if isinstance(df, pd.DataFrame):
                 <p>Edge: {edge_opt*100:+.1f}%</p>
                 <div style="background-color: #1e3a8a; padding: 10px; border-radius: 8px; color: #93c5fd; font-weight: bold;">Monto sugerido: ${int(round(imp))}</div></div>""", unsafe_allow_html=True)
             else:
-                st.markdown('<div class="bet-card no-value"><h3>🌟 Mas Optima</h3><p>Sin apuestas de alto valor detectadas.</p></div>', unsafe_allow_html=True)
+                st.markdown('<div class="bet-card no-value"><h3>🌟 Mas Optima</h3><p>Sin valor bajo este umbral.</p></div>', unsafe_allow_html=True)
 
         with rec2:
             if validos:
@@ -183,7 +189,7 @@ if isinstance(df, pd.DataFrame):
                 <p>Confianza: {oportunidad['prob']*100:.1f}%</p>
                 <div style="background-color: #064e3b; padding: 10px; border-radius: 8px; color: #10b981; font-weight: bold;">Monto sugerido: ${int(round(imp))}</div></div>""", unsafe_allow_html=True)
             else:
-                st.markdown('<div class="bet-card no-value"><h3>✅ Oportunidad</h3><p>Ninguna opcion cumple el Edge minimo.</p></div>', unsafe_allow_html=True)
+                st.markdown('<div class="bet-card no-value"><h3>✅ Oportunidad</h3><p>Ninguna opcion cumple el filtro.</p></div>', unsafe_allow_html=True)
 
         with rec3:
             prob_comb = stats['Win_H'] * stats['Over25']
@@ -192,10 +198,9 @@ if isinstance(df, pd.DataFrame):
             if edge_arr >= min_edge:
                 imp = JarvisEngine.kelly_fraccional(prob_comb, cuota_comb, capital, fraccion_val)
                 st.markdown(f"""<div class="bet-card arriesgada-card"><h3>🔥 Arriesgada</h3><p><b>{e_h} y +2.5 Goles</b></p>
-                <p>Edge Arr.: {edge_arr*100:+.1f}%</p>
-                <div style="background-color: #78350f; padding: 10px; border-radius: 8px; color: #f59e0b; font-weight: bold;">Monto sugerido: ${int(round(imp))}</div></div>""", unsafe_allow_html=True)
+                <p>Monto sugerido: <b>${int(round(imp))}</b></p></div>""", unsafe_allow_html=True)
             else:
-                st.markdown(f"""<div class="bet-card no-value"><h3>🔥 Arriesgada</h3><p>Combinacion no rentable en este modo.</p></div>""", unsafe_allow_html=True)
+                st.markdown(f"""<div class="bet-card no-value"><h3>🔥 Arriesgada</h3><p>No rentable en modo {modo}.</p></div>""", unsafe_allow_html=True)
 
     # Historial
     st.markdown("---")
