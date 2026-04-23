@@ -17,7 +17,7 @@ st.markdown("""
     </style>
     """, unsafe_allow_html=True)
 
-# --- 2. MOTOR DE CALCULO ---
+# --- 2. MOTOR JARVIS ---
 class JarvisEngine:
     @staticmethod
     def american_to_decimal(momio):
@@ -53,16 +53,16 @@ class JarvisEngine:
 
 # --- 3. GESTION DE DATOS ---
 @st.cache_data
-def load_data(file):
-    path = f"Data/{file}.csv"
-    if os.path.exists(path):
+def cargar_datos(liga_file):
+    ruta = f"Data/{liga_file}.csv"
+    if os.path.exists(ruta):
         try:
-            df = pd.read_csv(path)
-            if df.empty: return "EMPTY"
-            df['Date'] = pd.to_datetime(df['Date'])
-            df['Home'] = df['Home'].str.strip()
-            df['Away'] = df['Away'].str.strip()
-            return df
+            temp_df = pd.read_csv(ruta)
+            if temp_df.empty: return "EMPTY"
+            temp_df['Date'] = pd.to_datetime(temp_df['Date'])
+            temp_df['Home'] = temp_df['Home'].str.strip()
+            temp_df['Away'] = temp_df['Away'].str.strip()
+            return temp_df
         except:
             return "EMPTY"
     return None
@@ -82,30 +82,32 @@ with st.sidebar:
     ligas = {"Bundesliga": "BL1_2026", "Championship": "ELC_2026", "Liga MX": "LMX_2026"}
     liga_sel = st.selectbox("Competicion", list(ligas.keys()))
 
+# --- VALIDACION LIGA MX ---
 if liga_sel == "Liga MX":
     st.info("🚧 Estamos en proceso de añadir esta nueva liga. Los datos históricos estarán disponibles pronto.")
     st.stop()
 
-df = load_data(ligas[liga_sel])
+df = cargar_datos(ligas[liga_sel])
 
-if df == "EMPTY":
+# Validacion de error de Pandas corregida
+if isinstance(df, str) and df == "EMPTY":
     st.warning(f"El archivo de {liga_sel} no tiene datos suficientes.")
 elif df is not None:
-    # Nombres dinámicos desde el archivo CSV
+    # Nombres dinámicos desde el archivo CSV (incluye AFC, FC, etc.)
     equipos = sorted(df['Home'].unique())
     
     c1, c2 = st.columns(2)
     with c1: e_h = st.selectbox("Equipo Local", equipos)
     with c2: e_v = st.selectbox("Equipo Visitante", equipos, index=1)
     
-    # Cálculos Ponderados
+    # Cálculos
     m_h = JarvisEngine.calcular_stats_ponderadas(df[df['Home'] == e_h], True)
     m_v = JarvisEngine.calcular_stats_ponderadas(df[df['Away'] == e_v], False)
     stats = JarvisEngine.poisson_probability(m_h, m_v)
 
     # UI: Probabilidades
     st.markdown("---")
-    st.subheader("Probabilidades Calculadas")
+    st.subheader(f"Probabilidades: {e_h} vs {e_v}")
     p_col = st.columns(5)
     p_col[0].metric("Gana Local", f"{stats['Win_H']*100:.1f}%")
     p_col[1].metric("Empate", f"{stats['Draw']*100:.1f}%")
@@ -113,7 +115,7 @@ elif df is not None:
     p_col[3].metric("+2.5 Goles", f"{stats['Over25']*100:.1f}%")
     p_col[4].metric("Ambos Anotan", f"{stats['BTTS']*100:.1f}%")
 
-    # UI: Momios Americanos
+    # UI: Momios
     st.markdown("---")
     st.subheader("Ingreso de Momios Actuales (+/-)")
     m_col = st.columns(5)
@@ -146,9 +148,9 @@ elif df is not None:
         with res2:
             if edge_o > min_edge:
                 imp = JarvisEngine.kelly_fraccional(stats['Over25'], m_o, capital, riesgo_map[fraccion_sel])
-                st.markdown(f'<div class="bet-card safe-bet"><h3>Mas de 2.5 Goles</h3><p>Edge: {edge_o*100:+.1f}%</p><p><b>Sugerido: ${int(round(imp))}</b></p></div>', unsafe_allow_html=True)
+                st.markdown(f'<div class="bet-card safe-bet"><h3>Mas de 2.5</h3><p>Edge: {edge_o*100:+.1f}%</p><p><b>Sugerido: ${int(round(imp))}</b></p></div>', unsafe_allow_html=True)
             else:
-                st.markdown('<div class="bet-card no-value"><h3>Mas de 2.5 Goles</h3><p>Sin valor suficiente.</p></div>', unsafe_allow_html=True)
+                st.markdown('<div class="bet-card no-value"><h3>Mas de 2.5</h3><p>Sin valor suficiente.</p></div>', unsafe_allow_html=True)
 
         with res3:
             if edge_b > min_edge:
@@ -157,7 +159,7 @@ elif df is not None:
             else:
                 st.markdown('<div class="bet-card no-value"><h3>Ambos Anotan</h3><p>Sin valor suficiente.</p></div>', unsafe_allow_html=True)
 
-    # --- HISTORIAL (ESTA ERA LA LINEA DEL ERROR) ---
+    # Historial
     st.markdown("---")
     enfrentamientos = df[((df['Home'] == e_h) & (df['Away'] == e_v)) | 
                          ((df['Home'] == e_v) & (df['Away'] == e_h))].sort_values(by='Date', ascending=False)
@@ -165,7 +167,5 @@ elif df is not None:
     st.subheader("Historial Directo")
     if not enfrentamientos.empty:
         st.dataframe(enfrentamientos[['Date', 'Home', 'HG', 'AG', 'Away']], use_container_width=True, hide_index=True)
-    else:
-        st.warning(f"No se encontraron enfrentamientos previos entre {e_h} y {e_v}.")
 else:
     st.error("Error al cargar los datos.")
