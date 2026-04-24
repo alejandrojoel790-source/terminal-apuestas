@@ -11,11 +11,33 @@ st.markdown("""
     <style>
     .main { background-color: #0e1117; }
     .stMetric { background-color: #1f2937; padding: 15px; border-radius: 10px; border-left: 5px solid #3b82f6; }
-    .bet-card { background-color: #262730; padding: 20px; border-radius: 15px; border: 1px solid #4b5563; margin-bottom: 20px; min-height: 250px; }
+    .bet-card { background-color: #262730; padding: 20px; border-radius: 15px; border: 1px solid #4b5563; margin-bottom: 20px; min-height: 200px; }
     .optima-card { border-left: 8px solid #3b82f6; border-top: 2px solid #3b82f6; }
     .oportunidad-card { border-left: 8px solid #10b981; border-top: 2px solid #10b981; }
     .arriesgada-card { border-left: 8px solid #f59e0b; border-top: 2px solid #f59e0b; }
-    .favorito-card { border-left: 8px solid #8b5cf6; border-top: 2px solid #8b5cf6; }
+    
+    /* Estilo para la tarjeta horizontal de resultado final */
+    .resultado-final-horizontal { 
+        background-color: #262730; 
+        padding: 30px; 
+        border-radius: 15px; 
+        border: 1px solid #4b5563; 
+        border-left: 12px solid #8b5cf6; 
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .monto-destacado {
+        background-color: #4c1d95; 
+        padding: 15px; 
+        border-radius: 10px; 
+        color: #c4b5fd; 
+        font-weight: bold; 
+        font-size: 24px;
+        display: inline-block;
+        margin-top: 10px;
+    }
     .no-value { border-left: 8px solid #6b7280; opacity: 0.6; }
     </style>
     """, unsafe_allow_html=True)
@@ -69,7 +91,7 @@ def load_data(file):
         except: return "EMPTY"
     return None
 
-# --- 4. PANEL DE CONTROL (ORDENADO) ---
+# --- 4. PANEL DE CONTROL ---
 st.title("Sistema de Apuestas")
 
 with st.sidebar:
@@ -92,8 +114,8 @@ with st.sidebar:
         fraccion_val, min_edge = 0.125, 0.18
 
     with st.expander("📚 Glosario Tecnico"):
-        st.write("**Riesgo (Kelly):** Seguridad de tu capital.")
-        st.write("**Edge:** Tu ventaja real sobre el casino.")
+        st.write("**Kelly:** Gestion de capital.")
+        st.write("**Edge:** Tu ventaja real.")
 
     st.markdown(f"""
         <div style="background-color: #1e1e1e; padding: 10px; border-radius: 5px; border-left: 3px solid #3b82f6; margin-top: 10px;">
@@ -102,11 +124,6 @@ with st.sidebar:
         <b>Filtro Edge:</b> {int(min_edge*100)}%
         </div>
     """, unsafe_allow_html=True)
-
-# --- LOGICA DE EJECUCION ---
-if liga_sel == "Liga MX":
-    st.info("🚧 Liga MX en desarrollo.")
-    st.stop()
 
 df = load_data(ligas_dict[liga_sel])
 
@@ -120,7 +137,7 @@ if isinstance(df, pd.DataFrame):
     m_v = JarvisEngine.calcular_stats_ponderadas(df[df['Away'] == e_v], False)
     stats = JarvisEngine.poisson_probability(m_h, m_v)
 
-    # UI: PROBABILIDADES (NUMEROS ENTEROS)
+    # UI: PROBABILIDADES SIN DECIMALES
     st.markdown("---")
     p_col = st.columns(5)
     p_col[0].metric(f"Gana {e_h}", f"{int(round(stats['Win_H']*100))}%")
@@ -138,7 +155,6 @@ if isinstance(df, pd.DataFrame):
     with m_col[3]: m_o_raw = st.number_input("Momio +2.5", value=None)
     with m_col[4]: m_b_raw = st.number_input("Momio Ambos Anotan", value=None)
 
-    # Conversiones a decimal
     m_l = JarvisEngine.american_to_decimal(m_h_raw)
     m_e = JarvisEngine.american_to_decimal(m_d_raw)
     m_vi = JarvisEngine.american_to_decimal(m_v_raw)
@@ -149,9 +165,9 @@ if isinstance(df, pd.DataFrame):
         st.markdown("---")
         st.subheader(f"Estrategia sugerida - {modo}")
         
-        rec1, rec2, rec3, rec4 = st.columns(4)
+        # FILA SUPERIOR: 3 Tarjetas
+        rec1, rec2, rec3 = st.columns(3)
         
-        # Diccionario para evaluar valor
         mercados = [
             {"name": f"Victoria {e_h}", "prob": stats['Win_H'], "odd": m_l},
             {"name": "Empate", "prob": stats['Draw'], "odd": m_e},
@@ -162,63 +178,61 @@ if isinstance(df, pd.DataFrame):
         
         validos = [m for m in mercados if (m['prob'] * m['odd']) - 1 >= min_edge]
 
-        # 1. OPTIMA
         with rec1:
             if validos:
                 optima = max(validos, key=lambda x: (x['prob'] * x['odd']) - 1)
-                imp = int(round(JarvisEngine.kelly_fraccional(optima['prob'], optima['odd'], capital, fraccion_val)))
-                st.markdown(f'<div class="bet-card optima-card"><h3>🌟 Mas Optima</h3><p><b>{optima["name"]}</b></p><div style="background-color: #1e3a8a; padding: 10px; border-radius: 8px; color: #93c5fd; font-weight: bold; font-size: 20px;">Monto sugerido: ${imp}</div></div>', unsafe_allow_html=True)
+                monto = int(round(JarvisEngine.kelly_fraccional(optima['prob'], optima['odd'], capital, fraccion_val)))
+                st.markdown(f'<div class="bet-card optima-card"><h3>🌟 Mas Optima</h3><p><b>{optima["name"]}</b></p><div style="background-color: #1e3a8a; padding: 10px; border-radius: 8px; color: #93c5fd; font-weight: bold; font-size: 20px;">Monto sugerido: ${monto}</div></div>', unsafe_allow_html=True)
             else:
                 st.markdown('<div class="bet-card no-value"><h3>🌟 Mas Optima</h3><p>Sin valor suficiente.</p></div>', unsafe_allow_html=True)
 
-        # 2. OPORTUNIDAD
         with rec2:
             if validos:
                 oportunidad = max(validos, key=lambda x: x['prob'])
-                imp = int(round(JarvisEngine.kelly_fraccional(oportunidad['prob'], oportunidad['odd'], capital, fraccion_val)))
-                st.markdown(f'<div class="bet-card oportunidad-card"><h3>✅ Oportunidad</h3><p><b>{oportunidad["name"]}</b></p><div style="background-color: #064e3b; padding: 10px; border-radius: 8px; color: #10b981; font-weight: bold; font-size: 20px;">Monto sugerido: ${imp}</div></div>', unsafe_allow_html=True)
+                monto = int(round(JarvisEngine.kelly_fraccional(oportunidad['prob'], oportunidad['odd'], capital, fraccion_val)))
+                st.markdown(f'<div class="bet-card oportunidad-card"><h3>✅ Oportunidad</h3><p><b>{oportunidad["name"]}</b></p><div style="background-color: #064e3b; padding: 10px; border-radius: 8px; color: #10b981; font-weight: bold; font-size: 20px;">Monto sugerido: ${monto}</div></div>', unsafe_allow_html=True)
             else:
-                st.markdown('<div class="bet-card no-value"><h3>✅ Oportunidad</h3><p>Sin apuestas seguras.</p></div>', unsafe_allow_html=True)
+                st.markdown('<div class="bet-card no-value"><h3>✅ Oportunidad</h3><p>Sin apuestas probables.</p></div>', unsafe_allow_html=True)
 
-        # 3. ARRIESGADA
         with rec3:
             prob_comb = stats['Win_H'] * stats['Over25']
             cuota_comb = m_l * m_o * 0.85
             if (prob_comb * cuota_comb) - 1 >= min_edge:
-                imp = int(round(JarvisEngine.kelly_fraccional(prob_comb, cuota_comb, capital, fraccion_val)))
-                st.markdown(f'<div class="bet-card arriesgada-card"><h3>🔥 Arriesgada</h3><p><b>{e_h} y +2.5 Goles</b></p><div style="background-color: #78350f; padding: 10px; border-radius: 8px; color: #f59e0b; font-weight: bold; font-size: 20px;">Monto sugerido: ${imp}</div></div>', unsafe_allow_html=True)
+                monto = int(round(JarvisEngine.kelly_fraccional(prob_comb, cuota_comb, capital, fraccion_val)))
+                st.markdown(f'<div class="bet-card arriesgada-card"><h3>🔥 Arriesgada</h3><p><b>{e_h} y +2.5 Goles</b></p><div style="background-color: #78350f; padding: 10px; border-radius: 8px; color: #f59e0b; font-weight: bold; font-size: 20px;">Monto sugerido: ${monto}</div></div>', unsafe_allow_html=True)
             else:
-                st.markdown('<div class="bet-card no-value"><h3>🔥 Arriesgada</h3><p>Combinacion no rentable.</p></div>', unsafe_allow_html=True)
+                st.markdown('<div class="bet-card no-value"><h3>🔥 Arriesgada</h3><p>No rentable actualmente.</p></div>', unsafe_allow_html=True)
 
-        # 4. MAYOR PROBABILIDAD (LA PETICION ESPECIAL)
-        with rec4:
-            # Buscamos la apuesta mas probable de TODO el sistema
-            todas = [
-                {"n": f"Victoria {e_h}", "p": stats['Win_H'], "m": m_l},
-                {"n": f"Victoria {e_v}", "p": stats['Win_V'], "m": m_vi},
-                {"n": "Mas de 2.5 Goles", "p": stats['Over25'], "m": m_o},
-                {"n": "Ambos Anotan", "p": stats['AmbosAn'], "m": m_b}
-            ]
-            segura = max(todas, key=lambda x: x['p'])
-            imp_segura = int(round(JarvisEngine.kelly_fraccional(segura['p'], segura['m'], capital, fraccion_val)))
-            # Si el Edge es negativo, forzamos un monto pequeño de proteccion
-            if imp_segura <= 0: imp_segura = int(capital * 0.01)
+        # FILA INFERIOR: Resultado Final Horizontal
+        st.markdown("---")
+        
+        todas_opciones = [
+            {"n": f"Victoria {e_h}", "p": stats['Win_H'], "m": m_l},
+            {"n": f"Victoria {e_v}", "p": stats['Win_V'], "m": m_vi},
+            {"n": "Mas de 2.5 Goles", "p": stats['Over25'], "m": m_o},
+            {"n": "Ambos Anotan", "p": stats['AmbosAn'], "m": m_b}
+        ]
+        mejor_segura = max(todas_opciones, key=lambda x: x['p'])
+        monto_segura = int(round(JarvisEngine.kelly_fraccional(mejor_segura['p'], mejor_segura['m'], capital, fraccion_val)))
+        if monto_segura <= 0: monto_segura = int(capital * 0.01) # Protección mínima
 
-            st.markdown(f"""
-                <div class="bet-card favorito-card">
-                    <h3>📊 Mayor Probabilidad</h3>
-                    <p style="font-size: 14px;">Este equipo tiene mas probabilidades de ganar, la apuesta mas logica es:</p>
-                    <p><b>{segura['n']}</b></p>
-                    <div style="background-color: #4c1d95; padding: 10px; border-radius: 8px; color: #c4b5fd; font-weight: bold; font-size: 22px;">
-                        Monto sugerido: ${imp_segura}
+        st.markdown(f"""
+            <div class="resultado-final-horizontal">
+                <h2 style="color: #c4b5fd; margin: 0;">📊 Mayor Probabilidad (Resultado Final)</h2>
+                <p style="font-size: 18px; margin: 0;">Basado en el analisis mas probable y seguro, la apuesta recomendada es:</p>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <p style="font-size: 26px; color: white; margin: 5px 0;"><b>{mejor_segura['n']}</b></p>
+                        <p style="font-size: 16px; color: #9ca3af; margin: 0;">Confianza estadistica: {int(round(mejor_segura['p']*100))}%</p>
                     </div>
-                    <p style="font-size: 12px; margin-top: 10px;">Confianza: {int(round(segura['p']*100))}%</p>
+                    <div class="monto-destacado">
+                        Monto sugerido: ${monto_segura}
+                    </div>
                 </div>
-            """, unsafe_allow_html=True)
+            </div>
+        """, unsafe_allow_html=True)
 
     st.markdown("---")
     enfrentamientos = df[((df['Home'] == e_h) & (df['Away'] == e_v)) | ((df['Home'] == e_v) & (df['Away'] == e_h))].sort_values(by='Date', ascending=False)
     st.subheader("Historial Directo")
     st.dataframe(enfrentamientos[['Date', 'Home', 'HG', 'AG', 'Away']], use_container_width=True, hide_index=True)
-else:
-    st.warning("Selecciona una liga para comenzar.")
