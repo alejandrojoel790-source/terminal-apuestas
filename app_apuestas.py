@@ -15,6 +15,7 @@ st.markdown("""
     .optima-card { border-left: 8px solid #3b82f6; border-top: 2px solid #3b82f6; }
     .oportunidad-card { border-left: 8px solid #10b981; border-top: 2px solid #10b981; }
     .arriesgada-card { border-left: 8px solid #f59e0b; border-top: 2px solid #f59e0b; }
+    .favorito-card { border-left: 8px solid #8b5cf6; border-top: 2px solid #8b5cf6; } /* Color Violeta */
     .no-value { border-left: 8px solid #6b7280; opacity: 0.6; }
     </style>
     """, unsafe_allow_html=True)
@@ -68,29 +69,20 @@ def load_data(file):
         except: return "EMPTY"
     return None
 
-# --- 4. PANEL DE CONTROL (ORDENADO) ---
+# --- 4. PANEL DE CONTROL ---
 st.title("Sistema de Apuestas")
 
 with st.sidebar:
     st.header("Configuracion")
-    
-    # 1. Ligas hasta arriba
-    ligas = {"Bundesliga": "BL1_2026", "Championship": "ELC_2026", "Liga MX": "LMX_2026"}
-    liga_sel = st.selectbox("Ligas", list(ligas.keys()))
+    ligas_dict = {"Bundesliga": "BL1_2026", "Championship": "ELC_2026", "Liga MX": "LMX_2026"}
+    liga_sel = st.selectbox("Ligas", list(ligas_dict.keys()))
     
     st.markdown("---")
-    
-    # 2. Capital debajo de ligas
     capital = st.number_input("Capital Total", min_value=0.0, value=1000.0, format="%g")
     
     st.markdown("---")
-    
-    # 3. Modo de análisis y lo demás
     st.subheader("Modo de Analisis")
-    modo = st.radio(
-        "Nivel de Precision:",
-        ["Sistema Normal", "Sistema Medio", "Sistema Muy Preciso"]
-    )
+    modo = st.radio("Nivel de Precision:", ["Sistema Normal", "Sistema Medio", "Sistema Muy Preciso"])
 
     if modo == "Sistema Normal":
         fraccion_val, min_edge = 0.5, 0.05
@@ -100,23 +92,15 @@ with st.sidebar:
         fraccion_val, min_edge = 0.125, 0.18
 
     with st.expander("📚 Glosario Tecnico"):
-        st.write("**Riesgo (Kelly):** Define la seguridad de tu bankroll.")
-        st.write("**Edge (Ventaja):** Diferencia estadística a tu favor.")
-
-    st.markdown(f"""
-        <div style="background-color: #1e1e1e; padding: 10px; border-radius: 5px; border-left: 3px solid #3b82f6; margin-top: 10px;">
-        <small>Configuracion Activa:</small><br>
-        <b>Riesgo:</b> {int(1/fraccion_val)}x Kelly<br>
-        <b>Filtro Edge:</b> {int(min_edge*100)}%
-        </div>
-    """, unsafe_allow_html=True)
+        st.write("**Edge:** Tu ventaja matemática sobre el casino.")
+        st.write("**Probabilidad:** La probabilidad real de que ocurra un evento según los datos.")
 
 # --- LOGICA DE EJECUCION ---
 if liga_sel == "Liga MX":
-    st.info("🚧 Estamos en proceso de añadir esta nueva liga. Los datos históricos estarán disponibles pronto.")
+    st.info("🚧 Estamos en proceso de añadir esta nueva liga.")
     st.stop()
 
-df = load_data(ligas[liga_sel])
+df = load_data(ligas_dict[liga_sel])
 
 if isinstance(df, pd.DataFrame):
     equipos = sorted(df['Home'].unique())
@@ -124,12 +108,10 @@ if isinstance(df, pd.DataFrame):
     with c_sel1: e_h = st.selectbox("Equipo Local", equipos)
     with c_sel2: e_v = st.selectbox("Equipo Visitante", equipos, index=1)
     
-    # Calculos
     m_h = JarvisEngine.calcular_stats_ponderadas(df[df['Home'] == e_h], True)
     m_v = JarvisEngine.calcular_stats_ponderadas(df[df['Away'] == e_v], False)
     stats = JarvisEngine.poisson_probability(m_h, m_v)
 
-    # UI: Probabilidades
     st.markdown("---")
     p_col = st.columns(5)
     p_col[0].metric(f"Gana {e_h}", f"{stats['Win_H']*100:.1f}%")
@@ -138,15 +120,14 @@ if isinstance(df, pd.DataFrame):
     p_col[3].metric("+2.5 Goles", f"{stats['Over25']*100:.1f}%")
     p_col[4].metric("Ambos Anotan", f"{stats['AmbosAn']*100:.1f}%")
 
-    # UI: Momios
     st.markdown("---")
     st.subheader("Ingreso de Momios Actuales (+/-)")
     m_col = st.columns(5)
-    with m_col[0]: m_h_raw = st.number_input(f"Momio {e_h}", value=None, step=1)
-    with m_col[1]: m_d_raw = st.number_input("Momio Empate", value=None, step=1)
-    with m_col[2]: m_v_raw = st.number_input(f"Momio {e_v}", value=None, step=1)
-    with m_col[3]: m_o_raw = st.number_input("Momio +2.5", value=None, step=1)
-    with m_col[4]: m_b_raw = st.number_input("Momio Ambos Anotan", value=None, step=1)
+    with m_col[0]: m_h_raw = st.number_input(f"Momio {e_h}", value=None)
+    with m_col[1]: m_d_raw = st.number_input("Momio Empate", value=None)
+    with m_col[2]: m_v_raw = st.number_input(f"Momio {e_v}", value=None)
+    with m_col[3]: m_o_raw = st.number_input("Momio +2.5", value=None)
+    with m_col[4]: m_b_raw = st.number_input("Momio Ambos Anotan", value=None)
 
     m_l = JarvisEngine.american_to_decimal(m_h_raw)
     m_e = JarvisEngine.american_to_decimal(m_d_raw)
@@ -158,6 +139,9 @@ if isinstance(df, pd.DataFrame):
         st.markdown("---")
         st.subheader(f"Estrategia sugerida - {modo}")
         
+        # --- LOGICA DE COLUMNAS (AHORA SON 4) ---
+        rec1, rec2, rec3, rec4 = st.columns(4)
+        
         mercados = [
             {"name": f"Victoria {e_h}", "prob": stats['Win_H'], "odd": m_l},
             {"name": "Empate", "prob": stats['Draw'], "odd": m_e},
@@ -167,42 +151,53 @@ if isinstance(df, pd.DataFrame):
         ]
         
         validos = [m for m in mercados if (m['prob'] * m['odd']) - 1 >= min_edge]
-        rec1, rec2, rec3 = st.columns(3)
 
         with rec1:
             if validos:
                 optima = max(validos, key=lambda x: (x['prob'] * x['odd']) - 1)
-                edge_opt = (optima['prob'] * optima['odd']) - 1
                 imp = JarvisEngine.kelly_fraccional(optima['prob'], optima['odd'], capital, fraccion_val)
-                st.markdown(f"""<div class="bet-card optima-card"><h3>🌟 Mas Optima</h3><p><b>{optima['name']}</b></p>
-                <p>Edge: {edge_opt*100:+.1f}%</p>
-                <div style="background-color: #1e3a8a; padding: 10px; border-radius: 8px; color: #93c5fd; font-weight: bold;">Monto sugerido: ${int(round(imp))}</div></div>""", unsafe_allow_html=True)
+                st.markdown(f'<div class="bet-card optima-card"><h3>🌟 Mas Optima</h3><p><b>{optima["name"]}</b></p><div style="background-color: #1e3a8a; padding: 10px; border-radius: 8px; color: #93c5fd; font-weight: bold;">Monto sugerido: ${int(round(imp))}</div></div>', unsafe_allow_html=True)
             else:
-                st.markdown('<div class="bet-card no-value"><h3>🌟 Mas Optima</h3><p>Sin valor bajo este umbral.</p></div>', unsafe_allow_html=True)
+                st.markdown('<div class="bet-card no-value"><h3>🌟 Mas Optima</h3><p>Sin valor suficiente.</p></div>', unsafe_allow_html=True)
 
         with rec2:
             if validos:
                 oportunidad = max(validos, key=lambda x: x['prob'])
-                edge_op = (oportunidad['prob'] * oportunidad['odd']) - 1
                 imp = JarvisEngine.kelly_fraccional(oportunidad['prob'], oportunidad['odd'], capital, fraccion_val)
-                st.markdown(f"""<div class="bet-card oportunidad-card"><h3>✅ Oportunidad</h3><p><b>{oportunidad['name']}</b></p>
-                <p>Confianza: {oportunidad['prob']*100:.1f}%</p>
-                <div style="background-color: #064e3b; padding: 10px; border-radius: 8px; color: #10b981; font-weight: bold;">Monto sugerido: ${int(round(imp))}</div></div>""", unsafe_allow_html=True)
+                st.markdown(f'<div class="bet-card oportunidad-card"><h3>✅ Oportunidad</h3><p><b>{oportunidad["name"]}</b></p><div style="background-color: #064e3b; padding: 10px; border-radius: 8px; color: #10b981; font-weight: bold;">Monto sugerido: ${int(round(imp))}</div></div>', unsafe_allow_html=True)
             else:
-                st.markdown('<div class="bet-card no-value"><h3>✅ Oportunidad</h3><p>Ninguna opcion cumple el filtro.</p></div>', unsafe_allow_html=True)
+                st.markdown('<div class="bet-card no-value"><h3>✅ Oportunidad</h3><p>Sin apuestas probables con valor.</p></div>', unsafe_allow_html=True)
 
         with rec3:
             prob_comb = stats['Win_H'] * stats['Over25']
             cuota_comb = m_l * m_o * 0.85
-            edge_arr = (prob_comb * cuota_comb) - 1
-            if edge_arr >= min_edge:
+            if (prob_comb * cuota_comb) - 1 >= min_edge:
                 imp = JarvisEngine.kelly_fraccional(prob_comb, cuota_comb, capital, fraccion_val)
-                st.markdown(f"""<div class="bet-card arriesgada-card"><h3>🔥 Arriesgada</h3><p><b>{e_h} y +2.5 Goles</b></p>
-                <p>Monto sugerido: <b>${int(round(imp))}</b></p></div>""", unsafe_allow_html=True)
+                st.markdown(f'<div class="bet-card arriesgada-card"><h3>🔥 Arriesgada</h3><p><b>{e_h} y +2.5 Goles</b></p><div style="background-color: #78350f; padding: 10px; border-radius: 8px; color: #f59e0b; font-weight: bold;">Monto sugerido: ${int(round(imp))}</div></div>', unsafe_allow_html=True)
             else:
-                st.markdown(f"""<div class="bet-card no-value"><h3>🔥 Arriesgada</h3><p>No rentable en modo {modo}.</p></div>""", unsafe_allow_html=True)
+                st.markdown('<div class="bet-card no-value"><h3>🔥 Arriesgada</h3><p>No rentable actualmente.</p></div>', unsafe_allow_html=True)
 
-    # Historial
+        # --- CUARTA OPCION: EL FAVORITO ESTADISTICO ---
+        with rec4:
+            # Determinamos quién tiene el % más alto sin importar el momio
+            if stats['Win_H'] > stats['Win_V'] and stats['Win_H'] > stats['Draw']:
+                fav_name, fav_prob = e_h, stats['Win_H']
+            elif stats['Win_V'] > stats['Win_H'] and stats['Win_V'] > stats['Draw']:
+                fav_name, fav_prob = e_v, stats['Win_V']
+            else:
+                fav_name, fav_prob = "Empate", stats['Draw']
+
+            st.markdown(f"""
+                <div class="bet-card favorito-card">
+                    <h3>📊 Mayor Probabilidad</h3>
+                    <p>Este equipo tiene mas probabilidades de ganar:</p>
+                    <p><b>{fav_name}</b></p>
+                    <div style="background-color: #4c1d95; padding: 10px; border-radius: 8px; color: #c4b5fd; font-weight: bold;">
+                        Confianza: {fav_prob*100:.1f}%
+                    </div>
+                </div>
+            """, unsafe_allow_html=True)
+
     st.markdown("---")
     enfrentamientos = df[((df['Home'] == e_h) & (df['Away'] == e_v)) | ((df['Home'] == e_v) & (df['Away'] == e_h))].sort_values(by='Date', ascending=False)
     st.subheader("Historial Directo")
