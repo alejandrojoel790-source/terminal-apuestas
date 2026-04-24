@@ -16,7 +16,6 @@ st.markdown("""
     .oportunidad-card { border-left: 8px solid #10b981; border-top: 2px solid #10b981; }
     .arriesgada-card { border-left: 8px solid #f59e0b; border-top: 2px solid #f59e0b; }
     
-    /* Estilo para la tarjeta horizontal de resultado final */
     .resultado-final-horizontal { 
         background-color: #262730; 
         padding: 30px; 
@@ -100,7 +99,8 @@ with st.sidebar:
     liga_sel = st.selectbox("Ligas", list(ligas_dict.keys()))
     
     st.markdown("---")
-    capital = st.number_input("Capital Total", min_value=0, value=1000, step=100)
+    # Forzado a entero con step=1
+    capital = st.number_input("Capital Total", min_value=0, value=1000, step=1)
     
     st.markdown("---")
     st.subheader("Modo de Analisis")
@@ -149,11 +149,12 @@ if isinstance(df, pd.DataFrame):
     st.markdown("---")
     st.subheader("Ingreso de Momios Actuales (+/-)")
     m_col = st.columns(5)
-    with m_col[0]: m_h_raw = st.number_input(f"Momio {e_h}", value=None)
-    with m_col[1]: m_d_raw = st.number_input("Momio Empate", value=None)
-    with m_col[2]: m_v_raw = st.number_input(f"Momio {e_v}", value=None)
-    with m_col[3]: m_o_raw = st.number_input("Momio +2.5", value=None)
-    with m_col[4]: m_b_raw = st.number_input("Momio Ambos Anotan", value=None)
+    # AJUSTE CLAVE: step=1 y format="%d" para eliminar .00
+    with m_col[0]: m_h_raw = st.number_input(f"Momio {e_h}", value=0, step=1, format="%d")
+    with m_col[1]: m_d_raw = st.number_input("Momio Empate", value=0, step=1, format="%d")
+    with m_col[2]: m_v_raw = st.number_input(f"Momio {e_v}", value=0, step=1, format="%d")
+    with m_col[3]: m_o_raw = st.number_input("Momio +2.5", value=0, step=1, format="%d")
+    with m_col[4]: m_b_raw = st.number_input("Momio Ambos Anotan", value=0, step=1, format="%d")
 
     m_l = JarvisEngine.american_to_decimal(m_h_raw)
     m_e = JarvisEngine.american_to_decimal(m_d_raw)
@@ -214,7 +215,7 @@ if isinstance(df, pd.DataFrame):
         ]
         mejor_segura = max(todas_opciones, key=lambda x: x['p'])
         monto_segura = int(round(JarvisEngine.kelly_fraccional(mejor_segura['p'], mejor_segura['m'], capital, fraccion_val)))
-        if monto_segura <= 0: monto_segura = int(capital * 0.01) # Protección mínima
+        if monto_segura <= 0: monto_segura = int(capital * 0.01)
 
         st.markdown(f"""
             <div class="resultado-final-horizontal">
