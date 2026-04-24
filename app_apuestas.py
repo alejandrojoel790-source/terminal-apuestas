@@ -12,7 +12,7 @@ st.markdown("""
     .main { background-color: #0e1117; }
     .stMetric { background-color: #1f2937; padding: 15px; border-radius: 10px; border-left: 5px solid #3b82f6; }
     .bet-card { background-color: #262730; padding: 20px; border-radius: 15px; border: 1px solid #4b5563; margin-bottom: 20px; min-height: 200px; }
-    .optima-card { border-left: 8px solid #3b82f6; border-top: 2px solid #3b82f6; }
+    /* Quitamos la optima-card y dejamos las demas */
     .oportunidad-card { border-left: 8px solid #10b981; border-top: 2px solid #10b981; }
     .arriesgada-card { border-left: 8px solid #f59e0b; border-top: 2px solid #f59e0b; }
     
@@ -97,11 +97,8 @@ with st.sidebar:
     st.header("Configuracion")
     ligas_dict = {"Bundesliga": "BL1_2026", "Championship": "ELC_2026", "Liga MX": "LMX_2026"}
     liga_sel = st.selectbox("Ligas", list(ligas_dict.keys()))
-    
     st.markdown("---")
-    # Forzado a entero con step=1
     capital = st.number_input("Capital Total", min_value=0, value=1000, step=1)
-    
     st.markdown("---")
     st.subheader("Modo de Analisis")
     modo = st.radio("Nivel de Precision:", ["Sistema Normal", "Sistema Medio", "Sistema Muy Preciso"])
@@ -137,7 +134,6 @@ if isinstance(df, pd.DataFrame):
     m_v = JarvisEngine.calcular_stats_ponderadas(df[df['Away'] == e_v], False)
     stats = JarvisEngine.poisson_probability(m_h, m_v)
 
-    # UI: PROBABILIDADES SIN DECIMALES
     st.markdown("---")
     p_col = st.columns(5)
     p_col[0].metric(f"Gana {e_h}", f"{int(round(stats['Win_H']*100))}%")
@@ -149,7 +145,6 @@ if isinstance(df, pd.DataFrame):
     st.markdown("---")
     st.subheader("Ingreso de Momios Actuales (+/-)")
     m_col = st.columns(5)
-    # AJUSTE CLAVE: step=1 y format="%d" para eliminar .00
     with m_col[0]: m_h_raw = st.number_input(f"Momio {e_h}", value=0, step=1, format="%d")
     with m_col[1]: m_d_raw = st.number_input("Momio Empate", value=0, step=1, format="%d")
     with m_col[2]: m_v_raw = st.number_input(f"Momio {e_v}", value=0, step=1, format="%d")
@@ -166,8 +161,8 @@ if isinstance(df, pd.DataFrame):
         st.markdown("---")
         st.subheader(f"Estrategia sugerida - {modo}")
         
-        # FILA SUPERIOR: 3 Tarjetas
-        rec1, rec2, rec3 = st.columns(3)
+        # --- AHORA SOLO 2 COLUMNAS ARRIBA ---
+        rec1, rec2 = st.columns(2)
         
         mercados = [
             {"name": f"Victoria {e_h}", "prob": stats['Win_H'], "odd": m_l},
@@ -181,21 +176,13 @@ if isinstance(df, pd.DataFrame):
 
         with rec1:
             if validos:
-                optima = max(validos, key=lambda x: (x['prob'] * x['odd']) - 1)
-                monto = int(round(JarvisEngine.kelly_fraccional(optima['prob'], optima['odd'], capital, fraccion_val)))
-                st.markdown(f'<div class="bet-card optima-card"><h3>🌟 Mas Optima</h3><p><b>{optima["name"]}</b></p><div style="background-color: #1e3a8a; padding: 10px; border-radius: 8px; color: #93c5fd; font-weight: bold; font-size: 20px;">Monto sugerido: ${monto}</div></div>', unsafe_allow_html=True)
-            else:
-                st.markdown('<div class="bet-card no-value"><h3>🌟 Mas Optima</h3><p>Sin valor suficiente.</p></div>', unsafe_allow_html=True)
-
-        with rec2:
-            if validos:
                 oportunidad = max(validos, key=lambda x: x['prob'])
                 monto = int(round(JarvisEngine.kelly_fraccional(oportunidad['prob'], oportunidad['odd'], capital, fraccion_val)))
                 st.markdown(f'<div class="bet-card oportunidad-card"><h3>✅ Oportunidad</h3><p><b>{oportunidad["name"]}</b></p><div style="background-color: #064e3b; padding: 10px; border-radius: 8px; color: #10b981; font-weight: bold; font-size: 20px;">Monto sugerido: ${monto}</div></div>', unsafe_allow_html=True)
             else:
                 st.markdown('<div class="bet-card no-value"><h3>✅ Oportunidad</h3><p>Sin apuestas probables.</p></div>', unsafe_allow_html=True)
 
-        with rec3:
+        with rec2:
             prob_comb = stats['Win_H'] * stats['Over25']
             cuota_comb = m_l * m_o * 0.85
             if (prob_comb * cuota_comb) - 1 >= min_edge:
@@ -204,9 +191,8 @@ if isinstance(df, pd.DataFrame):
             else:
                 st.markdown('<div class="bet-card no-value"><h3>🔥 Arriesgada</h3><p>No rentable actualmente.</p></div>', unsafe_allow_html=True)
 
-        # FILA INFERIOR: Resultado Final Horizontal
+        # --- SECCION FINAL HORIZONTAL ---
         st.markdown("---")
-        
         todas_opciones = [
             {"n": f"Victoria {e_h}", "p": stats['Win_H'], "m": m_l},
             {"n": f"Victoria {e_v}", "p": stats['Win_V'], "m": m_vi},
