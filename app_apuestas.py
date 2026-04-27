@@ -51,7 +51,6 @@ class BettingEngine:
     def calcular_stats_ponderadas(df_equipo, es_local):
         if df_equipo.empty: return 0.001
         col = 'HG' if es_local else 'AG'
-        # Prioridad a datos recientes (2026)
         df_equipo['weight'] = df_equipo['Date'].dt.year.map({2026: 3, 2025: 2, 2024: 1}).fillna(1)
         return (df_equipo[col] * df_equipo['weight']).sum() / df_equipo['weight'].sum()
 
@@ -114,8 +113,7 @@ with st.sidebar:
     st.subheader("Modo de Analisis")
     modo = st.radio(
         "Nivel de Precision:", 
-        ["Sistema Normal", "Sistema Medio", "Sistema Muy Preciso"],
-        help="Normal: Mayor volumen.\nPreciso: Filtro estricto de ventaja."
+        ["Sistema Normal", "Sistema Medio", "Sistema Muy Preciso"]
     )
 
     if modo == "Sistema Normal":
@@ -125,19 +123,16 @@ with st.sidebar:
     else:
         fraccion_val, min_edge = 0.125, 0.18
 
-    with st.expander("📚 Glosario Tecnico"):
-        st.write("**Riesgo (Kelly):**")
-        st.latex(r"f = \frac{Edge}{Cuota-1} \times \frac{1}{N}")
-        st.write("Gestiona la seguridad del bankroll. Un riesgo de **8x** reduce la apuesta para proteger el capital.")
-        st.write("**Edge (Ventaja):**")
-        st.latex(r"Edge = (Prob \times Cuota) - 1")
-        st.write("Representa la ventaja matematica real detectada sobre el casino.")
+    # --- GLOSARIO SIMPLIFICADO ---
+    with st.expander("📚 Glosario"):
+        st.write("**Riesgo:** Controla cuánto dinero apostar para proteger tu capital.")
+        st.write("**Edge:** Es tu ventaja real contra el casino.")
 
     st.markdown(f"""
         <div style="background-color: #1e1e1e; padding: 10px; border-radius: 5px; border-left: 3px solid #3b82f6; margin-top: 10px;">
         <small>Configuracion Activa:</small><br>
-        <b>Riesgo:</b> {int(1/fraccion_val)}x Kelly (Seguridad)<br>
-        <b>Filtro Edge:</b> {int(min_edge*100)}% (Calidad)
+        <b>Riesgo:</b> {int(1/fraccion_val)}x Kelly<br>
+        <b>Filtro Edge:</b> {int(min_edge*100)}%
         </div>
     """, unsafe_allow_html=True)
 
@@ -226,7 +221,7 @@ if isinstance(df, pd.DataFrame):
         st.markdown(f"""
             <div class="resultado-final-horizontal">
                 <h2 style="color: #c4b5fd; margin: 0;">📊 Mayor Probabilidad (Resultado Final)</h2>
-                <p style="font-size: 18px; margin: 0;">Analisis completo de mercados Over/Under y Ganador:</p>
+                <p style="font-size: 18px; margin: 0;">Basado en el analisis mas probable y seguro, la apuesta recomendada es:</p>
                 <div style="display: flex; justify-content: space-between; align-items: center;">
                     <div>
                         <p style="font-size: 26px; color: white; margin: 5px 0;"><b>{segura['n']}</b></p>
