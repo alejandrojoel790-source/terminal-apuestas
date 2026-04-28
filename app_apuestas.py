@@ -7,9 +7,10 @@ import requests
 
 # --- CONFIGURACION DE API ---
 API_KEY = '2a6d26bba847efc00183c6d06b7caf2c'
-# TIP: Si buscas Bundesliga usa 'eu'. Si buscas Liga MX usa 'us'.
-REGION = 'eu'     
-MARKETS = 'h2h,totals,btts' 
+# REGION: Usa 'eu' para Bundesliga / 'us' para Mexico y USA
+REGION = 'eu' 
+# Quitamos 'btts' de aqui para evitar el error de "Market not supported"
+MARKETS = 'h2h,totals' 
 
 # --- 1. CONFIGURACION DE LA INTERFAZ ---
 st.set_page_config(page_title="Sistema de Apuestas", layout="wide")
@@ -62,6 +63,7 @@ class BettingEngine:
             "Liga MX": "soccer_mexico_ligamx"
         }
         sport = api_map.get(liga_sel)
+        # Endpoint limpio
         url = f'https://api.the-odds-api.com/v4/sports/{sport}/odds/?apiKey={API_KEY}&regions={REGION}&markets={MARKETS}'
         try:
             response = requests.get(url)
@@ -165,6 +167,7 @@ if isinstance(df, pd.DataFrame):
     p_cols[3].metric("+2.5 Goles", f"{int(round(stats['O25']*100))}%")
     p_cols[4].metric("Ambos Anotan", f"{int(round(stats['AmbosAn']*100))}%")
 
+    # --- SECCION DE MOMIOS ---
     st.markdown("---")
     st.subheader("Ingreso de Momios Actuales")
 
@@ -172,10 +175,9 @@ if isinstance(df, pd.DataFrame):
         with st.spinner("Conectando con la API..."):
             datos = BettingEngine.obtener_momios_api(liga_sel)
             
-            if isinstance(datos, list):
+            if isinstance(datos, list): 
                 found = False
                 for partido in datos:
-                    # Comparación flexible de nombres
                     h_api = partido.get('home_team', '').lower()
                     if e_h.lower() in h_api or h_api in e_h.lower():
                         bk = next((b for b in partido['bookmakers'] if b['key'] == 'caliente'), partido['bookmakers'][0])
@@ -190,17 +192,14 @@ if isinstance(df, pd.DataFrame):
                                 for res in mkt['outcomes']:
                                     if res['point'] == 2.5 and res['name'] == 'Over': 
                                         st.session_state.m_o = BettingEngine.decimal_to_american(res['price'])
-                            elif mkt['key'] == 'btts':
-                                for res in mkt['outcomes']:
-                                    if res['name'] == 'Yes': 
-                                        st.session_state.m_b = BettingEngine.decimal_to_american(res['price'])
                         st.success(f"¡Momios de {bk['title']} cargados!")
                         found = True
                         break
-                if not found: st.warning(f"No se encontro el partido en la region {REGION}. Intenta cambiar la region en el codigo.")
+                if not found: st.warning("Partido no detectado en la API.")
             else:
+                # Si hay un error, mostramos el JSON para saber que paso
                 st.error("Error en la respuesta de la API.")
-                if isinstance(datos, dict): st.write("Respuesta del servidor:", datos) # Esto te ayudara a ver el error real
+                st.json(datos)
 
     m_cols = st.columns(5)
     with m_cols[0]: m_h_raw = st.number_input(f"Momio {e_h}", value=st.session_state.get('m_h', 0), step=1, format="%d")
@@ -209,10 +208,11 @@ if isinstance(df, pd.DataFrame):
     with m_cols[3]: m_o_raw = st.number_input("Momio +2.5", value=st.session_state.get('m_o', 0), step=1, format="%d")
     with m_cols[4]: m_b_raw = st.number_input("Momio Ambos Anotan", value=st.session_state.get('m_b', 0), step=1, format="%d")
 
+    # --- ESTRATEGIA ---
     if m_h_raw != 0:
         st.markdown("---")
         m_l, m_o_25, m_b_25 = BettingEngine.american_to_decimal(m_h_raw), BettingEngine.american_to_decimal(m_o_raw), BettingEngine.american_to_decimal(m_b_raw)
-        mercados = [{"n": "Victoria Local", "p": stats['Win_H'], "m": m_l}, {"n": "Mas de 2.5 Goles", "p": stats['O25'], "m": m_o_25}, {"n": "Ambos Anotan", "p": stats['AmbosAn'], "m": m_b_25}]
+        mercados = [{"n": "Victoria Local", "p": stats['Win_H'], "m": m_l}, {"n": "Mas de 2.5 Goles", "p": stats['O25'], "m": m_o_25}]
         validos = [m for m in mercados if (m['p'] * m['m']) - 1 >= min_edge]
 
         r_cols = st.columns(4)
