@@ -11,32 +11,28 @@ st.markdown("""
     <style>
     .main { background-color: #0e1117; }
     .stMetric { background-color: #1f2937; padding: 15px; border-radius: 10px; border-left: 5px solid #3b82f6; }
-    .bet-card { background-color: #262730; padding: 20px; border-radius: 15px; border: 1px solid #4b5563; margin-bottom: 20px; min-height: 180px; }
-    .oportunidad-card { border-left: 8px solid #10b981; border-top: 2px solid #10b981; }
-    .arriesgada-card { border-left: 8px solid #f59e0b; border-top: 2px solid #f59e0b; }
+    .bet-card { background-color: #262730; padding: 20px; border-radius: 15px; border: 1px solid #4b5563; margin-bottom: 20px; min-height: 220px; }
+    .segura-card { border-left: 8px solid #3b82f6; border-top: 2px solid #3b82f6; }
+    .intermedia-card { border-left: 8px solid #10b981; border-top: 2px solid #10b981; }
+    .oportunidad-card { border-left: 8px solid #f59e0b; border-top: 2px solid #f59e0b; }
+    .arriesgada-card { border-left: 8px solid #ef4444; border-top: 2px solid #ef4444; }
     
     .resultado-final-horizontal { 
         background-color: #262730; 
-        padding: 30px; 
+        padding: 25px; 
         border-radius: 15px; 
         border: 1px solid #4b5563; 
         border-left: 12px solid #8b5cf6; 
         margin-top: 20px;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
     }
     .monto-destacado {
         background-color: #4c1d95; 
-        padding: 15px; 
-        border-radius: 10px; 
+        padding: 12px; 
+        border-radius: 8px; 
         color: #c4b5fd; 
         font-weight: bold; 
-        font-size: 24px;
-        display: inline-block;
-        margin-top: 10px;
+        font-size: 22px;
     }
-    .no-value { border-left: 8px solid #6b7280; opacity: 0.6; }
     </style>
     """, unsafe_allow_html=True)
 
@@ -59,7 +55,7 @@ class BettingEngine:
         res = {
             "Win_H": 0, "Draw": 0, "Win_V": 0, "AmbosAn": 0,
             "O05": 0, "O15": 0, "O25": 0, "O35": 0,
-            "U05": 0, "U15": 0, "U25": 0, "U35": 0
+            "U15": 0, "U25": 0
         }
         for g_h in range(10):
             for g_v in range(10):
@@ -70,13 +66,11 @@ class BettingEngine:
                 else: res["Win_V"] += p
                 if g_h > 0 and g_v > 0: res["AmbosAn"] += p
                 if total > 0.5: res["O05"] += p
-                else: res["U05"] += p
                 if total > 1.5: res["O15"] += p
-                else: res["U15"] += p
                 if total > 2.5: res["O25"] += p
                 else: res["U25"] += p
                 if total > 3.5: res["O35"] += p
-                else: res["U35"] += p
+                if total < 1.5: res["U15"] += p
         return res
 
     @staticmethod
@@ -111,30 +105,12 @@ with st.sidebar:
     capital = st.number_input("Capital Total", min_value=0, value=1000, step=1, format="%d")
     st.markdown("---")
     st.subheader("Modo de Analisis")
-    modo = st.radio(
-        "Nivel de Precision:", 
-        ["Sistema Normal", "Sistema Medio", "Sistema Muy Preciso"]
-    )
+    modo = st.radio("Nivel de Precision:", ["Sistema Normal", "Sistema Medio", "Sistema Muy Preciso"])
+    fraccion_val, min_edge = (0.5, 0.05) if modo == "Sistema Normal" else (0.25, 0.10) if modo == "Sistema Medio" else (0.125, 0.18)
 
-    if modo == "Sistema Normal":
-        fraccion_val, min_edge = 0.5, 0.05
-    elif modo == "Sistema Medio":
-        fraccion_val, min_edge = 0.25, 0.10
-    else:
-        fraccion_val, min_edge = 0.125, 0.18
-
-    # --- GLOSARIO SIMPLIFICADO ---
     with st.expander("📚 Glosario"):
-        st.write("**Riesgo:** Controla cuánto dinero apostar para proteger tu capital.")
-        st.write("**Edge:** Es tu ventaja real contra el casino.")
-
-    st.markdown(f"""
-        <div style="background-color: #1e1e1e; padding: 10px; border-radius: 5px; border-left: 3px solid #3b82f6; margin-top: 10px;">
-        <small>Configuracion Activa:</small><br>
-        <b>Riesgo:</b> {int(1/fraccion_val)}x Kelly<br>
-        <b>Filtro Edge:</b> {int(min_edge*100)}%
-        </div>
-    """, unsafe_allow_html=True)
+        st.write("**Riesgo:** Proteccion de tu capital.")
+        st.write("**Edge:** Tu ventaja contra el casino.")
 
 if liga_sel == "Liga MX":
     st.info("🚧 Estamos en proceso de añadir esta nueva liga. Los datos históricos estarán disponibles pronto.")
@@ -152,6 +128,7 @@ if isinstance(df, pd.DataFrame):
     m_v = BettingEngine.calcular_stats_ponderadas(df[df['Away'] == e_v], False)
     stats = BettingEngine.poisson_probability(m_h, m_v)
 
+    # --- MÉTRICAS DE ENTRADA ---
     st.markdown("---")
     p_col = st.columns(5)
     p_col[0].metric(f"Gana {e_h}", f"{int(round(stats['Win_H']*100))}%")
@@ -160,14 +137,8 @@ if isinstance(df, pd.DataFrame):
     p_col[3].metric("+2.5 Goles", f"{int(round(stats['O25']*100))}%")
     p_col[4].metric("Ambos Anotan", f"{int(round(stats['AmbosAn']*100))}%")
 
-    with st.expander("📊 Analisis Detallado de Goles (Over/Under)"):
-        g1, g2, g3 = st.columns(3)
-        g1.write(f"**Over 0.5:** {int(round(stats['O05']*100))}% | **Under 0.5:** {int(round(stats['U05']*100))}%")
-        g2.write(f"**Over 1.5:** {int(round(stats['O15']*100))}% | **Under 1.5:** {int(round(stats['U15']*100))}%")
-        g3.write(f"**Over 3.5:** {int(round(stats['O35']*100))}% | **Under 3.5:** {int(round(stats['U35']*100))}%")
-
     st.markdown("---")
-    st.subheader("Ingreso de Momios Actuales (+/-)")
+    st.subheader("Ingreso de Momios Actuales")
     m_col = st.columns(5)
     with m_col[0]: m_h_raw = st.number_input(f"Momio {e_h}", value=0, step=1, format="%d")
     with m_col[1]: m_d_raw = st.number_input("Momio Empate", value=0, step=1, format="%d")
@@ -177,58 +148,65 @@ if isinstance(df, pd.DataFrame):
 
     m_l = BettingEngine.american_to_decimal(m_h_raw)
     m_o_25 = BettingEngine.american_to_decimal(m_o_raw)
+    m_b_25 = BettingEngine.american_to_decimal(m_b_raw)
 
     if m_h_raw != 0:
         st.markdown("---")
-        st.subheader(f"Estrategia sugerida - {modo}")
-        rec1, rec2 = st.columns(2)
+        st.subheader(f"Estrategia Multinivel - {modo}")
         
-        with rec1:
-            edge_l = (stats['Win_H'] * m_l) - 1
-            if edge_l >= min_edge:
-                monto = int(round(BettingEngine.kelly_fraccional(stats['Win_H'], m_l, capital, fraccion_val)))
-                st.markdown(f'<div class="bet-card oportunidad-card"><h3>✅ Oportunidad</h3><p><b>Victoria {e_h}</b></p><div style="background-color: #064e3b; padding: 10px; border-radius: 8px; color: #10b981; font-weight: bold; font-size: 20px;">Monto sugerido: ${monto}</div></div>', unsafe_allow_html=True)
-            else:
-                st.markdown('<div class="bet-card no-value"><h3>✅ Oportunidad</h3><p>Sin ventaja clara actualmente.</p></div>', unsafe_allow_html=True)
-
-        with rec2:
-            prob_comb = stats['Win_H'] * stats['O25']
-            cuota_comb = m_l * m_o_25 * 0.85
-            if (prob_comb * cuota_comb) - 1 >= min_edge:
-                monto = int(round(BettingEngine.kelly_fraccional(prob_comb, cuota_comb, capital, fraccion_val)))
-                st.markdown(f'<div class="bet-card arriesgada-card"><h3>🔥 Arriesgada</h3><p><b>{e_h} y +2.5 Goles</b></p><div style="background-color: #78350f; padding: 10px; border-radius: 8px; color: #f59e0b; font-weight: bold; font-size: 20px;">Monto sugerido: ${monto}</div></div>', unsafe_allow_html=True)
-            else:
-                st.markdown('<div class="bet-card no-value"><h3>🔥 Arriesgada</h3><p>Combinada no rentable.</p></div>', unsafe_allow_html=True)
-
-        st.markdown("---")
-        
-        todas = [
-            {"n": f"Victoria {e_h}", "p": stats['Win_H']},
-            {"n": f"Victoria {e_v}", "p": stats['Win_V']},
-            {"n": "Mas de 0.5 Goles", "p": stats['O05']},
-            {"n": "Mas de 1.5 Goles", "p": stats['O15']},
-            {"n": "Mas de 2.5 Goles", "p": stats['O25']},
-            {"n": "Mas de 3.5 Goles", "p": stats['O35']},
-            {"n": "Menos de 1.5 Goles", "p": stats['U15']},
-            {"n": "Menos de 2.5 Goles", "p": stats['U25']},
-            {"n": "Menos de 3.5 Goles", "p": stats['U35']},
-            {"n": "Ambos Anotan", "p": stats['AmbosAn']}
+        # --- LÓGICA DE CLASIFICACIÓN DE APUESTAS ---
+        mercados = [
+            {"n": "Victoria Local", "p": stats['Win_H'], "m": m_l},
+            {"n": "Mas de 2.5 Goles", "p": stats['O25'], "m": m_o_25},
+            {"n": "Ambos Anotan", "p": stats['AmbosAn'], "m": m_b_25},
+            {"n": "Mas de 1.5 Goles", "p": stats['O15'], "m": 1.35}, # Momio est. si no hay input
         ]
         
-        segura = max(todas, key=lambda x: x['p'])
-        monto_final = int(capital * 0.05) if segura['p'] > 0.7 else int(capital * 0.02)
+        # Filtramos las que tienen ventaja (Edge)
+        validos = [m for m in mercados if (m['p'] * m['m']) - 1 >= 0.02]
 
+        r1, r2, r3, r4 = st.columns(4)
+
+        with r1: # MAS SEGURA (Confianza > 75%)
+            segura = max(mercados, key=lambda x: x['p'])
+            monto = int(round(capital * 0.10)) if segura['p'] > 0.8 else int(round(capital * 0.05))
+            st.markdown(f'<div class="bet-card segura-card"><h4>🛡️ Mas Segura</h4><p><b>{segura["n"]}</b></p><p>Confianza: {int(round(segura["p"]*100))}%</p><div class="monto-destacado">${monto}</div></div>', unsafe_allow_html=True)
+
+        with r2: # INTERMEDIA (Balance riesgo/beneficio)
+            inter = [m for m in mercados if 0.55 < m['p'] < 0.75]
+            op_inter = inter[0] if inter else mercados[0]
+            monto = int(round(capital * 0.04))
+            st.markdown(f'<div class="bet-card intermedia-card"><h4>⚖️ Intermedia</h4><p><b>{op_inter["n"]}</b></p><p>Balance Optimo</p><div class="monto-destacado">${monto}</div></div>', unsafe_allow_html=True)
+
+        with r3: # OPORTUNIDAD (Mayor Edge detectado)
+            if validos:
+                op = max(validos, key=lambda x: (x['p'] * x['m']) - 1)
+                monto = int(round(BettingEngine.kelly_fraccional(op['p'], op['m'], capital, fraccion_val)))
+                st.markdown(f'<div class="bet-card oportunidad-card"><h4>💎 Oportunidad</h4><p><b>{op["n"]}</b></p><p>Ventaja Real</p><div class="monto-destacado">${monto if monto > 0 else 1}</div></div>', unsafe_allow_html=True)
+            else:
+                st.markdown('<div class="bet-card no-value"><h4>💎 Oportunidad</h4><p>Sin valor hoy.</p></div>', unsafe_allow_html=True)
+
+        with r4: # ARRIESGADA (Combinada o Cuota Alta)
+            prob_comb = stats['Win_H'] * stats['AmbosAn']
+            monto = int(round(capital * 0.02))
+            st.markdown(f'<div class="bet-card arriesgada-card"><h4>🔥 Arriesgada</h4><p><b>{e_h} y Ambos Anotan</b></p><p>Retorno Alto</p><div class="monto-destacado">${monto}</div></div>', unsafe_allow_html=True)
+
+        # --- RESULTADO FINAL (LA MÁS PROBABLE Y NORMAL) ---
+        st.markdown("---")
+        opciones_finales = [m for m in mercados if m['p'] > 0.60]
+        final = max(opciones_finales, key=lambda x: x['p']) if opciones_finales else mercados[0]
+        
         st.markdown(f"""
             <div class="resultado-final-horizontal">
-                <h2 style="color: #c4b5fd; margin: 0;">📊 Mayor Probabilidad (Resultado Final)</h2>
-                <p style="font-size: 18px; margin: 0;">Basado en el analisis mas probable y seguro, la apuesta recomendada es:</p>
+                <h3 style="color: #c4b5fd; margin: 0;">📊 Mayor Probabilidad (Apuesta Normal)</h3>
+                <p style="font-size: 18px; margin: 10px 0;">Tras analizar la fisica de goles y tendencias, la apuesta recomendada para este encuentro es:</p>
                 <div style="display: flex; justify-content: space-between; align-items: center;">
                     <div>
-                        <p style="font-size: 26px; color: white; margin: 5px 0;"><b>{segura['n']}</b></p>
-                        <p style="font-size: 16px; color: #9ca3af; margin: 0;">Confianza estadistica: {int(round(segura['p']*100))}%</p>
+                        <p style="font-size: 24px; color: white; margin: 0;"><b>{final['n']}</b></p>
+                        <p style="font-size: 14px; color: #9ca3af; margin: 0;">Filtro: Probabilidad Normalizada</p>
                     </div>
-                    <div class="monto-destacado">
-                        Inversion sugerida: ${monto_final}
+                    <div class="monto-destacado" style="font-size: 28px; padding: 15px 25px;">
+                        Monto: ${int(round(capital * 0.06))}
                     </div>
                 </div>
             </div>
