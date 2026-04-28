@@ -7,7 +7,7 @@ import requests
 
 # --- CONFIGURACION DE API ---
 API_KEY = '2a6d26bba847efc00183c6d06b7caf2c'
-REGION = 'eu'     # 'eu' para Bundesliga / 'us' para ligas americanas
+REGION = 'us'     # 'eu' para Bundesliga / 'us' para ligas americanas
 MARKETS = 'h2h'   # Victoria, Empate, Visita
 
 # --- 1. CONFIGURACION DE LA INTERFAZ ---
