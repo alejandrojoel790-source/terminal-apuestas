@@ -7,8 +7,8 @@ import requests
 
 # --- CONFIGURACION DE API ---
 API_KEY = '2a6d26bba847efc00183c6d06b7caf2c'
-REGION = 'us'     # 'eu' para Bundesliga / 'us' para ligas americanas
-MARKETS = 'h2h'   # Victoria, Empate, Visita
+REGION = 'us'     # 'eu' para Bundesliga / 'us' para Mexico y USA
+MARKETS = 'h2h'   # Mantenemos h2h que es el que te funcionó sin error
 
 # --- 1. CONFIGURACION DE LA INTERFAZ ---
 st.set_page_config(page_title="Sistema de Apuestas", layout="wide")
@@ -59,10 +59,11 @@ class BettingEngine:
 
     @staticmethod
     def decimal_to_american(decimal_odd):
+        if decimal_odd <= 1.0: return 0
         if decimal_odd >= 2.0:
-            return int((decimal_odd - 1) * 100)
+            return int(round((decimal_odd - 1) * 100))
         else:
-            return int(-100 / (decimal_odd - 1))
+            return int(round(-100 / (decimal_odd - 1)))
 
     @staticmethod
     def obtener_momios_api(liga_sel):
@@ -75,7 +76,8 @@ class BettingEngine:
         url = f'https://api.the-odds-api.com/v4/sports/{sport}/odds/?apiKey={API_KEY}&regions={REGION}&markets={MARKETS}'
         try:
             response = requests.get(url)
-            return response.json()
+            data = response.json()
+            return data if isinstance(data, list) else None
         except:
             return None
 
@@ -88,11 +90,7 @@ class BettingEngine:
 
     @staticmethod
     def poisson_probability(media_h, media_v):
-        res = {
-            "Win_H": 0, "Draw": 0, "Win_V": 0, "AmbosAn": 0,
-            "O05": 0, "O15": 0, "O25": 0, "O35": 0,
-            "U15": 0, "U25": 0
-        }
+        res = {"Win_H": 0, "Draw": 0, "Win_V": 0, "AmbosAn": 0, "O05": 0, "O15": 0, "O25": 0, "O35": 0, "U15": 0, "U25": 0}
         for g_h in range(10):
             for g_v in range(10):
                 p = poisson.pmf(g_h, media_h) * poisson.pmf(g_v, media_v)
@@ -141,7 +139,6 @@ with st.sidebar:
     capital = st.number_input("Capital Total", min_value=0, value=1000, step=1, format="%d")
     st.markdown("---")
     
-    st.subheader("Modo de Analisis")
     modo = st.radio("Nivel de Precision:", ["Sistema Normal", "Sistema Medio", "Sistema Muy Preciso"])
 
     if modo == "Sistema Normal":
@@ -168,7 +165,7 @@ with st.sidebar:
         st.write("**Edge:** Tu ventaja real contra el casino.")
 
 if liga_sel == "Liga MX":
-    st.info("🚧 Estamos en proceso de añadir esta nueva liga. Los datos históricos estarán disponibles pronto.")
+    st.info("🚧 Liga MX en desarrollo.")
     st.stop()
 
 df = load_data(ligas_dict[liga_sel])
@@ -192,10 +189,10 @@ if isinstance(df, pd.DataFrame):
     p_col[4].metric("Ambos Anotan", f"{int(round(stats['AmbosAn']*100))}%")
 
     with st.expander("📊 Analisis Detallado de Goles (Over/Under)"):
-        g1, g2, g3 = st.columns(3)
-        g1.write(f"**Over 0.5:** {int(round(stats['O05']*100))}% | **Under 0.5:** {int(round((1-stats['O05'])*100))}%")
-        g2.write(f"**Over 1.5:** {int(round(stats['O15']*100))}% | **Under 1.5:** {int(round(stats['U15']*100))}%")
-        g3.write(f"**Over 3.5:** {int(round(stats['O35']*100))}% | **Under 3.5:** {int(round((1-stats['O35'])*100))}%")
+        g_c1, g_c2, g_c3 = st.columns(3)
+        g_c1.write(f"**Over 0.5:** {int(round(stats['O05']*100))}% | **Under 0.5:** {int(round((1-stats['O05'])*100))}%")
+        g_c2.write(f"**Over 1.5:** {int(round(stats['O15']*100))}% | **Under 1.5:** {int(round(stats['U15']*100))}%")
+        g_c3.write(f"**Over 3.5:** {int(round(stats['O35']*100))}% | **Under 3.5:** {int(round((1-stats['O35'])*100))}%")
 
     st.markdown("---")
     st.subheader("Ingreso de Momios Actuales")
@@ -206,16 +203,18 @@ if isinstance(df, pd.DataFrame):
             if datos:
                 found = False
                 for partido in datos:
-                    if e_h in partido['home_team'] or partido['home_team'] in e_h:
-                        bookmaker = partido['bookmakers'][0]
-                        outcomes = bookmaker['markets'][0]['outcomes']
+                    h_api = partido.get('home_team', '').lower()
+                    if e_h.lower() in h_api or h_api in e_h.lower():
+                        bk = partido['bookmakers'][0]
+                        outcomes = bk['markets'][0]['outcomes']
                         for res in outcomes:
                             momio_am = BettingEngine.decimal_to_american(res['price'])
                             if res['name'] == partido['home_team']: st.session_state.m_h = momio_am
                             elif res['name'] == partido['away_team']: st.session_state.m_v = momio_am
                             else: st.session_state.m_e = momio_am
-                        st.success(f"¡Momios de {bookmaker['title']} cargados!")
+                        st.success(f"¡Momios de {bk['title']} cargados!")
                         found = True
+                        break
                 if not found: st.warning("No se encontro el partido en la API.")
 
     m_col = st.columns(5)
@@ -234,50 +233,33 @@ if isinstance(df, pd.DataFrame):
         st.subheader(f"Estrategia Multinivel - {modo}")
         
         mercados = [
-            {"n": "Victoria Local", "p": stats['Win_H'], "m": m_l},
+            {"n": f"Victoria {e_h}", "p": stats['Win_H'], "m": m_l},
             {"n": "Mas de 2.5 Goles", "p": stats['O25'], "m": m_o_25},
-            {"n": "Ambos Anotan", "p": stats['AmbosAn'], "m": m_b_25},
-            {"n": "Mas de 1.5 Goles", "p": stats['O15'], "m": 1.30}
+            {"n": "Ambos Anotan", "p": stats['AmbosAn'], "m": m_b_25}
         ]
         validos = [m for m in mercados if (m['p'] * m['m']) - 1 >= min_edge]
 
         r1, r2, r3, r4 = st.columns(4)
         with r1:
             segura = max(mercados, key=lambda x: x['p'])
-            monto = int(round(capital * 0.08)) if segura['p'] > 0.8 else int(round(capital * 0.05))
+            monto = int(round(capital * (0.08 if segura['p'] > 0.8 else 0.05)))
             st.markdown(f'<div class="bet-card segura-card"><h4>🛡️ Mas Segura</h4><p><b>{segura["n"]}</b></p><p>Confianza: {int(round(segura["p"]*100))}%</p><div class="monto-destacado">${monto}</div></div>', unsafe_allow_html=True)
         with r2:
-            inter = [m for m in mercados if 0.55 < m['p'] < 0.75]
-            op_inter = inter[0] if inter else mercados[0]
-            monto = int(round(capital * 0.04))
-            st.markdown(f'<div class="bet-card intermedia-card"><h4>⚖️ Intermedia</h4><p><b>{op_inter["n"]}</b></p><p>Balance Riesgo</p><div class="monto-destacado">${monto}</div></div>', unsafe_allow_html=True)
+            st.markdown(f'<div class="bet-card intermedia-card"><h4>⚖️ Intermedia</h4><p><b>{mercados[0]["n"]}</b></p><p>Balance Riesgo</p><div class="monto-destacado">${int(round(capital * 0.04))}</div></div>', unsafe_allow_html=True)
         with r3:
             if validos:
                 op = max(validos, key=lambda x: (x['p'] * x['m']) - 1)
                 monto = int(round(BettingEngine.kelly_fraccional(op['p'], op['m'], capital, fraccion_val)))
-                st.markdown(f'<div class="bet-card oportunidad-card"><h4>💎 Oportunidad</h4><p><b>{op["n"]}</b></p><p>Edge: {int(round(((op["p"]*op["m"])-1)*100))}%</p><div class="monto-destacado">${monto if monto > 0 else 1}</div></div>', unsafe_allow_html=True)
+                st.markdown(f'<div class="bet-card oportunidad-card"><h4>💎 Oportunidad</h4><p><b>{op["n"]}</b></p><div class="monto-destacado">${monto if monto > 0 else 1}</div></div>', unsafe_allow_html=True)
             else:
-                st.markdown(f'<div class="bet-card no-value"><h4>💎 Oportunidad</h4><p>Sin valor bajo {desc_edge} de Edge.</p></div>', unsafe_allow_html=True)
+                st.markdown(f'<div class="bet-card no-value"><h4>💎 Oportunidad</h4><p>Sin valor hoy.</p></div>', unsafe_allow_html=True)
         with r4:
-            monto = int(round(capital * 0.02))
-            st.markdown(f'<div class="bet-card arriesgada-card"><h4>🔥 Arriesgada</h4><p><b>{e_h} y Ambos Anotan</b></p><p>Cuota Alta</p><div class="monto-destacado">${monto}</div></div>', unsafe_allow_html=True)
+            st.markdown(f'<div class="bet-card arriesgada-card"><h4>🔥 Arriesgada</h4><p><b>{e_h} y Ambos Anotan</b></p><div class="monto-destacado">${int(round(capital * 0.02))}</div></div>', unsafe_allow_html=True)
 
-        st.markdown("---")
-        opciones_finales = [m for m in mercados if m['p'] > 0.60]
-        final = max(opciones_finales, key=lambda x: x['p']) if opciones_finales else mercados[0]
         st.markdown(f"""
             <div class="resultado-final-horizontal">
                 <h3 style="color: #c4b5fd; margin: 0;">📊 Mayor Probabilidad (Apuesta Normal)</h3>
-                <p style="font-size: 18px; margin: 10px 0;">Tras analizar tendencias y estadistica de goles, la apuesta recomendada es:</p>
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <div>
-                        <p style="font-size: 24px; color: white; margin: 0;"><b>{final['n']}</b></p>
-                        <p style="font-size: 14px; color: #9ca3af; margin: 0;">Confianza: {int(round(final['p']*100))}%</p>
-                    </div>
-                    <div class="monto-destacado" style="font-size: 28px; padding: 15px 25px;">
-                        Monto: ${int(round(capital * 0.06))}
-                    </div>
-                </div>
+                <p style="font-size: 18px; margin: 10px 0;">La mejor opcion estadistica es: <b>{max(mercados, key=lambda x: x['p'])['n']}</b></p>
             </div>
         """, unsafe_allow_html=True)
 
