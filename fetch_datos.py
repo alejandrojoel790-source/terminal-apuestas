@@ -1,71 +1,57 @@
-import requests
-import pandas as pd
-import time
-import os
-
-# === CONFIGURACIÓN ===
-API_KEY = "09766cc50fa14c40827ea6a629e851ac"
-BASE_URL = "https://api.football-data.org/v4/competitions"
-
-# Ligas Europeas (Gratuitas en esta API)
-LIGAS = {
-    "BL1_2026": "BL1",   # Bundesliga
-    "ELC_2026": "ELC"    # Championship
-}
-
-# Temporadas: 2023, 2024 y 2025 (La 2025 cubre hasta mayo de 2026)
-SEASONS = [2023, 2024, 2025]
-
-headers = {'X-Auth-Token': API_KEY}
-
-if not os.path.exists('Data'):
-    os.makedirs('Data')
-
-def descargar_europa():
-    print("--- INICIANDO VERIFICACIÓN DE EUROPA (Football-Data.org) ---")
-    
-    for archivo, code in LIGAS.items():
-        print(f"\nProcesando: {archivo}...")
-        dataset_liga = []
+def actualizar_historial():
+    for api_liga, archivo_csv in LIGAS.items():
+        print(f"--- Procesando {archivo_csv} ---")
+        path_csv = f"Data/{archivo_csv}.csv"
         
-        for season in SEASONS:
-            print(f"  > Descargando temporada {season}...", end=" ")
-            url = f"{BASE_URL}/{code}/matches?season={season}"
+        if os.path.exists(path_csv):
+            df_historial = pd.read_csv(path_csv)
+            df_historial['Date'] = pd.to_datetime(df_historial['Date'])
+        else:
+            print(f"❌ Error: No se encontró {path_csv}")
+            continue
+
+        url = f'https://api.the-odds-api.com/v4/sports/{api_liga}/scores/?daysFrom={DIAS_ATRAS}&apiKey={API_KEY}'
+        
+        try:
+            response = requests.get(url)
+            partidos_api = response.json()
             
-            try:
-                response = requests.get(url, headers=headers)
-                data = response.json()
+            # --- CORRECCIÓN: Verificar que la API mandó una LISTA ---
+            if not isinstance(partidos_api, list):
+                print(f"⚠️ Error de API para {api_liga}: {partidos_api}")
+                continue
 
-                if response.status_code == 200 and "matches" in data:
-                    partidos = []
-                    for m in data["matches"]:
-                        if m["status"] == "FINISHED":
-                            partidos.append({
-                                "Date": m["utcDate"],
-                                "Home": m["homeTeam"]["name"],
-                                "Away": m["awayTeam"]["name"],
-                                "HG": m["score"]["fullTime"]["home"],
-                                "AG": m["score"]["fullTime"]["away"]
-                            })
-                    dataset_liga.extend(partidos)
-                    print(f"Hecho ({len(partidos)} partidos)")
-                else:
-                    error_msg = data.get('message', 'Límite de API alcanzado o error de acceso')
-                    print(f"Error: {error_msg}")
-                
-                # LA CLAVE: Esperar 6 segundos entre peticiones. 
-                # Esta API es muy estricta con el plan gratuito (10 peticiones/minuto).
-                time.sleep(6) 
-                
-            except Exception as e:
-                print(f"Error técnico: {e}")
+            nuevas_filas = []
+            for partido in partidos_api:
+                if partido.get('completed'):
+                    fecha = pd.to_datetime(partido['commence_time']).strftime('%Y-%m-%d %H:%M:%S')
+                    home = partido['home_team']
+                    away = partido['away_team']
+                    scores = partido.get('scores')
+                    
+                    if scores and len(scores) >= 2:
+                        hg = next((s['score'] for s in scores if s['name'] == home), None)
+                        ag = next((s['score'] for s in scores if s['name'] == away), None)
+                        
+                        if hg is not None and ag is not None:
+                            # Evitar duplicados
+                            existe = df_historial[
+                                (df_historial['Home'] == home) & 
+                                (df_historial['Away'] == away) & 
+                                (df_historial['Date'].dt.strftime('%Y-%m-%d') == pd.to_datetime(fecha).strftime('%Y-%m-%d'))
+                            ]
+                            
+                            if existe.empty:
+                                nuevas_filas.append([fecha, home, away, int(hg), int(ag)])
+                                print(f"➕ Añadido: {home} {hg}-{ag} {away}")
 
-        if dataset_liga:
-            df = pd.DataFrame(dataset_liga)
-            df['Date'] = pd.to_datetime(df['Date']).dt.strftime('%Y-%m-%d %H:%M')
-            ruta = f"Data/{archivo}.csv"
-            df.to_csv(ruta, index=False)
-            print(f"--- ARCHIVO GENERADO: {ruta} con {len(df)} partidos totales ---")
+            if nuevas_filas:
+                df_nuevos = pd.DataFrame(nuevas_filas, columns=['Date', 'Home', 'Away', 'HG', 'AG'])
+                df_final = pd.concat([df_historial, df_nuevos]).sort_values(by='Date')
+                df_final.to_csv(path_csv, index=False)
+                print(f"✅ {len(nuevas_filas)} partidos nuevos guardados en {archivo_csv}.")
+            else:
+                print("ℹ️ Todo al día. No hay partidos nuevos.")
 
-if __name__ == "__main__":
-    descargar_europa()
+        except Exception as e:
+            print(f"❌ Fallo crítico en {api_liga}: {e}")
