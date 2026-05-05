@@ -155,7 +155,7 @@ with st.sidebar:
         <div class="config-box">
             <b>Parametros Activos:</b><br>
             • Riesgo Kelly: {desc_riesgo}<br>
-            • Edge Minimo: {desc_edge}
+            • Edge: {desc_edge}
         </div>
     """, unsafe_allow_html=True)
 
