@@ -7,8 +7,8 @@ import requests
 
 # --- CONFIGURACION DE API ---
 API_KEY = '2a6d26bba847efc00183c6d06b7caf2c'
-REGION = 'us'     # 'eu' para Bundesliga / 'us' para Mexico y USA
-MARKETS = 'h2h'   # Mantenemos h2h que es el que te funcionó sin error
+REGION = 'us'      # 'eu' para Bundesliga / 'us' para Mexico y USA
+MARKETS = 'h2h'    # Mantenemos h2h que es el que te funcionó sin error
 
 # --- 1. CONFIGURACION DE LA INTERFAZ ---
 st.set_page_config(page_title="Sistema de Apuestas", layout="wide")
@@ -155,7 +155,7 @@ with st.sidebar:
         <div class="config-box">
             <b>Parametros Activos:</b><br>
             • Riesgo Kelly: {desc_riesgo}<br>
-            • Edge Minimo: {desc_edge}
+            • Edge: {desc_edge}
         </div>
     """, unsafe_allow_html=True)
 
@@ -243,18 +243,18 @@ if isinstance(df, pd.DataFrame):
         with r1:
             segura = max(mercados, key=lambda x: x['p'])
             monto = int(round(capital * (0.08 if segura['p'] > 0.8 else 0.05)))
-            st.markdown(f'<div class="bet-card segura-card"><h4>🛡️ Mas Segura</h4><p><b>{segura["n"]}</b></p><p>Confianza: {int(round(segura["p"]*100))}%</p><div class="monto-destacado">${monto}</div></div>', unsafe_allow_html=True)
+            st.markdown(f'<div class="bet-card segura-card"><h4>🛡️ Mas Segura</h4><p><b>{segura["n"]}</b></p><p>Confianza: {int(round(segura["p"]*100))}%</p><div class="monto-destacado">{monto}</div></div>', unsafe_allow_html=True)
         with r2:
-            st.markdown(f'<div class="bet-card intermedia-card"><h4>⚖️ Intermedia</h4><p><b>{mercados[0]["n"]}</b></p><p>Balance Riesgo</p><div class="monto-destacado">${int(round(capital * 0.04))}</div></div>', unsafe_allow_html=True)
+            st.markdown(f'<div class="bet-card intermedia-card"><h4>⚖️ Intermedia</h4><p><b>{mercados[0]["n"]}</b></p><p>Balance Riesgo</p><div class="monto-destacado">{int(round(capital * 0.04))}</div></div>', unsafe_allow_html=True)
         with r3:
             if validos:
                 op = max(validos, key=lambda x: (x['p'] * x['m']) - 1)
                 monto = int(round(BettingEngine.kelly_fraccional(op['p'], op['m'], capital, fraccion_val)))
-                st.markdown(f'<div class="bet-card oportunidad-card"><h4>💎 Oportunidad</h4><p><b>{op["n"]}</b></p><div class="monto-destacado">${monto if monto > 0 else 1}</div></div>', unsafe_allow_html=True)
+                st.markdown(f'<div class="bet-card oportunidad-card"><h4>💎 Oportunidad</h4><p><b>{op["n"]}</b></p><div class="monto-destacado">{monto if monto > 0 else 1}</div></div>', unsafe_allow_html=True)
             else:
                 st.markdown(f'<div class="bet-card no-value"><h4>💎 Oportunidad</h4><p>Sin valor hoy.</p></div>', unsafe_allow_html=True)
         with r4:
-            st.markdown(f'<div class="bet-card arriesgada-card"><h4>🔥 Arriesgada</h4><p><b>{e_h} y Ambos Anotan</b></p><div class="monto-destacado">${int(round(capital * 0.02))}</div></div>', unsafe_allow_html=True)
+            st.markdown(f'<div class="bet-card arriesgada-card"><h4>🔥 Arriesgada</h4><p><b>{e_h} y Ambos Anotan</b></p><div class="monto-destacado">{int(round(capital * 0.02))}</div></div>', unsafe_allow_html=True)
 
         st.markdown(f"""
             <div class="resultado-final-horizontal">
