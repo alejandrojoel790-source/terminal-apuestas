@@ -1,1670 +1,557 @@
-Date,Home,Away,HG,AG
-2023-08-04 19:00,Sheffield Wednesday FC,Southampton FC,1,2
-2023-08-05 14:00,Blackburn Rovers FC,West Bromwich Albion FC,2,1
-2023-08-05 14:00,Bristol City FC,Preston North End FC,1,1
-2023-08-05 14:00,Middlesbrough FC,Millwall FC,0,1
-2023-08-05 14:00,Norwich City FC,Hull City AFC,2,1
-2023-08-05 14:00,Plymouth Argyle FC,Huddersfield Town AFC,3,1
-2023-08-05 14:00,Watford FC,Queens Park Rangers FC,4,0
-2023-08-05 14:00,Stoke City FC,Rotherham United FC,4,1
-2023-08-05 14:00,Swansea City AFC,Birmingham City FC,1,1
-2023-08-06 11:00,Leicester City FC,Coventry City FC,2,1
-2023-08-06 13:30,Leeds United FC,Cardiff City FC,2,2
-2023-08-06 16:00,Sunderland AFC,Ipswich Town FC,1,2
-2023-08-12 11:30,Coventry City FC,Middlesbrough FC,3,0
-2023-08-12 14:00,Birmingham City FC,Leeds United FC,1,0
-2023-08-12 14:00,Cardiff City FC,Queens Park Rangers FC,1,2
-2023-08-12 14:00,Millwall FC,Bristol City FC,0,1
-2023-08-12 14:00,Southampton FC,Norwich City FC,4,4
-2023-08-12 14:00,Watford FC,Plymouth Argyle FC,0,0
-2023-08-12 14:00,Huddersfield Town AFC,Leicester City FC,0,1
-2023-08-12 14:00,Hull City AFC,Sheffield Wednesday FC,4,2
-2023-08-12 14:00,Ipswich Town FC,Stoke City FC,2,0
-2023-08-12 14:00,Preston North End FC,Sunderland AFC,2,1
-2023-08-12 14:00,Rotherham United FC,Blackburn Rovers FC,2,2
-2023-08-12 14:00,West Bromwich Albion FC,Swansea City AFC,3,2
-2023-08-18 19:00,Leeds United FC,West Bromwich Albion FC,1,1
-2023-08-19 11:30,Plymouth Argyle FC,Southampton FC,1,2
-2023-08-19 14:00,Sunderland AFC,Rotherham United FC,2,1
-2023-08-19 14:00,Blackburn Rovers FC,Hull City AFC,1,2
-2023-08-19 14:00,Bristol City FC,Birmingham City FC,0,2
-2023-08-19 14:00,Middlesbrough FC,Huddersfield Town AFC,1,1
-2023-08-19 14:00,Leicester City FC,Cardiff City FC,2,1
-2023-08-19 14:00,Queens Park Rangers FC,Ipswich Town FC,0,1
-2023-08-19 14:00,Sheffield Wednesday FC,Preston North End FC,0,1
-2023-08-19 14:00,Stoke City FC,Watford FC,1,0
-2023-08-19 14:00,Swansea City AFC,Coventry City FC,1,1
-2023-08-20 11:00,Norwich City FC,Millwall FC,3,1
-2023-08-25 18:30,Hull City AFC,Bristol City FC,1,1
-2023-08-26 14:00,Birmingham City FC,Plymouth Argyle FC,2,1
-2023-08-26 14:00,Cardiff City FC,Sheffield Wednesday FC,2,1
-2023-08-26 14:00,Coventry City FC,Sunderland AFC,0,0
-2023-08-26 14:00,Millwall FC,Stoke City FC,1,0
-2023-08-26 14:00,Southampton FC,Queens Park Rangers FC,2,1
-2023-08-26 14:00,Huddersfield Town AFC,Norwich City FC,0,4
-2023-08-26 14:00,Ipswich Town FC,Leeds United FC,3,4
-2023-08-26 14:00,Preston North End FC,Swansea City AFC,2,1
-2023-08-26 14:00,Rotherham United FC,Leicester City FC,1,2
-2023-08-26 14:00,West Bromwich Albion FC,Middlesbrough FC,4,2
-2023-08-27 11:00,Watford FC,Blackburn Rovers FC,0,1
-2023-09-02 11:30,Sunderland AFC,Southampton FC,5,0
-2023-09-02 11:30,Birmingham City FC,Millwall FC,1,1
-2023-09-02 11:30,Swansea City AFC,Bristol City FC,1,2
-2023-09-02 14:00,Coventry City FC,Watford FC,3,3
-2023-09-02 14:00,Middlesbrough FC,Queens Park Rangers FC,0,2
-2023-09-02 14:00,Ipswich Town FC,Cardiff City FC,3,2
-2023-09-02 14:00,Leeds United FC,Sheffield Wednesday FC,0,0
-2023-09-02 14:00,Leicester City FC,Hull City AFC,0,1
-2023-09-02 14:00,Plymouth Argyle FC,Blackburn Rovers FC,3,0
-2023-09-02 14:00,Rotherham United FC,Norwich City FC,2,1
-2023-09-02 14:00,Stoke City FC,Preston North End FC,0,2
-2023-09-02 14:00,West Bromwich Albion FC,Huddersfield Town AFC,1,2
-2023-09-15 18:45,Hull City AFC,Coventry City FC,1,1
-2023-09-15 19:00,Southampton FC,Leicester City FC,1,4
-2023-09-16 14:00,Bristol City FC,West Bromwich Albion FC,0,0
-2023-09-16 14:00,Watford FC,Birmingham City FC,2,0
-2023-09-16 14:00,Huddersfield Town AFC,Rotherham United FC,2,0
-2023-09-16 14:00,Norwich City FC,Stoke City FC,1,0
-2023-09-16 14:00,Preston North End FC,Plymouth Argyle FC,2,1
-2023-09-16 14:00,Queens Park Rangers FC,Sunderland AFC,1,3
-2023-09-16 14:00,Sheffield Wednesday FC,Ipswich Town FC,0,1
-2023-09-16 14:00,Blackburn Rovers FC,Middlesbrough FC,2,1
-2023-09-16 18:45,Cardiff City FC,Swansea City AFC,2,0
-2023-09-17 11:00,Millwall FC,Leeds United FC,0,3
-2023-09-19 18:45,Bristol City FC,Plymouth Argyle FC,4,1
-2023-09-19 18:45,Cardiff City FC,Coventry City FC,3,2
-2023-09-19 18:45,Southampton FC,Ipswich Town FC,0,1
-2023-09-19 18:45,Preston North End FC,Birmingham City FC,2,1
-2023-09-19 18:45,Queens Park Rangers FC,Swansea City AFC,1,1
-2023-09-19 19:00,Sheffield Wednesday FC,Middlesbrough FC,1,1
-2023-09-20 18:45,Blackburn Rovers FC,Sunderland AFC,1,3
-2023-09-20 18:45,Millwall FC,Rotherham United FC,3,0
-2023-09-20 18:45,Watford FC,West Bromwich Albion FC,2,2
-2023-09-20 18:45,Huddersfield Town AFC,Stoke City FC,2,2
-2023-09-20 18:45,Hull City AFC,Leeds United FC,0,0
-2023-09-20 19:00,Norwich City FC,Leicester City FC,0,2
-2023-09-22 19:00,Birmingham City FC,Queens Park Rangers FC,0,0
-2023-09-23 14:00,Middlesbrough FC,Southampton FC,2,1
-2023-09-23 14:00,Ipswich Town FC,Blackburn Rovers FC,4,3
-2023-09-23 14:00,Leeds United FC,Watford FC,3,0
-2023-09-23 14:00,Leicester City FC,Bristol City FC,1,0
-2023-09-23 14:00,Plymouth Argyle FC,Norwich City FC,6,2
-2023-09-23 14:00,Rotherham United FC,Preston North End FC,1,1
-2023-09-23 14:00,Swansea City AFC,Sheffield Wednesday FC,3,0
-2023-09-23 14:00,West Bromwich Albion FC,Millwall FC,0,0
-2023-09-24 11:00,Stoke City FC,Hull City AFC,1,3
-2023-09-24 14:00,Sunderland AFC,Cardiff City FC,0,1
-2023-09-25 19:00,Coventry City FC,Huddersfield Town AFC,1,1
-2023-09-29 19:00,Sheffield Wednesday FC,Sunderland AFC,0,3
-2023-09-30 11:30,Southampton FC,Leeds United FC,3,1
-2023-09-30 14:00,Millwall FC,Swansea City AFC,0,3
-2023-09-30 14:00,Bristol City FC,Stoke City FC,2,3
-2023-09-30 14:00,Cardiff City FC,Rotherham United FC,2,0
-2023-09-30 14:00,Watford FC,Middlesbrough FC,2,3
-2023-09-30 14:00,Huddersfield Town AFC,Ipswich Town FC,1,1
-2023-09-30 14:00,Hull City AFC,Plymouth Argyle FC,1,1
-2023-09-30 14:00,Norwich City FC,Birmingham City FC,2,0
-2023-09-30 14:00,Preston North End FC,West Bromwich Albion FC,0,4
-2023-09-30 14:00,Queens Park Rangers FC,Coventry City FC,1,3
-2023-10-01 11:00,Blackburn Rovers FC,Leicester City FC,1,4
-2023-10-03 18:45,Birmingham City FC,Huddersfield Town AFC,4,1
-2023-10-03 18:45,Middlesbrough FC,Cardiff City FC,2,0
-2023-10-03 18:45,Ipswich Town FC,Hull City AFC,3,0
-2023-10-03 18:45,Plymouth Argyle FC,Millwall FC,0,2
-2023-10-03 19:00,Stoke City FC,Southampton FC,0,1
-2023-10-03 19:00,West Bromwich Albion FC,Sheffield Wednesday FC,1,0
-2023-10-04 18:45,Sunderland AFC,Watford FC,2,0
-2023-10-04 18:45,Coventry City FC,Blackburn Rovers FC,1,0
-2023-10-04 18:45,Leeds United FC,Queens Park Rangers FC,1,0
-2023-10-04 18:45,Leicester City FC,Preston North End FC,3,0
-2023-10-04 18:45,Swansea City AFC,Norwich City FC,2,1
-2023-10-04 19:00,Rotherham United FC,Bristol City FC,1,2
-2023-10-06 19:00,Birmingham City FC,West Bromwich Albion FC,3,1
-2023-10-07 11:30,Sunderland AFC,Middlesbrough FC,0,4
-2023-10-07 14:00,Cardiff City FC,Watford FC,1,1
-2023-10-07 14:00,Coventry City FC,Norwich City FC,1,1
-2023-10-07 14:00,Millwall FC,Hull City AFC,2,2
-2023-10-07 14:00,Southampton FC,Rotherham United FC,1,1
-2023-10-07 14:00,Ipswich Town FC,Preston North End FC,4,2
-2023-10-07 14:00,Leeds United FC,Bristol City FC,2,1
-2023-10-07 14:00,Leicester City FC,Stoke City FC,2,0
-2023-10-07 14:00,Plymouth Argyle FC,Swansea City AFC,1,3
-2023-10-07 14:00,Queens Park Rangers FC,Blackburn Rovers FC,0,4
-2023-10-07 14:00,Sheffield Wednesday FC,Huddersfield Town AFC,0,0
-2023-10-21 11:30,Preston North End FC,Millwall FC,1,1
-2023-10-21 14:00,Blackburn Rovers FC,Cardiff City FC,1,0
-2023-10-21 14:00,Bristol City FC,Coventry City FC,1,0
-2023-10-21 14:00,Middlesbrough FC,Birmingham City FC,1,0
-2023-10-21 14:00,Watford FC,Sheffield Wednesday FC,1,0
-2023-10-21 14:00,Huddersfield Town AFC,Queens Park Rangers FC,2,1
-2023-10-21 14:00,Hull City AFC,Southampton FC,1,2
-2023-10-21 14:00,Norwich City FC,Leeds United FC,2,3
-2023-10-21 14:00,Stoke City FC,Sunderland AFC,2,1
-2023-10-21 14:00,Swansea City AFC,Leicester City FC,1,3
-2023-10-21 14:00,West Bromwich Albion FC,Plymouth Argyle FC,0,0
-2023-10-24 18:45,Millwall FC,Blackburn Rovers FC,1,2
-2023-10-24 18:45,Huddersfield Town AFC,Cardiff City FC,0,4
-2023-10-24 18:45,Norwich City FC,Middlesbrough FC,1,2
-2023-10-24 18:45,Swansea City AFC,Watford FC,0,1
-2023-10-24 19:00,Leicester City FC,Sunderland AFC,1,0
-2023-10-24 19:00,West Bromwich Albion FC,Queens Park Rangers FC,2,0
-2023-10-25 18:45,Birmingham City FC,Hull City AFC,0,2
-2023-10-25 18:45,Bristol City FC,Ipswich Town FC,0,1
-2023-10-25 18:45,Plymouth Argyle FC,Sheffield Wednesday FC,3,0
-2023-10-25 18:45,Preston North End FC,Southampton FC,2,2
-2023-10-25 18:45,Rotherham United FC,Coventry City FC,2,0
-2023-10-25 19:00,Stoke City FC,Leeds United FC,1,0
-2023-10-28 11:30,Southampton FC,Birmingham City FC,3,1
-2023-10-28 11:30,Leeds United FC,Huddersfield Town AFC,4,1
-2023-10-28 14:00,Sunderland AFC,Norwich City FC,3,1
-2023-10-28 14:00,Blackburn Rovers FC,Swansea City AFC,0,1
-2023-10-28 14:00,Cardiff City FC,Bristol City FC,2,0
-2023-10-28 14:00,Middlesbrough FC,Stoke City FC,0,2
-2023-10-28 14:00,Watford FC,Millwall FC,2,2
-2023-10-28 14:00,Hull City AFC,Preston North End FC,1,0
-2023-10-28 14:00,Ipswich Town FC,Plymouth Argyle FC,3,2
-2023-10-28 14:00,Queens Park Rangers FC,Leicester City FC,1,2
-2023-10-29 13:00,Sheffield Wednesday FC,Rotherham United FC,2,0
-2023-10-30 20:00,Coventry City FC,West Bromwich Albion FC,0,2
-2023-11-03 20:00,Leicester City FC,Leeds United FC,0,1
-2023-11-04 15:00,Birmingham City FC,Ipswich Town FC,2,2
-2023-11-04 15:00,Bristol City FC,Sheffield Wednesday FC,1,0
-2023-11-04 15:00,Millwall FC,Southampton FC,0,1
-2023-11-04 15:00,Huddersfield Town AFC,Watford FC,0,0
-2023-11-04 15:00,Plymouth Argyle FC,Middlesbrough FC,3,3
-2023-11-04 15:00,Preston North End FC,Coventry City FC,3,2
-2023-11-04 15:00,Rotherham United FC,Queens Park Rangers FC,1,1
-2023-11-04 15:00,Stoke City FC,Cardiff City FC,0,0
-2023-11-04 15:00,Swansea City AFC,Sunderland AFC,0,0
-2023-11-04 15:00,West Bromwich Albion FC,Hull City AFC,3,1
-2023-11-05 12:00,Norwich City FC,Blackburn Rovers FC,1,3
-2023-11-07 20:00,Rotherham United FC,Ipswich Town FC,2,2
-2023-11-10 20:00,Blackburn Rovers FC,Preston North End FC,1,2
-2023-11-11 12:30,Sunderland AFC,Birmingham City FC,3,1
-2023-11-11 15:00,Cardiff City FC,Norwich City FC,2,3
-2023-11-11 15:00,Coventry City FC,Stoke City FC,0,0
-2023-11-11 15:00,Middlesbrough FC,Leicester City FC,1,0
-2023-11-11 15:00,Southampton FC,West Bromwich Albion FC,2,1
-2023-11-11 15:00,Watford FC,Rotherham United FC,5,0
-2023-11-11 15:00,Hull City AFC,Huddersfield Town AFC,1,0
-2023-11-11 15:00,Ipswich Town FC,Swansea City AFC,3,2
-2023-11-11 15:00,Leeds United FC,Plymouth Argyle FC,2,1
-2023-11-11 15:00,Queens Park Rangers FC,Bristol City FC,0,0
-2023-11-11 15:00,Sheffield Wednesday FC,Millwall FC,0,4
-2023-11-24 20:00,Rotherham United FC,Leeds United FC,1,1
-2023-11-25 15:00,Birmingham City FC,Sheffield Wednesday FC,2,1
-2023-11-25 15:00,Bristol City FC,Middlesbrough FC,3,2
-2023-11-25 15:00,Millwall FC,Coventry City FC,0,3
-2023-11-25 15:00,Huddersfield Town AFC,Southampton FC,1,1
-2023-11-25 15:00,Leicester City FC,Watford FC,2,0
-2023-11-25 15:00,Norwich City FC,Queens Park Rangers FC,1,0
-2023-11-25 15:00,Plymouth Argyle FC,Sunderland AFC,2,0
-2023-11-25 15:00,Preston North End FC,Cardiff City FC,1,2
-2023-11-25 15:00,Stoke City FC,Blackburn Rovers FC,0,3
-2023-11-25 15:00,Swansea City AFC,Hull City AFC,2,2
-2023-11-25 17:30,West Bromwich Albion FC,Ipswich Town FC,2,0
-2023-11-28 19:45,Cardiff City FC,West Bromwich Albion FC,0,1
-2023-11-28 19:45,Coventry City FC,Plymouth Argyle FC,1,0
-2023-11-28 19:45,Middlesbrough FC,Preston North End FC,4,0
-2023-11-28 19:45,Hull City AFC,Rotherham United FC,4,1
-2023-11-28 19:45,Queens Park Rangers FC,Stoke City FC,4,2
-2023-11-28 20:00,Watford FC,Norwich City FC,3,2
-2023-11-29 19:45,Sunderland AFC,Huddersfield Town AFC,1,2
-2023-11-29 19:45,Blackburn Rovers FC,Birmingham City FC,4,2
-2023-11-29 19:45,Southampton FC,Bristol City FC,1,0
-2023-11-29 19:45,Leeds United FC,Swansea City AFC,3,1
-2023-11-29 19:45,Sheffield Wednesday FC,Leicester City FC,1,1
-2023-11-29 20:00,Ipswich Town FC,Millwall FC,3,1
-2023-12-01 20:00,Preston North End FC,Queens Park Rangers FC,0,2
-2023-12-02 12:30,West Bromwich Albion FC,Leicester City FC,1,2
-2023-12-02 15:00,Birmingham City FC,Rotherham United FC,0,0
-2023-12-02 15:00,Millwall FC,Sunderland AFC,1,1
-2023-12-02 15:00,Southampton FC,Cardiff City FC,2,0
-2023-12-02 15:00,Hull City AFC,Watford FC,1,2
-2023-12-02 15:00,Ipswich Town FC,Coventry City FC,2,1
-2023-12-02 15:00,Leeds United FC,Middlesbrough FC,3,2
-2023-12-02 15:00,Plymouth Argyle FC,Stoke City FC,2,1
-2023-12-02 15:00,Sheffield Wednesday FC,Blackburn Rovers FC,3,1
-2023-12-02 15:00,Swansea City AFC,Huddersfield Town AFC,1,1
-2023-12-03 13:30,Bristol City FC,Norwich City FC,1,2
-2023-12-08 20:00,Coventry City FC,Birmingham City FC,2,0
-2023-12-09 12:30,Sunderland AFC,West Bromwich Albion FC,2,1
-2023-12-09 12:30,Blackburn Rovers FC,Leeds United FC,0,2
-2023-12-09 15:00,Cardiff City FC,Millwall FC,1,0
-2023-12-09 15:00,Middlesbrough FC,Ipswich Town FC,0,2
-2023-12-09 15:00,Watford FC,Southampton FC,1,1
-2023-12-09 15:00,Huddersfield Town AFC,Bristol City FC,1,1
-2023-12-09 15:00,Leicester City FC,Plymouth Argyle FC,4,0
-2023-12-09 15:00,Norwich City FC,Preston North End FC,0,0
-2023-12-09 15:00,Queens Park Rangers FC,Hull City AFC,2,0
-2023-12-09 15:00,Rotherham United FC,Swansea City AFC,1,2
-2023-12-09 15:00,Stoke City FC,Sheffield Wednesday FC,0,1
-2023-12-12 19:45,Blackburn Rovers FC,Bristol City FC,2,1
-2023-12-12 19:45,Watford FC,Ipswich Town FC,1,2
-2023-12-12 19:45,Huddersfield Town AFC,Preston North End FC,1,3
-2023-12-12 19:45,Rotherham United FC,West Bromwich Albion FC,0,2
-2023-12-12 19:45,Stoke City FC,Swansea City AFC,1,1
-2023-12-12 20:00,Sunderland AFC,Leeds United FC,1,0
-2023-12-13 19:45,Cardiff City FC,Birmingham City FC,0,1
-2023-12-13 19:45,Coventry City FC,Southampton FC,1,1
-2023-12-13 19:45,Leicester City FC,Millwall FC,3,2
-2023-12-13 19:45,Norwich City FC,Sheffield Wednesday FC,3,1
-2023-12-13 19:45,Queens Park Rangers FC,Plymouth Argyle FC,0,0
-2023-12-13 20:00,Middlesbrough FC,Hull City AFC,1,2
-2023-12-16 12:30,Ipswich Town FC,Norwich City FC,2,2
-2023-12-16 15:00,Bristol City FC,Sunderland AFC,1,0
-2023-12-16 15:00,Millwall FC,Huddersfield Town AFC,1,1
-2023-12-16 15:00,Southampton FC,Blackburn Rovers FC,4,0
-2023-12-16 15:00,Hull City AFC,Cardiff City FC,3,0
-2023-12-16 15:00,Leeds United FC,Coventry City FC,1,1
-2023-12-16 15:00,Plymouth Argyle FC,Rotherham United FC,3,2
-2023-12-16 15:00,Preston North End FC,Watford FC,1,5
-2023-12-16 15:00,Sheffield Wednesday FC,Queens Park Rangers FC,2,1
-2023-12-16 15:00,Swansea City AFC,Middlesbrough FC,1,2
-2023-12-17 12:00,West Bromwich Albion FC,Stoke City FC,1,1
-2023-12-18 20:00,Birmingham City FC,Leicester City FC,2,3
-2023-12-22 19:45,Bristol City FC,Hull City AFC,3,2
-2023-12-22 19:45,Swansea City AFC,Preston North End FC,2,1
-2023-12-23 12:30,Leeds United FC,Ipswich Town FC,4,0
-2023-12-23 15:00,Sunderland AFC,Coventry City FC,0,3
-2023-12-23 15:00,Blackburn Rovers FC,Watford FC,1,2
-2023-12-23 15:00,Middlesbrough FC,West Bromwich Albion FC,1,0
-2023-12-23 15:00,Leicester City FC,Rotherham United FC,3,0
-2023-12-23 15:00,Norwich City FC,Huddersfield Town AFC,2,0
-2023-12-23 15:00,Plymouth Argyle FC,Birmingham City FC,3,3
-2023-12-23 15:00,Queens Park Rangers FC,Southampton FC,0,1
-2023-12-23 15:00,Sheffield Wednesday FC,Cardiff City FC,1,2
-2023-12-23 15:00,Stoke City FC,Millwall FC,0,0
-2023-12-26 12:30,Preston North End FC,Leeds United FC,2,1
-2023-12-26 13:00,Millwall FC,Queens Park Rangers FC,2,0
-2023-12-26 15:00,Cardiff City FC,Plymouth Argyle FC,2,2
-2023-12-26 15:00,Coventry City FC,Sheffield Wednesday FC,2,0
-2023-12-26 15:00,Southampton FC,Swansea City AFC,5,0
-2023-12-26 15:00,Watford FC,Bristol City FC,1,4
-2023-12-26 15:00,Huddersfield Town AFC,Blackburn Rovers FC,3,0
-2023-12-26 15:00,Hull City AFC,Sunderland AFC,0,1
-2023-12-26 15:00,Rotherham United FC,Middlesbrough FC,1,0
-2023-12-26 15:00,West Bromwich Albion FC,Norwich City FC,1,0
-2023-12-26 17:15,Birmingham City FC,Stoke City FC,1,3
-2023-12-26 19:45,Ipswich Town FC,Leicester City FC,1,1
-2023-12-29 18:00,Southampton FC,Plymouth Argyle FC,2,1
-2023-12-29 19:45,Birmingham City FC,Bristol City FC,0,0
-2023-12-29 19:45,Cardiff City FC,Leicester City FC,0,2
-2023-12-29 19:45,Coventry City FC,Swansea City AFC,2,2
-2023-12-29 19:45,Millwall FC,Norwich City FC,1,0
-2023-12-29 19:45,Watford FC,Stoke City FC,1,1
-2023-12-29 19:45,Huddersfield Town AFC,Middlesbrough FC,1,2
-2023-12-29 19:45,Hull City AFC,Blackburn Rovers FC,3,2
-2023-12-29 19:45,Ipswich Town FC,Queens Park Rangers FC,0,0
-2023-12-29 19:45,Preston North End FC,Sheffield Wednesday FC,0,1
-2023-12-29 19:45,Rotherham United FC,Sunderland AFC,1,1
-2023-12-29 20:15,West Bromwich Albion FC,Leeds United FC,1,0
-2024-01-01 12:30,Sunderland AFC,Preston North End FC,2,0
-2024-01-01 15:00,Blackburn Rovers FC,Rotherham United FC,2,2
-2024-01-01 15:00,Bristol City FC,Millwall FC,0,1
-2024-01-01 15:00,Middlesbrough FC,Coventry City FC,1,3
-2024-01-01 15:00,Leeds United FC,Birmingham City FC,3,0
-2024-01-01 15:00,Leicester City FC,Huddersfield Town AFC,4,1
-2024-01-01 15:00,Norwich City FC,Southampton FC,1,1
-2024-01-01 15:00,Plymouth Argyle FC,Watford FC,3,3
-2024-01-01 15:00,Queens Park Rangers FC,Cardiff City FC,1,2
-2024-01-01 15:00,Stoke City FC,Ipswich Town FC,0,0
-2024-01-01 15:00,Swansea City AFC,West Bromwich Albion FC,1,0
-2024-01-01 17:15,Sheffield Wednesday FC,Hull City AFC,3,1
-2024-01-12 20:00,Hull City AFC,Norwich City FC,1,2
-2024-01-13 12:30,Coventry City FC,Leicester City FC,3,1
-2024-01-13 15:00,Huddersfield Town AFC,Plymouth Argyle FC,1,1
-2024-01-13 15:00,Preston North End FC,Bristol City FC,2,0
-2024-01-13 15:00,Rotherham United FC,Stoke City FC,0,1
-2024-01-13 15:00,West Bromwich Albion FC,Blackburn Rovers FC,4,1
-2024-01-13 15:00,Birmingham City FC,Swansea City AFC,2,2
-2024-01-13 15:00,Cardiff City FC,Leeds United FC,0,3
-2024-01-13 15:00,Millwall FC,Middlesbrough FC,1,3
-2024-01-13 15:00,Southampton FC,Sheffield Wednesday FC,4,0
-2024-01-13 17:30,Ipswich Town FC,Sunderland AFC,2,1
-2024-01-14 12:00,Queens Park Rangers FC,Watford FC,1,2
-2024-01-19 20:00,Sunderland AFC,Hull City AFC,0,1
-2024-01-20 12:30,Swansea City AFC,Southampton FC,1,3
-2024-01-20 15:00,Blackburn Rovers FC,Huddersfield Town AFC,1,1
-2024-01-20 15:00,Bristol City FC,Watford FC,1,1
-2024-01-20 15:00,Middlesbrough FC,Rotherham United FC,1,1
-2024-01-20 15:00,Norwich City FC,West Bromwich Albion FC,2,0
-2024-01-20 15:00,Plymouth Argyle FC,Cardiff City FC,3,1
-2024-01-20 15:00,Queens Park Rangers FC,Millwall FC,2,0
-2024-01-20 15:00,Sheffield Wednesday FC,Coventry City FC,1,2
-2024-01-20 15:00,Stoke City FC,Birmingham City FC,1,2
-2024-01-21 12:00,Leeds United FC,Preston North End FC,2,1
-2024-01-22 20:00,Leicester City FC,Ipswich Town FC,1,1
-2024-01-24 19:45,Leeds United FC,Norwich City FC,1,0
-2024-01-27 15:00,Sunderland AFC,Stoke City FC,3,1
-2024-01-27 15:00,Millwall FC,Preston North End FC,1,1
-2024-01-28 13:30,Queens Park Rangers FC,Huddersfield Town AFC,1,1
-2024-01-30 19:45,Coventry City FC,Bristol City FC,2,2
-2024-01-30 19:45,Leicester City FC,Swansea City AFC,3,1
-2024-01-31 19:45,Sheffield Wednesday FC,Watford FC,0,0
-2024-02-02 20:00,Bristol City FC,Leeds United FC,0,1
-2024-02-03 15:00,Blackburn Rovers FC,Queens Park Rangers FC,1,2
-2024-02-03 15:00,Watford FC,Cardiff City FC,0,1
-2024-02-03 15:00,Huddersfield Town AFC,Sheffield Wednesday FC,4,0
-2024-02-03 15:00,Hull City AFC,Millwall FC,1,0
-2024-02-03 15:00,Norwich City FC,Coventry City FC,2,1
-2024-02-03 15:00,Preston North End FC,Ipswich Town FC,3,2
-2024-02-03 15:00,Rotherham United FC,Southampton FC,0,2
-2024-02-03 15:00,Stoke City FC,Leicester City FC,0,5
-2024-02-03 15:00,Swansea City AFC,Plymouth Argyle FC,0,1
-2024-02-03 15:00,West Bromwich Albion FC,Birmingham City FC,1,0
-2024-02-04 12:00,Middlesbrough FC,Sunderland AFC,1,1
-2024-02-09 20:00,Sheffield Wednesday FC,Birmingham City FC,2,0
-2024-02-10 12:30,Ipswich Town FC,West Bromwich Albion FC,2,2
-2024-02-10 15:00,Sunderland AFC,Plymouth Argyle FC,3,1
-2024-02-10 15:00,Blackburn Rovers FC,Stoke City FC,3,1
-2024-02-10 15:00,Cardiff City FC,Preston North End FC,0,2
-2024-02-10 15:00,Middlesbrough FC,Bristol City FC,1,2
-2024-02-10 15:00,Southampton FC,Huddersfield Town AFC,5,3
-2024-02-10 15:00,Watford FC,Leicester City FC,1,2
-2024-02-10 15:00,Hull City AFC,Swansea City AFC,0,1
-2024-02-10 15:00,Leeds United FC,Rotherham United FC,3,0
-2024-02-10 15:00,Queens Park Rangers FC,Norwich City FC,2,2
-2024-02-11 12:00,Coventry City FC,Millwall FC,2,1
-2024-02-13 19:45,Birmingham City FC,Blackburn Rovers FC,1,0
-2024-02-13 19:45,Leicester City FC,Sheffield Wednesday FC,2,0
-2024-02-13 19:45,Norwich City FC,Watford FC,4,2
-2024-02-13 19:45,Rotherham United FC,Hull City AFC,1,2
-2024-02-13 19:45,Swansea City AFC,Leeds United FC,0,4
-2024-02-13 20:00,Bristol City FC,Southampton FC,3,1
-2024-02-13 20:00,West Bromwich Albion FC,Cardiff City FC,2,0
-2024-02-14 19:45,Huddersfield Town AFC,Sunderland AFC,1,0
-2024-02-14 19:45,Plymouth Argyle FC,Coventry City FC,2,2
-2024-02-14 19:45,Preston North End FC,Middlesbrough FC,2,1
-2024-02-14 19:45,Stoke City FC,Queens Park Rangers FC,1,0
-2024-02-14 20:00,Millwall FC,Ipswich Town FC,0,4
-2024-02-16 20:00,West Bromwich Albion FC,Southampton FC,0,2
-2024-02-17 12:30,Plymouth Argyle FC,Leeds United FC,0,2
-2024-02-17 15:00,Birmingham City FC,Sunderland AFC,2,1
-2024-02-17 15:00,Bristol City FC,Queens Park Rangers FC,0,1
-2024-02-17 15:00,Millwall FC,Sheffield Wednesday FC,0,2
-2024-02-17 15:00,Huddersfield Town AFC,Hull City AFC,1,2
-2024-02-17 15:00,Leicester City FC,Middlesbrough FC,1,2
-2024-02-17 15:00,Norwich City FC,Cardiff City FC,4,1
-2024-02-17 15:00,Preston North End FC,Blackburn Rovers FC,2,2
-2024-02-17 15:00,Rotherham United FC,Watford FC,0,1
-2024-02-17 15:00,Stoke City FC,Coventry City FC,0,1
-2024-02-17 15:00,Swansea City AFC,Ipswich Town FC,1,2
-2024-02-20 19:45,Cardiff City FC,Blackburn Rovers FC,0,0
-2024-02-20 19:45,Southampton FC,Hull City AFC,1,2
-2024-02-20 19:45,Ipswich Town FC,Rotherham United FC,4,3
-2024-02-20 19:45,Plymouth Argyle FC,West Bromwich Albion FC,0,3
-2024-02-23 19:45,Coventry City FC,Preston North End FC,0,3
-2024-02-23 20:00,Leeds United FC,Leicester City FC,3,1
-2024-02-24 12:30,Hull City AFC,West Bromwich Albion FC,1,1
-2024-02-24 15:00,Sunderland AFC,Swansea City AFC,1,2
-2024-02-24 15:00,Blackburn Rovers FC,Norwich City FC,1,1
-2024-02-24 15:00,Cardiff City FC,Stoke City FC,2,1
-2024-02-24 15:00,Middlesbrough FC,Plymouth Argyle FC,0,2
-2024-02-24 15:00,Southampton FC,Millwall FC,1,2
-2024-02-24 15:00,Watford FC,Huddersfield Town AFC,1,2
-2024-02-24 15:00,Ipswich Town FC,Birmingham City FC,3,1
-2024-02-24 15:00,Queens Park Rangers FC,Rotherham United FC,2,1
-2024-02-24 15:00,Sheffield Wednesday FC,Bristol City FC,2,1
-2024-03-01 20:00,West Bromwich Albion FC,Coventry City FC,2,1
-2024-03-02 12:30,Bristol City FC,Cardiff City FC,0,1
-2024-03-02 12:30,Huddersfield Town AFC,Leeds United FC,1,1
-2024-03-02 15:00,Birmingham City FC,Southampton FC,3,4
-2024-03-02 15:00,Millwall FC,Watford FC,1,0
-2024-03-02 15:00,Leicester City FC,Queens Park Rangers FC,1,2
-2024-03-02 15:00,Norwich City FC,Sunderland AFC,1,0
-2024-03-02 15:00,Plymouth Argyle FC,Ipswich Town FC,0,2
-2024-03-02 15:00,Preston North End FC,Hull City AFC,0,0
-2024-03-02 15:00,Rotherham United FC,Sheffield Wednesday FC,0,1
-2024-03-02 15:00,Stoke City FC,Middlesbrough FC,2,0
-2024-03-02 15:00,Swansea City AFC,Blackburn Rovers FC,2,1
-2024-03-05 19:45,Sunderland AFC,Leicester City FC,0,1
-2024-03-05 19:45,Blackburn Rovers FC,Millwall FC,1,1
-2024-03-05 19:45,Coventry City FC,Rotherham United FC,5,0
-2024-03-05 19:45,Hull City AFC,Birmingham City FC,1,1
-2024-03-05 19:45,Leeds United FC,Stoke City FC,1,0
-2024-03-05 19:45,Sheffield Wednesday FC,Plymouth Argyle FC,1,0
-2024-03-05 20:00,Ipswich Town FC,Bristol City FC,3,2
-2024-03-06 19:45,Cardiff City FC,Huddersfield Town AFC,1,0
-2024-03-06 19:45,Middlesbrough FC,Norwich City FC,3,1
-2024-03-06 19:45,Watford FC,Swansea City AFC,1,1
-2024-03-06 20:00,Queens Park Rangers FC,West Bromwich Albion FC,2,2
-2024-03-08 20:00,Sheffield Wednesday FC,Leeds United FC,0,2
-2024-03-09 12:30,Cardiff City FC,Ipswich Town FC,2,1
-2024-03-09 15:00,Blackburn Rovers FC,Plymouth Argyle FC,1,1
-2024-03-09 15:00,Millwall FC,Birmingham City FC,1,0
-2024-03-09 15:00,Southampton FC,Sunderland AFC,4,2
-2024-03-09 15:00,Watford FC,Coventry City FC,1,2
-2024-03-09 15:00,Hull City AFC,Leicester City FC,2,2
-2024-03-09 15:00,Norwich City FC,Rotherham United FC,5,0
-2024-03-09 15:00,Preston North End FC,Stoke City FC,1,2
-2024-03-09 15:00,Queens Park Rangers FC,Middlesbrough FC,0,2
-2024-03-10 12:00,Huddersfield Town AFC,West Bromwich Albion FC,1,4
-2024-03-10 12:30,Bristol City FC,Swansea City AFC,1,0
-2024-03-12 19:45,Birmingham City FC,Middlesbrough FC,0,1
-2024-03-16 12:30,Swansea City AFC,Cardiff City FC,2,0
-2024-03-16 15:00,Sunderland AFC,Queens Park Rangers FC,0,0
-2024-03-16 15:00,Birmingham City FC,Watford FC,0,1
-2024-03-16 15:00,Middlesbrough FC,Blackburn Rovers FC,0,0
-2024-03-16 15:00,Ipswich Town FC,Sheffield Wednesday FC,6,0
-2024-03-16 15:00,Plymouth Argyle FC,Preston North End FC,0,1
-2024-03-16 15:00,Rotherham United FC,Huddersfield Town AFC,0,0
-2024-03-16 15:00,Stoke City FC,Norwich City FC,0,3
-2024-03-16 15:00,West Bromwich Albion FC,Bristol City FC,2,0
-2024-03-17 15:00,Leeds United FC,Millwall FC,2,0
-2024-03-29 12:30,Bristol City FC,Leicester City FC,1,0
-2024-03-29 13:00,Millwall FC,West Bromwich Albion FC,1,1
-2024-03-29 15:00,Cardiff City FC,Sunderland AFC,0,2
-2024-03-29 15:00,Southampton FC,Middlesbrough FC,1,1
-2024-03-29 15:00,Huddersfield Town AFC,Coventry City FC,1,3
-2024-03-29 15:00,Hull City AFC,Stoke City FC,0,2
-2024-03-29 15:00,Norwich City FC,Plymouth Argyle FC,2,1
-2024-03-29 15:00,Preston North End FC,Rotherham United FC,3,0
-2024-03-29 15:00,Queens Park Rangers FC,Birmingham City FC,2,1
-2024-03-29 15:00,Sheffield Wednesday FC,Swansea City AFC,1,1
-2024-03-29 17:30,Blackburn Rovers FC,Ipswich Town FC,0,1
-2024-03-29 20:00,Watford FC,Leeds United FC,2,2
-2024-04-01 11:30,Leicester City FC,Norwich City FC,3,1
-2024-04-01 14:00,Sunderland AFC,Blackburn Rovers FC,1,5
-2024-04-01 14:00,Birmingham City FC,Preston North End FC,1,0
-2024-04-01 14:00,Coventry City FC,Cardiff City FC,1,2
-2024-04-01 14:00,Middlesbrough FC,Sheffield Wednesday FC,2,0
-2024-04-01 14:00,Plymouth Argyle FC,Bristol City FC,0,1
-2024-04-01 14:00,Rotherham United FC,Millwall FC,2,1
-2024-04-01 14:00,Stoke City FC,Huddersfield Town AFC,1,1
-2024-04-01 14:00,Swansea City AFC,Queens Park Rangers FC,0,1
-2024-04-01 14:00,West Bromwich Albion FC,Watford FC,2,2
-2024-04-01 16:30,Ipswich Town FC,Southampton FC,3,2
-2024-04-01 19:00,Leeds United FC,Hull City AFC,3,1
-2024-04-05 19:00,Rotherham United FC,Plymouth Argyle FC,0,1
-2024-04-06 11:30,Norwich City FC,Ipswich Town FC,1,0
-2024-04-06 14:00,Sunderland AFC,Bristol City FC,0,0
-2024-04-06 14:00,Blackburn Rovers FC,Southampton FC,0,0
-2024-04-06 14:00,Cardiff City FC,Hull City AFC,1,3
-2024-04-06 14:00,Coventry City FC,Leeds United FC,2,1
-2024-04-06 14:00,Middlesbrough FC,Swansea City AFC,2,0
-2024-04-06 14:00,Watford FC,Preston North End FC,0,0
-2024-04-06 14:00,Huddersfield Town AFC,Millwall FC,1,0
-2024-04-06 14:00,Leicester City FC,Birmingham City FC,2,1
-2024-04-06 14:00,Queens Park Rangers FC,Sheffield Wednesday FC,0,2
-2024-04-06 14:00,Stoke City FC,West Bromwich Albion FC,2,2
-2024-04-09 18:45,Millwall FC,Leicester City FC,1,0
-2024-04-09 18:45,Southampton FC,Coventry City FC,2,1
-2024-04-09 18:45,Plymouth Argyle FC,Queens Park Rangers FC,1,1
-2024-04-09 18:45,Preston North End FC,Huddersfield Town AFC,4,1
-2024-04-09 18:45,Sheffield Wednesday FC,Norwich City FC,2,2
-2024-04-09 19:00,Leeds United FC,Sunderland AFC,0,0
-2024-04-10 18:45,Birmingham City FC,Cardiff City FC,0,1
-2024-04-10 18:45,Bristol City FC,Blackburn Rovers FC,5,0
-2024-04-10 18:45,Hull City AFC,Middlesbrough FC,2,2
-2024-04-10 18:45,Ipswich Town FC,Watford FC,0,0
-2024-04-10 19:00,Swansea City AFC,Stoke City FC,3,0
-2024-04-10 19:00,West Bromwich Albion FC,Rotherham United FC,2,0
-2024-04-12 19:00,Plymouth Argyle FC,Leicester City FC,1,0
-2024-04-13 11:30,Leeds United FC,Blackburn Rovers FC,0,1
-2024-04-13 14:00,Birmingham City FC,Coventry City FC,3,0
-2024-04-13 14:00,Bristol City FC,Huddersfield Town AFC,1,1
-2024-04-13 14:00,Millwall FC,Cardiff City FC,3,1
-2024-04-13 14:00,Southampton FC,Watford FC,3,2
-2024-04-13 14:00,Hull City AFC,Queens Park Rangers FC,3,0
-2024-04-13 14:00,Ipswich Town FC,Middlesbrough FC,1,1
-2024-04-13 14:00,Preston North End FC,Norwich City FC,0,1
-2024-04-13 14:00,Sheffield Wednesday FC,Stoke City FC,1,1
-2024-04-13 14:00,Swansea City AFC,Rotherham United FC,1,0
-2024-04-13 14:00,West Bromwich Albion FC,Sunderland AFC,0,1
-2024-04-16 19:00,Southampton FC,Preston North End FC,3,0
-2024-04-20 11:30,Leicester City FC,West Bromwich Albion FC,2,1
-2024-04-20 14:00,Sunderland AFC,Millwall FC,0,1
-2024-04-20 14:00,Cardiff City FC,Southampton FC,2,1
-2024-04-20 14:00,Watford FC,Hull City AFC,0,0
-2024-04-20 14:00,Huddersfield Town AFC,Swansea City AFC,0,4
-2024-04-20 14:00,Norwich City FC,Bristol City FC,1,1
-2024-04-20 14:00,Rotherham United FC,Birmingham City FC,0,0
-2024-04-20 14:00,Stoke City FC,Plymouth Argyle FC,3,0
-2024-04-20 16:15,Queens Park Rangers FC,Preston North End FC,1,0
-2024-04-21 11:30,Blackburn Rovers FC,Sheffield Wednesday FC,1,3
-2024-04-22 19:00,Middlesbrough FC,Leeds United FC,3,4
-2024-04-23 19:00,Leicester City FC,Southampton FC,5,0
-2024-04-24 18:45,Coventry City FC,Hull City AFC,2,3
-2024-04-26 19:00,Queens Park Rangers FC,Leeds United FC,4,0
-2024-04-27 14:00,Blackburn Rovers FC,Coventry City FC,0,0
-2024-04-27 14:00,Bristol City FC,Rotherham United FC,2,0
-2024-04-27 14:00,Cardiff City FC,Middlesbrough FC,1,4
-2024-04-27 14:00,Millwall FC,Plymouth Argyle FC,1,0
-2024-04-27 14:00,Southampton FC,Stoke City FC,0,1
-2024-04-27 14:00,Watford FC,Sunderland AFC,1,0
-2024-04-27 14:00,Huddersfield Town AFC,Birmingham City FC,1,1
-2024-04-27 14:00,Norwich City FC,Swansea City AFC,2,2
-2024-04-27 14:00,Sheffield Wednesday FC,West Bromwich Albion FC,3,0
-2024-04-27 19:00,Hull City AFC,Ipswich Town FC,3,3
-2024-04-29 19:00,Preston North End FC,Leicester City FC,0,3
-2024-04-30 19:00,Coventry City FC,Ipswich Town FC,1,2
-2024-05-04 11:30,Swansea City AFC,Millwall FC,0,1
-2024-05-04 11:30,Sunderland AFC,Sheffield Wednesday FC,0,2
-2024-05-04 11:30,Birmingham City FC,Norwich City FC,1,0
-2024-05-04 11:30,Coventry City FC,Queens Park Rangers FC,1,2
-2024-05-04 11:30,Middlesbrough FC,Watford FC,3,1
-2024-05-04 11:30,Ipswich Town FC,Huddersfield Town AFC,2,0
-2024-05-04 11:30,Leeds United FC,Southampton FC,1,2
-2024-05-04 11:30,Leicester City FC,Blackburn Rovers FC,0,2
-2024-05-04 11:30,Plymouth Argyle FC,Hull City AFC,1,0
-2024-05-04 11:30,Rotherham United FC,Cardiff City FC,5,2
-2024-05-04 11:30,Stoke City FC,Bristol City FC,4,0
-2024-05-04 11:30,West Bromwich Albion FC,Preston North End FC,3,0
-2024-05-12 11:00,Norwich City FC,Leeds United FC,0,0
-2024-05-12 13:15,West Bromwich Albion FC,Southampton FC,0,0
-2024-05-16 19:00,Leeds United FC,Norwich City FC,4,0
-2024-05-17 19:00,Southampton FC,West Bromwich Albion FC,3,1
-2024-05-26 14:00,Leeds United FC,Southampton FC,0,1
-2024-08-09 19:00,Blackburn Rovers FC,Derby County FC,4,2
-2024-08-09 19:00,Preston North End FC,Sheffield United FC,0,2
-2024-08-10 11:30,Cardiff City FC,Sunderland AFC,0,2
-2024-08-10 11:30,Hull City AFC,Bristol City FC,1,1
-2024-08-10 11:30,Leeds United FC,Portsmouth FC,3,3
-2024-08-10 11:30,Middlesbrough FC,Swansea City AFC,1,0
-2024-08-10 11:30,Millwall FC,Watford FC,2,3
-2024-08-10 11:30,Oxford United FC,Norwich City FC,2,0
-2024-08-10 11:30,Queens Park Rangers FC,West Bromwich Albion FC,1,3
-2024-08-10 11:30,Stoke City FC,Coventry City FC,1,0
-2024-08-11 15:00,Sheffield Wednesday FC,Plymouth Argyle FC,4,0
-2024-08-12 19:00,Luton Town FC,Burnley FC,1,4
-2024-08-16 19:00,Coventry City FC,Oxford United FC,3,2
-2024-08-17 11:30,Derby County FC,Middlesbrough FC,1,0
-2024-08-17 11:30,Portsmouth FC,Luton Town FC,0,0
-2024-08-17 11:30,West Bromwich Albion FC,Leeds United FC,0,0
-2024-08-17 14:00,Bristol City FC,Millwall FC,4,3
-2024-08-17 14:00,Burnley FC,Cardiff City FC,5,0
-2024-08-17 14:00,Norwich City FC,Blackburn Rovers FC,2,2
-2024-08-17 14:00,Plymouth Argyle FC,Hull City AFC,1,1
-2024-08-17 14:00,Sheffield United FC,Queens Park Rangers FC,2,2
-2024-08-17 14:00,Swansea City AFC,Preston North End FC,3,0
-2024-08-17 14:00,Watford FC,Stoke City FC,3,0
-2024-08-18 11:00,Sunderland AFC,Sheffield Wednesday FC,4,0
-2024-08-23 19:00,Sheffield Wednesday FC,Leeds United FC,0,2
-2024-08-24 11:30,Bristol City FC,Coventry City FC,1,1
-2024-08-24 11:30,Hull City AFC,Millwall FC,0,0
-2024-08-24 11:30,Queens Park Rangers FC,Plymouth Argyle FC,1,1
-2024-08-24 14:00,Watford FC,Derby County FC,2,1
-2024-08-24 14:00,Blackburn Rovers FC,Oxford United FC,2,1
-2024-08-24 14:00,Middlesbrough FC,Portsmouth FC,2,2
-2024-08-24 14:00,Norwich City FC,Sheffield United FC,1,1
-2024-08-24 14:00,Preston North End FC,Luton Town FC,1,0
-2024-08-24 14:00,Stoke City FC,West Bromwich Albion FC,1,2
-2024-08-24 14:00,Sunderland AFC,Burnley FC,1,0
-2024-08-25 14:00,Swansea City AFC,Cardiff City FC,1,1
-2024-08-30 19:00,Luton Town FC,Queens Park Rangers FC,1,2
-2024-08-31 11:30,Burnley FC,Blackburn Rovers FC,1,1
-2024-08-31 11:30,Cardiff City FC,Middlesbrough FC,0,2
-2024-08-31 11:30,Coventry City FC,Norwich City FC,0,1
-2024-08-31 14:00,Derby County FC,Bristol City FC,3,0
-2024-08-31 14:00,Leeds United FC,Hull City AFC,2,0
-2024-08-31 14:00,Millwall FC,Sheffield Wednesday FC,3,0
-2024-08-31 14:00,Oxford United FC,Preston North End FC,3,1
-2024-08-31 14:00,Plymouth Argyle FC,Stoke City FC,0,1
-2024-08-31 14:00,Portsmouth FC,Sunderland AFC,1,3
-2024-08-31 14:00,West Bromwich Albion FC,Swansea City AFC,1,0
-2024-09-01 14:00,Sheffield United FC,Watford FC,1,0
-2024-09-13 19:00,Hull City AFC,Sheffield United FC,0,2
-2024-09-14 11:30,Leeds United FC,Burnley FC,0,1
-2024-09-14 11:30,Millwall FC,Luton Town FC,0,1
-2024-09-14 11:30,Oxford United FC,Stoke City FC,1,0
-2024-09-14 14:00,Blackburn Rovers FC,Bristol City FC,3,0
-2024-09-14 14:00,Derby County FC,Cardiff City FC,1,0
-2024-09-14 14:00,Middlesbrough FC,Preston North End FC,1,1
-2024-09-14 14:00,Plymouth Argyle FC,Sunderland AFC,3,2
-2024-09-14 14:00,Sheffield Wednesday FC,Queens Park Rangers FC,1,1
-2024-09-14 14:00,Swansea City AFC,Norwich City FC,1,0
-2024-09-14 14:00,Watford FC,Coventry City FC,1,1
-2024-09-15 14:00,Portsmouth FC,West Bromwich Albion FC,0,3
-2024-09-20 19:00,Stoke City FC,Hull City AFC,1,3
-2024-09-21 11:30,Norwich City FC,Watford FC,4,1
-2024-09-21 11:30,Queens Park Rangers FC,Millwall FC,1,1
-2024-09-21 11:30,Sunderland AFC,Middlesbrough FC,1,0
-2024-09-21 14:00,Bristol City FC,Oxford United FC,2,1
-2024-09-21 14:00,Burnley FC,Portsmouth FC,2,1
-2024-09-21 14:00,Cardiff City FC,Leeds United FC,0,2
-2024-09-21 14:00,Coventry City FC,Swansea City AFC,1,2
-2024-09-21 14:00,Luton Town FC,Sheffield Wednesday FC,2,1
-2024-09-21 14:00,Sheffield United FC,Derby County FC,1,0
-2024-09-21 14:00,West Bromwich Albion FC,Plymouth Argyle FC,1,0
-2024-09-22 11:00,Preston North End FC,Blackburn Rovers FC,0,0
-2024-09-27 19:00,Plymouth Argyle FC,Luton Town FC,3,1
-2024-09-28 11:30,Blackburn Rovers FC,Queens Park Rangers FC,2,0
-2024-09-28 11:30,Derby County FC,Norwich City FC,2,3
-2024-09-28 11:30,Sheffield Wednesday FC,West Bromwich Albion FC,3,2
-2024-09-28 14:00,Hull City AFC,Cardiff City FC,4,1
-2024-09-28 14:00,Leeds United FC,Coventry City FC,3,0
-2024-09-28 14:00,Middlesbrough FC,Stoke City FC,2,0
-2024-09-28 14:00,Millwall FC,Preston North End FC,3,1
-2024-09-28 14:00,Oxford United FC,Burnley FC,0,0
-2024-09-28 14:00,Portsmouth FC,Sheffield United FC,0,0
-2024-09-28 14:00,Watford FC,Sunderland AFC,2,1
-2024-09-29 14:00,Swansea City AFC,Bristol City FC,1,1
-2024-10-01 18:45,Burnley FC,Plymouth Argyle FC,1,0
-2024-10-01 18:45,Cardiff City FC,Millwall FC,1,0
-2024-10-01 18:45,Coventry City FC,Blackburn Rovers FC,3,0
-2024-10-01 18:45,Luton Town FC,Oxford United FC,2,2
-2024-10-01 18:45,Queens Park Rangers FC,Hull City AFC,1,3
-2024-10-01 18:45,Sunderland AFC,Derby County FC,2,0
-2024-10-01 18:45,Norwich City FC,Leeds United FC,1,1
-2024-10-01 19:00,West Bromwich Albion FC,Middlesbrough FC,0,1
-2024-10-02 18:45,Sheffield United FC,Swansea City AFC,1,0
-2024-10-02 18:45,Preston North End FC,Watford FC,3,0
-2024-10-02 18:45,Stoke City FC,Portsmouth FC,6,1
-2024-10-02 19:00,Bristol City FC,Sheffield Wednesday FC,0,0
-2024-10-04 19:00,Sunderland AFC,Leeds United FC,2,2
-2024-10-05 11:30,Burnley FC,Preston North End FC,0,0
-2024-10-05 11:30,Norwich City FC,Hull City AFC,4,0
-2024-10-05 11:30,Portsmouth FC,Oxford United FC,1,1
-2024-10-05 14:00,Coventry City FC,Sheffield Wednesday FC,1,2
-2024-10-05 14:00,Derby County FC,Queens Park Rangers FC,2,0
-2024-10-05 14:00,Plymouth Argyle FC,Blackburn Rovers FC,2,1
-2024-10-05 14:00,Sheffield United FC,Luton Town FC,2,0
-2024-10-05 14:00,Swansea City AFC,Stoke City FC,0,0
-2024-10-05 14:00,Watford FC,Middlesbrough FC,2,1
-2024-10-05 14:00,West Bromwich Albion FC,Millwall FC,0,0
-2024-10-06 14:00,Bristol City FC,Cardiff City FC,1,1
-2024-10-18 19:00,Leeds United FC,Sheffield United FC,2,0
-2024-10-19 11:30,Cardiff City FC,Plymouth Argyle FC,5,0
-2024-10-19 11:30,Luton Town FC,Watford FC,3,0
-2024-10-19 11:30,Oxford United FC,West Bromwich Albion FC,1,1
-2024-10-19 11:30,Preston North End FC,Coventry City FC,1,0
-2024-10-19 14:00,Blackburn Rovers FC,Swansea City AFC,1,0
-2024-10-19 14:00,Middlesbrough FC,Bristol City FC,0,2
-2024-10-19 14:00,Millwall FC,Derby County FC,1,1
-2024-10-19 14:00,Queens Park Rangers FC,Portsmouth FC,1,2
-2024-10-19 14:00,Sheffield Wednesday FC,Burnley FC,0,2
-2024-10-19 14:00,Stoke City FC,Norwich City FC,1,1
-2024-10-20 14:00,Hull City AFC,Sunderland AFC,0,1
-2024-10-22 18:45,Cardiff City FC,Portsmouth FC,2,0
-2024-10-22 18:45,Leeds United FC,Watford FC,2,1
-2024-10-22 18:45,Oxford United FC,Derby County FC,1,1
-2024-10-22 18:45,Preston North End FC,Norwich City FC,2,2
-2024-10-22 18:45,Sheffield Wednesday FC,Swansea City AFC,0,0
-2024-10-22 18:45,Stoke City FC,Bristol City FC,2,2
-2024-10-22 19:00,Queens Park Rangers FC,Coventry City FC,1,1
-2024-10-23 18:45,Hull City AFC,Burnley FC,1,1
-2024-10-23 18:45,Blackburn Rovers FC,West Bromwich Albion FC,0,0
-2024-10-23 18:45,Luton Town FC,Sunderland AFC,1,2
-2024-10-23 18:45,Millwall FC,Plymouth Argyle FC,1,0
-2024-10-23 19:00,Middlesbrough FC,Sheffield United FC,1,0
-2024-10-25 19:00,Portsmouth FC,Sheffield Wednesday FC,1,2
-2024-10-26 11:30,Bristol City FC,Leeds United FC,0,0
-2024-10-26 11:30,Coventry City FC,Luton Town FC,3,2
-2024-10-26 11:30,Watford FC,Blackburn Rovers FC,1,0
-2024-10-26 14:00,Burnley FC,Queens Park Rangers FC,0,0
-2024-10-26 14:00,Derby County FC,Hull City AFC,1,1
-2024-10-26 14:00,Plymouth Argyle FC,Preston North End FC,3,3
-2024-10-26 14:00,Sheffield United FC,Stoke City FC,2,0
-2024-10-26 14:00,Sunderland AFC,Oxford United FC,2,0
-2024-10-26 14:00,Swansea City AFC,Millwall FC,0,1
-2024-10-26 14:00,West Bromwich Albion FC,Cardiff City FC,0,0
-2024-10-27 15:00,Norwich City FC,Middlesbrough FC,3,3
-2024-11-01 20:00,Luton Town FC,West Bromwich Albion FC,1,1
-2024-11-02 12:30,Blackburn Rovers FC,Sheffield United FC,0,2
-2024-11-02 12:30,Oxford United FC,Swansea City AFC,1,2
-2024-11-02 12:30,Stoke City FC,Derby County FC,2,1
-2024-11-02 15:00,Cardiff City FC,Norwich City FC,2,1
-2024-11-02 15:00,Hull City AFC,Portsmouth FC,1,1
-2024-11-02 15:00,Leeds United FC,Plymouth Argyle FC,3,0
-2024-11-02 15:00,Middlesbrough FC,Coventry City FC,0,3
-2024-11-02 15:00,Preston North End FC,Bristol City FC,1,3
-2024-11-02 15:00,Queens Park Rangers FC,Sunderland AFC,0,0
-2024-11-02 15:00,Sheffield Wednesday FC,Watford FC,2,6
-2024-11-03 15:00,Millwall FC,Burnley FC,1,0
-2024-11-05 19:45,Bristol City FC,Sheffield United FC,1,2
-2024-11-05 19:45,Oxford United FC,Hull City AFC,1,0
-2024-11-05 19:45,Queens Park Rangers FC,Middlesbrough FC,1,4
-2024-11-05 19:45,Sheffield Wednesday FC,Norwich City FC,2,0
-2024-11-05 20:00,Plymouth Argyle FC,Portsmouth FC,1,0
-2024-11-05 20:00,Swansea City AFC,Watford FC,1,0
-2024-11-06 19:45,Millwall FC,Leeds United FC,1,0
-2024-11-06 19:45,Blackburn Rovers FC,Stoke City FC,0,2
-2024-11-06 19:45,Coventry City FC,Derby County FC,1,2
-2024-11-06 20:00,Luton Town FC,Cardiff City FC,1,0
-2024-11-06 20:00,Preston North End FC,Sunderland AFC,0,0
-2024-11-07 20:00,West Bromwich Albion FC,Burnley FC,0,0
-2024-11-08 20:00,Watford FC,Oxford United FC,1,0
-2024-11-09 12:30,Cardiff City FC,Blackburn Rovers FC,1,3
-2024-11-09 12:30,Middlesbrough FC,Luton Town FC,5,1
-2024-11-09 12:30,Stoke City FC,Millwall FC,1,1
-2024-11-09 15:00,Derby County FC,Plymouth Argyle FC,1,1
-2024-11-09 15:00,Leeds United FC,Queens Park Rangers FC,2,0
-2024-11-09 15:00,Norwich City FC,Bristol City FC,0,2
-2024-11-09 15:00,Portsmouth FC,Preston North End FC,3,1
-2024-11-09 15:00,Sunderland AFC,Coventry City FC,2,2
-2024-11-10 12:30,Sheffield United FC,Sheffield Wednesday FC,1,0
-2024-11-10 13:00,Hull City AFC,West Bromwich Albion FC,1,2
-2024-11-10 15:00,Burnley FC,Swansea City AFC,1,0
-2024-11-22 20:00,Plymouth Argyle FC,Watford FC,2,2
-2024-11-23 12:30,Bristol City FC,Burnley FC,0,1
-2024-11-23 12:30,Coventry City FC,Sheffield United FC,2,2
-2024-11-23 12:30,Sheffield Wednesday FC,Cardiff City FC,1,1
-2024-11-23 15:00,Luton Town FC,Hull City AFC,1,0
-2024-11-23 15:00,Millwall FC,Sunderland AFC,1,1
-2024-11-23 15:00,Oxford United FC,Middlesbrough FC,2,6
-2024-11-23 15:00,Preston North End FC,Derby County FC,1,1
-2024-11-23 15:00,Queens Park Rangers FC,Stoke City FC,1,1
-2024-11-23 15:00,West Bromwich Albion FC,Norwich City FC,2,2
-2024-11-24 15:00,Swansea City AFC,Leeds United FC,3,4
-2024-11-26 19:45,Burnley FC,Coventry City FC,2,0
-2024-11-26 19:45,Hull City AFC,Sheffield Wednesday FC,0,2
-2024-11-26 19:45,Norwich City FC,Plymouth Argyle FC,6,1
-2024-11-26 19:45,Sheffield United FC,Oxford United FC,3,0
-2024-11-26 19:45,Stoke City FC,Preston North End FC,0,0
-2024-11-26 19:45,Watford FC,Bristol City FC,1,0
-2024-11-26 20:00,Sunderland AFC,West Bromwich Albion FC,0,0
-2024-11-27 19:45,Leeds United FC,Luton Town FC,3,0
-2024-11-27 19:45,Cardiff City FC,Queens Park Rangers FC,0,2
-2024-11-27 19:45,Middlesbrough FC,Blackburn Rovers FC,0,1
-2024-11-27 20:00,Derby County FC,Swansea City AFC,1,2
-2024-11-29 20:00,Sheffield United FC,Sunderland AFC,1,0
-2024-11-30 12:30,Middlesbrough FC,Hull City AFC,3,1
-2024-11-30 12:30,Oxford United FC,Millwall FC,1,1
-2024-11-30 12:30,Watford FC,Queens Park Rangers FC,0,0
-2024-11-30 13:30,Blackburn Rovers FC,Leeds United FC,1,0
-2024-11-30 15:00,Bristol City FC,Plymouth Argyle FC,4,0
-2024-11-30 15:00,Coventry City FC,Cardiff City FC,2,2
-2024-11-30 15:00,Norwich City FC,Luton Town FC,4,2
-2024-11-30 15:00,Preston North End FC,West Bromwich Albion FC,1,1
-2024-11-30 15:00,Stoke City FC,Burnley FC,0,2
-2024-11-30 15:00,Swansea City AFC,Portsmouth FC,2,2
-2024-12-01 15:00,Derby County FC,Sheffield Wednesday FC,1,2
-2024-12-06 20:00,Burnley FC,Middlesbrough FC,1,1
-2024-12-07 12:30,Leeds United FC,Derby County FC,2,0
-2024-12-07 12:30,Sheffield Wednesday FC,Preston North End FC,1,1
-2024-12-07 12:30,Sunderland AFC,Stoke City FC,2,1
-2024-12-07 15:00,Hull City AFC,Blackburn Rovers FC,0,1
-2024-12-07 15:00,Luton Town FC,Swansea City AFC,1,1
-2024-12-07 15:00,Millwall FC,Coventry City FC,0,1
-2024-12-07 15:00,Portsmouth FC,Bristol City FC,3,0
-2024-12-07 15:00,Queens Park Rangers FC,Norwich City FC,3,0
-2024-12-08 15:00,West Bromwich Albion FC,Sheffield United FC,2,2
-2024-12-10 19:45,Burnley FC,Derby County FC,0,0
-2024-12-10 19:45,Luton Town FC,Stoke City FC,2,1
-2024-12-10 19:45,Plymouth Argyle FC,Swansea City AFC,1,2
-2024-12-10 19:45,Portsmouth FC,Norwich City FC,0,0
-2024-12-10 19:45,Sheffield Wednesday FC,Blackburn Rovers FC,0,1
-2024-12-10 19:45,Sunderland AFC,Bristol City FC,1,1
-2024-12-10 20:00,Leeds United FC,Middlesbrough FC,3,1
-2024-12-11 19:45,Millwall FC,Sheffield United FC,0,1
-2024-12-11 19:45,Cardiff City FC,Preston North End FC,0,2
-2024-12-11 19:45,Hull City AFC,Watford FC,1,1
-2024-12-11 19:45,Queens Park Rangers FC,Oxford United FC,2,0
-2024-12-11 20:00,West Bromwich Albion FC,Coventry City FC,2,0
-2024-12-13 20:00,Derby County FC,Portsmouth FC,4,0
-2024-12-14 12:30,Bristol City FC,Queens Park Rangers FC,1,1
-2024-12-14 12:30,Coventry City FC,Hull City AFC,2,1
-2024-12-14 12:30,Preston North End FC,Leeds United FC,1,1
-2024-12-14 15:00,Blackburn Rovers FC,Luton Town FC,2,0
-2024-12-14 15:00,Middlesbrough FC,Millwall FC,1,0
-2024-12-14 15:00,Oxford United FC,Sheffield Wednesday FC,1,3
-2024-12-14 15:00,Sheffield United FC,Plymouth Argyle FC,2,0
-2024-12-14 15:00,Stoke City FC,Cardiff City FC,2,2
-2024-12-14 15:00,Swansea City AFC,Sunderland AFC,2,3
-2024-12-15 14:00,Watford FC,West Bromwich Albion FC,2,1
-2024-12-15 15:00,Norwich City FC,Burnley FC,1,2
-2024-12-20 20:00,Luton Town FC,Derby County FC,2,1
-2024-12-21 12:30,Hull City AFC,Swansea City AFC,2,1
-2024-12-21 12:30,Portsmouth FC,Coventry City FC,4,1
-2024-12-21 12:30,Sheffield Wednesday FC,Stoke City FC,2,0
-2024-12-21 15:00,Burnley FC,Watford FC,2,1
-2024-12-21 15:00,Cardiff City FC,Sheffield United FC,0,2
-2024-12-21 15:00,Leeds United FC,Oxford United FC,4,0
-2024-12-21 15:00,Millwall FC,Blackburn Rovers FC,1,0
-2024-12-21 15:00,Plymouth Argyle FC,Middlesbrough FC,3,3
-2024-12-21 15:00,Queens Park Rangers FC,Preston North End FC,2,1
-2024-12-21 15:00,Sunderland AFC,Norwich City FC,2,1
-2024-12-22 15:00,West Bromwich Albion FC,Bristol City FC,2,0
-2024-12-26 15:00,Blackburn Rovers FC,Sunderland AFC,2,2
-2024-12-26 15:00,Bristol City FC,Luton Town FC,1,0
-2024-12-26 15:00,Coventry City FC,Plymouth Argyle FC,4,0
-2024-12-26 15:00,Middlesbrough FC,Sheffield Wednesday FC,3,3
-2024-12-26 15:00,Norwich City FC,Millwall FC,2,1
-2024-12-26 15:00,Oxford United FC,Cardiff City FC,3,2
-2024-12-26 15:00,Preston North End FC,Hull City AFC,1,0
-2024-12-26 15:00,Sheffield United FC,Burnley FC,0,2
-2024-12-26 15:00,Swansea City AFC,Queens Park Rangers FC,3,0
-2024-12-26 15:00,Watford FC,Portsmouth FC,2,1
-2024-12-26 17:30,Derby County FC,West Bromwich Albion FC,2,1
-2024-12-26 20:00,Stoke City FC,Leeds United FC,0,2
-2024-12-29 12:30,Norwich City FC,Queens Park Rangers FC,1,1
-2024-12-29 12:30,Preston North End FC,Sheffield Wednesday FC,3,1
-2024-12-29 12:30,Sheffield United FC,West Bromwich Albion FC,1,1
-2024-12-29 15:00,Blackburn Rovers FC,Hull City AFC,0,1
-2024-12-29 15:00,Bristol City FC,Portsmouth FC,3,0
-2024-12-29 15:00,Coventry City FC,Millwall FC,0,0
-2024-12-29 15:00,Oxford United FC,Plymouth Argyle FC,2,0
-2024-12-29 15:00,Stoke City FC,Sunderland AFC,1,0
-2024-12-29 15:00,Swansea City AFC,Luton Town FC,2,1
-2024-12-29 15:00,Watford FC,Cardiff City FC,1,2
-2024-12-29 17:45,Derby County FC,Leeds United FC,0,1
-2024-12-29 20:00,Middlesbrough FC,Burnley FC,0,0
-2025-01-01 12:30,Plymouth Argyle FC,Bristol City FC,2,2
-2025-01-01 12:30,Queens Park Rangers FC,Watford FC,3,1
-2025-01-01 13:00,Millwall FC,Oxford United FC,0,1
-2025-01-01 15:00,Leeds United FC,Blackburn Rovers FC,1,1
-2025-01-01 15:00,Luton Town FC,Norwich City FC,0,1
-2025-01-01 15:00,Portsmouth FC,Swansea City AFC,4,0
-2025-01-01 15:00,Sheffield Wednesday FC,Derby County FC,4,2
-2025-01-01 15:00,West Bromwich Albion FC,Preston North End FC,3,1
-2025-01-01 15:00,Burnley FC,Stoke City FC,0,0
-2025-01-01 15:00,Cardiff City FC,Coventry City FC,1,1
-2025-01-01 17:30,Hull City AFC,Middlesbrough FC,0,1
-2025-01-01 20:00,Sunderland AFC,Sheffield United FC,2,1
-2025-01-04 12:30,Blackburn Rovers FC,Burnley FC,0,1
-2025-01-04 12:30,Stoke City FC,Plymouth Argyle FC,0,0
-2025-01-04 12:30,Swansea City AFC,West Bromwich Albion FC,1,1
-2025-01-04 15:00,Bristol City FC,Derby County FC,1,0
-2025-01-04 15:00,Hull City AFC,Leeds United FC,3,3
-2025-01-04 15:00,Middlesbrough FC,Cardiff City FC,1,1
-2025-01-04 15:00,Norwich City FC,Coventry City FC,2,1
-2025-01-04 15:00,Preston North End FC,Oxford United FC,1,1
-2025-01-04 15:00,Sheffield Wednesday FC,Millwall FC,2,2
-2025-01-04 15:00,Watford FC,Sheffield United FC,1,2
-2025-01-05 15:00,Sunderland AFC,Portsmouth FC,1,0
-2025-01-06 20:00,Queens Park Rangers FC,Luton Town FC,2,1
-2025-01-14 19:45,Cardiff City FC,Watford FC,1,1
-2025-01-14 19:45,Plymouth Argyle FC,Oxford United FC,1,1
-2025-01-15 19:45,Blackburn Rovers FC,Portsmouth FC,3,0
-2025-01-17 20:00,Burnley FC,Sunderland AFC,0,0
-2025-01-18 12:30,Cardiff City FC,Swansea City AFC,3,0
-2025-01-18 12:30,Millwall FC,Hull City AFC,0,1
-2025-01-18 12:30,Plymouth Argyle FC,Queens Park Rangers FC,0,1
-2025-01-18 15:00,Coventry City FC,Bristol City FC,1,0
-2025-01-18 15:00,Derby County FC,Watford FC,0,2
-2025-01-18 15:00,Luton Town FC,Preston North End FC,0,0
-2025-01-18 15:00,Oxford United FC,Blackburn Rovers FC,1,0
-2025-01-18 15:00,Portsmouth FC,Middlesbrough FC,2,1
-2025-01-18 15:00,Sheffield United FC,Norwich City FC,2,0
-2025-01-18 15:00,West Bromwich Albion FC,Stoke City FC,1,1
-2025-01-19 12:00,Leeds United FC,Sheffield Wednesday FC,3,0
-2025-01-21 19:45,Blackburn Rovers FC,Coventry City FC,0,2
-2025-01-21 19:45,Derby County FC,Sunderland AFC,0,1
-2025-01-21 19:45,Hull City AFC,Queens Park Rangers FC,1,2
-2025-01-21 19:45,Middlesbrough FC,West Bromwich Albion FC,2,0
-2025-01-21 19:45,Oxford United FC,Luton Town FC,3,2
-2025-01-21 19:45,Swansea City AFC,Sheffield United FC,1,2
-2025-01-21 19:45,Watford FC,Preston North End FC,1,2
-2025-01-21 20:00,Millwall FC,Cardiff City FC,2,2
-2025-01-22 19:45,Leeds United FC,Norwich City FC,2,0
-2025-01-22 19:45,Portsmouth FC,Stoke City FC,3,1
-2025-01-22 19:45,Sheffield Wednesday FC,Bristol City FC,2,2
-2025-01-22 20:00,Plymouth Argyle FC,Burnley FC,0,5
-2025-01-24 20:00,Sheffield United FC,Hull City AFC,0,3
-2025-01-25 12:30,Luton Town FC,Millwall FC,0,1
-2025-01-25 12:30,Norwich City FC,Swansea City AFC,5,1
-2025-01-25 12:30,Stoke City FC,Oxford United FC,0,0
-2025-01-25 15:00,Bristol City FC,Blackburn Rovers FC,2,1
-2025-01-25 15:00,Cardiff City FC,Derby County FC,2,1
-2025-01-25 15:00,Coventry City FC,Watford FC,2,1
-2025-01-25 15:00,Preston North End FC,Middlesbrough FC,2,1
-2025-01-25 15:00,Queens Park Rangers FC,Sheffield Wednesday FC,0,2
-2025-01-25 15:00,Sunderland AFC,Plymouth Argyle FC,2,2
-2025-01-25 15:00,West Bromwich Albion FC,Portsmouth FC,5,1
-2025-01-27 20:00,Burnley FC,Leeds United FC,0,0
-2025-01-28 19:45,Portsmouth FC,Millwall FC,0,1
-2025-01-31 20:00,Blackburn Rovers FC,Preston North End FC,2,1
-2025-02-01 12:30,Oxford United FC,Bristol City FC,1,1
-2025-02-01 12:30,Plymouth Argyle FC,West Bromwich Albion FC,2,1
-2025-02-01 12:30,Watford FC,Norwich City FC,0,1
-2025-02-01 15:00,Derby County FC,Sheffield United FC,0,1
-2025-02-01 15:00,Hull City AFC,Stoke City FC,1,2
-2025-02-01 15:00,Leeds United FC,Cardiff City FC,7,0
-2025-02-01 15:00,Millwall FC,Queens Park Rangers FC,2,1
-2025-02-01 15:00,Portsmouth FC,Burnley FC,0,0
-2025-02-01 15:00,Sheffield Wednesday FC,Luton Town FC,1,1
-2025-02-01 15:00,Swansea City AFC,Coventry City FC,0,2
-2025-02-03 20:00,Middlesbrough FC,Sunderland AFC,2,3
-2025-02-04 19:45,Burnley FC,Oxford United FC,1,0
-2025-02-04 19:45,Queens Park Rangers FC,Blackburn Rovers FC,2,1
-2025-02-05 19:45,Coventry City FC,Leeds United FC,0,2
-2025-02-08 12:30,Sunderland AFC,Watford FC,2,2
-2025-02-08 12:30,West Bromwich Albion FC,Sheffield Wednesday FC,2,1
-2025-02-08 15:00,Norwich City FC,Derby County FC,1,1
-2025-02-08 15:00,Sheffield United FC,Portsmouth FC,2,1
-2025-02-09 12:00,Bristol City FC,Swansea City AFC,0,1
-2025-02-11 19:45,Coventry City FC,Queens Park Rangers FC,1,0
-2025-02-11 19:45,Derby County FC,Oxford United FC,0,0
-2025-02-11 19:45,Portsmouth FC,Cardiff City FC,2,1
-2025-02-11 19:45,Watford FC,Leeds United FC,0,4
-2025-02-11 20:00,Norwich City FC,Preston North End FC,0,1
-2025-02-12 19:45,Bristol City FC,Stoke City FC,2,0
-2025-02-12 19:45,Plymouth Argyle FC,Millwall FC,5,1
-2025-02-12 19:45,Swansea City AFC,Sheffield Wednesday FC,0,1
-2025-02-12 19:45,Burnley FC,Hull City AFC,2,0
-2025-02-12 19:45,Sunderland AFC,Luton Town FC,2,0
-2025-02-12 20:00,Sheffield United FC,Middlesbrough FC,3,1
-2025-02-12 20:00,West Bromwich Albion FC,Blackburn Rovers FC,0,2
-2025-02-14 20:00,Queens Park Rangers FC,Derby County FC,4,0
-2025-02-15 12:30,Cardiff City FC,Bristol City FC,1,1
-2025-02-15 12:30,Oxford United FC,Portsmouth FC,0,2
-2025-02-15 12:30,Preston North End FC,Burnley FC,0,0
-2025-02-15 15:00,Blackburn Rovers FC,Plymouth Argyle FC,2,0
-2025-02-15 15:00,Hull City AFC,Norwich City FC,1,1
-2025-02-15 15:00,Luton Town FC,Sheffield United FC,0,1
-2025-02-15 15:00,Middlesbrough FC,Watford FC,0,1
-2025-02-15 15:00,Millwall FC,West Bromwich Albion FC,1,1
-2025-02-15 15:00,Sheffield Wednesday FC,Coventry City FC,1,2
-2025-02-15 15:00,Stoke City FC,Swansea City AFC,3,1
-2025-02-17 20:00,Leeds United FC,Sunderland AFC,2,1
-2025-02-18 19:45,Preston North End FC,Millwall FC,1,1
-2025-02-19 19:45,Luton Town FC,Plymouth Argyle FC,1,1
-2025-02-21 19:45,Bristol City FC,Middlesbrough FC,2,1
-2025-02-21 20:00,Burnley FC,Sheffield Wednesday FC,4,0
-2025-02-22 12:30,Derby County FC,Millwall FC,0,1
-2025-02-22 12:30,Plymouth Argyle FC,Cardiff City FC,1,1
-2025-02-22 12:30,Sunderland AFC,Hull City AFC,0,1
-2025-02-22 15:00,Coventry City FC,Preston North End FC,2,1
-2025-02-22 15:00,Norwich City FC,Stoke City FC,4,2
-2025-02-22 15:00,Portsmouth FC,Queens Park Rangers FC,2,1
-2025-02-22 15:00,Swansea City AFC,Blackburn Rovers FC,3,0
-2025-02-22 15:00,West Bromwich Albion FC,Oxford United FC,2,0
-2025-02-23 12:00,Watford FC,Luton Town FC,2,0
-2025-02-24 20:00,Sheffield United FC,Leeds United FC,1,3
-2025-02-25 19:45,Cardiff City FC,Hull City AFC,1,0
-2025-02-25 19:45,Stoke City FC,Middlesbrough FC,1,3
-2025-02-28 20:00,Sheffield Wednesday FC,Sunderland AFC,1,2
-2025-03-01 12:30,Blackburn Rovers FC,Norwich City FC,1,1
-2025-03-01 12:30,Leeds United FC,West Bromwich Albion FC,1,1
-2025-03-01 12:30,Oxford United FC,Coventry City FC,2,3
-2025-03-01 15:00,Luton Town FC,Portsmouth FC,1,0
-2025-03-01 15:00,Middlesbrough FC,Derby County FC,1,0
-2025-03-01 15:00,Queens Park Rangers FC,Sheffield United FC,1,2
-2025-03-01 15:00,Stoke City FC,Watford FC,0,0
-2025-03-04 19:45,Cardiff City FC,Burnley FC,1,2
-2025-03-04 19:45,Hull City AFC,Plymouth Argyle FC,2,0
-2025-03-04 19:45,Millwall FC,Bristol City FC,0,2
-2025-03-04 19:45,Preston North End FC,Swansea City AFC,0,0
-2025-03-07 20:00,Norwich City FC,Oxford United FC,1,1
-2025-03-08 12:30,Coventry City FC,Stoke City FC,3,2
-2025-03-08 12:30,Watford FC,Millwall FC,1,2
-2025-03-08 15:00,Bristol City FC,Hull City AFC,1,1
-2025-03-08 15:00,Burnley FC,Luton Town FC,4,0
-2025-03-08 15:00,Derby County FC,Blackburn Rovers FC,2,1
-2025-03-08 15:00,Plymouth Argyle FC,Sheffield Wednesday FC,0,3
-2025-03-08 15:00,Sheffield United FC,Preston North End FC,1,0
-2025-03-08 15:00,Sunderland AFC,Cardiff City FC,2,1
-2025-03-08 15:00,Swansea City AFC,Middlesbrough FC,1,0
-2025-03-08 15:00,West Bromwich Albion FC,Queens Park Rangers FC,1,0
-2025-03-09 12:00,Portsmouth FC,Leeds United FC,1,0
-2025-03-11 19:45,Burnley FC,West Bromwich Albion FC,1,1
-2025-03-11 19:45,Cardiff City FC,Luton Town FC,1,2
-2025-03-11 19:45,Derby County FC,Coventry City FC,2,0
-2025-03-11 19:45,Middlesbrough FC,Queens Park Rangers FC,2,1
-2025-03-11 19:45,Sunderland AFC,Preston North End FC,1,1
-2025-03-11 19:45,Norwich City FC,Sheffield Wednesday FC,2,3
-2025-03-11 20:00,Sheffield United FC,Bristol City FC,1,1
-2025-03-12 19:45,Portsmouth FC,Plymouth Argyle FC,1,2
-2025-03-12 19:45,Hull City AFC,Oxford United FC,2,1
-2025-03-12 19:45,Leeds United FC,Millwall FC,2,0
-2025-03-12 19:45,Watford FC,Swansea City AFC,1,0
-2025-03-12 20:00,Stoke City FC,Blackburn Rovers FC,1,0
-2025-03-14 20:00,Bristol City FC,Norwich City FC,2,1
-2025-03-15 12:30,Millwall FC,Stoke City FC,1,0
-2025-03-15 12:30,Queens Park Rangers FC,Leeds United FC,2,2
-2025-03-15 15:00,Blackburn Rovers FC,Cardiff City FC,1,2
-2025-03-15 15:00,Coventry City FC,Sunderland AFC,3,0
-2025-03-15 15:00,Luton Town FC,Middlesbrough FC,0,0
-2025-03-15 15:00,Oxford United FC,Watford FC,1,0
-2025-03-15 15:00,Plymouth Argyle FC,Derby County FC,2,3
-2025-03-15 15:00,Preston North End FC,Portsmouth FC,2,1
-2025-03-15 15:00,Swansea City AFC,Burnley FC,0,2
-2025-03-15 15:00,West Bromwich Albion FC,Hull City AFC,1,1
-2025-03-16 12:30,Sheffield Wednesday FC,Sheffield United FC,0,1
-2025-03-28 20:00,Sheffield United FC,Coventry City FC,3,1
-2025-03-29 12:30,Watford FC,Plymouth Argyle FC,0,0
-2025-03-29 12:30,Hull City AFC,Luton Town FC,0,1
-2025-03-29 15:00,Sunderland AFC,Millwall FC,1,0
-2025-03-29 15:00,Cardiff City FC,Sheffield Wednesday FC,1,1
-2025-03-29 15:00,Burnley FC,Bristol City FC,1,0
-2025-03-29 15:00,Middlesbrough FC,Oxford United FC,2,1
-2025-03-29 15:00,Leeds United FC,Swansea City AFC,2,2
-2025-03-29 15:00,Norwich City FC,West Bromwich Albion FC,1,0
-2025-03-29 15:00,Portsmouth FC,Blackburn Rovers FC,1,0
-2025-03-29 15:00,Stoke City FC,Queens Park Rangers FC,3,1
-2025-04-02 18:45,Derby County FC,Preston North End FC,2,0
-2025-04-04 19:00,Blackburn Rovers FC,Middlesbrough FC,0,2
-2025-04-05 11:30,Coventry City FC,Burnley FC,1,2
-2025-04-05 11:30,Luton Town FC,Leeds United FC,1,1
-2025-04-05 11:30,West Bromwich Albion FC,Sunderland AFC,0,1
-2025-04-05 14:00,Bristol City FC,Watford FC,2,1
-2025-04-05 14:00,Millwall FC,Portsmouth FC,2,1
-2025-04-05 14:00,Oxford United FC,Sheffield United FC,1,0
-2025-04-05 14:00,Plymouth Argyle FC,Norwich City FC,2,1
-2025-04-05 14:00,Preston North End FC,Stoke City FC,1,1
-2025-04-05 14:00,Queens Park Rangers FC,Cardiff City FC,0,0
-2025-04-05 14:00,Sheffield Wednesday FC,Hull City AFC,0,1
-2025-04-05 14:00,Swansea City AFC,Derby County FC,1,0
-2025-04-08 18:45,Blackburn Rovers FC,Sheffield Wednesday FC,2,2
-2025-04-08 18:45,Bristol City FC,West Bromwich Albion FC,2,1
-2025-04-08 18:45,Norwich City FC,Sunderland AFC,0,0
-2025-04-08 18:45,Preston North End FC,Cardiff City FC,2,2
-2025-04-08 18:45,Sheffield United FC,Millwall FC,0,1
-2025-04-08 18:45,Stoke City FC,Luton Town FC,1,1
-2025-04-08 18:45,Watford FC,Hull City AFC,1,0
-2025-04-08 18:45,Derby County FC,Burnley FC,0,0
-2025-04-08 19:00,Middlesbrough FC,Leeds United FC,0,1
-2025-04-09 18:45,Oxford United FC,Queens Park Rangers FC,1,3
-2025-04-09 18:45,Swansea City AFC,Plymouth Argyle FC,3,0
-2025-04-09 19:00,Coventry City FC,Portsmouth FC,1,0
-2025-04-11 19:00,Burnley FC,Norwich City FC,2,1
-2025-04-12 11:30,Leeds United FC,Preston North End FC,2,1
-2025-04-12 11:30,Plymouth Argyle FC,Sheffield United FC,2,1
-2025-04-12 14:00,Cardiff City FC,Stoke City FC,0,1
-2025-04-12 14:00,Luton Town FC,Blackburn Rovers FC,0,1
-2025-04-12 14:00,Millwall FC,Middlesbrough FC,1,0
-2025-04-12 14:00,Portsmouth FC,Derby County FC,2,2
-2025-04-12 14:00,Queens Park Rangers FC,Bristol City FC,1,1
-2025-04-12 14:00,Sheffield Wednesday FC,Oxford United FC,0,1
-2025-04-12 14:00,Sunderland AFC,Swansea City AFC,0,1
-2025-04-12 14:00,West Bromwich Albion FC,Watford FC,2,1
-2025-04-14 19:00,Hull City AFC,Coventry City FC,1,1
-2025-04-18 11:30,Derby County FC,Luton Town FC,0,1
-2025-04-18 14:00,Blackburn Rovers FC,Millwall FC,4,1
-2025-04-18 14:00,Bristol City FC,Sunderland AFC,2,1
-2025-04-18 14:00,Coventry City FC,West Bromwich Albion FC,2,0
-2025-04-18 14:00,Middlesbrough FC,Plymouth Argyle FC,2,1
-2025-04-18 14:00,Watford FC,Burnley FC,1,2
-2025-04-18 14:00,Norwich City FC,Portsmouth FC,3,5
-2025-04-18 14:00,Preston North End FC,Queens Park Rangers FC,1,2
-2025-04-18 14:00,Stoke City FC,Sheffield Wednesday FC,2,0
-2025-04-18 14:00,Swansea City AFC,Hull City AFC,1,0
-2025-04-18 16:30,Sheffield United FC,Cardiff City FC,2,0
-2025-04-18 19:00,Oxford United FC,Leeds United FC,0,1
-2025-04-21 14:00,Cardiff City FC,Oxford United FC,1,1
-2025-04-21 14:00,Hull City AFC,Preston North End FC,2,1
-2025-04-21 14:00,Leeds United FC,Stoke City FC,6,0
-2025-04-21 14:00,Luton Town FC,Bristol City FC,3,1
-2025-04-21 14:00,Millwall FC,Norwich City FC,3,1
-2025-04-21 14:00,Plymouth Argyle FC,Coventry City FC,3,1
-2025-04-21 14:00,Portsmouth FC,Watford FC,1,0
-2025-04-21 14:00,Queens Park Rangers FC,Swansea City AFC,1,2
-2025-04-21 14:00,Sheffield Wednesday FC,Middlesbrough FC,2,1
-2025-04-21 14:00,Sunderland AFC,Blackburn Rovers FC,0,1
-2025-04-21 14:00,West Bromwich Albion FC,Derby County FC,1,3
-2025-04-21 16:30,Burnley FC,Sheffield United FC,2,1
-2025-04-25 19:00,Stoke City FC,Sheffield United FC,0,2
-2025-04-26 11:30,Luton Town FC,Coventry City FC,1,0
-2025-04-26 11:30,Queens Park Rangers FC,Burnley FC,0,5
-2025-04-26 14:00,Blackburn Rovers FC,Watford FC,2,1
-2025-04-26 14:00,Cardiff City FC,West Bromwich Albion FC,0,0
-2025-04-26 14:00,Hull City AFC,Derby County FC,0,1
-2025-04-26 14:00,Middlesbrough FC,Norwich City FC,0,0
-2025-04-26 14:00,Millwall FC,Swansea City AFC,1,0
-2025-04-26 14:00,Oxford United FC,Sunderland AFC,2,0
-2025-04-26 14:00,Preston North End FC,Plymouth Argyle FC,1,2
-2025-04-26 14:00,Sheffield Wednesday FC,Portsmouth FC,1,1
-2025-04-28 19:00,Leeds United FC,Bristol City FC,4,0
-2025-05-03 11:30,Bristol City FC,Preston North End FC,2,2
-2025-05-03 11:30,Burnley FC,Millwall FC,3,1
-2025-05-03 11:30,Coventry City FC,Middlesbrough FC,2,0
-2025-05-03 11:30,Derby County FC,Stoke City FC,0,0
-2025-05-03 11:30,Norwich City FC,Cardiff City FC,4,2
-2025-05-03 11:30,Plymouth Argyle FC,Leeds United FC,1,2
-2025-05-03 11:30,Portsmouth FC,Hull City AFC,1,1
-2025-05-03 11:30,Sheffield United FC,Blackburn Rovers FC,1,1
-2025-05-03 11:30,Sunderland AFC,Queens Park Rangers FC,0,1
-2025-05-03 11:30,Swansea City AFC,Oxford United FC,3,3
-2025-05-03 11:30,Watford FC,Sheffield Wednesday FC,1,1
-2025-05-03 11:30,West Bromwich Albion FC,Luton Town FC,5,3
-2025-05-08 19:00,Bristol City FC,Sheffield United FC,0,3
-2025-05-09 19:00,Coventry City FC,Sunderland AFC,1,2
-2025-05-12 19:00,Sheffield United FC,Bristol City FC,3,0
-2025-05-13 19:00,Sunderland AFC,Coventry City FC,1,1
-2025-05-24 14:01,Sheffield United FC,Sunderland AFC,1,2
-2025-08-08 19:00,Birmingham City FC,Ipswich Town FC,1,1
-2025-08-09 11:30,Charlton Athletic FC,Watford FC,1,0
-2025-08-09 11:30,Coventry City FC,Hull City AFC,0,0
-2025-08-09 11:30,Southampton FC,Wrexham AFC,2,1
-2025-08-09 14:00,Middlesbrough FC,Swansea City AFC,1,0
-2025-08-09 14:00,Norwich City FC,Millwall FC,1,2
-2025-08-09 14:00,Oxford United FC,Portsmouth FC,0,1
-2025-08-09 14:00,Queens Park Rangers FC,Preston North End FC,1,1
-2025-08-09 14:00,Stoke City FC,Derby County FC,3,1
-2025-08-09 14:00,West Bromwich Albion FC,Blackburn Rovers FC,1,0
-2025-08-09 16:30,Sheffield United FC,Bristol City FC,1,4
-2025-08-10 15:30,Leicester City FC,Sheffield Wednesday FC,2,1
-2025-08-16 11:30,Derby County FC,Coventry City FC,3,5
-2025-08-16 11:30,Portsmouth FC,Norwich City FC,1,2
-2025-08-16 11:30,Wrexham AFC,West Bromwich Albion FC,2,3
-2025-08-16 14:00,Blackburn Rovers FC,Birmingham City FC,1,2
-2025-08-16 14:00,Bristol City FC,Charlton Athletic FC,0,0
-2025-08-16 14:00,Millwall FC,Middlesbrough FC,0,3
-2025-08-16 14:00,Preston North End FC,Leicester City FC,2,1
-2025-08-16 14:00,Sheffield Wednesday FC,Stoke City FC,0,3
-2025-08-16 14:00,Swansea City AFC,Sheffield United FC,1,0
-2025-08-16 14:00,Watford FC,Queens Park Rangers FC,2,1
-2025-08-17 11:00,Ipswich Town FC,Southampton FC,1,1
-2025-08-17 14:00,Hull City AFC,Oxford United FC,3,2
-2025-08-22 19:00,Derby County FC,Bristol City FC,1,1
-2025-08-23 11:30,Charlton Athletic FC,Leicester City FC,0,1
-2025-08-23 11:30,Hull City AFC,Blackburn Rovers FC,0,3
-2025-08-23 11:30,Swansea City AFC,Watford FC,1,1
-2025-08-23 14:00,Birmingham City FC,Oxford United FC,1,0
-2025-08-23 14:00,Coventry City FC,Queens Park Rangers FC,7,1
-2025-08-23 14:00,Norwich City FC,Middlesbrough FC,1,2
-2025-08-23 14:00,Preston North End FC,Ipswich Town FC,1,0
-2025-08-23 14:00,Sheffield United FC,Millwall FC,0,1
-2025-08-23 14:00,Southampton FC,Stoke City FC,1,2
-2025-08-23 14:00,West Bromwich Albion FC,Portsmouth FC,1,1
-2025-08-23 14:00,Wrexham AFC,Sheffield Wednesday FC,2,2
-2025-08-29 19:00,Leicester City FC,Birmingham City FC,2,0
-2025-08-30 11:30,Middlesbrough FC,Sheffield United FC,1,0
-2025-08-30 11:30,Queens Park Rangers FC,Charlton Athletic FC,3,1
-2025-08-30 11:30,Stoke City FC,West Bromwich Albion FC,0,1
-2025-08-30 14:00,Blackburn Rovers FC,Norwich City FC,0,2
-2025-08-30 14:00,Bristol City FC,Hull City AFC,4,2
-2025-08-30 14:00,Ipswich Town FC,Derby County FC,2,2
-2025-08-30 14:00,Millwall FC,Wrexham AFC,0,2
-2025-08-30 14:00,Oxford United FC,Coventry City FC,2,2
-2025-08-30 14:00,Portsmouth FC,Preston North End FC,1,0
-2025-08-30 14:00,Sheffield Wednesday FC,Swansea City AFC,0,2
-2025-08-30 14:00,Watford FC,Southampton FC,2,2
-2025-09-12 19:00,Ipswich Town FC,Sheffield United FC,5,0
-2025-09-13 11:30,Charlton Athletic FC,Millwall FC,1,1
-2025-09-13 11:30,Oxford United FC,Leicester City FC,2,2
-2025-09-13 11:30,Preston North End FC,Middlesbrough FC,2,2
-2025-09-13 14:00,Coventry City FC,Norwich City FC,1,1
-2025-09-13 14:00,Sheffield Wednesday FC,Bristol City FC,0,3
-2025-09-13 14:00,Stoke City FC,Birmingham City FC,1,0
-2025-09-13 14:00,Swansea City AFC,Hull City AFC,2,2
-2025-09-13 14:00,Watford FC,Blackburn Rovers FC,0,1
-2025-09-13 14:00,West Bromwich Albion FC,Derby County FC,0,1
-2025-09-13 14:00,Wrexham AFC,Queens Park Rangers FC,1,3
-2025-09-14 11:00,Southampton FC,Portsmouth FC,0,0
-2025-09-19 19:00,Middlesbrough FC,West Bromwich Albion FC,2,1
-2025-09-20 11:30,Birmingham City FC,Swansea City AFC,1,0
-2025-09-20 11:30,Leicester City FC,Coventry City FC,0,0
-2025-09-20 11:30,Queens Park Rangers FC,Stoke City FC,1,0
-2025-09-20 14:00,Derby County FC,Preston North End FC,0,1
-2025-09-20 14:00,Hull City AFC,Southampton FC,3,1
-2025-09-20 14:00,Norwich City FC,Wrexham AFC,2,3
-2025-09-20 14:00,Portsmouth FC,Sheffield Wednesday FC,0,2
-2025-09-20 14:00,Sheffield United FC,Charlton Athletic FC,0,1
-2025-09-21 14:00,Bristol City FC,Oxford United FC,1,3
-2025-09-22 19:00,Millwall FC,Watford FC,1,0
-2025-09-26 19:00,West Bromwich Albion FC,Leicester City FC,1,1
-2025-09-27 11:30,Coventry City FC,Birmingham City FC,3,0
-2025-09-27 11:30,Swansea City AFC,Millwall FC,1,1
-2025-09-27 11:30,Wrexham AFC,Derby County FC,1,1
-2025-09-27 14:00,Charlton Athletic FC,Blackburn Rovers FC,3,0
-2025-09-27 14:00,Ipswich Town FC,Portsmouth FC,2,1
-2025-09-27 14:00,Oxford United FC,Sheffield United FC,0,1
-2025-09-27 14:00,Preston North End FC,Bristol City FC,0,0
-2025-09-27 14:00,Sheffield Wednesday FC,Queens Park Rangers FC,1,1
-2025-09-27 14:00,Southampton FC,Middlesbrough FC,1,1
-2025-09-27 14:00,Stoke City FC,Norwich City FC,1,1
-2025-09-27 14:00,Watford FC,Hull City AFC,2,1
-2025-09-30 18:45,Birmingham City FC,Sheffield Wednesday FC,2,2
-2025-09-30 18:45,Blackburn Rovers FC,Swansea City AFC,1,2
-2025-09-30 18:45,Bristol City FC,Ipswich Town FC,1,1
-2025-09-30 18:45,Hull City AFC,Preston North End FC,2,2
-2025-09-30 18:45,Leicester City FC,Wrexham AFC,1,1
-2025-09-30 18:45,Middlesbrough FC,Stoke City FC,0,0
-2025-09-30 18:45,Sheffield United FC,Southampton FC,1,2
-2025-09-30 19:00,Derby County FC,Charlton Athletic FC,1,1
-2025-10-01 18:45,Millwall FC,Coventry City FC,0,4
-2025-10-01 18:45,Norwich City FC,West Bromwich Albion FC,0,1
-2025-10-01 18:45,Portsmouth FC,Watford FC,2,2
-2025-10-01 19:00,Queens Park Rangers FC,Oxford United FC,0,0
-2025-10-03 19:00,Wrexham AFC,Birmingham City FC,1,1
-2025-10-04 11:30,Blackburn Rovers FC,Stoke City FC,1,1
-2025-10-04 11:30,Hull City AFC,Sheffield United FC,1,0
-2025-10-04 11:30,Sheffield Wednesday FC,Coventry City FC,0,5
-2025-10-04 14:00,Bristol City FC,Queens Park Rangers FC,1,2
-2025-10-04 14:00,Derby County FC,Southampton FC,1,1
-2025-10-04 14:00,Millwall FC,West Bromwich Albion FC,3,0
-2025-10-04 14:00,Portsmouth FC,Middlesbrough FC,1,0
-2025-10-04 14:00,Preston North End FC,Charlton Athletic FC,2,0
-2025-10-04 14:00,Swansea City AFC,Leicester City FC,1,3
-2025-10-04 14:00,Watford FC,Oxford United FC,2,1
-2025-10-05 11:00,Ipswich Town FC,Norwich City FC,3,1
-2025-10-17 19:00,Middlesbrough FC,Ipswich Town FC,2,1
-2025-10-18 11:30,Oxford United FC,Derby County FC,1,0
-2025-10-18 11:30,Queens Park Rangers FC,Millwall FC,1,2
-2025-10-18 11:30,Southampton FC,Swansea City AFC,0,0
-2025-10-18 14:00,Birmingham City FC,Hull City AFC,2,3
-2025-10-18 14:00,Charlton Athletic FC,Sheffield Wednesday FC,2,1
-2025-10-18 14:00,Coventry City FC,Blackburn Rovers FC,2,0
-2025-10-18 14:00,Norwich City FC,Bristol City FC,0,1
-2025-10-18 14:00,Sheffield United FC,Watford FC,1,0
-2025-10-18 14:00,Stoke City FC,Wrexham AFC,1,0
-2025-10-18 14:00,West Bromwich Albion FC,Preston North End FC,2,1
-2025-10-18 18:45,Leicester City FC,Portsmouth FC,1,1
-2025-10-21 18:45,Blackburn Rovers FC,Sheffield United FC,1,3
-2025-10-21 18:45,Derby County FC,Norwich City FC,1,0
-2025-10-21 18:45,Hull City AFC,Leicester City FC,2,1
-2025-10-21 18:45,Ipswich Town FC,Charlton Athletic FC,0,3
-2025-10-21 18:45,Millwall FC,Stoke City FC,2,0
-2025-10-21 18:45,Portsmouth FC,Coventry City FC,1,2
-2025-10-21 18:45,Preston North End FC,Birmingham City FC,0,1
-2025-10-21 19:00,Bristol City FC,Southampton FC,3,1
-2025-10-22 18:45,Swansea City AFC,Queens Park Rangers FC,0,1
-2025-10-22 18:45,Watford FC,West Bromwich Albion FC,2,1
-2025-10-22 18:45,Wrexham AFC,Oxford United FC,1,0
-2025-10-22 19:00,Sheffield Wednesday FC,Middlesbrough FC,0,1
-2025-10-24 19:00,Preston North End FC,Sheffield United FC,3,2
-2025-10-25 11:30,Coventry City FC,Watford FC,3,1
-2025-10-25 11:30,Ipswich Town FC,West Bromwich Albion FC,1,0
-2025-10-25 11:30,Portsmouth FC,Stoke City FC,0,1
-2025-10-25 14:00,Blackburn Rovers FC,Southampton FC,2,1
-2025-10-25 14:00,Bristol City FC,Birmingham City FC,1,0
-2025-10-25 14:00,Derby County FC,Queens Park Rangers FC,1,0
-2025-10-25 14:00,Hull City AFC,Charlton Athletic FC,1,1
-2025-10-25 14:00,Middlesbrough FC,Wrexham AFC,1,1
-2025-10-25 14:00,Millwall FC,Leicester City FC,1,0
-2025-10-25 14:00,Sheffield Wednesday FC,Oxford United FC,1,2
-2025-10-25 14:00,Swansea City AFC,Norwich City FC,2,1
-2025-10-31 20:00,Wrexham AFC,Coventry City FC,3,2
-2025-11-01 12:30,Leicester City FC,Blackburn Rovers FC,0,2
-2025-11-01 12:30,Norwich City FC,Hull City AFC,0,2
-2025-11-01 12:30,West Bromwich Albion FC,Sheffield Wednesday FC,0,0
-2025-11-01 15:00,Birmingham City FC,Portsmouth FC,4,0
-2025-11-01 15:00,Charlton Athletic FC,Swansea City AFC,1,1
-2025-11-01 15:00,Oxford United FC,Millwall FC,2,2
-2025-11-01 15:00,Queens Park Rangers FC,Ipswich Town FC,1,4
-2025-11-01 15:00,Sheffield United FC,Derby County FC,1,3
-2025-11-01 15:00,Southampton FC,Preston North End FC,0,2
-2025-11-01 15:00,Stoke City FC,Bristol City FC,5,1
-2025-11-01 15:00,Watford FC,Middlesbrough FC,3,0
-2025-11-04 19:45,Birmingham City FC,Millwall FC,4,0
-2025-11-04 19:45,Bristol City FC,Blackburn Rovers FC,0,1
-2025-11-04 19:45,Charlton Athletic FC,West Bromwich Albion FC,1,0
-2025-11-04 19:45,Derby County FC,Hull City AFC,2,1
-2025-11-04 19:45,Ipswich Town FC,Watford FC,1,1
-2025-11-04 19:45,Leicester City FC,Middlesbrough FC,1,1
-2025-11-04 19:45,Oxford United FC,Stoke City FC,0,3
-2025-11-04 20:00,Coventry City FC,Sheffield United FC,3,1
-2025-11-05 19:45,Preston North End FC,Swansea City AFC,2,1
-2025-11-05 19:45,Queens Park Rangers FC,Southampton FC,1,2
-2025-11-05 19:45,Sheffield Wednesday FC,Norwich City FC,1,1
-2025-11-05 20:00,Portsmouth FC,Wrexham AFC,0,0
-2025-11-07 20:00,Watford FC,Bristol City FC,1,1
-2025-11-08 12:30,Blackburn Rovers FC,Derby County FC,1,2
-2025-11-08 12:30,Hull City AFC,Portsmouth FC,3,2
-2025-11-08 12:30,Millwall FC,Preston North End FC,1,1
-2025-11-08 15:00,Middlesbrough FC,Birmingham City FC,2,1
-2025-11-08 15:00,Norwich City FC,Leicester City FC,1,2
-2025-11-08 15:00,Sheffield United FC,Queens Park Rangers FC,0,0
-2025-11-08 15:00,Southampton FC,Sheffield Wednesday FC,3,1
-2025-11-08 15:00,Stoke City FC,Coventry City FC,0,1
-2025-11-08 15:00,Swansea City AFC,Ipswich Town FC,1,4
-2025-11-08 15:00,West Bromwich Albion FC,Oxford United FC,2,1
-2025-11-08 15:00,Wrexham AFC,Charlton Athletic FC,1,0
-2025-11-21 20:00,Preston North End FC,Blackburn Rovers FC,1,2
-2025-11-22 12:30,Bristol City FC,Swansea City AFC,3,0
-2025-11-22 12:30,Charlton Athletic FC,Southampton FC,1,5
-2025-11-22 12:30,Coventry City FC,West Bromwich Albion FC,3,2
-2025-11-22 15:00,Birmingham City FC,Norwich City FC,4,1
-2025-11-22 15:00,Derby County FC,Watford FC,2,3
-2025-11-22 15:00,Ipswich Town FC,Wrexham AFC,0,0
-2025-11-22 15:00,Leicester City FC,Stoke City FC,2,1
-2025-11-22 15:00,Oxford United FC,Middlesbrough FC,1,1
-2025-11-22 15:00,Portsmouth FC,Millwall FC,3,1
-2025-11-22 15:00,Queens Park Rangers FC,Hull City AFC,3,2
-2025-11-23 12:00,Sheffield Wednesday FC,Sheffield United FC,0,3
-2025-11-25 19:45,Hull City AFC,Ipswich Town FC,0,2
-2025-11-25 19:45,Middlesbrough FC,Coventry City FC,2,4
-2025-11-25 19:45,Stoke City FC,Charlton Athletic FC,3,0
-2025-11-25 19:45,Swansea City AFC,Derby County FC,1,2
-2025-11-25 19:45,Watford FC,Preston North End FC,1,1
-2025-11-25 19:45,Norwich City FC,Oxford United FC,1,1
-2025-11-25 20:00,Southampton FC,Leicester City FC,3,0
-2025-11-26 19:45,Millwall FC,Sheffield Wednesday FC,1,0
-2025-11-26 19:45,Sheffield United FC,Portsmouth FC,3,0
-2025-11-26 19:45,Blackburn Rovers FC,Queens Park Rangers FC,0,1
-2025-11-26 19:45,Wrexham AFC,Bristol City FC,2,0
-2025-11-26 20:00,West Bromwich Albion FC,Birmingham City FC,1,1
-2025-11-28 20:00,Oxford United FC,Ipswich Town FC,2,1
-2025-11-29 12:30,Leicester City FC,Sheffield United FC,2,3
-2025-11-29 12:30,Portsmouth FC,Bristol City FC,0,1
-2025-11-29 12:30,Stoke City FC,Hull City AFC,1,2
-2025-11-29 15:00,Coventry City FC,Charlton Athletic FC,3,1
-2025-11-29 15:00,Middlesbrough FC,Derby County FC,2,1
-2025-11-29 15:00,Millwall FC,Southampton FC,3,2
-2025-11-29 15:00,Norwich City FC,Queens Park Rangers FC,3,1
-2025-11-29 15:00,Sheffield Wednesday FC,Preston North End FC,2,3
-2025-11-29 15:00,West Bromwich Albion FC,Swansea City AFC,3,2
-2025-11-29 15:00,Wrexham AFC,Blackburn Rovers FC,1,1
-2025-12-01 20:00,Birmingham City FC,Watford FC,2,1
-2025-12-02 19:45,Blackburn Rovers FC,Ipswich Town FC,1,1
-2025-12-05 20:15,Hull City AFC,Middlesbrough FC,1,4
-2025-12-06 12:30,Derby County FC,Leicester City FC,1,3
-2025-12-06 12:30,Watford FC,Norwich City FC,3,2
-2025-12-06 15:00,Bristol City FC,Millwall FC,0,1
-2025-12-06 15:00,Ipswich Town FC,Coventry City FC,3,0
-2025-12-06 15:00,Preston North End FC,Wrexham AFC,1,1
-2025-12-06 15:00,Queens Park Rangers FC,West Bromwich Albion FC,3,1
-2025-12-06 15:00,Sheffield United FC,Stoke City FC,4,0
-2025-12-06 15:00,Southampton FC,Birmingham City FC,3,1
-2025-12-06 15:00,Swansea City AFC,Oxford United FC,2,0
-2025-12-09 19:45,Blackburn Rovers FC,Oxford United FC,1,1
-2025-12-09 19:45,Charlton Athletic FC,Middlesbrough FC,1,2
-2025-12-09 19:45,Preston North End FC,Coventry City FC,1,1
-2025-12-09 19:45,Sheffield United FC,Norwich City FC,1,1
-2025-12-09 19:45,Southampton FC,West Bromwich Albion FC,3,2
-2025-12-09 19:45,Swansea City AFC,Portsmouth FC,1,0
-2025-12-09 19:45,Watford FC,Sheffield Wednesday FC,1,1
-2025-12-09 20:00,Queens Park Rangers FC,Birmingham City FC,2,1
-2025-12-10 19:45,Bristol City FC,Leicester City FC,2,2
-2025-12-10 19:45,Derby County FC,Millwall FC,1,1
-2025-12-10 19:45,Ipswich Town FC,Stoke City FC,1,0
-2025-12-10 20:00,Hull City AFC,Wrexham AFC,2,0
-2025-12-12 20:00,West Bromwich Albion FC,Sheffield United FC,2,0
-2025-12-13 12:30,Norwich City FC,Southampton FC,2,1
-2025-12-13 12:30,Oxford United FC,Preston North End FC,1,2
-2025-12-13 12:30,Stoke City FC,Swansea City AFC,2,1
-2025-12-13 15:00,Birmingham City FC,Charlton Athletic FC,1,1
-2025-12-13 15:00,Coventry City FC,Bristol City FC,1,0
-2025-12-13 15:00,Leicester City FC,Ipswich Town FC,3,1
-2025-12-13 15:00,Middlesbrough FC,Queens Park Rangers FC,3,1
-2025-12-13 15:00,Millwall FC,Hull City AFC,1,3
-2025-12-13 15:00,Portsmouth FC,Blackburn Rovers FC,2,1
-2025-12-13 15:00,Wrexham AFC,Watford FC,2,2
-2025-12-15 20:00,Sheffield Wednesday FC,Derby County FC,0,3
-2025-12-19 20:00,Swansea City AFC,Wrexham AFC,2,1
-2025-12-20 12:30,Blackburn Rovers FC,Millwall FC,2,0
-2025-12-20 12:30,Preston North End FC,Norwich City FC,1,1
-2025-12-20 12:30,Southampton FC,Coventry City FC,1,1
-2025-12-20 15:00,Bristol City FC,Middlesbrough FC,2,0
-2025-12-20 15:00,Charlton Athletic FC,Oxford United FC,1,0
-2025-12-20 15:00,Derby County FC,Portsmouth FC,1,1
-2025-12-20 15:00,Hull City AFC,West Bromwich Albion FC,1,0
-2025-12-20 15:00,Ipswich Town FC,Sheffield Wednesday FC,3,1
-2025-12-20 15:00,Queens Park Rangers FC,Leicester City FC,4,1
-2025-12-20 15:00,Sheffield United FC,Birmingham City FC,3,0
-2025-12-20 15:00,Watford FC,Stoke City FC,1,0
-2025-12-26 12:30,Birmingham City FC,Derby County FC,1,1
-2025-12-26 13:00,Millwall FC,Ipswich Town FC,0,0
-2025-12-26 15:00,Coventry City FC,Swansea City AFC,1,0
-2025-12-26 15:00,Leicester City FC,Watford FC,1,2
-2025-12-26 15:00,Middlesbrough FC,Blackburn Rovers FC,0,0
-2025-12-26 15:00,Norwich City FC,Charlton Athletic FC,1,0
-2025-12-26 15:00,Oxford United FC,Southampton FC,2,1
-2025-12-26 15:00,Portsmouth FC,Queens Park Rangers FC,1,1
-2025-12-26 15:00,Sheffield Wednesday FC,Hull City AFC,2,2
-2025-12-26 15:00,Stoke City FC,Preston North End FC,0,0
-2025-12-26 15:00,West Bromwich Albion FC,Bristol City FC,1,2
-2025-12-26 17:30,Wrexham AFC,Sheffield United FC,5,3
-2025-12-29 18:00,Coventry City FC,Ipswich Town FC,0,2
-2025-12-29 19:45,Leicester City FC,Derby County FC,2,1
-2025-12-29 19:45,Middlesbrough FC,Hull City AFC,0,1
-2025-12-29 19:45,Millwall FC,Bristol City FC,2,1
-2025-12-29 19:45,Norwich City FC,Watford FC,0,1
-2025-12-29 19:45,Oxford United FC,Swansea City AFC,0,1
-2025-12-29 19:45,Portsmouth FC,Charlton Athletic FC,2,1
-2025-12-29 19:45,Sheffield Wednesday FC,Blackburn Rovers FC,0,0
-2025-12-29 19:45,Stoke City FC,Sheffield United FC,1,2
-2025-12-29 19:45,West Bromwich Albion FC,Queens Park Rangers FC,2,1
-2025-12-29 19:45,Wrexham AFC,Preston North End FC,2,1
-2025-12-29 20:15,Birmingham City FC,Southampton FC,1,1
-2026-01-01 12:30,Blackburn Rovers FC,Wrexham AFC,0,2
-2026-01-01 15:00,Bristol City FC,Portsmouth FC,5,0
-2026-01-01 15:00,Charlton Athletic FC,Coventry City FC,1,1
-2026-01-01 15:00,Derby County FC,Middlesbrough FC,1,0
-2026-01-01 15:00,Hull City AFC,Stoke City FC,0,1
-2026-01-01 15:00,Ipswich Town FC,Oxford United FC,2,1
-2026-01-01 15:00,Preston North End FC,Sheffield Wednesday FC,3,0
-2026-01-01 15:00,Queens Park Rangers FC,Norwich City FC,1,2
-2026-01-01 15:00,Southampton FC,Millwall FC,0,0
-2026-01-01 15:00,Swansea City AFC,West Bromwich Albion FC,1,0
-2026-01-01 15:00,Watford FC,Birmingham City FC,3,0
-2026-01-01 17:30,Sheffield United FC,Leicester City FC,3,1
-2026-01-04 12:00,Birmingham City FC,Coventry City FC,3,2
-2026-01-04 12:00,Queens Park Rangers FC,Sheffield Wednesday FC,3,0
-2026-01-04 15:00,Blackburn Rovers FC,Charlton Athletic FC,2,2
-2026-01-04 15:00,Bristol City FC,Preston North End FC,0,2
-2026-01-04 15:00,Derby County FC,Wrexham AFC,1,2
-2026-01-04 15:00,Middlesbrough FC,Southampton FC,4,0
-2026-01-04 15:00,Millwall FC,Swansea City AFC,2,1
-2026-01-04 15:00,Norwich City FC,Stoke City FC,0,2
-2026-01-05 20:00,Leicester City FC,West Bromwich Albion FC,2,1
-2026-01-16 20:00,West Bromwich Albion FC,Middlesbrough FC,2,3
-2026-01-17 12:30,Coventry City FC,Leicester City FC,2,1
-2026-01-17 12:30,Ipswich Town FC,Blackburn Rovers FC,3,0
-2026-01-17 12:30,Watford FC,Millwall FC,0,2
-2026-01-17 15:00,Charlton Athletic FC,Sheffield United FC,1,0
-2026-01-17 15:00,Oxford United FC,Bristol City FC,0,0
-2026-01-17 15:00,Preston North End FC,Derby County FC,0,1
-2026-01-17 15:00,Sheffield Wednesday FC,Portsmouth FC,0,1
-2026-01-17 15:00,Southampton FC,Hull City AFC,1,2
-2026-01-17 15:00,Stoke City FC,Queens Park Rangers FC,0,0
-2026-01-17 15:00,Wrexham AFC,Norwich City FC,1,2
-2026-01-17 17:30,Swansea City AFC,Birmingham City FC,1,1
-2026-01-20 19:45,Coventry City FC,Millwall FC,2,1
-2026-01-20 19:45,Ipswich Town FC,Bristol City FC,2,0
-2026-01-20 19:45,Oxford United FC,Queens Park Rangers FC,0,0
-2026-01-20 19:45,Preston North End FC,Hull City AFC,0,3
-2026-01-20 19:45,Sheffield Wednesday FC,Birmingham City FC,0,2
-2026-01-20 19:45,Swansea City AFC,Blackburn Rovers FC,3,1
-2026-01-20 19:45,West Bromwich Albion FC,Norwich City FC,0,5
-2026-01-20 19:45,Charlton Athletic FC,Derby County FC,1,2
-2026-01-20 20:00,Wrexham AFC,Leicester City FC,1,1
-2026-01-21 19:45,Southampton FC,Sheffield United FC,1,0
-2026-01-21 19:45,Watford FC,Portsmouth FC,1,1
-2026-01-21 20:00,Stoke City FC,Middlesbrough FC,1,2
-2026-01-23 20:00,Derby County FC,West Bromwich Albion FC,1,1
-2026-01-24 12:30,Middlesbrough FC,Preston North End FC,4,0
-2026-01-24 12:30,Millwall FC,Charlton Athletic FC,4,0
-2026-01-24 15:00,Birmingham City FC,Stoke City FC,1,1
-2026-01-24 15:00,Blackburn Rovers FC,Watford FC,1,1
-2026-01-24 15:00,Bristol City FC,Sheffield Wednesday FC,2,0
-2026-01-24 15:00,Hull City AFC,Swansea City AFC,2,1
-2026-01-24 15:00,Leicester City FC,Oxford United FC,1,2
-2026-01-24 15:00,Queens Park Rangers FC,Wrexham AFC,2,3
-2026-01-24 15:00,Sheffield United FC,Ipswich Town FC,3,1
-2026-01-25 12:00,Portsmouth FC,Southampton FC,1,1
-2026-01-26 20:00,Norwich City FC,Coventry City FC,2,1
-2026-01-30 20:00,Bristol City FC,Derby County FC,0,5
-2026-01-31 12:30,Leicester City FC,Charlton Athletic FC,0,2
-2026-01-31 12:30,Sheffield Wednesday FC,Wrexham AFC,0,1
-2026-01-31 12:30,Stoke City FC,Southampton FC,0,2
-2026-01-31 15:00,Blackburn Rovers FC,Hull City AFC,0,1
-2026-01-31 15:00,Ipswich Town FC,Preston North End FC,1,1
-2026-01-31 15:00,Middlesbrough FC,Norwich City FC,1,0
-2026-01-31 15:00,Millwall FC,Sheffield United FC,1,1
-2026-01-31 15:00,Oxford United FC,Birmingham City FC,0,2
-2026-01-31 15:00,Portsmouth FC,West Bromwich Albion FC,3,0
-2026-01-31 15:00,Queens Park Rangers FC,Coventry City FC,2,1
-2026-01-31 15:00,Watford FC,Swansea City AFC,0,2
-2026-02-03 19:45,Blackburn Rovers FC,Sheffield Wednesday FC,1,0
-2026-02-03 19:45,Hull City AFC,Watford FC,0,0
-2026-02-03 19:45,Sheffield United FC,Oxford United FC,3,1
-2026-02-06 20:01,Charlton Athletic FC,Queens Park Rangers FC,0,0
-2026-02-07 12:31,Derby County FC,Ipswich Town FC,1,2
-2026-02-07 12:31,Norwich City FC,Blackburn Rovers FC,2,0
-2026-02-07 12:31,Southampton FC,Watford FC,1,0
-2026-02-07 15:01,Birmingham City FC,Leicester City FC,2,1
-2026-02-07 15:01,Coventry City FC,Oxford United FC,0,0
-2026-02-07 15:01,Hull City AFC,Bristol City FC,2,3
-2026-02-07 15:01,Preston North End FC,Portsmouth FC,1,0
-2026-02-07 15:01,West Bromwich Albion FC,Stoke City FC,0,0
-2026-02-07 15:01,Wrexham AFC,Millwall FC,0,2
-2026-02-08 12:01,Swansea City AFC,Sheffield Wednesday FC,4,0
-2026-02-09 20:01,Sheffield United FC,Middlesbrough FC,1,2
-2026-02-10 19:45,Leicester City FC,Southampton FC,3,4
-2026-02-10 19:45,Oxford United FC,Norwich City FC,0,3
-2026-02-10 20:00,Birmingham City FC,West Bromwich Albion FC,0,0
-2026-02-11 19:45,Charlton Athletic FC,Stoke City FC,1,0
-2026-02-14 15:00,Derby County FC,Swansea City AFC,2,0
-2026-02-14 15:00,Portsmouth FC,Sheffield United FC,0,1
-2026-02-14 15:00,Preston North End FC,Watford FC,2,2
-2026-02-14 15:00,Queens Park Rangers FC,Blackburn Rovers FC,1,3
-2026-02-14 15:00,Sheffield Wednesday FC,Millwall FC,1,2
-2026-02-16 20:00,Coventry City FC,Middlesbrough FC,3,1
-2026-02-17 19:45,Charlton Athletic FC,Portsmouth FC,1,3
-2026-02-17 19:45,Bristol City FC,Wrexham AFC,2,2
-2026-02-20 20:00,Blackburn Rovers FC,Preston North End FC,1,0
-2026-02-21 12:30,Hull City AFC,Queens Park Rangers FC,1,3
-2026-02-21 12:30,Stoke City FC,Leicester City FC,2,2
-2026-02-21 12:30,Swansea City AFC,Bristol City FC,1,0
-2026-02-21 12:30,West Bromwich Albion FC,Coventry City FC,0,2
-2026-02-21 15:00,Middlesbrough FC,Oxford United FC,0,0
-2026-02-21 15:00,Millwall FC,Portsmouth FC,1,3
-2026-02-21 15:00,Norwich City FC,Birmingham City FC,1,2
-2026-02-21 15:00,Southampton FC,Charlton Athletic FC,1,1
-2026-02-21 15:00,Watford FC,Derby County FC,2,0
-2026-02-21 15:00,Wrexham AFC,Ipswich Town FC,5,3
-2026-02-22 12:00,Sheffield United FC,Sheffield Wednesday FC,2,1
-2026-02-24 19:45,Hull City AFC,Derby County FC,4,2
-2026-02-24 19:45,Middlesbrough FC,Leicester City FC,1,1
-2026-02-24 19:45,Swansea City AFC,Preston North End FC,1,1
-2026-02-24 19:45,Watford FC,Ipswich Town FC,0,2
-2026-02-24 19:45,West Bromwich Albion FC,Charlton Athletic FC,1,1
-2026-02-24 19:45,Wrexham AFC,Portsmouth FC,2,1
-2026-02-24 19:45,Blackburn Rovers FC,Bristol City FC,1,2
-2026-02-24 20:00,Southampton FC,Queens Park Rangers FC,5,0
-2026-02-25 19:45,Millwall FC,Birmingham City FC,3,0
-2026-02-25 19:45,Norwich City FC,Sheffield Wednesday FC,2,0
-2026-02-25 19:45,Sheffield United FC,Coventry City FC,1,2
-2026-02-25 20:00,Stoke City FC,Oxford United FC,2,1
-2026-02-27 20:00,Bristol City FC,Watford FC,1,2
-2026-02-28 12:30,Derby County FC,Blackburn Rovers FC,3,1
-2026-02-28 12:30,Leicester City FC,Norwich City FC,0,2
-2026-02-28 12:30,Portsmouth FC,Hull City AFC,0,1
-2026-02-28 15:00,Charlton Athletic FC,Wrexham AFC,0,1
-2026-02-28 15:00,Coventry City FC,Stoke City FC,2,1
-2026-02-28 15:00,Ipswich Town FC,Swansea City AFC,3,0
-2026-02-28 15:00,Oxford United FC,West Bromwich Albion FC,2,1
-2026-02-28 15:00,Preston North End FC,Millwall FC,0,2
-2026-02-28 15:00,Queens Park Rangers FC,Sheffield United FC,0,2
-2026-02-28 15:00,Sheffield Wednesday FC,Southampton FC,1,3
-2026-03-02 20:00,Birmingham City FC,Middlesbrough FC,1,3
-2026-03-03 19:45,Ipswich Town FC,Hull City AFC,1,0
-2026-03-06 20:00,Preston North End FC,Oxford United FC,1,3
-2026-03-07 12:30,Blackburn Rovers FC,Portsmouth FC,1,1
-2026-03-07 12:30,Hull City AFC,Millwall FC,1,3
-2026-03-07 15:00,Bristol City FC,Coventry City FC,0,2
-2026-03-07 15:00,Charlton Athletic FC,Birmingham City FC,1,0
-2026-03-07 15:00,Derby County FC,Sheffield Wednesday FC,2,1
-2026-03-07 15:00,Ipswich Town FC,Leicester City FC,1,1
-2026-03-07 15:00,Sheffield United FC,West Bromwich Albion FC,1,1
-2026-03-07 15:00,Swansea City AFC,Stoke City FC,2,0
-2026-03-08 16:30,Queens Park Rangers FC,Middlesbrough FC,0,4
-2026-03-10 19:45,Leicester City FC,Bristol City FC,2,0
-2026-03-10 19:45,Millwall FC,Derby County FC,1,0
-2026-03-10 19:45,Portsmouth FC,Swansea City AFC,1,2
-2026-03-10 19:45,Sheffield Wednesday FC,Watford FC,1,1
-2026-03-10 19:45,Wrexham AFC,Hull City AFC,1,2
-2026-03-10 20:00,Stoke City FC,Ipswich Town FC,3,3
-2026-03-11 19:45,Birmingham City FC,Queens Park Rangers FC,1,0
-2026-03-11 19:45,Norwich City FC,Sheffield United FC,2,1
-2026-03-11 19:45,Middlesbrough FC,Charlton Athletic FC,0,1
-2026-03-11 19:45,Oxford United FC,Blackburn Rovers FC,1,0
-2026-03-11 19:45,West Bromwich Albion FC,Southampton FC,1,1
-2026-03-11 20:00,Coventry City FC,Preston North End FC,3,0
-2026-03-13 20:00,Wrexham AFC,Swansea City AFC,2,0
-2026-03-14 12:30,Coventry City FC,Southampton FC,1,2
-2026-03-14 12:30,Middlesbrough FC,Bristol City FC,1,1
-2026-03-14 12:30,Oxford United FC,Charlton Athletic FC,1,1
-2026-03-14 15:00,Birmingham City FC,Sheffield United FC,1,1
-2026-03-14 15:00,Leicester City FC,Queens Park Rangers FC,1,3
-2026-03-14 15:00,Millwall FC,Blackburn Rovers FC,1,2
-2026-03-14 15:00,Norwich City FC,Preston North End FC,2,0
-2026-03-14 15:00,Sheffield Wednesday FC,Ipswich Town FC,0,2
-2026-03-14 15:00,Stoke City FC,Watford FC,3,1
-2026-03-14 15:00,West Bromwich Albion FC,Hull City AFC,3,0
-2026-03-16 20:00,Portsmouth FC,Derby County FC,0,1
-2026-03-17 19:45,Watford FC,Wrexham AFC,3,1
-2026-03-18 19:45,Southampton FC,Norwich City FC,1,0
-2026-03-20 20:00,Preston North End FC,Stoke City FC,3,1
-2026-03-21 12:30,Blackburn Rovers FC,Middlesbrough FC,0,0
-2026-03-21 12:30,Derby County FC,Birmingham City FC,1,0
-2026-03-21 12:30,Ipswich Town FC,Millwall FC,1,1
-2026-03-21 15:00,Bristol City FC,West Bromwich Albion FC,0,1
-2026-03-21 15:00,Charlton Athletic FC,Norwich City FC,0,1
-2026-03-21 15:00,Hull City AFC,Sheffield Wednesday FC,3,1
-2026-03-21 15:00,Queens Park Rangers FC,Portsmouth FC,6,1
-2026-03-21 15:00,Sheffield United FC,Wrexham AFC,1,2
-2026-03-21 15:00,Southampton FC,Oxford United FC,2,0
-2026-03-21 15:00,Watford FC,Leicester City FC,0,0
-2026-03-21 17:15,Swansea City AFC,Coventry City FC,0,3
-2026-04-03 11:30,Middlesbrough FC,Millwall FC,1,2
-2026-04-03 14:00,Norwich City FC,Portsmouth FC,1,1
-2026-04-03 14:00,Oxford United FC,Hull City AFC,1,1
-2026-04-03 14:00,Queens Park Rangers FC,Watford FC,2,1
-2026-04-03 14:00,Sheffield United FC,Swansea City AFC,3,3
-2026-04-03 14:00,Stoke City FC,Sheffield Wednesday FC,2,0
-2026-04-03 14:00,West Bromwich Albion FC,Wrexham AFC,2,2
-2026-04-03 14:00,Birmingham City FC,Blackburn Rovers FC,0,1
-2026-04-03 14:00,Charlton Athletic FC,Bristol City FC,1,2
-2026-04-03 14:00,Leicester City FC,Preston North End FC,2,2
-2026-04-03 19:00,Coventry City FC,Derby County FC,3,2
-2026-04-06 11:30,Portsmouth FC,Oxford United FC,2,2
-2026-04-06 12:00,Millwall FC,Norwich City FC,1,2
-2026-04-06 14:00,Blackburn Rovers FC,West Bromwich Albion FC,0,0
-2026-04-06 14:00,Bristol City FC,Sheffield United FC,1,0
-2026-04-06 14:00,Derby County FC,Stoke City FC,2,0
-2026-04-06 14:00,Ipswich Town FC,Birmingham City FC,2,1
-2026-04-06 14:00,Preston North End FC,Queens Park Rangers FC,1,1
-2026-04-06 14:00,Sheffield Wednesday FC,Leicester City FC,1,1
-2026-04-06 14:00,Watford FC,Charlton Athletic FC,1,1
-2026-04-06 16:30,Swansea City AFC,Middlesbrough FC,2,2
-2026-04-06 19:00,Hull City AFC,Coventry City FC,0,0
-2026-04-07 19:00,Wrexham AFC,Southampton FC,1,5
-2026-04-10 19:00,West Bromwich Albion FC,Millwall FC,0,0
-2026-04-11 11:30,Coventry City FC,Sheffield Wednesday FC,0,0
-2026-04-11 11:30,Norwich City FC,Ipswich Town FC,0,2
-2026-04-11 11:30,Queens Park Rangers FC,Bristol City FC,0,0
-2026-04-11 14:00,Charlton Athletic FC,Preston North End FC,1,2
-2026-04-11 14:00,Leicester City FC,Swansea City AFC,0,1
-2026-04-11 14:00,Middlesbrough FC,Portsmouth FC,0,1
-2026-04-11 14:00,Oxford United FC,Watford FC,2,0
-2026-04-11 14:00,Sheffield United FC,Hull City AFC,2,1
-2026-04-11 14:00,Southampton FC,Derby County FC,2,1
-2026-04-11 14:00,Stoke City FC,Blackburn Rovers FC,1,1
-2026-04-12 11:00,Birmingham City FC,Wrexham AFC,2,0
-2026-04-14 19:00,Southampton FC,Blackburn Rovers FC,3,0
-2026-04-14 19:00,Portsmouth FC,Ipswich Town FC,2,0
-2026-04-17 19:00,Blackburn Rovers FC,Coventry City FC,1,1
-2026-04-18 11:30,Derby County FC,Oxford United FC,1,0
-2026-04-18 11:30,Millwall FC,Queens Park Rangers FC,2,0
-2026-04-18 11:30,Portsmouth FC,Leicester City FC,1,0
-2026-04-18 14:00,Bristol City FC,Norwich City FC,2,4
-2026-04-18 14:00,Hull City AFC,Birmingham City FC,1,1
-2026-04-18 14:00,Preston North End FC,West Bromwich Albion FC,0,2
-2026-04-18 14:00,Sheffield Wednesday FC,Charlton Athletic FC,1,1
-2026-04-18 14:00,Swansea City AFC,Southampton FC,1,2
-2026-04-18 14:00,Watford FC,Sheffield United FC,0,2
-2026-04-18 14:00,Wrexham AFC,Stoke City FC,2,0
-2026-04-19 11:00,Ipswich Town FC,Middlesbrough FC,2,2
-2026-04-21 18:45,Coventry City FC,Portsmouth FC,5,1
-2026-04-21 18:45,Norwich City FC,Derby County FC,2,1
-2026-04-21 18:45,Oxford United FC,Wrexham AFC,0,1
-2026-04-21 18:45,Queens Park Rangers FC,Swansea City AFC,1,2
-2026-04-21 18:45,Southampton FC,Bristol City FC,2,2
-2026-04-21 18:45,Stoke City FC,Millwall FC,1,3
-2026-04-21 18:45,West Bromwich Albion FC,Watford FC,3,0
-2026-04-21 18:45,Leicester City FC,Hull City AFC,2,2
-2026-04-22 18:45,Middlesbrough FC,Sheffield Wednesday FC,1,0
-2026-04-22 18:45,Birmingham City FC,Preston North End FC,2,1
-2026-04-22 18:45,Charlton Athletic FC,Ipswich Town FC,1,2
-2026-04-22 18:45,Sheffield United FC,Blackburn Rovers FC,1,3
-2026-04-24 19:00,Leicester City FC,Millwall FC,1,1
-2026-04-25 11:30,Charlton Athletic FC,Hull City AFC,2,1
-2026-04-25 11:30,Middlesbrough FC,Watford FC,5,1
-2026-04-25 11:30,West Bromwich Albion FC,Ipswich Town FC,0,0
-2026-04-25 14:00,Birmingham City FC,Bristol City FC,2,1
-2026-04-25 14:00,Norwich City FC,Swansea City AFC,1,1
-2026-04-25 14:00,Oxford United FC,Sheffield Wednesday FC,4,1
-2026-04-25 14:00,Queens Park Rangers FC,Derby County FC,2,3
-2026-04-25 14:00,Sheffield United FC,Preston North End FC,2,3
-2026-04-25 14:00,Stoke City FC,Portsmouth FC,1,3
-2026-04-26 11:00,Coventry City FC,Wrexham AFC,3,1
-2026-04-28 18:45,Southampton FC,Ipswich Town FC,2,2
-2026-05-02 11:30,Blackburn Rovers FC,Leicester City FC,0,1
-2026-05-02 11:30,Bristol City FC,Stoke City FC,2,0
-2026-05-02 11:30,Derby County FC,Sheffield United FC,1,2
-2026-05-02 11:30,Hull City AFC,Norwich City FC,2,1
-2026-05-02 11:30,Ipswich Town FC,Queens Park Rangers FC,3,0
-2026-05-02 11:30,Millwall FC,Oxford United FC,2,0
-2026-05-02 11:30,Portsmouth FC,Birmingham City FC,1,1
-2026-05-02 11:30,Preston North End FC,Southampton FC,1,3
-2026-05-02 11:30,Sheffield Wednesday FC,West Bromwich Albion FC,2,1
-2026-05-02 11:30,Swansea City AFC,Charlton Athletic FC,3,1
-2026-05-02 11:30,Watford FC,Coventry City FC,0,4
-2026-05-02 11:30,Wrexham AFC,Middlesbrough FC,2,2
-2026-05-08 19:00,Hull City AFC,Millwall FC,0,0
-2026-05-09 11:30,Middlesbrough FC,Southampton FC,0,0
-2026-05-11 19:00,Millwall FC,Hull City AFC,0,2
+﻿Date,Home,Away,HG,AG,League,Season,Country,Round,Status,SourceLeagueName,SourceLeagueId
+2026-05-12,Southampton,Middlesbrough,1,1,Championship,2025,,,FT,England Championship,1730
+2026-05-11,Millwall,Hull City,0,2,Championship,2025,,,FT,England Championship,1730
+2026-05-09,Middlesbrough,Southampton,0,0,Championship,2025,,,FT,England Championship,1730
+2026-05-08,Hull City,Millwall,0,0,Championship,2025,,,FT,England Championship,1730
+2026-05-02,Portsmouth,Birmingham City,1,1,Championship,2025,,,FT,England Championship,1730
+2026-05-02,Bristol City,Stoke City,2,0,Championship,2025,,,FT,England Championship,1730
+2026-05-02,Derby County,Sheffield United,1,2,Championship,2025,,,FT,England Championship,1730
+2026-05-02,Hull City,Norwich City,2,1,Championship,2025,,,FT,England Championship,1730
+2026-05-02,Ipswich Town,Queens Park Rangers (QPR),3,0,Championship,2025,,,FT,England Championship,1730
+2026-05-02,Millwall,Oxford United,2,0,Championship,2025,,,FT,England Championship,1730
+2026-05-02,Sheffield Wednesday,West Bromwich(WBA),2,1,Championship,2025,,,FT,England Championship,1730
+2026-05-02,Preston North End,Southampton,1,3,Championship,2025,,,FT,England Championship,1730
+2026-05-02,Watford,Coventry City,0,4,Championship,2025,,,FT,England Championship,1730
+2026-05-02,Swansea City,Charlton Athletic,3,1,Championship,2025,,,FT,England Championship,1730
+2026-05-02,Wrexham,Middlesbrough,2,2,Championship,2025,,,FT,England Championship,1730
+2026-05-02,Blackburn Rovers,Leicester City,0,1,Championship,2025,,,FT,England Championship,1730
+2026-04-28,Southampton,Ipswich Town,2,2,Championship,2025,,,FT,England Championship,1730
+2026-04-26,Coventry City,Wrexham,3,1,Championship,2025,,,FT,England Championship,1730
+2026-04-25,Middlesbrough,Watford,5,1,Championship,2025,,,FT,England Championship,1730
+2026-04-25,Birmingham City,Bristol City,2,1,Championship,2025,,,FT,England Championship,1730
+2026-04-25,Sheffield United,Preston North End,2,3,Championship,2025,,,FT,England Championship,1730
+2026-04-25,Queens Park Rangers (QPR),Derby County,2,3,Championship,2025,,,FT,England Championship,1730
+2026-04-25,Oxford United,Sheffield Wednesday,4,1,Championship,2025,,,FT,England Championship,1730
+2026-04-25,Stoke City,Portsmouth,1,3,Championship,2025,,,FT,England Championship,1730
+2026-04-25,Charlton Athletic,Hull City,2,1,Championship,2025,,,FT,England Championship,1730
+2026-04-25,West Bromwich(WBA),Ipswich Town,0,0,Championship,2025,,,FT,England Championship,1730
+2026-04-25,Norwich City,Swansea City,1,1,Championship,2025,,,FT,England Championship,1730
+2026-04-24,Leicester City,Millwall,1,1,Championship,2025,,,FT,England Championship,1730
+2026-04-22,Sheffield United,Blackburn Rovers,1,3,Championship,2025,,,FT,England Championship,1730
+2026-04-22,Middlesbrough,Sheffield Wednesday,1,0,Championship,2025,,,FT,England Championship,1730
+2026-04-22,Charlton Athletic,Ipswich Town,1,2,Championship,2025,,,FT,England Championship,1730
+2026-04-22,Birmingham City,Preston North End,2,1,Championship,2025,,,FT,England Championship,1730
+2026-04-21,Coventry City,Portsmouth,5,1,Championship,2025,,,FT,England Championship,1730
+2026-04-21,Southampton,Bristol City,2,2,Championship,2025,,,FT,England Championship,1730
+2026-04-21,Leicester City,Hull City,2,2,Championship,2025,,,FT,England Championship,1730
+2026-04-21,Norwich City,Derby County,2,1,Championship,2025,,,FT,England Championship,1730
+2026-04-21,Stoke City,Millwall,1,3,Championship,2025,,,FT,England Championship,1730
+2026-04-21,West Bromwich(WBA),Watford,3,0,Championship,2025,,,FT,England Championship,1730
+2026-04-21,Oxford United,Wrexham,0,1,Championship,2025,,,FT,England Championship,1730
+2026-04-21,Queens Park Rangers (QPR),Swansea City,1,2,Championship,2025,,,FT,England Championship,1730
+2026-04-19,Ipswich Town,Middlesbrough,2,2,Championship,2025,,,FT,England Championship,1730
+2026-04-18,Sheffield Wednesday,Charlton Athletic,1,1,Championship,2025,,,FT,England Championship,1730
+2026-04-18,Derby County,Oxford United,1,0,Championship,2025,,,FT,England Championship,1730
+2026-04-18,Millwall,Queens Park Rangers (QPR),2,0,Championship,2025,,,FT,England Championship,1730
+2026-04-18,Portsmouth,Leicester City,1,0,Championship,2025,,,FT,England Championship,1730
+2026-04-18,Preston North End,West Bromwich(WBA),0,2,Championship,2025,,,FT,England Championship,1730
+2026-04-18,Swansea City,Southampton,1,2,Championship,2025,,,FT,England Championship,1730
+2026-04-18,Watford,Sheffield United,0,2,Championship,2025,,,FT,England Championship,1730
+2026-04-18,Wrexham,Stoke City,2,0,Championship,2025,,,FT,England Championship,1730
+2026-04-18,Hull City,Birmingham City,1,1,Championship,2025,,,FT,England Championship,1730
+2026-04-18,Bristol City,Norwich City,2,4,Championship,2025,,,FT,England Championship,1730
+2026-04-17,Blackburn Rovers,Coventry City,1,1,Championship,2025,,,FT,England Championship,1730
+2026-04-14,Southampton,Blackburn Rovers,3,0,Championship,2025,,,FT,England Championship,1730
+2026-04-14,Portsmouth,Ipswich Town,2,0,Championship,2025,,,FT,England Championship,1730
+2026-04-12,Birmingham City,Wrexham,2,0,Championship,2025,,,FT,England Championship,1730
+2026-04-11,Leicester City,Swansea City,0,1,Championship,2025,,,FT,England Championship,1730
+2026-04-11,Charlton Athletic,Preston North End,1,2,Championship,2025,,,FT,England Championship,1730
+2026-04-11,Middlesbrough,Portsmouth,0,1,Championship,2025,,,FT,England Championship,1730
+2026-04-11,Oxford United,Watford,2,0,Championship,2025,,,FT,England Championship,1730
+2026-04-11,Stoke City,Blackburn Rovers,1,1,Championship,2025,,,FT,England Championship,1730
+2026-04-11,Southampton,Derby County,2,1,Championship,2025,,,FT,England Championship,1730
+2026-04-11,Sheffield United,Hull City,2,1,Championship,2025,,,FT,England Championship,1730
+2026-04-11,Queens Park Rangers (QPR),Bristol City,0,0,Championship,2025,,,FT,England Championship,1730
+2026-04-11,Norwich City,Ipswich Town,0,2,Championship,2025,,,FT,England Championship,1730
+2026-04-11,Coventry City,Sheffield Wednesday,0,0,Championship,2025,,,FT,England Championship,1730
+2026-04-10,West Bromwich(WBA),Millwall,0,0,Championship,2025,,,FT,England Championship,1730
+2026-04-07,Wrexham,Southampton,1,5,Championship,2025,,,FT,England Championship,1730
+2026-04-06,Ipswich Town,Birmingham City,2,1,Championship,2025,,,FT,England Championship,1730
+2026-04-06,Preston North End,Queens Park Rangers (QPR),1,1,Championship,2025,,,FT,England Championship,1730
+2026-04-06,Watford,Charlton Athletic,1,1,Championship,2025,,,FT,England Championship,1730
+2026-04-06,Millwall,Norwich City,1,2,Championship,2025,,,FT,England Championship,1730
+2026-04-06,Portsmouth,Oxford United,2,2,Championship,2025,,,FT,England Championship,1730
+2026-04-06,Sheffield Wednesday,Leicester City,1,1,Championship,2025,,,FT,England Championship,1730
+2026-04-06,Hull City,Coventry City,0,0,Championship,2025,,,FT,England Championship,1730
+2026-04-06,Blackburn Rovers,West Bromwich(WBA),0,0,Championship,2025,,,FT,England Championship,1730
+2026-04-06,Derby County,Stoke City,2,0,Championship,2025,,,FT,England Championship,1730
+2026-04-06,Swansea City,Middlesbrough,2,2,Championship,2025,,,FT,England Championship,1730
+2026-04-06,Bristol City,Sheffield United,1,0,Championship,2025,,,FT,England Championship,1730
+2026-04-03,Stoke City,Sheffield Wednesday,2,0,Championship,2025,,,FT,England Championship,1730
+2026-04-03,Middlesbrough,Millwall,1,2,Championship,2025,,,FT,England Championship,1730
+2026-04-03,Norwich City,Portsmouth,1,1,Championship,2025,,,FT,England Championship,1730
+2026-04-03,Oxford United,Hull City,1,1,Championship,2025,,,FT,England Championship,1730
+2026-04-03,Queens Park Rangers (QPR),Watford,2,1,Championship,2025,,,FT,England Championship,1730
+2026-04-03,Sheffield United,Swansea City,3,3,Championship,2025,,,FT,England Championship,1730
+2026-04-03,West Bromwich(WBA),Wrexham,2,2,Championship,2025,,,FT,England Championship,1730
+2026-04-03,Birmingham City,Blackburn Rovers,0,1,Championship,2025,,,FT,England Championship,1730
+2026-04-03,Charlton Athletic,Bristol City,1,2,Championship,2025,,,FT,England Championship,1730
+2026-04-03,Leicester City,Preston North End,2,2,Championship,2025,,,FT,England Championship,1730
+2026-04-03,Coventry City,Derby County,3,2,Championship,2025,,,FT,England Championship,1730
+2026-03-21,Hull City,Sheffield Wednesday,3,1,Championship,2025,,,FT,England Championship,1730
+2026-03-21,Derby County,Birmingham City,1,0,Championship,2025,,,FT,England Championship,1730
+2026-03-21,Blackburn Rovers,Middlesbrough,0,0,Championship,2025,,,FT,England Championship,1730
+2026-03-21,Ipswich Town,Millwall,1,1,Championship,2025,,,FT,England Championship,1730
+2026-03-21,Bristol City,West Bromwich(WBA),0,1,Championship,2025,,,FT,England Championship,1730
+2026-03-21,Charlton Athletic,Norwich City,0,1,Championship,2025,,,FT,England Championship,1730
+2026-03-21,Sheffield United,Wrexham,1,2,Championship,2025,,,FT,England Championship,1730
+2026-03-21,Queens Park Rangers (QPR),Portsmouth,6,1,Championship,2025,,,FT,England Championship,1730
+2026-03-21,Southampton,Oxford United,2,0,Championship,2025,,,FT,England Championship,1730
+2026-03-21,Watford,Leicester City,0,0,Championship,2025,,,FT,England Championship,1730
+2026-03-21,Swansea City,Coventry City,0,3,Championship,2025,,,FT,England Championship,1730
+2026-03-20,Preston North End,Stoke City,3,1,Championship,2025,,,FT,England Championship,1730
+2026-03-18,Southampton,Norwich City,1,0,Championship,2025,,,FT,England Championship,1730
+2026-03-17,Watford,Wrexham,3,1,Championship,2025,,,FT,England Championship,1730
+2026-03-16,Portsmouth,Derby County,0,1,Championship,2025,,,FT,England Championship,1730
+2026-03-14,Norwich City,Preston North End,2,0,Championship,2025,,,FT,England Championship,1730
+2026-03-14,Coventry City,Southampton,1,2,Championship,2025,,,FT,England Championship,1730
+2026-03-14,Middlesbrough,Bristol City,1,1,Championship,2025,,,FT,England Championship,1730
+2026-03-14,Oxford United,Charlton Athletic,1,1,Championship,2025,,,FT,England Championship,1730
+2026-03-14,Millwall,Blackburn Rovers,1,2,Championship,2025,,,FT,England Championship,1730
+2026-03-14,Birmingham City,Sheffield United,1,1,Championship,2025,,,FT,England Championship,1730
+2026-03-14,Leicester City,Queens Park Rangers (QPR),1,3,Championship,2025,,,FT,England Championship,1730
+2026-03-14,Stoke City,Watford,3,1,Championship,2025,,,FT,England Championship,1730
+2026-03-14,West Bromwich(WBA),Hull City,3,0,Championship,2025,,,FT,England Championship,1730
+2026-03-14,Sheffield Wednesday,Ipswich Town,0,2,Championship,2025,,,FT,England Championship,1730
+2026-03-13,Wrexham,Swansea City,2,0,Championship,2025,,,FT,England Championship,1730
+2026-03-11,Coventry City,Preston North End,3,0,Championship,2025,,,FT,England Championship,1730
+2026-03-11,Birmingham City,Queens Park Rangers (QPR),1,0,Championship,2025,,,FT,England Championship,1730
+2026-03-11,West Bromwich(WBA),Southampton,1,1,Championship,2025,,,FT,England Championship,1730
+2026-03-11,Oxford United,Blackburn Rovers,1,0,Championship,2025,,,FT,England Championship,1730
+2026-03-11,Middlesbrough,Charlton Athletic,0,1,Championship,2025,,,FT,England Championship,1730
+2026-03-11,Norwich City,Sheffield United,2,1,Championship,2025,,,FT,England Championship,1730
+2026-03-10,Sheffield Wednesday,Watford,1,1,Championship,2025,,,FT,England Championship,1730
+2026-03-10,Leicester City,Bristol City,2,0,Championship,2025,,,FT,England Championship,1730
+2026-03-10,Millwall,Derby County,1,0,Championship,2025,,,FT,England Championship,1730
+2026-03-10,Wrexham,Hull City,1,2,Championship,2025,,,FT,England Championship,1730
+2026-03-10,Portsmouth,Swansea City,1,2,Championship,2025,,,FT,England Championship,1730
+2026-03-10,Stoke City,Ipswich Town,3,3,Championship,2025,,,FT,England Championship,1730
+2026-03-08,Queens Park Rangers (QPR),Middlesbrough,0,4,Championship,2025,,,FT,England Championship,1730
+2026-03-07,Swansea City,Stoke City,2,0,Championship,2025,,,FT,England Championship,1730
+2026-03-07,Sheffield United,West Bromwich(WBA),1,1,Championship,2025,,,FT,England Championship,1730
+2026-03-07,Ipswich Town,Leicester City,1,1,Championship,2025,,,FT,England Championship,1730
+2026-03-07,Derby County,Sheffield Wednesday,2,1,Championship,2025,,,FT,England Championship,1730
+2026-03-07,Charlton Athletic,Birmingham City,1,0,Championship,2025,,,FT,England Championship,1730
+2026-03-07,Bristol City,Coventry City,0,2,Championship,2025,,,FT,England Championship,1730
+2026-03-07,Blackburn Rovers,Portsmouth,1,1,Championship,2025,,,FT,England Championship,1730
+2026-03-07,Hull City,Millwall,1,3,Championship,2025,,,FT,England Championship,1730
+2026-03-06,Preston North End,Oxford United,1,3,Championship,2025,,,FT,England Championship,1730
+2026-03-03,Ipswich Town,Hull City,1,0,Championship,2025,,,FT,England Championship,1730
+2026-03-02,Birmingham City,Middlesbrough,1,3,Championship,2025,,,FT,England Championship,1730
+2026-02-28,Coventry City,Stoke City,2,1,Championship,2025,,,FT,England Championship,1730
+2026-02-28,Oxford United,West Bromwich(WBA),2,1,Championship,2025,,,FT,England Championship,1730
+2026-02-28,Ipswich Town,Swansea City,3,0,Championship,2025,,,FT,England Championship,1730
+2026-02-28,Charlton Athletic,Wrexham,0,1,Championship,2025,,,FT,England Championship,1730
+2026-02-28,Sheffield Wednesday,Southampton,1,3,Championship,2025,,,FT,England Championship,1730
+2026-02-28,Queens Park Rangers (QPR),Sheffield United,0,2,Championship,2025,,,FT,England Championship,1730
+2026-02-28,Preston North End,Millwall,0,2,Championship,2025,,,FT,England Championship,1730
+2026-02-28,Portsmouth,Hull City,0,1,Championship,2025,,,FT,England Championship,1730
+2026-02-28,Leicester City,Norwich City,0,2,Championship,2025,,,FT,England Championship,1730
+2026-02-28,Derby County,Blackburn Rovers,3,1,Championship,2025,,,FT,England Championship,1730
+2026-02-27,Bristol City,Watford,1,2,Championship,2025,,,FT,England Championship,1730
+2026-02-25,Norwich City,Sheffield Wednesday,2,0,Championship,2025,,,FT,England Championship,1730
+2026-02-25,Millwall,Birmingham City,3,0,Championship,2025,,,FT,England Championship,1730
+2026-02-25,Stoke City,Oxford United,2,1,Championship,2025,,,FT,England Championship,1730
+2026-02-25,Sheffield United,Coventry City,1,2,Championship,2025,,,FT,England Championship,1730
+2026-02-24,Southampton,Queens Park Rangers (QPR),5,0,Championship,2025,,,FT,England Championship,1730
+2026-02-24,Blackburn Rovers,Bristol City,1,2,Championship,2025,,,FT,England Championship,1730
+2026-02-24,Wrexham,Portsmouth,2,1,Championship,2025,,,FT,England Championship,1730
+2026-02-24,Swansea City,Preston North End,1,1,Championship,2025,,,FT,England Championship,1730
+2026-02-24,West Bromwich(WBA),Charlton Athletic,1,1,Championship,2025,,,FT,England Championship,1730
+2026-02-24,Watford,Ipswich Town,0,2,Championship,2025,,,FT,England Championship,1730
+2026-02-24,Middlesbrough,Leicester City,1,1,Championship,2025,,,FT,England Championship,1730
+2026-02-24,Hull City,Derby County,4,2,Championship,2025,,,FT,England Championship,1730
+2026-02-22,Sheffield United,Sheffield Wednesday,2,1,Championship,2025,,,FT,England Championship,1730
+2026-02-21,Swansea City,Bristol City,1,0,Championship,2025,,,FT,England Championship,1730
+2026-02-21,West Bromwich(WBA),Coventry City,0,2,Championship,2025,,,FT,England Championship,1730
+2026-02-21,Hull City,Queens Park Rangers (QPR),1,3,Championship,2025,,,FT,England Championship,1730
+2026-02-21,Southampton,Charlton Athletic,1,1,Championship,2025,,,FT,England Championship,1730
+2026-02-21,Watford,Derby County,2,0,Championship,2025,,,FT,England Championship,1730
+2026-02-21,Stoke City,Leicester City,2,2,Championship,2025,,,FT,England Championship,1730
+2026-02-21,Wrexham,Ipswich Town,5,3,Championship,2025,,,FT,England Championship,1730
+2026-02-21,Middlesbrough,Oxford United,0,0,Championship,2025,,,FT,England Championship,1730
+2026-02-21,Millwall,Portsmouth,1,3,Championship,2025,,,FT,England Championship,1730
+2026-02-21,Norwich City,Birmingham City,1,2,Championship,2025,,,FT,England Championship,1730
+2026-02-20,Blackburn Rovers,Preston North End,1,0,Championship,2025,,,FT,England Championship,1730
+2026-02-17,Charlton Athletic,Portsmouth,1,3,Championship,2025,,,FT,England Championship,1730
+2026-02-17,Bristol City,Wrexham,2,2,Championship,2025,,,FT,England Championship,1730
+2026-02-16,Coventry City,Middlesbrough,3,1,Championship,2025,,,FT,England Championship,1730
+2026-02-14,Derby County,Swansea City,2,0,Championship,2025,,,FT,England Championship,1730
+2026-02-14,Sheffield Wednesday,Millwall,1,2,Championship,2025,,,FT,England Championship,1730
+2026-02-14,Queens Park Rangers (QPR),Blackburn Rovers,1,3,Championship,2025,,,FT,England Championship,1730
+2026-02-14,Preston North End,Watford,2,2,Championship,2025,,,FT,England Championship,1730
+2026-02-14,Portsmouth,Sheffield United,0,1,Championship,2025,,,FT,England Championship,1730
+2026-02-11,Charlton Athletic,Stoke City,1,0,Championship,2025,,,FT,England Championship,1730
+2026-02-10,Oxford United,Norwich City,0,3,Championship,2025,,,FT,England Championship,1730
+2026-02-10,Leicester City,Southampton,3,4,Championship,2025,,,FT,England Championship,1730
+2026-02-10,Birmingham City,West Bromwich(WBA),0,0,Championship,2025,,,FT,England Championship,1730
+2026-02-09,Sheffield United,Middlesbrough,1,2,Championship,2025,,,FT,England Championship,1730
+2026-02-08,Swansea City,Sheffield Wednesday,4,0,Championship,2025,,,FT,England Championship,1730
+2026-02-07,Preston North End,Portsmouth,1,0,Championship,2025,,,FT,England Championship,1730
+2026-02-07,Derby County,Ipswich Town,1,2,Championship,2025,,,FT,England Championship,1730
+2026-02-07,Norwich City,Blackburn Rovers,2,0,Championship,2025,,,FT,England Championship,1730
+2026-02-07,Southampton,Watford,1,0,Championship,2025,,,FT,England Championship,1730
+2026-02-07,West Bromwich(WBA),Stoke City,0,0,Championship,2025,,,FT,England Championship,1730
+2026-02-07,Hull City,Bristol City,2,3,Championship,2025,,,FT,England Championship,1730
+2026-02-07,Coventry City,Oxford United,0,0,Championship,2025,,,FT,England Championship,1730
+2026-02-07,Wrexham,Millwall,0,2,Championship,2025,,,FT,England Championship,1730
+2026-02-07,Birmingham City,Leicester City,2,1,Championship,2025,,,FT,England Championship,1730
+2026-02-06,Charlton Athletic,Queens Park Rangers (QPR),0,0,Championship,2025,,,FT,England Championship,1730
+2026-02-03,Blackburn Rovers,Sheffield Wednesday,1,0,Championship,2025,,,FT,England Championship,1730
+2026-02-03,Hull City,Watford,0,0,Championship,2025,,,FT,England Championship,1730
+2026-02-03,Sheffield United,Oxford United,3,1,Championship,2025,,,FT,England Championship,1730
+2026-01-31,Sheffield Wednesday,Wrexham,0,1,Championship,2025,,,FT,England Championship,1730
+2026-01-31,Watford,Swansea City,0,2,Championship,2025,,,FT,England Championship,1730
+2026-01-31,Millwall,Sheffield United,1,1,Championship,2025,,,FT,England Championship,1730
+2026-01-31,Stoke City,Southampton,0,2,Championship,2025,,,FT,England Championship,1730
+2026-01-31,Leicester City,Charlton Athletic,0,2,Championship,2025,,,FT,England Championship,1730
+2026-01-31,Middlesbrough,Norwich City,1,0,Championship,2025,,,FT,England Championship,1730
+2026-01-31,Portsmouth,West Bromwich(WBA),3,0,Championship,2025,,,FT,England Championship,1730
+2026-01-31,Oxford United,Birmingham City,0,2,Championship,2025,,,FT,England Championship,1730
+2026-01-31,Queens Park Rangers (QPR),Coventry City,2,1,Championship,2025,,,FT,England Championship,1730
+2026-01-31,Ipswich Town,Preston North End,1,1,Championship,2025,,,FT,England Championship,1730
+2026-01-31,Blackburn Rovers,Hull City,0,1,Championship,2025,,,FT,England Championship,1730
+2026-01-30,Bristol City,Derby County,0,5,Championship,2025,,,FT,England Championship,1730
+2026-01-26,Norwich City,Coventry City,2,1,Championship,2025,,,FT,England Championship,1730
+2026-01-25,Portsmouth,Southampton,1,1,Championship,2025,,,FT,England Championship,1730
+2026-01-24,Middlesbrough,Preston North End,4,0,Championship,2025,,,FT,England Championship,1730
+2026-01-24,Queens Park Rangers (QPR),Wrexham,2,3,Championship,2025,,,FT,England Championship,1730
+2026-01-24,Hull City,Swansea City,2,1,Championship,2025,,,FT,England Championship,1730
+2026-01-24,Sheffield United,Ipswich Town,3,1,Championship,2025,,,FT,England Championship,1730
+2026-01-24,Bristol City,Sheffield Wednesday,2,0,Championship,2025,,,FT,England Championship,1730
+2026-01-24,Blackburn Rovers,Watford,1,1,Championship,2025,,,FT,England Championship,1730
+2026-01-24,Birmingham City,Stoke City,1,1,Championship,2025,,,FT,England Championship,1730
+2026-01-24,Leicester City,Oxford United,1,2,Championship,2025,,,FT,England Championship,1730
+2026-01-24,Millwall,Charlton Athletic,4,0,Championship,2025,,,FT,England Championship,1730
+2026-01-23,Derby County,West Bromwich(WBA),1,1,Championship,2025,,,FT,England Championship,1730
+2026-01-21,Watford,Portsmouth,1,1,Championship,2025,,,FT,England Championship,1730
+2026-01-21,Southampton,Sheffield United,1,0,Championship,2025,,,FT,England Championship,1730
+2026-01-21,Stoke City,Middlesbrough,1,2,Championship,2025,,,FT,England Championship,1730
+2026-01-20,Oxford United,Queens Park Rangers (QPR),0,0,Championship,2025,,,FT,England Championship,1730
+2026-01-20,Wrexham,Leicester City,1,1,Championship,2025,,,FT,England Championship,1730
+2026-01-20,Swansea City,Blackburn Rovers,3,1,Championship,2025,,,FT,England Championship,1730
+2026-01-20,West Bromwich(WBA),Norwich City,0,5,Championship,2025,,,FT,England Championship,1730
+2026-01-20,Sheffield Wednesday,Birmingham City,0,2,Championship,2025,,,FT,England Championship,1730
+2026-01-20,Preston North End,Hull City,0,3,Championship,2025,,,FT,England Championship,1730
+2026-01-20,Ipswich Town,Bristol City,2,0,Championship,2025,,,FT,England Championship,1730
+2026-01-20,Coventry City,Millwall,2,1,Championship,2025,,,FT,England Championship,1730
+2026-01-20,Charlton Athletic,Derby County,1,2,Championship,2025,,,FT,England Championship,1730
+2026-01-17,Watford,Millwall,0,2,Championship,2025,,,FT,England Championship,1730
+2026-01-17,Oxford United,Bristol City,0,0,Championship,2025,,,FT,England Championship,1730
+2026-01-17,Sheffield Wednesday,Portsmouth,0,1,Championship,2025,,,FT,England Championship,1730
+2026-01-17,Ipswich Town,Blackburn Rovers,3,0,Championship,2025,,,FT,England Championship,1730
+2026-01-17,Coventry City,Leicester City,2,1,Championship,2025,,,FT,England Championship,1730
+2026-01-17,Preston North End,Derby County,0,1,Championship,2025,,,FT,England Championship,1730
+2026-01-17,Charlton Athletic,Sheffield United,1,0,Championship,2025,,,FT,England Championship,1730
+2026-01-17,Southampton,Hull City,1,2,Championship,2025,,,FT,England Championship,1730
+2026-01-17,Stoke City,Queens Park Rangers (QPR),0,0,Championship,2025,,,FT,England Championship,1730
+2026-01-17,Wrexham,Norwich City,1,2,Championship,2025,,,FT,England Championship,1730
+2026-01-17,Swansea City,Birmingham City,1,1,Championship,2025,,,FT,England Championship,1730
+2026-01-16,West Bromwich(WBA),Middlesbrough,2,3,Championship,2025,,,FT,England Championship,1730
+2026-01-05,Leicester City,West Bromwich(WBA),2,1,Championship,2025,,,FT,England Championship,1730
+2026-01-04,Middlesbrough,Southampton,4,0,Championship,2025,,,FT,England Championship,1730
+2026-01-04,Queens Park Rangers (QPR),Sheffield Wednesday,3,0,Championship,2025,,,FT,England Championship,1730
+2026-01-04,Derby County,Wrexham,1,2,Championship,2025,,,FT,England Championship,1730
+2026-01-04,Millwall,Swansea City,2,1,Championship,2025,,,FT,England Championship,1730
+2026-01-04,Birmingham City,Coventry City,3,2,Championship,2025,,,FT,England Championship,1730
+2026-01-04,Norwich City,Stoke City,0,2,Championship,2025,,,FT,England Championship,1730
+2026-01-04,Blackburn Rovers,Charlton Athletic,2,2,Championship,2025,,,FT,England Championship,1730
+2026-01-04,Bristol City,Preston North End,0,2,Championship,2025,,,FT,England Championship,1730
+2026-01-01,Blackburn Rovers,Wrexham,0,2,Championship,2025,,,FT,England Championship,1730
+2026-01-01,Swansea City,West Bromwich(WBA),1,0,Championship,2025,,,FT,England Championship,1730
+2026-01-01,Southampton,Millwall,0,0,Championship,2025,,,FT,England Championship,1730
+2026-01-01,Watford,Birmingham City,3,0,Championship,2025,,,FT,England Championship,1730
+2026-01-01,Bristol City,Portsmouth,5,0,Championship,2025,,,FT,England Championship,1730
+2026-01-01,Charlton Athletic,Coventry City,1,1,Championship,2025,,,FT,England Championship,1730
+2026-01-01,Derby County,Middlesbrough,1,0,Championship,2025,,,FT,England Championship,1730
+2026-01-01,Hull City,Stoke City,0,1,Championship,2025,,,FT,England Championship,1730
+2026-01-01,Ipswich Town,Oxford United,2,1,Championship,2025,,,FT,England Championship,1730
+2026-01-01,Preston North End,Sheffield Wednesday,3,0,Championship,2025,,,FT,England Championship,1730
+2026-01-01,Queens Park Rangers (QPR),Norwich City,1,2,Championship,2025,,,FT,England Championship,1730
+2026-01-01,Sheffield United,Leicester City,3,1,Championship,2025,,,FT,England Championship,1730
+2025-12-29,Oxford United,Swansea City,0,1,Championship,2025,,,FT,England Championship,1730
+2025-12-29,Stoke City,Sheffield United,1,2,Championship,2025,,,FT,England Championship,1730
+2025-12-29,West Bromwich(WBA),Queens Park Rangers (QPR),2,1,Championship,2025,,,FT,England Championship,1730
+2025-12-29,Portsmouth,Charlton Athletic,2,1,Championship,2025,,,FT,England Championship,1730
+2025-12-29,Wrexham,Preston North End,2,1,Championship,2025,,,FT,England Championship,1730
+2025-12-29,Birmingham City,Southampton,1,1,Championship,2025,,,FT,England Championship,1730
+2025-12-29,Sheffield Wednesday,Blackburn Rovers,0,0,Championship,2025,,,FT,England Championship,1730
+2025-12-29,Norwich City,Watford,0,1,Championship,2025,,,FT,England Championship,1730
+2025-12-29,Millwall,Bristol City,2,1,Championship,2025,,,FT,England Championship,1730
+2025-12-29,Middlesbrough,Hull City,0,1,Championship,2025,,,FT,England Championship,1730
+2025-12-29,Leicester City,Derby County,2,1,Championship,2025,,,FT,England Championship,1730
+2025-12-29,Coventry City,Ipswich Town,0,2,Championship,2025,,,FT,England Championship,1730
+2025-12-26,Stoke City,Preston North End,0,0,Championship,2025,,,FT,England Championship,1730
+2025-12-26,Birmingham City,Derby County,1,1,Championship,2025,,,FT,England Championship,1730
+2025-12-26,Millwall,Ipswich Town,0,0,Championship,2025,,,FT,England Championship,1730
+2025-12-26,Norwich City,Charlton Athletic,1,0,Championship,2025,,,FT,England Championship,1730
+2025-12-26,Oxford United,Southampton,2,1,Championship,2025,,,FT,England Championship,1730
+2025-12-26,Portsmouth,Queens Park Rangers (QPR),1,1,Championship,2025,,,FT,England Championship,1730
+2025-12-26,Sheffield Wednesday,Hull City,2,2,Championship,2025,,,FT,England Championship,1730
+2025-12-26,West Bromwich(WBA),Bristol City,1,2,Championship,2025,,,FT,England Championship,1730
+2025-12-26,Coventry City,Swansea City,1,0,Championship,2025,,,FT,England Championship,1730
+2025-12-26,Leicester City,Watford,1,2,Championship,2025,,,FT,England Championship,1730
+2025-12-26,Middlesbrough,Blackburn Rovers,0,0,Championship,2025,,,FT,England Championship,1730
+2025-12-26,Wrexham,Sheffield United,5,3,Championship,2025,,,FT,England Championship,1730
+2025-12-20,Charlton Athletic,Oxford United,1,0,Championship,2025,,,FT,England Championship,1730
+2025-12-20,Preston North End,Norwich City,1,1,Championship,2025,,,FT,England Championship,1730
+2025-12-20,Blackburn Rovers,Millwall,2,0,Championship,2025,,,FT,England Championship,1730
+2025-12-20,Southampton,Coventry City,1,1,Championship,2025,,,FT,England Championship,1730
+2025-12-20,Watford,Stoke City,1,0,Championship,2025,,,FT,England Championship,1730
+2025-12-20,Bristol City,Middlesbrough,2,0,Championship,2025,,,FT,England Championship,1730
+2025-12-20,Sheffield United,Birmingham City,3,0,Championship,2025,,,FT,England Championship,1730
+2025-12-20,Derby County,Portsmouth,1,1,Championship,2025,,,FT,England Championship,1730
+2025-12-20,Hull City,West Bromwich(WBA),1,0,Championship,2025,,,FT,England Championship,1730
+2025-12-20,Ipswich Town,Sheffield Wednesday,3,1,Championship,2025,,,FT,England Championship,1730
+2025-12-20,Queens Park Rangers (QPR),Leicester City,4,1,Championship,2025,,,FT,England Championship,1730
+2025-12-19,Swansea City,Wrexham,2,1,Championship,2025,,,FT,England Championship,1730
+2025-12-15,Sheffield Wednesday,Derby County,0,3,Championship,2025,,,FT,England Championship,1730
+2025-12-13,Birmingham City,Charlton Athletic,1,1,Championship,2025,,,FT,England Championship,1730
+2025-12-13,Stoke City,Swansea City,2,1,Championship,2025,,,FT,England Championship,1730
+2025-12-13,Norwich City,Southampton,2,1,Championship,2025,,,FT,England Championship,1730
+2025-12-13,Oxford United,Preston North End,1,2,Championship,2025,,,FT,England Championship,1730
+2025-12-13,Portsmouth,Blackburn Rovers,2,1,Championship,2025,,,FT,England Championship,1730
+2025-12-13,Coventry City,Bristol City,1,0,Championship,2025,,,FT,England Championship,1730
+2025-12-13,Leicester City,Ipswich Town,3,1,Championship,2025,,,FT,England Championship,1730
+2025-12-13,Millwall,Hull City,1,3,Championship,2025,,,FT,England Championship,1730
+2025-12-13,Wrexham,Watford,2,2,Championship,2025,,,FT,England Championship,1730
+2025-12-13,Middlesbrough,Queens Park Rangers (QPR),3,1,Championship,2025,,,FT,England Championship,1730
+2025-12-12,West Bromwich(WBA),Sheffield United,2,0,Championship,2025,,,FT,England Championship,1730
+2025-12-10,Hull City,Wrexham,2,0,Championship,2025,,,FT,England Championship,1730
+2025-12-10,Ipswich Town,Stoke City,1,0,Championship,2025,,,FT,England Championship,1730
+2025-12-10,Derby County,Millwall,1,1,Championship,2025,,,FT,England Championship,1730
+2025-12-10,Bristol City,Leicester City,2,2,Championship,2025,,,FT,England Championship,1730
+2025-12-09,Charlton Athletic,Middlesbrough,1,2,Championship,2025,,,FT,England Championship,1730
+2025-12-09,Southampton,West Bromwich(WBA),3,2,Championship,2025,,,FT,England Championship,1730
+2025-12-09,Blackburn Rovers,Oxford United,1,1,Championship,2025,,,FT,England Championship,1730
+2025-12-09,Sheffield United,Norwich City,1,1,Championship,2025,,,FT,England Championship,1730
+2025-12-09,Preston North End,Coventry City,1,1,Championship,2025,,,FT,England Championship,1730
+2025-12-09,Watford,Sheffield Wednesday,1,1,Championship,2025,,,FT,England Championship,1730
+2025-12-09,Swansea City,Portsmouth,1,0,Championship,2025,,,FT,England Championship,1730
+2025-12-09,Queens Park Rangers (QPR),Birmingham City,2,1,Championship,2025,,,FT,England Championship,1730
+2025-12-06,Southampton,Birmingham City,3,1,Championship,2025,,,FT,England Championship,1730
+2025-12-06,Sheffield United,Stoke City,4,0,Championship,2025,,,FT,England Championship,1730
+2025-12-06,Queens Park Rangers (QPR),West Bromwich(WBA),3,1,Championship,2025,,,FT,England Championship,1730
+2025-12-06,Ipswich Town,Coventry City,3,0,Championship,2025,,,FT,England Championship,1730
+2025-12-06,Swansea City,Oxford United,2,0,Championship,2025,,,FT,England Championship,1730
+2025-12-06,Preston North End,Wrexham,1,1,Championship,2025,,,FT,England Championship,1730
+2025-12-06,Bristol City,Millwall,0,1,Championship,2025,,,FT,England Championship,1730
+2025-12-06,Derby County,Leicester City,1,3,Championship,2025,,,FT,England Championship,1730
+2025-12-06,Watford,Norwich City,3,2,Championship,2025,,,FT,England Championship,1730
+2025-12-05,Hull City,Middlesbrough,1,4,Championship,2025,,,FT,England Championship,1730
+2025-12-02,Blackburn Rovers,Ipswich Town,1,1,Championship,2025,,,FT,England Championship,1730
+2025-12-01,Birmingham City,Watford,2,1,Championship,2025,,,FT,England Championship,1730
+2025-11-29,Leicester City,Sheffield United,2,3,Championship,2025,,,FT,England Championship,1730
+2025-11-29,Stoke City,Hull City,1,2,Championship,2025,,,FT,England Championship,1730
+2025-11-29,Wrexham,Blackburn Rovers,1,1,Championship,2025,,,FT,England Championship,1730
+2025-11-29,Portsmouth,Bristol City,0,1,Championship,2025,,,FT,England Championship,1730
+2025-11-29,West Bromwich(WBA),Swansea City,3,2,Championship,2025,,,FT,England Championship,1730
+2025-11-29,Millwall,Southampton,3,2,Championship,2025,,,FT,England Championship,1730
+2025-11-29,Middlesbrough,Derby County,2,1,Championship,2025,,,FT,England Championship,1730
+2025-11-29,Norwich City,Queens Park Rangers (QPR),3,1,Championship,2025,,,FT,England Championship,1730
+2025-11-29,Sheffield Wednesday,Preston North End,2,3,Championship,2025,,,FT,England Championship,1730
+2025-11-29,Coventry City,Charlton Athletic,3,1,Championship,2025,,,FT,England Championship,1730
+2025-11-28,Oxford United,Ipswich Town,2,1,Championship,2025,,,FT,England Championship,1730
+2025-11-26,West Bromwich(WBA),Birmingham City,1,1,Championship,2025,,,FT,England Championship,1730
+2025-11-26,Sheffield United,Portsmouth,3,0,Championship,2025,,,FT,England Championship,1730
+2025-11-26,Millwall,Sheffield Wednesday,1,0,Championship,2025,,,FT,England Championship,1730
+2025-11-26,Blackburn Rovers,Queens Park Rangers (QPR),0,1,Championship,2025,,,FT,England Championship,1730
+2025-11-26,Wrexham,Bristol City,2,0,Championship,2025,,,FT,England Championship,1730
+2025-11-25,Watford,Preston North End,1,1,Championship,2025,,,FT,England Championship,1730
+2025-11-25,Middlesbrough,Coventry City,2,4,Championship,2025,,,FT,England Championship,1730
+2025-11-25,Stoke City,Charlton Athletic,3,0,Championship,2025,,,FT,England Championship,1730
+2025-11-25,Hull City,Ipswich Town,0,2,Championship,2025,,,FT,England Championship,1730
+2025-11-25,Swansea City,Derby County,1,2,Championship,2025,,,FT,England Championship,1730
+2025-11-25,Southampton,Leicester City,3,0,Championship,2025,,,FT,England Championship,1730
+2025-11-25,Norwich City,Oxford United,1,1,Championship,2025,,,FT,England Championship,1730
+2025-11-23,Sheffield Wednesday,Sheffield United,0,3,Championship,2025,,,FT,England Championship,1730
+2025-11-22,Oxford United,Middlesbrough,1,1,Championship,2025,,,FT,England Championship,1730
+2025-11-22,Bristol City,Swansea City,3,0,Championship,2025,,,FT,England Championship,1730
+2025-11-22,Charlton Athletic,Southampton,1,5,Championship,2025,,,FT,England Championship,1730
+2025-11-22,Coventry City,West Bromwich(WBA),3,2,Championship,2025,,,FT,England Championship,1730
+2025-11-22,Derby County,Watford,2,3,Championship,2025,,,FT,England Championship,1730
+2025-11-22,Leicester City,Stoke City,2,1,Championship,2025,,,FT,England Championship,1730
+2025-11-22,Portsmouth,Millwall,3,1,Championship,2025,,,FT,England Championship,1730
+2025-11-22,Birmingham City,Norwich City,4,1,Championship,2025,,,FT,England Championship,1730
+2025-11-22,Ipswich Town,Wrexham,0,0,Championship,2025,,,FT,England Championship,1730
+2025-11-22,Queens Park Rangers (QPR),Hull City,3,2,Championship,2025,,,FT,England Championship,1730
+2025-11-21,Preston North End,Blackburn Rovers,1,2,Championship,2025,,,FT,England Championship,1730
+2025-11-08,Southampton,Sheffield Wednesday,3,1,Championship,2025,,,FT,England Championship,1730
+2025-11-08,Blackburn Rovers,Derby County,1,2,Championship,2025,,,FT,England Championship,1730
+2025-11-08,Hull City,Portsmouth,3,2,Championship,2025,,,FT,England Championship,1730
+2025-11-08,Millwall,Preston North End,1,1,Championship,2025,,,FT,England Championship,1730
+2025-11-08,Norwich City,Leicester City,1,2,Championship,2025,,,FT,England Championship,1730
+2025-11-08,Sheffield United,Queens Park Rangers (QPR),0,0,Championship,2025,,,FT,England Championship,1730
+2025-11-08,Middlesbrough,Birmingham City,2,1,Championship,2025,,,FT,England Championship,1730
+2025-11-08,Stoke City,Coventry City,0,1,Championship,2025,,,FT,England Championship,1730
+2025-11-08,West Bromwich(WBA),Oxford United,2,1,Championship,2025,,,FT,England Championship,1730
+2025-11-08,Swansea City,Ipswich Town,1,4,Championship,2025,,,FT,England Championship,1730
+2025-11-08,Wrexham,Charlton Athletic,1,0,Championship,2025,,,FT,England Championship,1730
+2025-11-07,Watford,Bristol City,1,1,Championship,2025,,,FT,England Championship,1730
+2025-11-05,Portsmouth,Wrexham,0,0,Championship,2025,,,FT,England Championship,1730
+2025-11-05,Preston North End,Swansea City,2,1,Championship,2025,,,FT,England Championship,1730
+2025-11-05,Sheffield Wednesday,Norwich City,1,1,Championship,2025,,,FT,England Championship,1730
+2025-11-05,Queens Park Rangers (QPR),Southampton,1,2,Championship,2025,,,FT,England Championship,1730
+2025-11-04,Ipswich Town,Watford,1,1,Championship,2025,,,FT,England Championship,1730
+2025-11-04,Birmingham City,Millwall,4,0,Championship,2025,,,FT,England Championship,1730
+2025-11-04,Bristol City,Blackburn Rovers,0,1,Championship,2025,,,FT,England Championship,1730
+2025-11-04,Derby County,Hull City,2,1,Championship,2025,,,FT,England Championship,1730
+2025-11-04,Charlton Athletic,West Bromwich(WBA),1,0,Championship,2025,,,FT,England Championship,1730
+2025-11-04,Leicester City,Middlesbrough,1,1,Championship,2025,,,FT,England Championship,1730
+2025-11-04,Oxford United,Stoke City,0,3,Championship,2025,,,FT,England Championship,1730
+2025-11-04,Coventry City,Sheffield United,3,1,Championship,2025,,,FT,England Championship,1730
+2025-11-01,Queens Park Rangers (QPR),Ipswich Town,1,4,Championship,2025,,,FT,England Championship,1730
+2025-11-01,Leicester City,Blackburn Rovers,0,2,Championship,2025,,,FT,England Championship,1730
+2025-11-01,Norwich City,Hull City,0,2,Championship,2025,,,FT,England Championship,1730
+2025-11-01,West Bromwich(WBA),Sheffield Wednesday,0,0,Championship,2025,,,FT,England Championship,1730
+2025-11-01,Charlton Athletic,Swansea City,1,1,Championship,2025,,,FT,England Championship,1730
+2025-11-01,Oxford United,Millwall,2,2,Championship,2025,,,FT,England Championship,1730
+2025-11-01,Sheffield United,Derby County,1,3,Championship,2025,,,FT,England Championship,1730
+2025-11-01,Southampton,Preston North End,0,2,Championship,2025,,,FT,England Championship,1730
+2025-11-01,Stoke City,Bristol City,5,1,Championship,2025,,,FT,England Championship,1730
+2025-11-01,Watford,Middlesbrough,3,0,Championship,2025,,,FT,England Championship,1730
+2025-11-01,Birmingham City,Portsmouth,4,0,Championship,2025,,,FT,England Championship,1730
+2025-10-31,Wrexham,Coventry City,3,2,Championship,2025,,,FT,England Championship,1730
+2025-10-25,Ipswich Town,West Bromwich(WBA),1,0,Championship,2025,,,FT,England Championship,1730
+2025-10-25,Coventry City,Watford,3,1,Championship,2025,,,FT,England Championship,1730
+2025-10-25,Millwall,Leicester City,1,0,Championship,2025,,,FT,England Championship,1730
+2025-10-25,Portsmouth,Stoke City,0,1,Championship,2025,,,FT,England Championship,1730
+2025-10-25,Hull City,Charlton Athletic,1,1,Championship,2025,,,FT,England Championship,1730
+2025-10-25,Derby County,Queens Park Rangers (QPR),1,0,Championship,2025,,,FT,England Championship,1730
+2025-10-25,Swansea City,Norwich City,2,1,Championship,2025,,,FT,England Championship,1730
+2025-10-25,Blackburn Rovers,Southampton,2,1,Championship,2025,,,FT,England Championship,1730
+2025-10-25,Sheffield Wednesday,Oxford United,1,2,Championship,2025,,,FT,England Championship,1730
+2025-10-25,Middlesbrough,Wrexham,1,1,Championship,2025,,,FT,England Championship,1730
+2025-10-25,Bristol City,Birmingham City,1,0,Championship,2025,,,FT,England Championship,1730
+2025-10-24,Preston North End,Sheffield United,3,2,Championship,2025,,,FT,England Championship,1730
+2025-10-22,Sheffield Wednesday,Middlesbrough,0,1,Championship,2025,,,FT,England Championship,1730
+2025-10-22,Wrexham,Oxford United,1,0,Championship,2025,,,FT,England Championship,1730
+2025-10-22,Swansea City,Queens Park Rangers (QPR),0,1,Championship,2025,,,FT,England Championship,1730
+2025-10-22,Watford,West Bromwich(WBA),2,1,Championship,2025,,,FT,England Championship,1730
+2025-10-21,Millwall,Stoke City,2,0,Championship,2025,,,FT,England Championship,1730
+2025-10-21,Derby County,Norwich City,1,0,Championship,2025,,,FT,England Championship,1730
+2025-10-21,Hull City,Leicester City,2,1,Championship,2025,,,FT,England Championship,1730
+2025-10-21,Ipswich Town,Charlton Athletic,0,3,Championship,2025,,,FT,England Championship,1730
+2025-10-21,Blackburn Rovers,Sheffield United,1,3,Championship,2025,,,FT,England Championship,1730
+2025-10-21,Portsmouth,Coventry City,1,2,Championship,2025,,,FT,England Championship,1730
+2025-10-21,Bristol City,Southampton,3,1,Championship,2025,,,FT,England Championship,1730
+2025-10-21,Preston North End,Birmingham City,0,1,Championship,2025,,,FT,England Championship,1730
+2025-10-18,West Bromwich(WBA),Preston North End,2,1,Championship,2025,,,FT,England Championship,1730
+2025-10-18,Oxford United,Derby County,1,0,Championship,2025,,,FT,England Championship,1730
+2025-10-18,Queens Park Rangers (QPR),Millwall,1,2,Championship,2025,,,FT,England Championship,1730
+2025-10-18,Southampton,Swansea City,0,0,Championship,2025,,,FT,England Championship,1730
+2025-10-18,Stoke City,Wrexham,1,0,Championship,2025,,,FT,England Championship,1730
+2025-10-18,Sheffield United,Watford,1,0,Championship,2025,,,FT,England Championship,1730
+2025-10-18,Birmingham City,Hull City,2,3,Championship,2025,,,FT,England Championship,1730
+2025-10-18,Charlton Athletic,Sheffield Wednesday,2,1,Championship,2025,,,FT,England Championship,1730
+2025-10-18,Coventry City,Blackburn Rovers,2,0,Championship,2025,,,FT,England Championship,1730
+2025-10-18,Norwich City,Bristol City,0,1,Championship,2025,,,FT,England Championship,1730
+2025-10-18,Leicester City,Portsmouth,1,1,Championship,2025,,,FT,England Championship,1730
+2025-10-17,Middlesbrough,Ipswich Town,2,1,Championship,2025,,,FT,England Championship,1730
+2025-10-05,Ipswich Town,Norwich City,3,1,Championship,2025,,,FT,England Championship,1730
+2025-10-04,Swansea City,Leicester City,1,3,Championship,2025,,,FT,England Championship,1730
+2025-10-04,Blackburn Rovers,Stoke City,1,1,Championship,2025,,,FT,England Championship,1730
+2025-10-04,Hull City,Sheffield United,1,0,Championship,2025,,,FT,England Championship,1730
+2025-10-04,Sheffield Wednesday,Coventry City,0,5,Championship,2025,,,FT,England Championship,1730
+2025-10-04,Watford,Oxford United,2,1,Championship,2025,,,FT,England Championship,1730
+2025-10-04,Bristol City,Queens Park Rangers (QPR),1,2,Championship,2025,,,FT,England Championship,1730
+2025-10-04,Millwall,West Bromwich(WBA),3,0,Championship,2025,,,FT,England Championship,1730
+2025-10-04,Preston North End,Charlton Athletic,2,0,Championship,2025,,,FT,England Championship,1730
+2025-10-04,Derby County,Southampton,1,1,Championship,2025,,,FT,England Championship,1730
+2025-10-04,Portsmouth,Middlesbrough,1,0,Championship,2025,,,FT,England Championship,1730
+2025-10-03,Wrexham,Birmingham City,1,1,Championship,2025,,,FT,England Championship,1730
+2025-10-01,Queens Park Rangers (QPR),Oxford United,0,0,Championship,2025,,,FT,England Championship,1730
+2025-10-01,Portsmouth,Watford,2,2,Championship,2025,,,FT,England Championship,1730
+2025-10-01,Norwich City,West Bromwich(WBA),0,1,Championship,2025,,,FT,England Championship,1730
+2025-10-01,Millwall,Coventry City,0,4,Championship,2025,,,FT,England Championship,1730
+2025-09-30,Leicester City,Wrexham,1,1,Championship,2025,,,FT,England Championship,1730
+2025-09-30,Hull City,Preston North End,2,2,Championship,2025,,,FT,England Championship,1730
+2025-09-30,Middlesbrough,Stoke City,0,0,Championship,2025,,,FT,England Championship,1730
+2025-09-30,Sheffield United,Southampton,1,2,Championship,2025,,,FT,England Championship,1730
+2025-09-30,Blackburn Rovers,Swansea City,1,2,Championship,2025,,,FT,England Championship,1730
+2025-09-30,Birmingham City,Sheffield Wednesday,2,2,Championship,2025,,,FT,England Championship,1730
+2025-09-30,Bristol City,Ipswich Town,1,1,Championship,2025,,,FT,England Championship,1730
+2025-09-30,Derby County,Charlton Athletic,1,1,Championship,2025,,,FT,England Championship,1730
+2025-09-27,Swansea City,Millwall,1,1,Championship,2025,,,FT,England Championship,1730
+2025-09-27,Charlton Athletic,Blackburn Rovers,3,0,Championship,2025,,,FT,England Championship,1730
+2025-09-27,Watford,Hull City,2,1,Championship,2025,,,FT,England Championship,1730
+2025-09-27,Stoke City,Norwich City,1,1,Championship,2025,,,FT,England Championship,1730
+2025-09-27,Southampton,Middlesbrough,1,1,Championship,2025,,,FT,England Championship,1730
+2025-09-27,Sheffield Wednesday,Queens Park Rangers (QPR),1,1,Championship,2025,,,FT,England Championship,1730
+2025-09-27,Preston North End,Bristol City,0,0,Championship,2025,,,FT,England Championship,1730
+2025-09-27,Oxford United,Sheffield United,0,1,Championship,2025,,,FT,England Championship,1730
+2025-09-27,Ipswich Town,Portsmouth,2,1,Championship,2025,,,FT,England Championship,1730
+2025-09-27,Coventry City,Birmingham City,3,0,Championship,2025,,,FT,England Championship,1730
+2025-09-27,Wrexham,Derby County,1,1,Championship,2025,,,FT,England Championship,1730
+2025-09-26,West Bromwich(WBA),Leicester City,1,1,Championship,2025,,,FT,England Championship,1730
+2025-09-22,Millwall,Watford,1,0,Championship,2025,,,FT,England Championship,1730
+2025-09-21,Bristol City,Oxford United,1,3,Championship,2025,,,FT,England Championship,1730
+2025-09-20,Birmingham City,Swansea City,1,0,Championship,2025,,,FT,England Championship,1730
+2025-09-20,Sheffield United,Charlton Athletic,0,1,Championship,2025,,,FT,England Championship,1730
+2025-09-20,Hull City,Southampton,3,1,Championship,2025,,,FT,England Championship,1730
+2025-09-20,Derby County,Preston North End,0,1,Championship,2025,,,FT,England Championship,1730
+2025-09-20,Portsmouth,Sheffield Wednesday,0,2,Championship,2025,,,FT,England Championship,1730
+2025-09-20,Norwich City,Wrexham,2,3,Championship,2025,,,FT,England Championship,1730
+2025-09-20,Leicester City,Coventry City,0,0,Championship,2025,,,FT,England Championship,1730
+2025-09-20,Queens Park Rangers (QPR),Stoke City,1,0,Championship,2025,,,FT,England Championship,1730
+2025-09-19,Middlesbrough,West Bromwich(WBA),2,1,Championship,2025,,,FT,England Championship,1730
+2025-09-14,Southampton,Portsmouth,0,0,Championship,2025,,,FT,England Championship,1730
+2025-09-13,Oxford United,Leicester City,2,2,Championship,2025,,,FT,England Championship,1730
+2025-09-13,Preston North End,Middlesbrough,2,2,Championship,2025,,,FT,England Championship,1730
+2025-09-13,Sheffield Wednesday,Bristol City,0,3,Championship,2025,,,FT,England Championship,1730
+2025-09-13,Charlton Athletic,Millwall,1,1,Championship,2025,,,FT,England Championship,1730
+2025-09-13,Coventry City,Norwich City,1,1,Championship,2025,,,FT,England Championship,1730
+2025-09-13,Swansea City,Hull City,2,2,Championship,2025,,,FT,England Championship,1730
+2025-09-13,Stoke City,Birmingham City,1,0,Championship,2025,,,FT,England Championship,1730
+2025-09-13,Watford,Blackburn Rovers,0,1,Championship,2025,,,FT,England Championship,1730
+2025-09-13,West Bromwich(WBA),Derby County,0,1,Championship,2025,,,FT,England Championship,1730
+2025-09-13,Wrexham,Queens Park Rangers (QPR),1,3,Championship,2025,,,FT,England Championship,1730
+2025-09-12,Ipswich Town,Sheffield United,5,0,Championship,2025,,,FT,England Championship,1730
+2025-08-30,Queens Park Rangers (QPR),Charlton Athletic,3,1,Championship,2025,,,FT,England Championship,1730
+2025-08-30,Stoke City,West Bromwich(WBA),0,1,Championship,2025,,,FT,England Championship,1730
+2025-08-30,Middlesbrough,Sheffield United,1,0,Championship,2025,,,FT,England Championship,1730
+2025-08-30,Sheffield Wednesday,Swansea City,0,2,Championship,2025,,,FT,England Championship,1730
+2025-08-30,Millwall,Wrexham,0,2,Championship,2025,,,FT,England Championship,1730
+2025-08-30,Watford,Southampton,2,2,Championship,2025,,,FT,England Championship,1730
+2025-08-30,Oxford United,Coventry City,2,2,Championship,2025,,,FT,England Championship,1730
+2025-08-30,Blackburn Rovers,Norwich City,0,2,Championship,2025,,,FT,England Championship,1730
+2025-08-30,Bristol City,Hull City,4,2,Championship,2025,,,FT,England Championship,1730
+2025-08-30,Ipswich Town,Derby County,2,2,Championship,2025,,,FT,England Championship,1730
+2025-08-30,Portsmouth,Preston North End,1,0,Championship,2025,,,FT,England Championship,1730
+2025-08-29,Leicester City,Birmingham City,2,0,Championship,2025,,,FT,England Championship,1730
+2025-08-23,Birmingham City,Oxford United,1,0,Championship,2025,,,FT,England Championship,1730
+2025-08-23,Hull City,Blackburn Rovers,0,3,Championship,2025,,,FT,England Championship,1730
+2025-08-23,Swansea City,Watford,1,1,Championship,2025,,,FT,England Championship,1730
+2025-08-23,Wrexham,Sheffield Wednesday,2,2,Championship,2025,,,FT,England Championship,1730
+2025-08-23,Coventry City,Queens Park Rangers (QPR),7,1,Championship,2025,,,FT,England Championship,1730
+2025-08-23,Charlton Athletic,Leicester City,0,1,Championship,2025,,,FT,England Championship,1730
+2025-08-23,Norwich City,Middlesbrough,1,2,Championship,2025,,,FT,England Championship,1730
+2025-08-23,Sheffield United,Millwall,0,1,Championship,2025,,,FT,England Championship,1730
+2025-08-23,Southampton,Stoke City,1,2,Championship,2025,,,FT,England Championship,1730
+2025-08-23,West Bromwich(WBA),Portsmouth,1,1,Championship,2025,,,FT,England Championship,1730
+2025-08-23,Preston North End,Ipswich Town,1,0,Championship,2025,,,FT,England Championship,1730
+2025-08-22,Derby County,Bristol City,1,1,Championship,2025,,,FT,England Championship,1730
+2025-08-17,Hull City,Oxford United,3,2,Championship,2025,,,FT,England Championship,1730
+2025-08-17,Ipswich Town,Southampton,1,1,Championship,2025,,,FT,England Championship,1730
+2025-08-16,Sheffield Wednesday,Stoke City,0,3,Championship,2025,,,FT,England Championship,1730
+2025-08-16,Derby County,Coventry City,3,5,Championship,2025,,,FT,England Championship,1730
+2025-08-16,Portsmouth,Norwich City,1,2,Championship,2025,,,FT,England Championship,1730
+2025-08-16,Wrexham,West Bromwich(WBA),2,3,Championship,2025,,,FT,England Championship,1730
+2025-08-16,Preston North End,Leicester City,2,1,Championship,2025,,,FT,England Championship,1730
+2025-08-16,Blackburn Rovers,Birmingham City,1,2,Championship,2025,,,FT,England Championship,1730
+2025-08-16,Watford,Queens Park Rangers (QPR),2,1,Championship,2025,,,FT,England Championship,1730
+2025-08-16,Swansea City,Sheffield United,1,0,Championship,2025,,,FT,England Championship,1730
+2025-08-16,Millwall,Middlesbrough,0,3,Championship,2025,,,FT,England Championship,1730
+2025-08-16,Bristol City,Charlton Athletic,0,0,Championship,2025,,,FT,England Championship,1730
+2025-08-10,Leicester City,Sheffield Wednesday,2,1,Championship,2025,,,FT,England Championship,1730
+2025-08-09,Southampton,Wrexham,2,1,Championship,2025,,,FT,England Championship,1730
+2025-08-09,Norwich City,Millwall,1,2,Championship,2025,,,FT,England Championship,1730
+2025-08-09,Queens Park Rangers (QPR),Preston North End,1,1,Championship,2025,,,FT,England Championship,1730
+2025-08-09,Coventry City,Hull City,0,0,Championship,2025,,,FT,England Championship,1730
+2025-08-09,Oxford United,Portsmouth,0,1,Championship,2025,,,FT,England Championship,1730
+2025-08-09,Charlton Athletic,Watford,1,0,Championship,2025,,,FT,England Championship,1730
+2025-08-09,Stoke City,Derby County,3,1,Championship,2025,,,FT,England Championship,1730
+2025-08-09,West Bromwich(WBA),Blackburn Rovers,1,0,Championship,2025,,,FT,England Championship,1730
+2025-08-09,Middlesbrough,Swansea City,1,0,Championship,2025,,,FT,England Championship,1730
+2025-08-09,Sheffield United,Bristol City,1,4,Championship,2025,,,FT,England Championship,1730
+2025-08-08,Birmingham City,Ipswich Town,1,1,Championship,2025,,,FT,England Championship,1730
